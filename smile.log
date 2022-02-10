@@ -1,14 +1,14 @@
-[ 03.02.2022 - 21:00:06 ]
+[ 10.02.2022 - 21:00:56 ]
     (MSG) [2] SMILEapi: openSMILE starting!
-[ 03.02.2022 - 21:00:06 ]
+[ 10.02.2022 - 21:00:56 ]
     (MSG) [2] SMILEapi: config file is: /home/frank/.local/lib/python3.8/site-packages/opensmile/core/config/compare/ComParE_2016.conf
-[ 03.02.2022 - 21:00:06 ]
-    (MSG) [2] cComponentManager: successfully registered 103 component types.
-[ 03.02.2022 - 21:00:06 ]
+[ 10.02.2022 - 21:00:56 ]
+    (MSG) [2] cComponentManager: successfully registered 97 component types.
+[ 10.02.2022 - 21:00:56 ]
     (MSG) [2] cComponentManager: successfully finished createInstances (43 component instances were finalised, 1 data memories were finalised)
-[ 03.02.2022 - 21:00:06 ]
+[ 10.02.2022 - 21:00:56 ]
     (MSG) [2] cComponentManager: starting single thread processing loop
-[ 03.02.2022 - 21:00:06 ]
+[ 10.02.2022 - 21:00:56 ]
     (WRN) [2] cComponentManager: The following component(s) could not perform any work because destination levels are full but no other component performed any work either: is13_energy is13_audspecSum is13_audspecRastaSum. Processing will possibly be incomplete. For more details, enable the execDebug option of cComponentManager.
-[ 03.02.2022 - 21:00:06 ]
-    (MSG) [2] cComponentManager: Processing finished! System ran for 213 ticks.
+[ 10.02.2022 - 21:00:56 ]
+    (MSG) [2] cComponentManager: Processing finished! System ran for 1867 ticks.
