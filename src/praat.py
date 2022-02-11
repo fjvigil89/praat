@@ -4,15 +4,8 @@ Prosody parameters
 
 import parselmouth
 
-import glob
-import pandas as pd
-import statistics
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-from IPython.display import Audio
 from parselmouth.praat import call
+
 class Praat:    
     path_destinity="data/txt/"
     """ f0min=0.01
