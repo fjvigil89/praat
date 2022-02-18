@@ -111,9 +111,8 @@ def radar_factory(num_vars, frame='circle'):
     return theta
 
 
-def smille_data(n):
-    
-    path = ["data/wav/audio0.wav"]    
+def smille_data(n):    
+    path = ["data/audio/AVFAD/AAO/AAO001.wav"]    
     smile = opensmile.Smile(
         feature_set=opensmile.FeatureSet.ComParE_2016,
         feature_level=opensmile.FeatureLevel.Functionals,
