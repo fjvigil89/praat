@@ -8,11 +8,11 @@ from pydub import AudioSegment
 from pydub.silence import split_on_silence
 import warnings
 warnings.simplefilter("ignore", DeprecationWarning)
-
+warnings.simplefilter("ignore", np.ComplexWarning)
 from playsound import playsound
  
 
-#sound= "data/audio/AVFAD/AAC/AAC002.wav"
+sound= "data/audio/AVFAD/AAC/AAC002.wav"
 sound= "data/audio/AVFAD/test/frank.vigil-75c6de05-0cc9-47cc-9b69-d4df79931f0e.m4a.wav"
 
 def eng_origen(sound):
@@ -110,7 +110,6 @@ def quitarbajas(sound):
         end= int((delta[i+1]*Ms)*muestreo)
         salida.append(snd[init : end])
     
-    
     salida = np.concatenate(salida)
     
     fig = plt.figure(figsize=(8, 8))
@@ -118,11 +117,13 @@ def quitarbajas(sound):
     fig.savefig("data/img/señal_salida.jpg")  # or you can pass a Figure object to pdf.savefig
     plt.close()
     
-    waves.write("example.wav", muestreo, salida)
+    waves.write("senal_salida.wav", muestreo, salida)
+
 
 def ruido(sound):
     ## Compute Fourier Transform
     # PROCEDIMIENTO
+    Ms=0.010  
     muestreo, snd = waves.read(sound)    
     snd = snd/(2.**15)    
     muestra = len(snd)    
@@ -138,23 +139,30 @@ def ruido(sound):
 
     ## Filter out noise
     sort_psd = np.sort(psd_real)[::-1]
-    # print(len(sort_psd))
-    threshold = sort_psd[300]
+    print(len(sort_psd))
+    threshold = sort_psd[300] #DB
     psd_idxs = psd > threshold #array of 0 and 1
     psd_clean = psd * psd_idxs #zero out all the unnecessary powers
     fhat_clean = psd_idxs * fhat #used to retrieve the signal
 
+    print((threshold))
+    """ plt.plot(fhat_clean)
+    plt.show() """
     signal_filtered = np.fft.ifft(fhat_clean) #inverse fourier transform
     
     fig = plt.figure(figsize=(8, 8))
     plt.plot(signal_filtered)
     fig.savefig("data/img/señal_si_ruido.jpg")  # or you can pass a Figure object to pdf.savefig
     plt.close()
-    
-    waves.write("example_sinRuido.wav", muestreo, signal_filtered)
-    
-        
-    
 
-#quitarbajas(sound)
-ruido("example.wav")
+    """ #Macheo de la señal
+    salida=[]    
+    for i in  range(0,len(signal_filtered)-1):
+        init= int((signal_filtered[i]*Ms)*muestreo)
+        end= int((signal_filtered[i+1]*Ms)*muestreo)
+        salida.append(snd[init : end])
+       """
+    waves.write("sinRuido.wav", muestreo, np.real(signal_filtered))
+
+quitarbajas(sound)
+ruido("senal_salida.wav")
