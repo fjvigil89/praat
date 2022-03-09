@@ -3,34 +3,27 @@ Prosody parameters
 '''
 
 from statistics import median
-import parselmouth, json
+import parselmouth
+import json
+import sys
 import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-
 from parselmouth.praat import call
 
-class Praat:    
-    path_destinity="data/txt/"
-    sound= "data/audio/AVFAD/NORM/1020-a_h.wav"
-    #sound= "data/audio/AVFAD/AAC/AAC002.wav"
-    
-    # This is the function to measure voice pitch
-    def measurePitch(voiceID, f0min, f0max, unit):
-        sound = parselmouth.Sound(voiceID) # read the sound
 
-        #pitch = sound.to_pitch()
-        pitch = call(sound, "To Pitch (cc)", 0, f0min, 15, 'no', 0.03, 0.45, 0.15, 0.35, 0.14, f0max)
-        
-        pulses = call([sound, pitch], "To PointProcess (cc)")
-        duration = call(sound, "Get total duration") # duration
-        voice_report_str = call([sound, pitch, pulses], "Voice report", 0, 0, 75, 500, 1.3, 1.6, 0.03, 0.45)       
-        
-        return voice_report_str
+
+# This is the function to measure voice pitch
+def measurePitch(voiceID, f0min, f0max, unit):
+    sound = parselmouth.Sound(voiceID)
     
-  
-    def measure2Pitch(voiceID, f0min, f0max, unit):
+    pitch = call(sound, "To Pitch (cc)", 0, f0min, 15, 'no', 0.03, 0.45, 0.15, 0.35, 0.14, f0max)
+    
+    pulses = call([sound, pitch], "To PointProcess (cc)")
+    duration = call(sound, "Get total duration") # duration
+    voice_report_str = call([sound, pitch, pulses], "Voice report", 0, 0, 75, 500, 1.3, 1.6, 0.03, 0.45)       
+    
+    
+    return voice_report_str
+def measure2Pitch(voiceID, f0min, f0max, unit):
         sound = parselmouth.Sound(voiceID) # read the sound
         duration = call(sound, "Get total duration") # duration
         pitch = call(sound, "To Pitch (cc)", 0, f0min, 15, 'no', 0.03, 0.45, 0.15, 0.35, 0.14, f0max)
@@ -44,7 +37,7 @@ class Praat:
         pointProcess = call(sound, "To PointProcess (periodic, cc)", f0min, f0max)
         
         localJitter = np.log(round(100*call(pulses, "Get jitter (local)", 0, 0, 0.0001, 0.02, 1.3), 3))
-        localabsoluteJitter = np.log(call(pulses, "Get jitter (local, absolute)", 0, 0, 0.0001, 0.02, 1.3))
+        localabsoluteJitter = (call(pulses, "Get jitter (local, absolute)", 0, 0, 0.0001, 0.02, 1.3))
         rapJitter = np.log(round(100*call(pulses, "Get jitter (rap)", 0, 0, 0.0001, 0.02, 1.3), 3))
         ppq5Jitter = np.log(round(100*call(pulses, "Get jitter (ppq5)", 0, 0, 0.0001, 0.02, 1.3), 3))
         ddpJitter = np.log(round(100*call(pulses, "Get jitter (ddp)", 0, 0, 0.0001, 0.02, 1.3), 3))
@@ -58,89 +51,58 @@ class Praat:
        
         columns=["stdev"," hnr"," localJitter"," localabsoluteJitter"," rapJitter"," ppq5Jitter"," ddpJitter"," localShimmer"," localdbShimmer"," apq3Shimmer", "aqpq5Shimmer", "apq11Shimmer", "ddaShimmer"]
         row=[stdevF0, hnr, localJitter, localabsoluteJitter, rapJitter, ppq5Jitter, ddpJitter, localShimmer, localdbShimmer, apq3Shimmer, aqpq5Shimmer, apq11Shimmer, ddaShimmer]
-        #return json.dumps(columns), json.dumps((row)) 
-        return stdevF0, hnr, localJitter, localabsoluteJitter, rapJitter, ppq5Jitter, ddpJitter, localShimmer, localdbShimmer, apq3Shimmer, aqpq5Shimmer, apq11Shimmer, ddaShimmer
+        return json.dumps(columns), json.dumps((row)) 
     
+def praat(n, data):
+    valor=[]
+    valor.append(data[62:82])    
+    valor.append(data[89:110])
+    valor.append(data[115:142])
+    valor.append(data[148:170])
+    valor.append(data[174:199])        
+    valor.append(data[213:235])       
+    valor.append(data[238:261])
+    valor.append(data[264:289])
+    valor.append(data[300:342])    
+    valor.append(data[360:406])
+    valor.append(data[423:451])
+    valor.append(data[452:485])    
+    valor.append(data[538:559])    
+    valor.append(data[564:600])    
+    valor.append(data[611:631])
+    valor.append(data[635:656])    
+    valor.append(data[660:680])    
+    valor.append(data[693:716])    
+    valor.append(data[721:747])    
+    valor.append(data[754:775])    
+    valor.append(data[780:801])
+    valor.append(data[806:828])    
+    valor.append(data[833:853])    
+    valor.append(data[896:926])
+    valor.append(data[930:969])
+    valor.append(data[973:1010])
     
-    data = measurePitch(sound, 75, 500, "Hertz")
-    file=open(path_destinity+sound.split("/")[4].split(".")[0]+".txt","w")
-    file.write(data)
-    file.close()
-    # print(data)
+    columns=[]
+    row=[]
+    
+    for item in valor:        
+        columns.append(item.split(':')[0])
+        row.append(float(item.split(':')[1]))  
 
-    # duration, meanF0, stdevF0, hnr, localJitter, localabsoluteJitter, rapJitter, ppq5Jitter, ddpJitter, localShimmer, localdbShimmer, apq3Shimmer, aqpq5Shimmer, apq11Shimmer, ddaShimmer = measure2Pitch(sound, 75, 500, "Hertz")        
-    # lista = [duration, meanF0, stdevF0, hnr, localJitter, localabsoluteJitter, rapJitter, ppq5Jitter, ddpJitter, localShimmer, localdbShimmer, apq3Shimmer, aqpq5Shimmer, apq11Shimmer, ddaShimmer]
     
-    # df= pd.DataFrame(lista, index=['duration', 'meanF0', 'stdevF0', 'hnr', 'localJitter', 'localabsoluteJitter', 'rapJitter', 'ppq5Jitter', 'ddpJitter', 'localShimmer', 'localdbShimmer', 'apq3Shimmer', 'aqpq5Shimmer', 'apq11Shimmer', 'ddaShimmer'])
-    # df.to_excel(path_destinity+sound.split("/")[4].split(".")[0]+"---2.xlsx")
-    # # print(df)
+    return json.dumps(columns), json.dumps(row)  
 
-    #Sacar la media de todos los valores de una voz NORM
-    base = "data/audio/AVFAD/NORM/"
-    sound= [
-         "1020-a_h.wav",
-         "1020-a_l.wav",
-         "1020-a_lhl.wav",
-         "1020-a_n.wav",
-         "1020-i_h.wav",
-         "1020-i_l.wav",
-         "1020-i_lhl.wav",
-         "1020-i_n.wav",
-         "1020-phrase.wav",
-         "1020-u_h.wav",
-         "1020-u_l.wav",
-         "1020-u_lhl.wav",
-         "1020-u_n.wav"]
-    
-    stdev=[]
-    hnr0=[]
-    localJitter0=[]
-    localabsoluteJitter0=[]
-    rapJitter0=[]
-    ppq5Jitter0=[]
-    ddpJitter0=[]
-    localShimmer0=[]
-    localdbShimmer0=[]
-    apq3Shimmer0=[]
-    aqpq5Shimmer0=[]
-    apq11Shimmer0=[]
-    ddaShimmer0=[]
 
-    for item in sound:
-        stdevF0, hnr, localJitter, localabsoluteJitter, rapJitter, ppq5Jitter, ddpJitter, localShimmer, localdbShimmer, apq3Shimmer, aqpq5Shimmer, apq11Shimmer, ddaShimmer = measure2Pitch(base+item, 75, 500, "Hertz") 
-        stdev.append(stdevF0)
-        hnr0.append(hnr)
-        localJitter0.append(localJitter)
-        localabsoluteJitter0.append(localabsoluteJitter)
-        rapJitter0.append(rapJitter)
-        ppq5Jitter0.append(ppq5Jitter)
-        ddpJitter0.append(ddpJitter)
-        localShimmer0.append(localShimmer)
-        localdbShimmer0.append(localdbShimmer)
-        apq3Shimmer0.append(apq3Shimmer)
-        aqpq5Shimmer0.append(aqpq5Shimmer)
-        apq11Shimmer0.append(apq11Shimmer)
-        ddaShimmer0.append(ddaShimmer)
+if __name__ == '__main__':          
+    """ args = sys.argv[1:]        
+    n =int(args[0]) 
+    sound = args[1]
+ """
+    #sound = "example.wav"
+    sound = "data/audio/AVFAD/test/frank.vigil-75c6de05-0cc9-47cc-9b69-d4df79931f0e.m4a.wav"
+    data2 = measure2Pitch(sound, 75, 500, "Hertz") 
+    
+    #data = praat(n, data)
+    #print(data)
 
-    rest=[
-        np.median(stdev),
-        np.median(hnr0),
-        np.median(localJitter0),
-        np.median(localabsoluteJitter0),
-        np.median(rapJitter0),
-        np.median(ppq5Jitter0),
-        np.median(ddpJitter0),
-        np.median(localShimmer0),
-        np.median(localdbShimmer0),
-        np.median(apq3Shimmer0),
-        np.median(aqpq5Shimmer0),
-        np.median(apq11Shimmer0),
-        np.median(ddaShimmer0),
-
-    ]
-    #print(rest)
-    print(rest)
-    
-    
-    
-    
+    print(data2)

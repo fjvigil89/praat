@@ -12,7 +12,8 @@ warnings.simplefilter("ignore", DeprecationWarning)
 from playsound import playsound
  
 
-sound= "data/audio/AVFAD/AAC/AAC002.wav"
+#sound= "data/audio/AVFAD/AAC/AAC002.wav"
+sound= "data/audio/AVFAD/test/frank.vigil-75c6de05-0cc9-47cc-9b69-d4df79931f0e.m4a.wav"
 
 def eng_origen(sound):
     # INGRESO
@@ -96,5 +97,5 @@ def quitarbajas(sound):
     waves.write("example.wav", muestreo, salida)
 
 
+#eng_origen(sound)
 quitarbajas(sound)
-eng_origen("example.wav")
