@@ -59,6 +59,7 @@ def windowing(x, fs=16000, Ns=0.025, Ms=0.010):# dividir por tramas las señal
     m = np.arange(0, T - N, M).reshape(1, -1)
     L = len(m)
     ind = np.arange(N).reshape(-1, 1).dot(np.ones((1, L))) + np.ones((N, 1)).dot(m)
+
     return x[ind.astype(int).T].astype(np.float32)
 
 def quitarbajas(sound): 
@@ -68,12 +69,34 @@ def quitarbajas(sound):
     # normalizar la señal del wav
     snd = snd/(2.**15)   
     
+    fig = plt.figure(figsize=(8, 8))
+    plt.plot(snd)
+    fig.savefig("data/img/señal_original.jpg")  # or you can pass a Figure object to pdf.savefig
+    plt.close()
+    
     tramas=windowing(snd, muestreo)
     eng_sum =np.sum(tramas**2, axis=1)
-    
-    
+
+    fig = plt.figure(figsize=(8, 8))
+    plt.plot(eng_sum)
+    fig.savefig("data/img/señal_original_energia.jpg")  # or you can pass a Figure object to pdf.savefig
+    plt.close()
+        
     umbral=0.05
     relacion= eng_sum > umbral
+    
+    fig = plt.figure(figsize=(8, 8))
+    plt.plot(relacion)
+    fig.savefig("data/img/señal_original_ventanas.jpg")  # or you can pass a Figure object to pdf.savefig
+    plt.close()
+    
+    
+    fig = plt.figure(figsize=(8, 8))
+    plt.plot(eng_sum)
+    plt.plot(relacion)
+    fig.savefig("data/img/señal_original_ventanas_Original.jpg")  # or you can pass a Figure object to pdf.savefig
+    plt.close()
+    
     
     delta = np.diff(relacion)    
     delta= np.argwhere(delta==True)
@@ -90,12 +113,48 @@ def quitarbajas(sound):
     
     salida = np.concatenate(salida)
     
-    plt.plot(snd)    
-    plt.plot(salida)    
-    plt.show()
+    fig = plt.figure(figsize=(8, 8))
+    plt.plot(salida)
+    fig.savefig("data/img/señal_salida.jpg")  # or you can pass a Figure object to pdf.savefig
+    plt.close()
     
     waves.write("example.wav", muestreo, salida)
 
+def ruido(sound):
+    ## Compute Fourier Transform
+    # PROCEDIMIENTO
+    muestreo, snd = waves.read(sound)    
+    snd = snd/(2.**15)    
+    muestra = len(snd)    
+    dt = muestra/muestreo
+    t = np.arange(0,muestra*dt,dt)  
+    n = len(t)
+    
+    fhat = np.fft.fft(snd, n) #computes the fft
+    psd = fhat * np.conj(fhat)/n
+    idxs_half = np.arange(1, np.floor(n/2), dtype=np.int32) #first half index
+    psd_real = np.abs(psd[idxs_half]) #amplitude for first half
 
-#eng_origen(sound)
-quitarbajas(sound)
+
+    ## Filter out noise
+    sort_psd = np.sort(psd_real)[::-1]
+    # print(len(sort_psd))
+    threshold = sort_psd[300]
+    psd_idxs = psd > threshold #array of 0 and 1
+    psd_clean = psd * psd_idxs #zero out all the unnecessary powers
+    fhat_clean = psd_idxs * fhat #used to retrieve the signal
+
+    signal_filtered = np.fft.ifft(fhat_clean) #inverse fourier transform
+    
+    fig = plt.figure(figsize=(8, 8))
+    plt.plot(signal_filtered)
+    fig.savefig("data/img/señal_si_ruido.jpg")  # or you can pass a Figure object to pdf.savefig
+    plt.close()
+    
+    waves.write("example_sinRuido.wav", muestreo, signal_filtered)
+    
+        
+    
+
+#quitarbajas(sound)
+ruido("example.wav")
