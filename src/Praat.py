@@ -7,8 +7,11 @@ import parselmouth
 import json
 import sys
 import numpy as np
+import matplotlib.pyplot as plt
 from parselmouth.praat import call
-
+import warnings
+warnings.simplefilter("ignore", DeprecationWarning)
+warnings.simplefilter("ignore", np.ComplexWarning)
 
 
 # This is the function to measure voice pitch
@@ -51,6 +54,9 @@ def measure2Pitch(voiceID, f0min, f0max, unit):
        
         columns=["stdev"," hnr"," localJitter"," localabsoluteJitter"," rapJitter"," ppq5Jitter"," ddpJitter"," localShimmer"," localdbShimmer"," apq3Shimmer", "aqpq5Shimmer", "apq11Shimmer", "ddaShimmer"]
         row=[stdevF0, hnr, localJitter, localabsoluteJitter, rapJitter, ppq5Jitter, ddpJitter, localShimmer, localdbShimmer, apq3Shimmer, aqpq5Shimmer, apq11Shimmer, ddaShimmer]
+        
+    
+
         return json.dumps(columns), json.dumps((row)) 
     
 def praat(n, data):
@@ -99,7 +105,7 @@ if __name__ == '__main__':
     sound = args[1]
  """
     #sound = "example.wav"
-    sound = "data/audio/AVFAD/test/frank.vigil-75c6de05-0cc9-47cc-9b69-d4df79931f0e.m4a.wav"
+    sound= "data/audio/AVFAD/test/frank.vigil-75c6de05-0cc9-47cc-9b69-d4df79931f0e.m4a.wav"
     data2 = measure2Pitch(sound, 75, 500, "Hertz") 
     
     #data = praat(n, data)
