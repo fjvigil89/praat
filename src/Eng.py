@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import scipy.io.wavfile as waves
 import scipy.integrate as integrate
+import scipy.signal as signal 
 
 from pydub import AudioSegment
 from pydub.silence import split_on_silence
@@ -74,6 +75,7 @@ def quitarbajas(sound):
     fig.savefig("data/img/señal_original.jpg")  # or you can pass a Figure object to pdf.savefig
     plt.close()
     
+    # calcaulo de la energia
     tramas=windowing(snd, muestreo)
     eng_sum =np.sum(tramas**2, axis=1)
 
@@ -139,8 +141,8 @@ def ruido(sound):
 
     ## Filter out noise
     sort_psd = np.sort(psd_real)[::-1]
-    print(len(sort_psd))
-    threshold = sort_psd[300] #DB
+    # print(len(sort_psd))
+    threshold = sort_psd[12]
     psd_idxs = psd > threshold #array of 0 and 1
     psd_clean = psd * psd_idxs #zero out all the unnecessary powers
     fhat_clean = psd_idxs * fhat #used to retrieve the signal
@@ -154,15 +156,38 @@ def ruido(sound):
     plt.plot(signal_filtered)
     fig.savefig("data/img/señal_si_ruido.jpg")  # or you can pass a Figure object to pdf.savefig
     plt.close()
+   
+    waves.write("example_sinRuido.wav", muestreo, signal_filtered)
+    
+def test(sound):        
+    muestreo, snd = waves.read(sound)        
+    f1 = 25 
+    f2 = 50 
+    N = 10 
+    
+    # t = np.linspace(0, 1, 1000) 
+    muestra = len(snd)    
+    dt = muestra/muestreo
+    t = np.arange(0,muestra*dt,dt)    
+    sig = snd +  np.sin(2*np.pi*f2*t)
+    
+    fig,(ax1, ax2) = plt.subplots(2, 1, sharex=True) 
+    ax1.plot(t, sig) 
+    ax1.set_title('25 Hz and 50 Hz sinusoids') 
+    ax1.axis([0, 1, -2, 2]) 
+    
+    sos = signal.butter(50, 35, 'lp', fs=muestreo, output='sos') 
+    
+    filtered = signal.sosfiltfilt(sos, sig) 
+    
+    
+    ax2.plot(t, filtered) 
+    ax2.set_title('After 35 Hz Low-pass filter') 
+    ax2.axis([0, 1, -2, 2]) 
+    ax2.set_xlabel('Time [seconds]') 
+    plt.tight_layout() 
+    plt.show() 
+    
 
-    """ #Macheo de la señal
-    salida=[]    
-    for i in  range(0,len(signal_filtered)-1):
-        init= int((signal_filtered[i]*Ms)*muestreo)
-        end= int((signal_filtered[i+1]*Ms)*muestreo)
-        salida.append(snd[init : end])
-       """
-    waves.write("sinRuido.wav", muestreo, np.real(signal_filtered))
-
-quitarbajas(sound)
+# quitarbajas(sound)
 ruido("senal_salida.wav")
