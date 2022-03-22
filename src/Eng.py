@@ -14,7 +14,7 @@ from playsound import playsound
  
 
 sound= "data/audio/AVFAD/AAC/AAC002.wav"
-sound= "data/audio/AVFAD/test/frank.vigil-75c6de05-0cc9-47cc-9b69-d4df79931f0e.m4a.wav"
+#sound= "data/audio/AVFAD/test/frank.vigil-75c6de05-0cc9-47cc-9b69-d4df79931f0e.m4a.wav"
 
 def eng_origen(sound):
     # INGRESO
@@ -159,35 +159,67 @@ def ruido(sound):
    
     waves.write("example_sinRuido.wav", muestreo, signal_filtered)
     
-def test(sound):        
-    muestreo, snd = waves.read(sound)        
-    f1 = 25 
-    f2 = 50 
-    N = 10 
-    
-    # t = np.linspace(0, 1, 1000) 
+def test(sound):   
+    sampling_rate, snd = waves.read(sound)      
+    snd = snd/(2.**15)        
     muestra = len(snd)    
-    dt = muestra/muestreo
-    t = np.arange(0,muestra*dt,dt)    
-    sig = snd +  np.sin(2*np.pi*f2*t)
-    
-    fig,(ax1, ax2) = plt.subplots(2, 1, sharex=True) 
-    ax1.plot(t, sig) 
-    ax1.set_title('25 Hz and 50 Hz sinusoids') 
-    ax1.axis([0, 1, -2, 2]) 
-    
-    sos = signal.butter(50, 35, 'lp', fs=muestreo, output='sos') 
-    
-    filtered = signal.sosfiltfilt(sos, sig) 
+    dt = muestra/sampling_rate    
+    t = np.arange(0,muestra*dt,dt)  
+    n = len(t)
+    f2=50
+    fft = np.fft.fft(np.abs(snd),n)    
+    fft_size = len(fft)# Longitud de muestreo de procesamiento #FFT
     
     
-    ax2.plot(t, filtered) 
-    ax2.set_title('After 35 Hz Low-pass filter') 
-    ax2.axis([0, 1, -2, 2]) 
-    ax2.set_xlabel('Time [seconds]') 
-    plt.tight_layout() 
-    plt.show() 
     
+    x = snd # Se superponen dos ondas sinusoidales, 156.25HZ y 234.375HZ
+    # El requisito de FFT de N puntos para un análisis de espectro preciso es que N puntos de muestreo contengan un número entero de objetos de muestreo. Por lo tanto, la FFT de N puntos puede calcular perfectamente el espectro. El requisito para el objeto de muestreo es n * Fs / N (n * frecuencia de muestreo / longitud de FFT),
+    # Por lo tanto, para 8 KHZ y 512 puntos, el requisito mínimo para el período de un objeto de muestreo perfecto es 8000/512 = 15,625 HZ, por lo que el n de 156,25 es 10 y el n de 234,375 es 15.
+    xs = x[:fft_size]# Muestreo de puntos de fft_size de los datos de forma de onda para el cálculo
+    xf = np.fft.rfft(xs)/fft_size   # Use np.fft.rfft () para el cálculo de FFT, rfft () es para una transformación más 
+                                    # conveniente de señales de números reales, a partir de la fórmula podemos 
+                                    # ver / fft_size para mostrar correctamente la energía de la forma de onda
+                                    
+    # El valor de retorno de la función rfft es N / 2 + 1 números complejos, que representan puntos desde 0 (Hz) 
+    # a sample_rate / 2 (Hz).
+    #De modo que la frecuencia verdadera correspondiente a cada subíndice en el valor de retorno se puede calcular 
+    #mediante el siguiente np.linspace:
+    freqs = np.linspace(0, sampling_rate/2, int(fft_size/2+1))
+    
+    # np.linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None)
+    #Return números espaciados uniformemente dentro del intervalo especificado
+    xfp = 20*np.log10(np.clip(np.abs(xf), 1e-20, 1e100))
+    # Por último, calculamos la amplitud de cada componente de frecuencia y la convertimos a un valor en db hasta 20 * np.log10 (). Para evitar que el componente de amplitud cero haga que log10 no se calcule, llamamos a np.clip para realizar el procesamiento de límite superior e inferior en la amplitud de xf
 
-# quitarbajas(sound)
-ruido("senal_salida.wav")
+    psd = fft * np.conj(fft)/n
+    threshold = -200
+    psd_idxs = psd > threshold #array of 0 and 1
+    print("psd_idxs", psd_idxs)
+    
+    #Drawing display results
+    plt.figure(figsize=(8,4))
+    plt.subplot(211)
+    plt.plot(t[:fft_size], xs)
+    plt.xlabel(u"Time(S)")
+    plt.title(u"156.25Hz and 234.375Hz WaveForm And Freq")   
+    
+    plt.subplot(212)
+    plt.plot(freqs, xfp)
+    plt.xlabel(u"Freq(Hz)")
+    plt.subplots_adjust(hspace=0.4)
+   
+    
+    plt.show()
+
+#quitarbajas(sound)
+#test("senal_salida.wav")
+
+# Transformada de Fourier
+def fft1(xx):
+#   t=np.arange(0, s)
+    t=np.linspace(0, 1.0, len(xx))
+    f = np.arange(len(xx)/2+1, dtype=complex)
+    for index in range(len(f)):
+        f[index]=complex(np.sum(np.cos(2*np.pi*index*t)*xx), -np.sum(np.sin(2*np.pi*index*t)*xx))
+    return f
+
