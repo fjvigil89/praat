@@ -7,8 +7,11 @@ import parselmouth
 import json
 import sys
 import numpy as np
+import matplotlib.pyplot as plt
 from parselmouth.praat import call
-
+import warnings
+warnings.simplefilter("ignore", DeprecationWarning)
+warnings.simplefilter("ignore", np.ComplexWarning)
 
 
 # This is the function to measure voice pitch
@@ -51,6 +54,9 @@ def measure2Pitch(voiceID, f0min, f0max, unit):
        
         columns=["stdev"," hnr"," localJitter"," localabsoluteJitter"," rapJitter"," ppq5Jitter"," ddpJitter"," localShimmer"," localdbShimmer"," apq3Shimmer", "aqpq5Shimmer", "apq11Shimmer", "ddaShimmer"]
         row=[stdevF0, hnr, localJitter, localabsoluteJitter, rapJitter, ppq5Jitter, ddpJitter, localShimmer, localdbShimmer, apq3Shimmer, aqpq5Shimmer, apq11Shimmer, ddaShimmer]
+        
+    
+
         return json.dumps(columns), json.dumps((row)) 
     
 def praat(n, data):
@@ -92,6 +98,21 @@ def praat(n, data):
     
     return json.dumps(columns), json.dumps(row)  
 
+def draw_spectrogram(spectrogram, dynamic_range=70):
+    X, Y = spectrogram.x_grid(), spectrogram.y_grid()
+    sg_db = 10 * np.log10(spectrogram.values)
+    plt.pcolormesh(X, Y, sg_db, vmin=sg_db.max() - dynamic_range, cmap='afmhot')
+    plt.ylim([spectrogram.ymin, spectrogram.ymax])
+    plt.xlabel("time [s]")
+    plt.ylabel("frequency [Hz]")
+
+def draw_intensity(intensity):
+    plt.plot(intensity.xs(), intensity.values.T, linewidth=3, color='w')
+    plt.plot(intensity.xs(), intensity.values.T, linewidth=1)
+    plt.grid(False)
+    plt.ylim(0)
+    plt.ylabel("intensity [dB]")
+
 
 if __name__ == '__main__':          
     """ args = sys.argv[1:]        
@@ -99,10 +120,22 @@ if __name__ == '__main__':
     sound = args[1]
  """
     #sound = "example.wav"
-    sound = "data/audio/AVFAD/test/frank.vigil-75c6de05-0cc9-47cc-9b69-d4df79931f0e.m4a.wav"
+    sound= "data/audio/AVFAD/test/frank.vigil-75c6de05-0cc9-47cc-9b69-d4df79931f0e.m4a.wav"
     data2 = measure2Pitch(sound, 75, 500, "Hertz") 
     
     #data = praat(n, data)
     #print(data)
 
-    print(data2)
+    # print(data2)
+    
+    sound= "data/audio/AVFAD/AAC/AAC002.wav"
+    # snd = parselmouth.Sound(sound)
+    # intensity = snd.to_intensity()
+    # spectrogram = snd.to_spectrogram()
+    # plt.figure()
+    # draw_spectrogram(spectrogram)
+    # plt.twinx()
+    # draw_intensity(intensity)
+    # plt.xlim([snd.xmin, snd.xmax])
+    # plt.show() # or plt.savefig("spectrogram.pdf")
+    

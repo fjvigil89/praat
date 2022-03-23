@@ -1,4 +1,6 @@
 
+from math import gamma
+from matplotlib import axis
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy.io.wavfile as waves
@@ -11,10 +13,8 @@ import warnings
 warnings.simplefilter("ignore", DeprecationWarning)
 warnings.simplefilter("ignore", np.ComplexWarning)
 from playsound import playsound
- 
-
-sound= "data/audio/AVFAD/AAC/AAC002.wav"
-#sound= "data/audio/AVFAD/test/frank.vigil-75c6de05-0cc9-47cc-9b69-d4df79931f0e.m4a.wav"
+from python_speech_features import mfcc, logfbank, delta
+from sklearn import preprocessing
 
 def eng_origen(sound):
     # INGRESO
@@ -36,24 +36,41 @@ def eng_origen(sound):
         
     playsound(sound) 
  
-def split(filepath):
-    sound = AudioSegment.from_wav(filepath)
-    dBFS = sound.dBFS
-    chunks = split_on_silence(sound, min_silence_len = 500, silence_thresh = dBFS-16,keep_silence = 250 )   
-    target_length = 1 * 1000 
-    output_chunks = [chunks[0]]
-    for i, chunk in enumerate(chunks):
-        chunk_name = "bulues{0}.wav".format(i)
-        if len(output_chunks[-1]) < target_length:
-            output_chunks[-1] += chunk
-        else:
-            # if the last output chunk is longer than the target length,
-            # we can start a new one
-            output_chunks.append(chunk)
-            chunk.export(chunk_name, format="wav")
-   
+def load_audios(input_path): #devuelve frecuencia, audio, y tiempo 
+    audio = waves.read(input_path)
+    samples = np.array(audio[1], dtype=np.float32)
+    Fs = audio[0]
 
-def windowing(x, fs=16000, Ns=0.025, Ms=0.010):# dividir por tramas las señal
+    muestra = len(samples)    
+    dt = muestra/Fs
+    t = np.arange(0,muestra*dt,dt) 
+    return  Fs, samples, t
+
+
+def normalice_wav(x):
+    x_scaled = x/(2.**15)
+    return x_scaled
+
+
+def save_audios(output_path, samples, Fs, scaling=True):
+    if scaling:
+        samples_scaled = normalice_wav(samples)
+    else:
+        samples_scaled = samples
+    waves.write(output_path, Fs, samples_scaled)
+
+
+def show_signal(samples):
+    t = np.ones(len(samples))
+    t = np.cumsum(t)
+    t = t-1
+    plt.plot(t, samples)
+    plt.grid()
+    plt.show()
+
+
+def windowing(x, fs=16000, Ns=0.025, Ms=0.010):# tipo rectángulo
+
     N = int(Ns * fs)
     M = int(Ms * fs)
     T = len(x)
@@ -62,6 +79,17 @@ def windowing(x, fs=16000, Ns=0.025, Ms=0.010):# dividir por tramas las señal
     ind = np.arange(N).reshape(-1, 1).dot(np.ones((1, L))) + np.ones((N, 1)).dot(m)
 
     return x[ind.astype(int).T].astype(np.float32)
+
+
+def window(x, N): #tipo Hanning
+    t = np.arange(0, N)
+    xwi = x * (0.5)*(1-np.cos(  np.pi*t/((N-1)/2)  ))
+    return xwi
+
+def wHamming(x, N): #tipo Hamming
+    t = np.arange(0, N)
+    xwi = x * (0.46164)*(1-np.cos(  np.pi*t/((N-1)/2)  ))
+    return xwi 
 
 def quitarbajas(sound): 
     Ns=0.025
@@ -82,6 +110,7 @@ def quitarbajas(sound):
     fig = plt.figure(figsize=(8, 8))
     plt.plot(eng_sum)
     fig.savefig("data/img/señal_original_energia.jpg")  # or you can pass a Figure object to pdf.savefig
+    # plt.show()
     plt.close()
         
     umbral=0.05
@@ -120,106 +149,106 @@ def quitarbajas(sound):
     plt.close()
     
     waves.write("senal_salida.wav", muestreo, salida)
+    return salida ## Yx
 
+def ruido(sound):      
+    output_path= "noisy.wav"  
+    muestreo, snd, t = load_audios(sound)  
+    snd = normalice_wav(snd)
 
-def ruido(sound):
-    ## Compute Fourier Transform
-    # PROCEDIMIENTO
-    Ms=0.010  
-    muestreo, snd = waves.read(sound)    
-    snd = snd/(2.**15)    
-    muestra = len(snd)    
-    dt = muestra/muestreo
-    t = np.arange(0,muestra*dt,dt)  
-    n = len(t)
+    # calcaulo de la energia
+    Ms=0.010 
+    # calcaulo de la energia
+    tramas=windowing(snd, muestreo)
+    eng_sum =np.sum(tramas**2, axis=1)
+        
+    umbral=0.05    
     
-    fhat = np.fft.fft(snd, n) #computes the fft
-    psd = fhat * np.conj(fhat)/n
-    idxs_half = np.arange(1, np.floor(n/2), dtype=np.int32) #first half index
-    psd_real = np.abs(psd[idxs_half]) #amplitude for first half
-
-
-    ## Filter out noise
-    sort_psd = np.sort(psd_real)[::-1]
-    # print(len(sort_psd))
-    threshold = sort_psd[12]
-    psd_idxs = psd > threshold #array of 0 and 1
-    psd_clean = psd * psd_idxs #zero out all the unnecessary powers
-    fhat_clean = psd_idxs * fhat #used to retrieve the signal
-
-    print((threshold))
-    """ plt.plot(fhat_clean)
-    plt.show() """
-    signal_filtered = np.fft.ifft(fhat_clean) #inverse fourier transform
+    relacion=[False,*(eng_sum <= umbral), False]
+    # print("relacion", relacion)
+    
+    delta = np.diff(relacion)        
+    delta= np.argwhere(delta==True)  
     
     fig = plt.figure(figsize=(8, 8))
-    plt.plot(signal_filtered)
-    fig.savefig("data/img/señal_si_ruido.jpg")  # or you can pass a Figure object to pdf.savefig
+    plt.plot(relacion)
+    fig.savefig("data/img/esp_original_ventanas.jpg")  # or you can pass a Figure object to pdf.savefig
+    plt.close()  
+    
+    fig = plt.figure(figsize=(8, 8))
+    plt.plot(eng_sum)
+    plt.plot(relacion)
+    fig.savefig("data/img/esp_original_ventanas_Original.jpg")  # or you can pass a Figure object to pdf.savefig
+    # plt.show()
     plt.close()
-   
-    waves.write("example_sinRuido.wav", muestreo, signal_filtered)
+  
     
-def test(sound):   
-    sampling_rate, snd = waves.read(sound)      
-    snd = snd/(2.**15)        
-    muestra = len(snd)    
-    dt = muestra/sampling_rate    
-    t = np.arange(0,muestra*dt,dt)  
-    n = len(t)
-    f2=50
-    fft = np.fft.fft(np.abs(snd),n)    
-    fft_size = len(fft)# Longitud de muestreo de procesamiento #FFT
-    
-    
-    
-    x = snd # Se superponen dos ondas sinusoidales, 156.25HZ y 234.375HZ
-    # El requisito de FFT de N puntos para un análisis de espectro preciso es que N puntos de muestreo contengan un número entero de objetos de muestreo. Por lo tanto, la FFT de N puntos puede calcular perfectamente el espectro. El requisito para el objeto de muestreo es n * Fs / N (n * frecuencia de muestreo / longitud de FFT),
-    # Por lo tanto, para 8 KHZ y 512 puntos, el requisito mínimo para el período de un objeto de muestreo perfecto es 8000/512 = 15,625 HZ, por lo que el n de 156,25 es 10 y el n de 234,375 es 15.
-    xs = x[:fft_size]# Muestreo de puntos de fft_size de los datos de forma de onda para el cálculo
-    xf = np.fft.rfft(xs)/fft_size   # Use np.fft.rfft () para el cálculo de FFT, rfft () es para una transformación más 
-                                    # conveniente de señales de números reales, a partir de la fórmula podemos 
-                                    # ver / fft_size para mostrar correctamente la energía de la forma de onda
-                                    
-    # El valor de retorno de la función rfft es N / 2 + 1 números complejos, que representan puntos desde 0 (Hz) 
-    # a sample_rate / 2 (Hz).
-    #De modo que la frecuencia verdadera correspondiente a cada subíndice en el valor de retorno se puede calcular 
-    #mediante el siguiente np.linspace:
-    freqs = np.linspace(0, sampling_rate/2, int(fft_size/2+1))
-    
-    # np.linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None)
-    #Return números espaciados uniformemente dentro del intervalo especificado
-    xfp = 20*np.log10(np.clip(np.abs(xf), 1e-20, 1e100))
-    # Por último, calculamos la amplitud de cada componente de frecuencia y la convertimos a un valor en db hasta 20 * np.log10 (). Para evitar que el componente de amplitud cero haga que log10 no se calcule, llamamos a np.clip para realizar el procesamiento de límite superior e inferior en la amplitud de xf
+    #Macheo de la señal
+    salida=[]    
+    for i in  range(0,len(delta)-1,2):        
+        init= int((delta[i]*Ms)*muestreo)
+        end= int((delta[i+1]*Ms)*muestreo)
+        salida.append(snd[init : end])
 
-    psd = fft * np.conj(fft)/n
-    threshold = -200
-    psd_idxs = psd > threshold #array of 0 and 1
-    print("psd_idxs", psd_idxs)
     
-    #Drawing display results
-    plt.figure(figsize=(8,4))
-    plt.subplot(211)
-    plt.plot(t[:fft_size], xs)
-    plt.xlabel(u"Time(S)")
-    plt.title(u"156.25Hz and 234.375Hz WaveForm And Freq")   
+    Vx = np.concatenate(salida)
     
-    plt.subplot(212)
-    plt.plot(freqs, xfp)
-    plt.xlabel(u"Freq(Hz)")
-    plt.subplots_adjust(hspace=0.4)
-   
+    fig = plt.figure(figsize=(8, 8))
     
+    plt.plot(Vx)
+    fig.savefig("data/img/Vx_Ruido.jpg")  # or you can pass a Figure object to pdf.savefig
+    # plt.show()
+    plt.close()
+    
+    save_audios(output_path, Vx, muestreo)
+    return Vx, output_path  
+
+def extract_mfcc(sound, winlen=0.025, winstep=0.01,numcep=12):
+    Fs, snd, t = load_audios(sound)
+    snd = normalice_wav(snd)
+    features_mfcc = mfcc(snd, Fs,  winlen=winlen, winstep=winstep,numcep=numcep)
+    return features_mfcc
+
+
+def extract_mfcc2(sound, winlen=0.025, winstep=0.01,numcep=12):    
+    Fs, snd, t = load_audios(sound)
+    snd = normalice_wav(snd)
+    # log energy 
+    fbank_feat = logfbank(snd,Fs)
+    # mfcc
+    mfcc_feat = mfcc(snd, Fs, winlen=winlen, winstep=winstep,numcep=numcep)
+    
+    # delta
+    d_mfcc_feat = delta(mfcc_feat, 2)
+    # delta-delta
+    dd_mfcc_feat = delta(d_mfcc_feat,2)
+
+    
+    mfcc_colunm1 = mfcc_feat[:,0]
+    mfcc_row1 = mfcc_feat[0]
+    d_mfcc_feat_column1 = d_mfcc_feat[0]
+    dd_mfcc_feat_column1 = dd_mfcc_feat[0]
+    
+    fig = plt.figure(figsize=(8, 8))
+    plt.plot(mfcc_colunm1)
+    fig.savefig("data/img/mfcc_original_ventanas.jpg")  # or you can pass a Figure object to pdf.savefig
     plt.show()
+    plt.close()  
 
-#quitarbajas(sound)
-#test("senal_salida.wav")
+    
+# START OF THE SCRIPT
+if __name__ == "__main__":
+    # Audio files paths
+    
+    sound= "data/audio/AVFAD/AAC/AAC002.wav"
+    #sound= "data/audio/AVFAD/test/frank.vigil-75c6de05-0cc9-47cc-9b69-d4df79931f0e.m4a.wav"
+    #sound= "data/audio/AVFAD/test/prueba.wav"
+    quitarbajas(sound)    
+    Vx, noisy_path = ruido(sound)
+    output_path = "filtered.wav"
 
-# Transformada de Fourier
-def fft1(xx):
-#   t=np.arange(0, s)
-    t=np.linspace(0, 1.0, len(xx))
-    f = np.arange(len(xx)/2+1, dtype=complex)
-    for index in range(len(f)):
-        f[index]=complex(np.sum(np.cos(2*np.pi*index*t)*xx), -np.sum(np.sin(2*np.pi*index*t)*xx))
-    return f
+    _mfcc = (extract_mfcc2(sound, 0.025, 0.01, 12))
+    
 
+    
+ 
