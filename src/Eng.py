@@ -1,4 +1,5 @@
 
+from math import gamma
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy.io.wavfile as waves
@@ -13,8 +14,6 @@ warnings.simplefilter("ignore", np.ComplexWarning)
 from playsound import playsound
  
 
-sound= "data/audio/AVFAD/AAC/AAC002.wav"
-sound= "data/audio/AVFAD/test/frank.vigil-75c6de05-0cc9-47cc-9b69-d4df79931f0e.m4a.wav"
 
 def eng_origen(sound):
     # INGRESO
@@ -36,24 +35,41 @@ def eng_origen(sound):
         
     playsound(sound) 
  
-def split(filepath):
-    sound = AudioSegment.from_wav(filepath)
-    dBFS = sound.dBFS
-    chunks = split_on_silence(sound, min_silence_len = 500, silence_thresh = dBFS-16,keep_silence = 250 )   
-    target_length = 1 * 1000 
-    output_chunks = [chunks[0]]
-    for i, chunk in enumerate(chunks):
-        chunk_name = "bulues{0}.wav".format(i)
-        if len(output_chunks[-1]) < target_length:
-            output_chunks[-1] += chunk
-        else:
-            # if the last output chunk is longer than the target length,
-            # we can start a new one
-            output_chunks.append(chunk)
-            chunk.export(chunk_name, format="wav")
-   
+def load_audios(input_path): #devuelve frecuencia, audio, y tiempo 
+    audio = waves.read(input_path)
+    samples = np.array(audio[1], dtype=np.float32)
+    Fs = audio[0]
 
-def windowing(x, fs=16000, Ns=0.025, Ms=0.010):# dividir por tramas las señal
+    muestra = len(samples)    
+    dt = muestra/Fs
+    t = np.arange(0,muestra*dt,dt) 
+    return  Fs, samples, t
+
+
+def normalice_wav(x):
+    x_scaled = x/(2.**15)
+    return x_scaled
+
+
+def save_audios(output_path, samples, Fs, scaling=True):
+    if scaling:
+        samples_scaled = normalice_wav(samples)
+    else:
+        samples_scaled = samples
+    waves.write(output_path, Fs, samples_scaled)
+
+
+def show_signal(samples):
+    t = np.ones(len(samples))
+    t = np.cumsum(t)
+    t = t-1
+    plt.plot(t, samples)
+    plt.grid()
+    plt.show()
+
+
+def windowing(x, fs=16000, Ns=0.025, Ms=0.010):# tipo rectángulo
+
     N = int(Ns * fs)
     M = int(Ms * fs)
     T = len(x)
@@ -62,6 +78,11 @@ def windowing(x, fs=16000, Ns=0.025, Ms=0.010):# dividir por tramas las señal
     ind = np.arange(N).reshape(-1, 1).dot(np.ones((1, L))) + np.ones((N, 1)).dot(m)
 
     return x[ind.astype(int).T].astype(np.float32)
+
+def window(x, N): #tipo Arco
+    t = np.arange(0, N)
+    xwi = x * (0.5)*(1-np.cos(  np.pi*t/((N-1)/2)  ))
+    return xwi
 
 def quitarbajas(sound): 
     Ns=0.025
@@ -120,74 +141,230 @@ def quitarbajas(sound):
     plt.close()
     
     waves.write("senal_salida.wav", muestreo, salida)
+    return salida ## Yx
 
+def ruido(sound):      
+    output_path= "noisy.wav"  
+    muestreo, snd, t = load_audios(sound)  
+    snd = normalice_wav(snd)
 
-def ruido(sound):
-    ## Compute Fourier Transform
-    # PROCEDIMIENTO
-    Ms=0.010  
-    muestreo, snd = waves.read(sound)    
-    snd = snd/(2.**15)    
-    muestra = len(snd)    
-    dt = muestra/muestreo
-    t = np.arange(0,muestra*dt,dt)  
-    n = len(t)
+    # calcaulo de la energia
+    Ms=0.010 
+    # calcaulo de la energia
+    tramas=windowing(snd, muestreo)
+    eng_sum =np.sum(tramas**2, axis=1)
+        
+    umbral=0.05
+    relacion= eng_sum <= umbral 
+
+    delta = np.diff(relacion)        
+    delta= np.argwhere(delta==True)  
+
+    fig = plt.figure(figsize=(8, 8))
+    plt.plot(relacion)
+    fig.savefig("data/img/esp_original_ventanas.jpg")  # or you can pass a Figure object to pdf.savefig
+    plt.close()
     
-    fhat = np.fft.fft(snd, n) #computes the fft
-    psd = fhat * np.conj(fhat)/n
-    idxs_half = np.arange(1, np.floor(n/2), dtype=np.int32) #first half index
-    psd_real = np.abs(psd[idxs_half]) #amplitude for first half
-
-
-    ## Filter out noise
-    sort_psd = np.sort(psd_real)[::-1]
-    # print(len(sort_psd))
-    threshold = sort_psd[12]
-    psd_idxs = psd > threshold #array of 0 and 1
-    psd_clean = psd * psd_idxs #zero out all the unnecessary powers
-    fhat_clean = psd_idxs * fhat #used to retrieve the signal
-
-    print((threshold))
-    """ plt.plot(fhat_clean)
-    plt.show() """
-    signal_filtered = np.fft.ifft(fhat_clean) #inverse fourier transform
     
     fig = plt.figure(figsize=(8, 8))
-    plt.plot(signal_filtered)
-    fig.savefig("data/img/señal_si_ruido.jpg")  # or you can pass a Figure object to pdf.savefig
+    plt.plot(eng_sum)
+    plt.plot(relacion)
+    fig.savefig("data/img/esp_original_ventanas_Original.jpg")  # or you can pass a Figure object to pdf.savefig
     plt.close()
-   
-    waves.write("example_sinRuido.wav", muestreo, signal_filtered)
-    
-def test(sound):        
-    muestreo, snd = waves.read(sound)        
-    f1 = 25 
-    f2 = 50 
-    N = 10 
-    
-    # t = np.linspace(0, 1, 1000) 
-    muestra = len(snd)    
-    dt = muestra/muestreo
-    t = np.arange(0,muestra*dt,dt)    
-    sig = snd +  np.sin(2*np.pi*f2*t)
-    
-    fig,(ax1, ax2) = plt.subplots(2, 1, sharex=True) 
-    ax1.plot(t, sig) 
-    ax1.set_title('25 Hz and 50 Hz sinusoids') 
-    ax1.axis([0, 1, -2, 2]) 
-    
-    sos = signal.butter(50, 35, 'lp', fs=muestreo, output='sos') 
-    
-    filtered = signal.sosfiltfilt(sos, sig) 
+  
+    if len(delta)%2!=0:
+          delta.append(len(eng_sum)-1)
+
+
+    gama=[]
+    gama.append(eng_sum[0])
+    for i in  range(0,len(delta)-1):
+        gama.append(delta[i])  
+    gama.append(eng_sum[len(eng_sum)-1])
     
     
-    ax2.plot(t, filtered) 
-    ax2.set_title('After 35 Hz Low-pass filter') 
-    ax2.axis([0, 1, -2, 2]) 
-    ax2.set_xlabel('Time [seconds]') 
-    plt.tight_layout() 
-    plt.show() 
+    #Macheo de la señal
+    salida=[]    
+    for i in  range(0,len(gama)-1,2):        
+        init= int((gama[i]*Ms)*muestreo)
+        end= int((gama[i+1]*Ms)*muestreo)
+        salida.append(snd[init : end])
+
+    
+    Vx = np.concatenate(salida)
     
 
-# quitarbajas(sound)
-ruido("senal_salida.wav")
+    save_audios(output_path, Vx, muestreo)
+    return Vx, output_path  
+
+def power_spectral_density_estimation_of_the_noisy_signal(Yi, N):
+    Yiabs = np.abs(Yi)
+    SYi = np.power(Yiabs[:int(N/2)+1], 2)/N
+    show_signal(SYi)
+    return SYi
+
+def power_spectral_density_function_of_the_noiseless_signal(SYi, SZ):
+    SXi = SYi - SZ
+    SXi[SXi<0] = 0
+    return SXi
+
+def spectral_substraction(Yi, Zi, alfa, beta):
+    denominator = np.power(abs(Yi), beta)
+    nominator = denominator - alfa*abs(Zi)
+    nominator[nominator<0] = 0
+    Xi = np.power(nominator/denominator, 1/beta)*Yi
+    return Xi
+
+
+def insert_frame(xe, xei, clear_noise_end, N, overlap, frames, i, padding_size):
+    if i*(N-overlap)+N > len(xe):
+        xe[i*(N-overlap): i*(N-overlap)+(N-padding_size)] += xei[:-padding_size]
+    else:
+        xe[i*(N-overlap): i*(N-overlap)+N] += xei
+    return xe
+
+def get_number_of_frames(Nx, N, overlap):
+    frames = int(np.ceil(Nx/(N-overlap)))
+    return frames
+
+
+def get_frame(y, clear_noise_end, frames, N, i, overlap):
+    padding_size = 0
+    if clear_noise_end+i*(N-overlap)+N > len(y):
+        yi = y[clear_noise_end+i*(N-overlap):]
+        padding_size = N-len(yi)
+        zeros = np.zeros(padding_size)
+        yi = np.hstack((yi, zeros))
+    else:
+        yi = y[clear_noise_end+i*(N-overlap): clear_noise_end+i*(N-overlap)+N]
+    return yi, padding_size
+
+
+def generalized_spectral_density_estimation_of_the_noise(y, clear_noise_end, N, general, beta):
+    z = y[:clear_noise_end]
+    frames = int(clear_noise_end/N)
+
+    if general:
+        Z = np.zeros(N)
+    else:
+        Z = np.zeros(int(N/2)+1)
+
+    for i in range(frames):
+        zi = z[i*N: (i+1)*N]
+        Zi = np.fft.fft(zi, N)
+        Ziabs = np.abs(Zi)
+        if general:
+            Z += np.power(Ziabs, beta)
+        else:
+            Z += np.power(Ziabs[:int(N/2)+1], 2)/N
+
+    Z = Z/frames                                 # V
+    # show_signal(SZ)
+    return Z
+
+def create_denoising_filter(SXi, SYi, eps=1e-6):
+    if eps is not None:
+        SYi[SYi<eps] = eps
+    Ail = np.sqrt(np.divide(SXi, SYi))
+    Air = np.flip(Ail[1:-1], 0)
+    Ai = np.hstack((Ail, Air))
+    return Ai
+
+def power_spectral_density_estimation_of_the_noisy_signal(Yi, N):
+    Yiabs = np.abs(Yi)
+    SYi = np.power(Yiabs[:int(N/2)+1], 2)/N
+    # show_signal(SYi)
+    return SYi
+
+
+def power_spectral_density_function_of_the_noiseless_signal(SYi, SZ):
+    SXi = SYi - SZ
+    SXi[SXi<0] = 0
+    return SXi
+
+def generalized_spectral_substraction(y, clear_noise_end, N=512, general=True, overlap=257, alfa=1.5, beta=2):
+    Zi = generalized_spectral_density_estimation_of_the_noise(y, clear_noise_end, N, general, beta)
+    if general is False:
+        SZ = Zi
+
+    Nx = len(y)-clear_noise_end
+    frames = get_number_of_frames(Nx, N, overlap)
+    xe = np.zeros(Nx)
+
+    for i in range(int(frames)):
+        #print("frame:", i)
+        yi, padding_size = get_frame(y, clear_noise_end, frames, N, i, overlap)
+        Yi = np.fft.fft(yi, N)                                                      # v
+        
+        if general:
+            Xi = spectral_substraction(Yi, Zi, alfa, beta)
+            xei = np.fft.ifft(Xi, N).real                                           # v
+            xwi = window(xei, N)
+            xei = xwi
+        else:
+            SYi = power_spectral_density_estimation_of_the_noisy_signal(Yi, N)      
+            SXi = power_spectral_density_function_of_the_noiseless_signal(SYi, SZ)
+            Ai = create_denoising_filter(SXi, SYi)                                      # v
+            Xi = evaluate_denoised_signal(Ai, Yi)                                       # v
+            xei = np.fft.ifft(Xi, N).real                                               # v
+
+        xe = insert_frame(xe, xei, clear_noise_end, N, overlap, frames, i, padding_size)
+    return xe
+
+def evaluate_denoised_signal(Ai, Yi):       # V
+    Xi = Ai*Yi
+    return Xi
+
+def generalized_spectral_substraction_foyer(y, clear_noise_end, N=512, general=True, overlap=257, alfa=2, beta=2):
+    if general is False:
+        overlap = 0
+        alfa = 0
+        beta = 0
+
+    if y.ndim > 1:
+        # several channels
+        h, w = np.transpose(y).shape
+        xe = np.zeros((h, w-clear_noise_end))
+        for i in range(y.ndim):
+            xei = generalized_spectral_substraction(y[:, i], clear_noise_end, N, general, overlap, alfa, beta)
+            xe[i,:] = xei
+        xe = np.transpose(xe)
+    else:
+        # one channel
+        xe = generalized_spectral_substraction(y, clear_noise_end, N, general, overlap, alfa, beta)
+    
+    fig = plt.figure(figsize=(8, 8))
+    plt.plot(xe)
+    fig.savefig("data/img/spectral_substraction_noisy.jpg")  # or you can pass a Figure object to pdf.savefig
+    plt.close()
+    return xe  
+     
+#quitarbajas(sound)
+# START OF THE SCRIPT
+if __name__ == "__main__":
+    # Audio files paths
+    sound= "data/audio/AVFAD/AAC/AAC002.wav"
+    #sound= "data/audio/AVFAD/test/frank.vigil-75c6de05-0cc9-47cc-9b69-d4df79931f0e.m4a.wav"
+    #sound= "data/audio/AVFAD/test/prueba.wav"
+    
+    input_path  = sound
+    Vx, noisy_path = ruido(input_path)
+    output_path = "filtered.wav"
+
+    Fs, snd, t = load_audios(input_path)
+    # Parameters
+    N = 512                     # length of windows (odd for general method, even for non general)
+    general = True              # choose if general or not general method should be used
+    overlap = int((N+1)/2)      # overlap length (for general only)
+    alfa = 8                    # parameter (for general only)
+    beta = 2                    # parameter (for general only)
+
+    quitarbajas(sound)
+    ruido(sound)
+    xe = generalized_spectral_substraction_foyer(snd, Fs, N, general, overlap, alfa, beta)
+    
+    show_signal(xe)
+    save_audios("noisy.wav", xe, Fs)
+
+    
+  
