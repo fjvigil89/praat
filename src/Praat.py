@@ -100,7 +100,7 @@ def praat(n, data):
 
 def draw_spectrogram(spectrogram, dynamic_range=70):
     X, Y = spectrogram.x_grid(), spectrogram.y_grid()
-    sg_db = 10 * np.log10(spectrogram.values)
+    sg_db = 25 * np.log10(spectrogram.values)
     plt.pcolormesh(X, Y, sg_db, vmin=sg_db.max() - dynamic_range, cmap='afmhot')
     plt.ylim([spectrogram.ymin, spectrogram.ymax])
     plt.xlabel("time [s]")
@@ -129,13 +129,13 @@ if __name__ == '__main__':
     # print(data2)
     
     sound= "data/audio/AVFAD/AAC/AAC002.wav"
-    # snd = parselmouth.Sound(sound)
-    # intensity = snd.to_intensity()
-    # spectrogram = snd.to_spectrogram()
-    # plt.figure()
-    # draw_spectrogram(spectrogram)
-    # plt.twinx()
-    # draw_intensity(intensity)
-    # plt.xlim([snd.xmin, snd.xmax])
-    # plt.show() # or plt.savefig("spectrogram.pdf")
+    snd = parselmouth.Sound(sound)
+    intensity = snd.to_intensity()
+    spectrogram = snd.to_spectrogram()
+    plt.figure()
+    draw_spectrogram(spectrogram)
+    plt.twinx()
+    draw_intensity(intensity)
+    plt.xlim([snd.xmin, snd.xmax])
+    plt.show() # or plt.savefig("spectrogram.pdf")
     

@@ -206,34 +206,13 @@ def ruido(sound):
 def extract_mfcc(sound, winlen=0.025, winstep=0.01,numcep=12):
     Fs, snd, t = load_audios(sound)
     snd = normalice_wav(snd)
+    # log energy 
+    fbank_feat = logfbank(snd,Fs)
     features_mfcc = mfcc(snd, Fs,  winlen=winlen, winstep=winstep,numcep=numcep)
     return features_mfcc
 
 
-def extract_mfcc2(sound, winlen=0.025, winstep=0.01,numcep=12):    
-    Fs, snd, t = load_audios(sound)
-    snd = normalice_wav(snd)
-    # log energy 
-    fbank_feat = logfbank(snd,Fs)
-    # mfcc
-    mfcc_feat = mfcc(snd, Fs, winlen=winlen, winstep=winstep,numcep=numcep)
-    
-    # delta
-    d_mfcc_feat = delta(mfcc_feat, 2)
-    # delta-delta
-    dd_mfcc_feat = delta(d_mfcc_feat,2)
-
-    
-    mfcc_colunm1 = mfcc_feat[:,0]
-    mfcc_row1 = mfcc_feat[0]
-    d_mfcc_feat_column1 = d_mfcc_feat[0]
-    dd_mfcc_feat_column1 = dd_mfcc_feat[0]
-    
-    fig = plt.figure(figsize=(8, 8))
-    plt.plot(mfcc_colunm1)
-    fig.savefig("data/img/mfcc_original_ventanas.jpg")  # or you can pass a Figure object to pdf.savefig
-    plt.show()
-    plt.close()  
+ 
 
     
 # START OF THE SCRIPT
@@ -247,8 +226,14 @@ if __name__ == "__main__":
     Vx, noisy_path = ruido(sound)
     output_path = "filtered.wav"
 
-    _mfcc = (extract_mfcc2(sound, 0.025, 0.01, 12))
+    # _mfcc = (extract_mfcc2(sound, 0.025, 0.01, 12))
     
+    _mfcc = (extract_mfcc(sound, 0.025, 0.01, 12))
+    fig = plt.figure(figsize=(8, 8))
+    plt.plot(_mfcc[:,1])    
+    plt.show()
+    plt.close() 
+    print(_mfcc)
 
     
  
