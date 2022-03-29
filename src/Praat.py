@@ -8,10 +8,12 @@ import json
 import sys
 import numpy as np
 import matplotlib.pyplot as plt
+import Eng as eng
 from parselmouth.praat import call
 import warnings
 warnings.simplefilter("ignore", DeprecationWarning)
 warnings.simplefilter("ignore", np.ComplexWarning)
+from spectrum import Spectrogram, dolphin_filename, readwav
 
 
 # This is the function to measure voice pitch
@@ -129,13 +131,17 @@ if __name__ == '__main__':
     # print(data2)
     
     sound= "data/audio/AVFAD/AAC/AAC002.wav"
-    snd = parselmouth.Sound(sound)
-    intensity = snd.to_intensity()
-    spectrogram = snd.to_spectrogram()
-    plt.figure()
-    draw_spectrogram(spectrogram)
-    plt.twinx()
-    draw_intensity(intensity)
-    plt.xlim([snd.xmin, snd.xmax])
-    plt.show() # or plt.savefig("spectrogram.pdf")
+    fs, snd, t = eng.load_audios(sound)
+    _mfcc = (eng.extract_mfcc(sound, 0.025, 0.01, 12))    
+    p = Spectrogram(snd)
+    p.periodogram()
+    p.plot()
+    
+    plt.show()
+    # spectrogram = snd.to_spectrogram()        
+    # fig = plt.figure(figsize=(8, 8))    
+    
+    # plt.plot(_mfcc)
+    # fig.savefig("data/img/bank_Mel_Spectro.jpg")  # or you can pass a Figure object to pdf.savefig  
+    # plt.show() # or plt.savefig("spectrogram.pdf")
     

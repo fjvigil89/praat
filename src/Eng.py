@@ -1,20 +1,14 @@
 
-from math import gamma
-from matplotlib import axis
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy.io.wavfile as waves
-import scipy.integrate as integrate
-import scipy.signal as signal 
 
-from pydub import AudioSegment
-from pydub.silence import split_on_silence
 import warnings
 warnings.simplefilter("ignore", DeprecationWarning)
 warnings.simplefilter("ignore", np.ComplexWarning)
 from playsound import playsound
 from python_speech_features import mfcc, logfbank, delta
-from sklearn import preprocessing
+
 
 def eng_origen(sound):
     # INGRESO
@@ -98,9 +92,12 @@ def quitarbajas(sound):
     # normalizar la señal del wav
     snd = snd/(2.**15)   
     
-    fig = plt.figure(figsize=(8, 8))
-    plt.plot(snd)
-    fig.savefig("data/img/señal_original.jpg")  # or you can pass a Figure object to pdf.savefig
+    fig = plt.figure(figsize=(8, 8))    
+    plt.plot(snd, label="Señal Original")
+    plt.xlabel("Tiempo")
+    plt.ylabel("Freacuencia de Muestreo")
+    fig.savefig("data/img/señal_original.jpg")  # or you can pass a Figure object to pdf.savefig 
+    # plt.show()   
     plt.close()
     
     # calcaulo de la energia
@@ -108,7 +105,9 @@ def quitarbajas(sound):
     eng_sum =np.sum(tramas**2, axis=1)
 
     fig = plt.figure(figsize=(8, 8))
-    plt.plot(eng_sum)
+    plt.plot(eng_sum, label="Representacion de la energía")
+    plt.xlabel("Tramas de energia")
+    plt.ylabel("Amplitud normalizada")
     fig.savefig("data/img/señal_original_energia.jpg")  # or you can pass a Figure object to pdf.savefig
     # plt.show()
     plt.close()
@@ -116,16 +115,23 @@ def quitarbajas(sound):
     umbral=0.05
     relacion= eng_sum > umbral
     
-    fig = plt.figure(figsize=(8, 8))
-    plt.plot(relacion)
+    fig = plt.figure(figsize=(8, 8))    
+    plt.plot(relacion, label="Señal enventanada")
+    plt.xlabel("Tramas de energia")
+    plt.ylabel("Amplitud normalizada")
     fig.savefig("data/img/señal_original_ventanas.jpg")  # or you can pass a Figure object to pdf.savefig
+    # plt.show()
     plt.close()
     
     
     fig = plt.figure(figsize=(8, 8))
-    plt.plot(eng_sum)
-    plt.plot(relacion)
+    plt.plot(eng_sum, label="Energía")
+    plt.plot(relacion, label="Ventana")
+    plt.xlabel("Tramas de energia")
+    plt.ylabel("Amplitud normalizada")
+    leg = plt.legend(loc="upper right")
     fig.savefig("data/img/señal_original_ventanas_Original.jpg")  # or you can pass a Figure object to pdf.savefig
+    # plt.show()
     plt.close()
     
     
@@ -144,8 +150,12 @@ def quitarbajas(sound):
     salida = np.concatenate(salida)
     
     fig = plt.figure(figsize=(8, 8))
-    plt.plot(salida)
+        
+    plt.plot(salida, label="Señal de Salida")
+    plt.xlabel("Tiempo")
+    plt.ylabel("Freacuencia de Muestreo")
     fig.savefig("data/img/señal_salida.jpg")  # or you can pass a Figure object to pdf.savefig
+    # plt.show()
     plt.close()
     
     waves.write("senal_salida.wav", muestreo, salida)
@@ -172,7 +182,7 @@ def ruido(sound):
     
     fig = plt.figure(figsize=(8, 8))
     plt.plot(relacion)
-    fig.savefig("data/img/esp_original_ventanas.jpg")  # or you can pass a Figure object to pdf.savefig
+    fig.savefig("data/img/esp_original_ventanas.jpg")  # or you can pass a Figure object to pdf.savefig    
     plt.close()  
     
     fig = plt.figure(figsize=(8, 8))
@@ -195,9 +205,12 @@ def ruido(sound):
     
     fig = plt.figure(figsize=(8, 8))
     
-    plt.plot(Vx)
+    
+    plt.plot(Vx, label="Área debajo del Umbral")
+    plt.xlabel("Tiempo")
+    plt.ylabel("Freacuencia de Muestreo")
     fig.savefig("data/img/Vx_Ruido.jpg")  # or you can pass a Figure object to pdf.savefig
-    # plt.show()
+    plt.show()
     plt.close()
     
     save_audios(output_path, Vx, muestreo)
@@ -210,9 +223,6 @@ def extract_mfcc(sound, winlen=0.025, winstep=0.01,numcep=12):
     fbank_feat = logfbank(snd,Fs)
     features_mfcc = mfcc(snd, Fs,  winlen=winlen, winstep=winstep,numcep=numcep)
     return features_mfcc
-
-
- 
 
     
 # START OF THE SCRIPT
@@ -231,9 +241,7 @@ if __name__ == "__main__":
     _mfcc = (extract_mfcc(sound, 0.025, 0.01, 12))
     fig = plt.figure(figsize=(8, 8))
     plt.plot(_mfcc[:,1])    
-    plt.show()
+    # plt.show()
     plt.close() 
     print(_mfcc)
-
-    
  
