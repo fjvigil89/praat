@@ -94,8 +94,8 @@ def quitarbajas(sound):
     
     fig = plt.figure(figsize=(8, 8))    
     plt.plot(snd, label="Señal Original")
-    plt.xlabel("Tiempo")
-    plt.ylabel("Freacuencia de Muestreo")
+    plt.xlabel("Muestras")
+    plt.ylabel("Amplitud")
     fig.savefig("data/img/señal_original.jpg")  # or you can pass a Figure object to pdf.savefig 
     # plt.show()   
     plt.close()
@@ -152,8 +152,8 @@ def quitarbajas(sound):
     fig = plt.figure(figsize=(8, 8))
         
     plt.plot(salida, label="Señal de Salida")
-    plt.xlabel("Tiempo")
-    plt.ylabel("Freacuencia de Muestreo")
+    plt.xlabel("Muestras")
+    plt.ylabel("Amplitud")
     fig.savefig("data/img/señal_salida.jpg")  # or you can pass a Figure object to pdf.savefig
     # plt.show()
     plt.close()
@@ -207,8 +207,8 @@ def ruido(sound):
     
     
     plt.plot(Vx, label="Área debajo del Umbral")
-    plt.xlabel("Tiempo")
-    plt.ylabel("Freacuencia de Muestreo")
+    plt.xlabel("Muestras")
+    plt.ylabel("Amplitud")
     fig.savefig("data/img/Vx_Ruido.jpg")  # or you can pass a Figure object to pdf.savefig
     plt.show()
     plt.close()
@@ -216,13 +216,7 @@ def ruido(sound):
     save_audios(output_path, Vx, muestreo)
     return Vx, output_path  
 
-def extract_mfcc(sound, winlen=0.025, winstep=0.01,numcep=12):
-    Fs, snd, t = load_audios(sound)
-    snd = normalice_wav(snd)
-    # log energy 
-    fbank_feat = logfbank(snd,Fs)
-    features_mfcc = mfcc(snd, Fs,  winlen=winlen, winstep=winstep,numcep=numcep)
-    return features_mfcc
+
 
     
 # START OF THE SCRIPT
@@ -236,12 +230,4 @@ if __name__ == "__main__":
     Vx, noisy_path = ruido(sound)
     output_path = "filtered.wav"
 
-    # _mfcc = (extract_mfcc2(sound, 0.025, 0.01, 12))
-    
-    _mfcc = (extract_mfcc(sound, 0.025, 0.01, 12))
-    fig = plt.figure(figsize=(8, 8))
-    plt.plot(_mfcc[:,1])    
-    # plt.show()
-    plt.close() 
-    print(_mfcc)
  

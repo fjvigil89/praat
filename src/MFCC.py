@@ -9,24 +9,18 @@ import sys
 import numpy as np
 import matplotlib.pyplot as plt
 import Eng as eng
-from parselmouth.praat import call
+import librosa
+import librosa.display
+import python_speech_features
 import warnings
+
+from parselmouth.praat import call
 warnings.simplefilter("ignore", DeprecationWarning)
 warnings.simplefilter("ignore", np.ComplexWarning)
+from spectrum import Spectrogram, dolphin_filename, readwav
+from scipy.io.wavfile import read
 
 
-# This is the function to measure voice pitch
-def measurePitch(voiceID, f0min, f0max, unit):
-    sound = parselmouth.Sound(voiceID)
-    
-    pitch = call(sound, "To Pitch (cc)", 0, f0min, 15, 'no', 0.03, 0.45, 0.15, 0.35, 0.14, f0max)
-    
-    pulses = call([sound, pitch], "To PointProcess (cc)")
-    duration = call(sound, "Get total duration") # duration
-    voice_report_str = call([sound, pitch, pulses], "Voice report", 0, 0, 75, 500, 1.3, 1.6, 0.03, 0.45)       
-    
-    
-    return voice_report_str
 def measure2Pitch(voiceID, f0min, f0max, unit):
         sound = parselmouth.Sound(voiceID) # read the sound
         duration = call(sound, "Get total duration") # duration
@@ -61,13 +55,56 @@ def measure2Pitch(voiceID, f0min, f0max, unit):
         return json.dumps(columns), json.dumps((row)) 
     
 
+def draw_spectrogram(spectrogram, dynamic_range=70):
+    X, Y = spectrogram.x_grid(), spectrogram.y_grid()
+    sg_db = 10 * np.log10(spectrogram.values)
+    plt.pcolormesh(X, Y, sg_db, vmin=sg_db.max() - dynamic_range, cmap='afmhot')
+    plt.ylim([spectrogram.ymin, spectrogram.ymax])
+    plt.xlabel("time [s]")
+    plt.ylabel("frequency [Hz]")
+
+def draw_intensity(intensity):
+    plt.plot(intensity.xs(), intensity.values.T, linewidth=3, color='w')
+    plt.plot(intensity.xs(), intensity.values.T, linewidth=1)
+    plt.grid(False)
+    plt.ylim(0)
+    plt.ylabel("intensity [dB]")
+
+
 if __name__ == '__main__':          
-    """ args = sys.argv[1:]        
-    n =int(args[0]) 
-    sound = args[1]
- """
-    #sound = "example.wav"
-    sound= "data/audio/AVFAD/test/frank.vigil-75c6de05-0cc9-47cc-9b69-d4df79931f0e.m4a.wav"
-    data2 = measure2Pitch(sound, 75, 500, "Hertz") 
+    
+    sound= "data/audio/AVFAD/AAC/AAC002.wav"    
+    scale, sr= librosa.load(sound)    
+    
+    # Mel Filter
+    filter_banck = librosa.filters.mel(n_fft=2048, sr=sr,n_mels=10)    
+    print(filter_banck.shape)
+    fig= plt.figure(figsize=(15, 8))
+    librosa.display.specshow(filter_banck, sr=sr, x_axis="linear")
+    plt.colorbar(format="%+2.f")
+    plt.xlabel("Frecuencia Líneal (Hz)")
+    plt.ylabel("Frecuencia Mel (mel)")
+    
+    fig.savefig("data/img/banco_filtro_mel.jpg")  # or you can pass a Figure object to pdf.savefig 
+    # plt.show()   
+    plt.close()
+    
+    # Extracting Mel Spectrogram
+    mel_spectrogram = librosa.feature.melspectrogram(scale, sr=sr, n_fft=2048, hop_length=512, n_mels=10 )
+    print(mel_spectrogram.shape)
+    log_mel_spectrogram = librosa.power_to_db(mel_spectrogram)
+    print(log_mel_spectrogram.shape)
+    
+    fig= plt.figure(figsize=(15, 8))
+    librosa.display.specshow(log_mel_spectrogram, sr=sr, x_axis="time", y_axis="mel")
+    plt.colorbar(format="%+2.f")
+    plt.xlabel("Tiempo")
+    plt.ylabel("Frecuencia (Hz)")
+    
+    fig.savefig("data/img/log_mel_spectrogram.jpg")  # or you can pass a Figure object to pdf.savefig 
+    # plt.show()   
+    plt.close()
+    
+   
     
     
