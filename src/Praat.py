@@ -13,7 +13,9 @@ from parselmouth.praat import call
 import warnings
 warnings.simplefilter("ignore", DeprecationWarning)
 warnings.simplefilter("ignore", np.ComplexWarning)
-
+import scipy.io.wavfile as waves
+from scipy import signal
+from scipy.signal import argrelextrema
 
 # This is the function to measure voice pitch
 def measurePitch(voiceID, f0min, f0max, unit):
@@ -70,4 +72,25 @@ if __name__ == '__main__':
     sound= "data/audio/AVFAD/test/frank.vigil-75c6de05-0cc9-47cc-9b69-d4df79931f0e.m4a.wav"
     data2 = measure2Pitch(sound, 75, 500, "Hertz") 
     
+    sound= "data/audio/AVFAD/AAC/AAC002.wav"
+    muestreo, snd = waves.read(sound)
+
+    n0 = 65000
+    n1 = 75000
+    data = snd[n0:n1]
+    fig = plt.figure(figsize=(14, 5))
+    plt.xlabel("Muestras")
+    plt.ylabel("Amplitud")
     
+    plt.plot(data)
+    plt.grid(True)
+    plt.show()
+    fig.savefig("data/img/señal_original_zoom.jpg")  # or you can pass a Figure object to pdf.savefig   
+    plt.close()
+
+
+    """ fig = plt.figure(figsize=(14, 5))
+    plt.plot(np.arange(len(data)), data)
+    plt.plot(signal.argrelextrema(data, np.greater)[0], data[signal.argrelextrema(data, np.greater)], 'o')
+    plt.show() """
+
