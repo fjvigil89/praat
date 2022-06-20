@@ -97,7 +97,7 @@ def quitarbajas(sound):
     plt.xlabel("Muestras")
     plt.ylabel("Amplitud")
     fig.savefig("data/img/señal_original.jpg")  # or you can pass a Figure object to pdf.savefig 
-    # plt.show()   
+    plt.show()   
     plt.close()
     
     # calcaulo de la energia
@@ -109,10 +109,10 @@ def quitarbajas(sound):
     plt.xlabel("Tramas de energia")
     plt.ylabel("Amplitud normalizada")
     fig.savefig("data/img/señal_original_energia.jpg")  # or you can pass a Figure object to pdf.savefig
-    # plt.show()
+    plt.show()
     plt.close()
         
-    umbral=0.05
+    umbral=0.03
     relacion= eng_sum > umbral
     
     fig = plt.figure(figsize=(8, 8))    
@@ -120,7 +120,7 @@ def quitarbajas(sound):
     plt.xlabel("Tramas de energia")
     plt.ylabel("Amplitud normalizada")
     fig.savefig("data/img/señal_original_ventanas.jpg")  # or you can pass a Figure object to pdf.savefig
-    # plt.show()
+    plt.show()
     plt.close()
     
     
@@ -131,7 +131,7 @@ def quitarbajas(sound):
     plt.ylabel("Amplitud normalizada")
     leg = plt.legend(loc="upper right")
     fig.savefig("data/img/señal_original_ventanas_Original.jpg")  # or you can pass a Figure object to pdf.savefig
-    # plt.show()
+    plt.show()
     plt.close()
     
     
@@ -155,7 +155,7 @@ def quitarbajas(sound):
     plt.xlabel("Muestras")
     plt.ylabel("Amplitud")
     fig.savefig("data/img/señal_salida.jpg")  # or you can pass a Figure object to pdf.savefig
-    # plt.show()
+    plt.show()
     plt.close()
     
     waves.write("senal_salida.wav", muestreo, salida)
@@ -227,7 +227,7 @@ if __name__ == "__main__":
     #sound= "data/audio/AVFAD/test/frank.vigil-75c6de05-0cc9-47cc-9b69-d4df79931f0e.m4a.wav"
     #sound= "data/audio/AVFAD/test/prueba.wav"
     quitarbajas(sound)    
-    Vx, noisy_path = ruido(sound)
-    output_path = "filtered.wav"
+    #Vx, noisy_path = ruido(sound)
+    #output_path = "filtered.wav"
 
  

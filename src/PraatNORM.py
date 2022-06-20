@@ -15,8 +15,8 @@ from parselmouth.praat import call
 
 class Praat:    
     path_destinity="data/txt/"
-    sound= "data/audio/AVFAD/NORM/1020-a_h.wav"
-    #sound= "data/audio/AVFAD/AAC/AAC002.wav"
+    #sound= "data/audio/AVFAD/NORM/1020-a_h.wav"
+    sound= "data/audio/AVFAD/AAC/AAC002.wav"
     
     # This is the function to measure voice pitch
     def measurePitch(voiceID, f0min, f0max, unit):
