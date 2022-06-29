@@ -29,7 +29,7 @@ class Praat():
         duration = call(sound, "Get total duration") # duration
         voice_report_str = call([sound, pitch, pulses], "Voice report", 0.768239, 1.258846, 75, 500, 1.3, 1.6, 0.03, 0.45)       
         
-        print(start_time+0.2)
+        #print(start_time+0.2)
         return voice_report_str
 
     def measure2Pitch(voiceID, f0min, f0max, unit):

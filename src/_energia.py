@@ -1,13 +1,16 @@
 
+from wsgiref.util import request_uri
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy.io.wavfile as waves
-
+from Praat import Praat as praat
 import warnings
 warnings.simplefilter("ignore", DeprecationWarning)
 warnings.simplefilter("ignore", np.ComplexWarning)
 from playsound import playsound
 from python_speech_features import mfcc, logfbank, delta
+from datetime import date, datetime
+
 
 
 def windowing(x, fs=16000, Ns=0.025, Ms=0.010):# tipo rectángulo
@@ -24,81 +27,74 @@ def windowing(x, fs=16000, Ns=0.025, Ms=0.010):# tipo rectángulo
 def energia(sound): 
     Ns=0.025
     Ms=0.010       
-    muestreo, snd = waves.read(sound)   
-    # normalizar la señal del wav
+    muestreo, snd = waves.read(sound)      
+        
+    # normalizar la señal del wav    
+    # snd = snd - np.mean(snd)
+    # snd = snd / float(np.max(np.abs(snd)))
     snd = snd/(2.**15)   
     
-    fig = plt.figure(figsize=(8, 8))    
-    plt.plot(snd, label="Señal Original")
-    plt.xlabel("Muestras")
-    plt.ylabel("Amplitud")    
-    plt.show()   
-    plt.close()
-    
     # calcaulo de la energia
-    tramas=windowing(snd, muestreo)
+    tramas=windowing(snd, muestreo, Ns, Ms)
     eng_sum =np.sum(tramas**2, axis=1)    
     
-
-    fig = plt.figure(figsize=(8, 8))
+    
     plt.plot(eng_sum, label="Representacion de la energía")
     plt.xlabel("Tramas de energia")
-    plt.ylabel("Amplitud normalizada")   
+    plt.ylabel("Amplitud normalizada")    
     plt.show()
     plt.close()
-        
-    umbral=0.03
+
+    q3_q, q1_q = np.quantile(np.sort(eng_sum), [0.95, 0.25])
+    umbral = q3_q - q1_q        
+    #umbral=3
     relacion= eng_sum > umbral
-    
-    fig = plt.figure(figsize=(8, 8))    
+          
     plt.plot(relacion, label="Señal enventanada")
     plt.xlabel("Tramas de energia")
-    plt.ylabel("Amplitud normalizada")   
+    plt.ylabel("Amplitud normalizada")    
     plt.show()
     plt.close()
     
     
-    fig = plt.figure(figsize=(8, 8))
+   
     plt.plot(eng_sum, label="Energía")
     plt.plot(relacion, label="Ventana")
     plt.xlabel("Tramas de energia")
     plt.ylabel("Amplitud normalizada")
-    leg = plt.legend(loc="upper right")   
     plt.show()
-    plt.close()
+    plt.close()    
     
     
-    delta = np.diff(relacion)    
+    delta = np.diff(relacion)
     delta= np.argwhere(delta==True)
     if len(delta)%2!=0:
-          delta.append(len(eng_sum)-1)
+          np.append(delta,len(eng_sum)-1)
+    
     
     #Macheo de la señal
-    salida=[]    
+    salida=[]        
     for i in  range(0,len(delta)-1,2):
         init= int((delta[i]*Ms)*muestreo)
         end= int((delta[i+1]*Ms)*muestreo)
         salida.append(snd[init : end])
     
-    salida = np.concatenate(salida)
-    
-    fig = plt.figure(figsize=(8, 8))
+    salida = np.concatenate(salida)    
         
-    plt.plot(salida, label="Señal de Salida")
-    plt.xlabel("Muestras")
-    plt.ylabel("Amplitud")    
-    plt.show()
-    plt.close()
-    
-    waves.write("senal_salida.wav", muestreo, salida)
-    return salida ## Yx
-
+    outpath="output_"+str(date.today())+".wav"    
+    waves.write(outpath, muestreo, salida)
+    #data= praat.measurePitch(outpath,75, 500, "Hertz")   
+    #print(data)
+    return
 
     
 # START OF THE SCRIPT
 if __name__ == "__main__":
-    sound= "data/audio/AVFAD/AAC/AAC002.wav"   
-    energia(sound)    
+    sound= "data/audio/AVFAD/test/TVD-D-0012_D1_A_2.wav" 
+    
+    energia(sound)  
+    
+    
    
 
  

@@ -159,6 +159,7 @@ def quitarbajas(sound):
     plt.close()
     
     waves.write("senal_salida.wav", muestreo, salida)
+    
     return salida ## Yx
 
 def ruido(sound):      
@@ -225,7 +226,7 @@ if __name__ == "__main__":
     
     sound= "data/audio/AVFAD/AAC/AAC002.wav"
     #sound= "data/audio/AVFAD/test/frank.vigil-75c6de05-0cc9-47cc-9b69-d4df79931f0e.m4a.wav"
-    #sound= "data/audio/AVFAD/test/prueba.wav"
+    #sound= "data/audio/AVFAD/test/TVD-D-0021_D1_A_1.wav" 
     quitarbajas(sound)    
     #Vx, noisy_path = ruido(sound)
     #output_path = "filtered.wav"
