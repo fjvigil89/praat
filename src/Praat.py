@@ -90,7 +90,7 @@ class Praat():
         n =int(args[0]) 
         sound = args[1]
     """
-        sound= "data/audio/AVFAD/AAF/AAF002.wav"        
+        sound= "data/audio/tmp/TVD-T-00010_4.wav"        
         #sound="senal_salida.wav"
         data2 = measure2Pitch(sound, 75, 500, "Hertz") 
         print(data2)

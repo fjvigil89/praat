@@ -10,8 +10,13 @@ warnings.simplefilter("ignore", np.ComplexWarning)
 from playsound import playsound
 from python_speech_features import mfcc, logfbank, delta
 from datetime import date, datetime
+from sklearn.mixture import GaussianMixture
 
-
+def solve(m1, m2, std1, std2):
+    a = 1 / (2 * std1 ** 2) - 1 / (2 * std2 ** 2)
+    b = m2 / (std2 ** 2) - m1 / (std1 ** 2)
+    c = m1 ** 2 / (2 * std1 ** 2) - m2 ** 2 / (2 * std2 ** 2) - np.log(std2 / std1)
+    return np.roots([a[0], b[0], c[0]])
 
 def windowing(x, fs=16000, Ns=0.025, Ms=0.010):# tipo rectángulo
 
@@ -37,7 +42,7 @@ def energia(sound):
     # calcaulo de la energia
     tramas=windowing(snd, muestreo, Ns, Ms)
     eng_sum =np.sum(tramas**2, axis=1)    
-    
+    #eng_sum = 10*np.log10(eng_sum)  # Convertir a dB
     
     plt.plot(eng_sum, label="Representacion de la energía")
     plt.xlabel("Tramas de energia")
@@ -45,10 +50,22 @@ def energia(sound):
     plt.show()
     plt.close()
 
-    q3_q, q1_q = np.quantile(np.sort(eng_sum), [0.95, 0.25])
-    umbral = q3_q - q1_q        
-    #umbral=3
-    relacion= eng_sum > umbral
+    # q3_q, q1_q = np.quantile(np.sort(eng_sum), [0.95, 0.25])
+    # umbral = q3_q - q1_q        
+    # #umbral=3
+    # relacion= eng_sum > umbral
+    gm = GaussianMixture(n_components=2, random_state=0).fit(eng_sum.reshape(-1, 1))
+    medias = gm.means_
+    varianza = gm.covariances_
+    std_var = np.sqrt(varianza)
+
+    curve_cuts = solve(medias[0][0], medias[1][0], std_var[0][0], std_var[1][0])
+    umbral = 0
+    for i in curve_cuts:
+        if np.min(medias) < i < np.max(medias):
+            umbral = i
+
+    relacion = eng_sum > umbral
           
     plt.plot(relacion, label="Señal enventanada")
     plt.xlabel("Tramas de energia")
@@ -89,9 +106,8 @@ def energia(sound):
 
     
 # START OF THE SCRIPT
-if __name__ == "__main__":
-    sound= "data/audio/AVFAD/test/TVD-D-0012_D1_A_2.wav" 
-    
+if __name__ == "__main__":    
+    sound= "data/audio/tmp/TVD-T-00010_4.wav"
     energia(sound)  
     
     
