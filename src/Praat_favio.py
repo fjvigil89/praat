@@ -7,7 +7,7 @@ import parselmouth
 import json
 import sys
 import numpy as np
-import energy_VAD as vad
+import Energy_VAD as vad
 import matplotlib.pyplot as plt
 import pandas as pd
 from parselmouth.praat import call

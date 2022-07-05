@@ -38,7 +38,7 @@ def energia(sound, Ns=0.025, Ms=0.010):
     # cálculo de la energía
     tramas = windowing(snd, muestreo)
     eng_sum = np.sum(tramas ** 2, axis=1)
-    eng_sum = 10*np.log10(eng_sum)  # Convertir a dB
+    #eng_sum = 10*np.log10(eng_sum)  # Convertir a dB
 
     gm = GaussianMixture(n_components=2, random_state=0).fit(eng_sum.reshape(-1, 1))
     medias = gm.means_
