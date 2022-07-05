@@ -171,7 +171,7 @@ def export_csv():
     df["nhr_mean"]=nhr_mean
     
 
-    df.to_excel("dataset_tuvoz_vocal.xlsx")
+    df.to_excel("data/xlsx/dataset_tuvoz_vocal.xlsx")
    
 if __name__ == '__main__':                  
     data2 = export_csv() 

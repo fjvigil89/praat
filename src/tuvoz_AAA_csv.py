@@ -4,6 +4,8 @@ import numpy as np
 import pandas as pd
 import Praat_favio as praat
 import  shlex, subprocess
+
+
 def export_csv():    
     row =["SPK_ID","Surgery","Visit Date","Visit Place","Age","Sex","Smoking","Job","Diagnostic","Details","Doctor","grbas-g","grbas-r","grbas-b","grbas-a","grbas-s","tfon","Cuestionary","Cuestionary Date","VHI_F","VHI_P","VHI_E","ECV Date","ECV Surgery","General health (F)",	"General Voice Aspects (P)","Voice Perception (E)",	"Sensations (S)","Intensity", "tone and timbre (T)","Environmental conditions (C)","psycho-emotional conditions (L)","f0_mean (Hz)","f0_std (Hz)","jitter_local (%)	","jitter_local_abs (s)", "jitter_rap (%)","jitter_ppq5 (%)	","jitter_ddp (%)","shimmer_local (%)",	"shimmer_local_dB (dB)","shimmer_apq3 (%)",	"shimmer_apq5 (%)",	"shimmer_apq11 (%)","shimmer_dda (%)", "nhr_mean"]    
     df = pd.DataFrame(columns=row)    
@@ -171,8 +173,10 @@ def export_csv():
     df["nhr_mean"]=nhr_mean
     
 
-    df.to_excel("dataset_tuvoz_AAAAA.xlsx")
+    df.to_excel("data/xlsx/dataset_tuvoz_AAAAA.xlsx")
+    return "data/xlsx/dataset_tuvoz_AAAAA.xlsx"
    
 if __name__ == '__main__':                  
-    data2 = export_csv() 
+    data2 = export_csv()
+    
     #print(data2)
