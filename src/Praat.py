@@ -2,7 +2,7 @@ from statistics import median
 import parselmouth
 import json
 import numpy as np
-import Energy_VAD as vad
+import energy_VAD as vad
 import matplotlib.pyplot as plt
 import pandas as pd
 from parselmouth.praat import call
