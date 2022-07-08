@@ -27,9 +27,9 @@ def zscore(x, u=False, s=False):
 
 
 def load_svm_model():
-    model = pickle.load(open("../models/SVM_Model.pkl", 'rb'))
-    trainmean = pickle.load(open("../models/Stat_Mean.pkl", 'rb'))
-    trainstd = pickle.load(open("../models/Stat_STD.pkl", 'rb'))
+    model = pickle.load(open("src/svm_classification/models/SVM_Model.pkl", 'rb'))
+    trainmean = pickle.load(open("src/svm_classification/models/Stat_Mean.pkl", 'rb'))
+    trainstd = pickle.load(open("src/svm_classification/models/Stat_STD.pkl", 'rb'))
 
     return model, trainmean, trainstd
 
@@ -59,8 +59,10 @@ class SVM_classification:
         return out
 
     if __name__ == '__main__':
-        sound = "/home/invitados/freyes/Flavio/Esperanto/BD/THALENTO_PROCESS/TVD-Disorder/TVD-D-0001/pre/procesadas/TVD-D-0001_D8_LECTURA.wav"
-        # sound = "/home/invitados/freyes/Flavio/Esperanto/Experiment_folder/exp_svm_clasification/baseline/data/audio/thalento_vowels/TVD-P-0001-AIU.wav"
+        # args = sys.argv[1:]                
+        # sound = args[0]
+
+        sound = "data/audio/dataset_TuVoz/TVD-T-0001/TVD-T-0001_8.wav"           
         out_put = "test.csv"
 
         parameters = extract_parameters(sound, out_put)

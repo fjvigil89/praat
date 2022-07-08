@@ -1,5 +1,5 @@
 import pandas as pd
-import Praat as praat
+from Praat import Praat as praat
 
 if __name__ == '__main__':
     """ args = sys.argv[1:]        
