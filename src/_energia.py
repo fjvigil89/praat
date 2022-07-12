@@ -8,6 +8,7 @@ warnings.simplefilter("ignore", DeprecationWarning)
 warnings.simplefilter("ignore", np.ComplexWarning)
 from playsound import playsound
 from python_speech_features import mfcc, logfbank, delta
+import subprocess, shlex
 
 
 def windowing(x, fs=16000, Ns=0.025, Ms=0.010):# tipo rectángulo
@@ -97,8 +98,12 @@ def energia(sound):
     
 # START OF THE SCRIPT
 if __name__ == "__main__":
-    sound= "data/audio/AVFAD/AAC/AAC002.wav"   
-    energia(sound)    
+    input="/home/frank/sites/unizar/praat/data/audio/AVFAD/test/lolo.wav"
+    output= "/home/frank/sites/unizar/praat/data/audio/AVFAD/test/t3.wav"
+    command_line = 'ffmpeg -i '+input+' '+output
+    args = shlex.split(command_line)
+    subprocess.call(args)        
+    energia(output)    
    
 
  
