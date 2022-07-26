@@ -1,0 +1,34 @@
+Project: Pathologies baseline
+
+Description: Automatic Voice Disorder Detection (Binary and Multiclass classification) 
+             Features: Opensmile (Compare2016) 
+             Classifier: SVM (sklearn)
+
+Copyright: Vivolab
+Contact: Dayana Ribas-dribas@unizar.es
+Date: May/2022
+
+Content: 
+executables: bin
+source code: src
+audio files: data/audio
+features in csv: data/features
+lists: data/lst
+results: data/result
+
+
+Usage: run_baseline.py list_path kfold audio_type_gender
+       audio_type (Saarbruecken(SVD)): a_n, aiu, phrases, multi_a_n, multi_aiu, multi_phrases
+       audio_type (AVFAD): aiu, phrases, read, spontaneous, multi_aiu, multi_phrases, multi_read, multi_spontaneous
+       gender: both, hombres, mujeres
+
+Example Binary Classification:
+> python bin/run_baseline.py  data/lst/Saarbruecken 5 phrase_both
+> python bin/run_baseline.py  data/lst/AVFAD 5 phrase_both
+
+Example Multiclass Classification: 
+> python bin/run_baseline.py  data/lst/AVFAD 5 multi_phrase_both
+
+Example Compute and Save features:
+> python bin/run_features_opensmile.py data/audio/Saarbruecken data/features/Saarbruecken
+

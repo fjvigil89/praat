@@ -1,0 +1,2678 @@
+{
+      "labels": {
+            "control": "0",
+            "OTHER DISORDERS AFFECTING VOICE": "8000",
+            "Dysphonia": "9060",
+            "Abnormalities of the Vocal Fold": "1200",
+            "INFLAMMATORY CONDITIONS OF THE LARYNX": "2000",
+            "SYSTEMIC CONDITIONS AFFECTING VOICE": "4000",
+            "Spasmodic Dysphonia": "9183"
+      },
+      "meta_data": [
+            {
+                  "path": "data/audio/Saarbruecken/10-phrase.wav",
+                  "label": "0",
+                  "speaker": "12"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1007-phrase.wav",
+                  "label": "0",
+                  "speaker": "806"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1015-phrase.wav",
+                  "label": "0",
+                  "speaker": "816"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1017-phrase.wav",
+                  "label": "0",
+                  "speaker": "820"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1018-phrase.wav",
+                  "label": "0",
+                  "speaker": "801"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1019-phrase.wav",
+                  "label": "0",
+                  "speaker": "811"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1026-phrase.wav",
+                  "label": "0",
+                  "speaker": "825"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1033-phrase.wav",
+                  "label": "0",
+                  "speaker": "834"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1062-phrase.wav",
+                  "label": "0",
+                  "speaker": "839"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1066-phrase.wav",
+                  "label": "0",
+                  "speaker": "843"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1070-phrase.wav",
+                  "label": "0",
+                  "speaker": "848"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1073-phrase.wav",
+                  "label": "0",
+                  "speaker": "853"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1077-phrase.wav",
+                  "label": "0",
+                  "speaker": "858"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1094-phrase.wav",
+                  "label": "0",
+                  "speaker": "863"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1097-phrase.wav",
+                  "label": "0",
+                  "speaker": "868"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1101-phrase.wav",
+                  "label": "0",
+                  "speaker": "872"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1104-phrase.wav",
+                  "label": "0",
+                  "speaker": "877"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1108-phrase.wav",
+                  "label": "0",
+                  "speaker": "881"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/112-phrase.wav",
+                  "label": "0",
+                  "speaker": "122"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1125-phrase.wav",
+                  "label": "0",
+                  "speaker": "886"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1128-phrase.wav",
+                  "label": "0",
+                  "speaker": "890"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1135-phrase.wav",
+                  "label": "0",
+                  "speaker": "895"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1142-phrase.wav",
+                  "label": "0",
+                  "speaker": "905"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1146-phrase.wav",
+                  "label": "0",
+                  "speaker": "910"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1151-phrase.wav",
+                  "label": "0",
+                  "speaker": "915"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1167-phrase.wav",
+                  "label": "0",
+                  "speaker": "920"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/117-phrase.wav",
+                  "label": "0",
+                  "speaker": "127"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1175-phrase.wav",
+                  "label": "0",
+                  "speaker": "925"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1178-phrase.wav",
+                  "label": "0",
+                  "speaker": "930"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1182-phrase.wav",
+                  "label": "0",
+                  "speaker": "935"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/12-phrase.wav",
+                  "label": "0",
+                  "speaker": "14"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1208-phrase.wav",
+                  "label": "0",
+                  "speaker": "939"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1210-phrase.wav",
+                  "label": "0",
+                  "speaker": "941"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/124-phrase.wav",
+                  "label": "0",
+                  "speaker": "131"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1308-phrase.wav",
+                  "label": "0",
+                  "speaker": "947"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/133-phrase.wav",
+                  "label": "0",
+                  "speaker": "135"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1346-phrase.wav",
+                  "label": "0",
+                  "speaker": "952"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1348-phrase.wav",
+                  "label": "0",
+                  "speaker": "957"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1352-phrase.wav",
+                  "label": "0",
+                  "speaker": "962"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1363-phrase.wav",
+                  "label": "0",
+                  "speaker": "968"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1366-phrase.wav",
+                  "label": "0",
+                  "speaker": "972"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1370-phrase.wav",
+                  "label": "0",
+                  "speaker": "977"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1375-phrase.wav",
+                  "label": "0",
+                  "speaker": "982"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/14-phrase.wav",
+                  "label": "0",
+                  "speaker": "16"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1510-phrase.wav",
+                  "label": "0",
+                  "speaker": "992"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1515-phrase.wav",
+                  "label": "0",
+                  "speaker": "997"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1517-phrase.wav",
+                  "label": "0",
+                  "speaker": "1001"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1522-phrase.wav",
+                  "label": "0",
+                  "speaker": "987"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1524-phrase.wav",
+                  "label": "0",
+                  "speaker": "1006"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1529-phrase.wav",
+                  "label": "0",
+                  "speaker": "1912"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1531-phrase.wav",
+                  "label": "0",
+                  "speaker": "1012"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1537-phrase.wav",
+                  "label": "0",
+                  "speaker": "1018"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1542-phrase.wav",
+                  "label": "0",
+                  "speaker": "1023"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/157-phrase.wav",
+                  "label": "0",
+                  "speaker": "142"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1585-phrase.wav",
+                  "label": "0",
+                  "speaker": "1029"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1598-phrase.wav",
+                  "label": "0",
+                  "speaker": "1898"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1612-phrase.wav",
+                  "label": "0",
+                  "speaker": "1912"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1623-phrase.wav",
+                  "label": "0",
+                  "speaker": "1034"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/17-phrase.wav",
+                  "label": "0",
+                  "speaker": "9"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1702-phrase.wav",
+                  "label": "0",
+                  "speaker": "1043"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1707-phrase.wav",
+                  "label": "0",
+                  "speaker": "1048"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1711-phrase.wav",
+                  "label": "0",
+                  "speaker": "1052"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1712-phrase.wav",
+                  "label": "0",
+                  "speaker": "1039"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1727-phrase.wav",
+                  "label": "0",
+                  "speaker": "1057"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1732-phrase.wav",
+                  "label": "0",
+                  "speaker": "1063"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1737-phrase.wav",
+                  "label": "0",
+                  "speaker": "1068"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1815-phrase.wav",
+                  "label": "0",
+                  "speaker": "2082"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1840-phrase.wav",
+                  "label": "0",
+                  "speaker": "1073"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1846-phrase.wav",
+                  "label": "0",
+                  "speaker": "1079"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1850-phrase.wav",
+                  "label": "0",
+                  "speaker": "1083"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1855-phrase.wav",
+                  "label": "0",
+                  "speaker": "1088"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1859-phrase.wav",
+                  "label": "0",
+                  "speaker": "1092"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1872-phrase.wav",
+                  "label": "0",
+                  "speaker": "1097"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1875-phrase.wav",
+                  "label": "0",
+                  "speaker": "1100"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1880-phrase.wav",
+                  "label": "0",
+                  "speaker": "1105"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1917-phrase.wav",
+                  "label": "0",
+                  "speaker": "1114"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1922-phrase.wav",
+                  "label": "0",
+                  "speaker": "1119"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2084-phrase.wav",
+                  "label": "0",
+                  "speaker": "2025"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2108-phrase.wav",
+                  "label": "0",
+                  "speaker": "2297"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2205-phrase.wav",
+                  "label": "0",
+                  "speaker": "1177"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2209-phrase.wav",
+                  "label": "0",
+                  "speaker": "1181"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2251-phrase.wav",
+                  "label": "0",
+                  "speaker": "1186"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2255-phrase.wav",
+                  "label": "0",
+                  "speaker": "1190"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2260-phrase.wav",
+                  "label": "0",
+                  "speaker": "1195"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2282-phrase.wav",
+                  "label": "0",
+                  "speaker": "1204"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2462-phrase.wav",
+                  "label": "0",
+                  "speaker": "2596"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2561-phrase.wav",
+                  "label": "0",
+                  "speaker": "2695"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/31-phrase.wav",
+                  "label": "0",
+                  "speaker": "30"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/35-phrase.wav",
+                  "label": "0",
+                  "speaker": "35"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/4-phrase.wav",
+                  "label": "0",
+                  "speaker": "4"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/44-phrase.wav",
+                  "label": "0",
+                  "speaker": "44"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/50-phrase.wav",
+                  "label": "0",
+                  "speaker": "50"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/56-phrase.wav",
+                  "label": "0",
+                  "speaker": "56"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/60-phrase.wav",
+                  "label": "0",
+                  "speaker": "60"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/63-phrase.wav",
+                  "label": "0",
+                  "speaker": "63"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/65-phrase.wav",
+                  "label": "0",
+                  "speaker": "65"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/679-phrase.wav",
+                  "label": "0",
+                  "speaker": "607"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/683-phrase.wav",
+                  "label": "0",
+                  "speaker": "611"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/688-phrase.wav",
+                  "label": "0",
+                  "speaker": "616"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/695-phrase.wav",
+                  "label": "0",
+                  "speaker": "620"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/7-phrase.wav",
+                  "label": "0",
+                  "speaker": "7"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/700-phrase.wav",
+                  "label": "0",
+                  "speaker": "625"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/708-phrase.wav",
+                  "label": "0",
+                  "speaker": "634"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/734-phrase.wav",
+                  "label": "0",
+                  "speaker": "639"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/735-phrase.wav",
+                  "label": "0",
+                  "speaker": "640"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/739-phrase.wav",
+                  "label": "0",
+                  "speaker": "645"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/80-phrase.wav",
+                  "label": "0",
+                  "speaker": "83"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/806-phrase.wav",
+                  "label": "0",
+                  "speaker": "710"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/811-phrase.wav",
+                  "label": "0",
+                  "speaker": "716"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/832-phrase.wav",
+                  "label": "0",
+                  "speaker": "725"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/833-phrase.wav",
+                  "label": "0",
+                  "speaker": "720"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/842-phrase.wav",
+                  "label": "0",
+                  "speaker": "730"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/865-phrase.wav",
+                  "label": "0",
+                  "speaker": "736"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/943-phrase.wav",
+                  "label": "0",
+                  "speaker": "747"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/947-phrase.wav",
+                  "label": "0",
+                  "speaker": "752"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/95-phrase.wav",
+                  "label": "0",
+                  "speaker": "111"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/953-phrase.wav",
+                  "label": "0",
+                  "speaker": "757"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/958-phrase.wav",
+                  "label": "0",
+                  "speaker": "742"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/961-phrase.wav",
+                  "label": "0",
+                  "speaker": "762"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/973-phrase.wav",
+                  "label": "0",
+                  "speaker": "777"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/978-phrase.wav",
+                  "label": "0",
+                  "speaker": "782"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/98-phrase.wav",
+                  "label": "0",
+                  "speaker": "114"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/981-phrase.wav",
+                  "label": "0",
+                  "speaker": "768"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/982-phrase.wav",
+                  "label": "0",
+                  "speaker": "772"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/989-phrase.wav",
+                  "label": "0",
+                  "speaker": "787"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/992-phrase.wav",
+                  "label": "0",
+                  "speaker": "791"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/996-phrase.wav",
+                  "label": "0",
+                  "speaker": "796"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/101-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1301"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1041-phrase.wav",
+                  "label": "8000",
+                  "speaker": "1537"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1046-phrase.wav",
+                  "label": "2000",
+                  "speaker": "1542"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1049-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1545"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1052-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1550"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1055-phrase.wav",
+                  "label": "9060",
+                  "speaker": "1554"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1086-phrase.wav",
+                  "label": "9060",
+                  "speaker": "1559"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1087-phrase.wav",
+                  "label": "9060",
+                  "speaker": "639"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1088-phrase.wav",
+                  "label": "8000",
+                  "speaker": "1562"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1090-phrase.wav",
+                  "label": "2000",
+                  "speaker": "1340"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1119-phrase.wav",
+                  "label": "2000",
+                  "speaker": "1570"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1120-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1350"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1158-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1575"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1164-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1550"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1188-phrase.wav",
+                  "label": "2000",
+                  "speaker": "1587"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1189-phrase.wav",
+                  "label": "8000",
+                  "speaker": "1588"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1192-phrase.wav",
+                  "label": "2000",
+                  "speaker": "1570"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1200-phrase.wav",
+                  "label": "9060",
+                  "speaker": "1596"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1204-phrase.wav",
+                  "label": "8000",
+                  "speaker": "1601"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1221-phrase.wav",
+                  "label": "2000",
+                  "speaker": "1550"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1223-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1611"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1229-phrase.wav",
+                  "label": "2000",
+                  "speaker": "1617"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1234-phrase.wav",
+                  "label": "4000",
+                  "speaker": "1620"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1237-phrase.wav",
+                  "label": "2000",
+                  "speaker": "1623"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1240-phrase.wav",
+                  "label": "9060",
+                  "speaker": "1627"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1242-phrase.wav",
+                  "label": "8000",
+                  "speaker": "1630"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1256-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1642"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1264-phrase.wav",
+                  "label": "2000",
+                  "speaker": "1646"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1274-phrase.wav",
+                  "label": "2000",
+                  "speaker": "1617"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1279-phrase.wav",
+                  "label": "4000",
+                  "speaker": "1620"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1285-phrase.wav",
+                  "label": "8000",
+                  "speaker": "1673"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1297-phrase.wav",
+                  "label": "9060",
+                  "speaker": "1682"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1300-phrase.wav",
+                  "label": "2000",
+                  "speaker": "1685"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1303-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1407"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1311-phrase.wav",
+                  "label": "2000",
+                  "speaker": "1697"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1313-phrase.wav",
+                  "label": "4000",
+                  "speaker": "1620"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1321-phrase.wav",
+                  "label": "4000",
+                  "speaker": "1620"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1324-phrase.wav",
+                  "label": "8000",
+                  "speaker": "1708"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1325-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1611"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1326-phrase.wav",
+                  "label": "9060",
+                  "speaker": "1710"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1329-phrase.wav",
+                  "label": "9060",
+                  "speaker": "1714"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1333-phrase.wav",
+                  "label": "4000",
+                  "speaker": "1620"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1339-phrase.wav",
+                  "label": "4000",
+                  "speaker": "1620"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1376-phrase.wav",
+                  "label": "4000",
+                  "speaker": "1620"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1379-phrase.wav",
+                  "label": "8000",
+                  "speaker": "1727"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/138-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1315"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1385-phrase.wav",
+                  "label": "4000",
+                  "speaker": "1620"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1386-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1734"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1389-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1741"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1393-phrase.wav",
+                  "label": "4000",
+                  "speaker": "1620"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1394-phrase.wav",
+                  "label": "8000",
+                  "speaker": "1415"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1401-phrase.wav",
+                  "label": "4000",
+                  "speaker": "1620"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1408-phrase.wav",
+                  "label": "9060",
+                  "speaker": "1759"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1412-phrase.wav",
+                  "label": "4000",
+                  "speaker": "1620"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1414-phrase.wav",
+                  "label": "2000",
+                  "speaker": "1765"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1422-phrase.wav",
+                  "label": "4000",
+                  "speaker": "1620"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1429-phrase.wav",
+                  "label": "4000",
+                  "speaker": "1620"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/143-phrase.wav",
+                  "label": "9183",
+                  "speaker": "1322"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1431-phrase.wav",
+                  "label": "8000",
+                  "speaker": "1779"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1433-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1741"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1436-phrase.wav",
+                  "label": "2000",
+                  "speaker": "1785"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1437-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1786"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1447-phrase.wav",
+                  "label": "2000",
+                  "speaker": "1617"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1463-phrase.wav",
+                  "label": "2000",
+                  "speaker": "1811"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1468-phrase.wav",
+                  "label": "8000",
+                  "speaker": "1505"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1469-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1817"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/147-phrase.wav",
+                  "label": "2000",
+                  "speaker": "1325"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1477-phrase.wav",
+                  "label": "9060",
+                  "speaker": "1825"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1482-phrase.wav",
+                  "label": "9183",
+                  "speaker": "1828"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1484-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1832"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1488-phrase.wav",
+                  "label": "8000",
+                  "speaker": "1834"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1491-phrase.wav",
+                  "label": "9060",
+                  "speaker": "939"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/150-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1329"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1546-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1852"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1548-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1448"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1552-phrase.wav",
+                  "label": "9060",
+                  "speaker": "1861"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1557-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1407"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1558-phrase.wav",
+                  "label": "4000",
+                  "speaker": "1620"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1559-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1407"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1566-phrase.wav",
+                  "label": "8000",
+                  "speaker": "1714"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1569-phrase.wav",
+                  "label": "8000",
+                  "speaker": "1876"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1572-phrase.wav",
+                  "label": "2000",
+                  "speaker": "1879"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1576-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1882"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1578-phrase.wav",
+                  "label": "2000",
+                  "speaker": "1884"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1581-phrase.wav",
+                  "label": "8000",
+                  "speaker": "1832"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1595-phrase.wav",
+                  "label": "9060",
+                  "speaker": "1895"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/160-phrase.wav",
+                  "label": "8000",
+                  "speaker": "1333"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1600-phrase.wav",
+                  "label": "8000",
+                  "speaker": "1901"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1604-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1419"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1607-phrase.wav",
+                  "label": "8000",
+                  "speaker": "1601"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1608-phrase.wav",
+                  "label": "8000",
+                  "speaker": "1727"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1622-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1882"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1627-phrase.wav",
+                  "label": "9060",
+                  "speaker": "1926"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1631-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1930"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1643-phrase.wav",
+                  "label": "8000",
+                  "speaker": "1946"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1650-phrase.wav",
+                  "label": "9060",
+                  "speaker": "1949"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1656-phrase.wav",
+                  "label": "2000",
+                  "speaker": "1955"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1657-phrase.wav",
+                  "label": "9060",
+                  "speaker": "1879"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1679-phrase.wav",
+                  "label": "9183",
+                  "speaker": "1978"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1680-phrase.wav",
+                  "label": "9060",
+                  "speaker": "1979"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1684-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1983"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1686-phrase.wav",
+                  "label": "8000",
+                  "speaker": "1985"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1693-phrase.wav",
+                  "label": "4000",
+                  "speaker": "1992"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1715-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1919"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1717-phrase.wav",
+                  "label": "2000",
+                  "speaker": "2001"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1751-phrase.wav",
+                  "label": "9060",
+                  "speaker": "2015"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1755-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1559"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1759-phrase.wav",
+                  "label": "8000",
+                  "speaker": "2023"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1761-phrase.wav",
+                  "label": "8000",
+                  "speaker": "2025"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1779-phrase.wav",
+                  "label": "1200",
+                  "speaker": "2044"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1792-phrase.wav",
+                  "label": "8000",
+                  "speaker": "2056"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1795-phrase.wav",
+                  "label": "2000",
+                  "speaker": "2059"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1808-phrase.wav",
+                  "label": "4000",
+                  "speaker": "1620"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1810-phrase.wav",
+                  "label": "1200",
+                  "speaker": "2077"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1813-phrase.wav",
+                  "label": "8000",
+                  "speaker": "2080"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1823-phrase.wav",
+                  "label": "8000",
+                  "speaker": "2088"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1824-phrase.wav",
+                  "label": "9060",
+                  "speaker": "2089"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1826-phrase.wav",
+                  "label": "1200",
+                  "speaker": "2091"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1832-phrase.wav",
+                  "label": "1200",
+                  "speaker": "2100"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1835-phrase.wav",
+                  "label": "1200",
+                  "speaker": "2091"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1864-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1407"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1888-phrase.wav",
+                  "label": "8000",
+                  "speaker": "2112"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1889-phrase.wav",
+                  "label": "2000",
+                  "speaker": "2114"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1899-phrase.wav",
+                  "label": "9060",
+                  "speaker": "2123"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1901-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1419"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1910-phrase.wav",
+                  "label": "8000",
+                  "speaker": "2132"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1932-phrase.wav",
+                  "label": "4000",
+                  "speaker": "1620"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1933-phrase.wav",
+                  "label": "2000",
+                  "speaker": "2143"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1962-phrase.wav",
+                  "label": "9060",
+                  "speaker": "2171"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1965-phrase.wav",
+                  "label": "2000",
+                  "speaker": "2175"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1966-phrase.wav",
+                  "label": "9060",
+                  "speaker": "2176"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1968-phrase.wav",
+                  "label": "1200",
+                  "speaker": "2178"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1976-phrase.wav",
+                  "label": "8000",
+                  "speaker": "2187"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1986-phrase.wav",
+                  "label": "2000",
+                  "speaker": "2176"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1988-phrase.wav",
+                  "label": "8000",
+                  "speaker": "2198"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/1999-phrase.wav",
+                  "label": "2000",
+                  "speaker": "2208"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2006-phrase.wav",
+                  "label": "9060",
+                  "speaker": "2215"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2011-phrase.wav",
+                  "label": "4000",
+                  "speaker": "1620"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2017-phrase.wav",
+                  "label": "1200",
+                  "speaker": "2225"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2025-phrase.wav",
+                  "label": "9060",
+                  "speaker": "2234"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2028-phrase.wav",
+                  "label": "2000",
+                  "speaker": "2236"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2034-phrase.wav",
+                  "label": "8000",
+                  "speaker": "2225"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2056-phrase.wav",
+                  "label": "1200",
+                  "speaker": "2245"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2062-phrase.wav",
+                  "label": "8000",
+                  "speaker": "2251"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2070-phrase.wav",
+                  "label": "9060",
+                  "speaker": "2261"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2081-phrase.wav",
+                  "label": "8000",
+                  "speaker": "2268"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2088-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1448"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2089-phrase.wav",
+                  "label": "2000",
+                  "speaker": "2278"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2099-phrase.wav",
+                  "label": "1200",
+                  "speaker": "2288"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2102-phrase.wav",
+                  "label": "8000",
+                  "speaker": "2291"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2106-phrase.wav",
+                  "label": "9060",
+                  "speaker": "2295"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2110-phrase.wav",
+                  "label": "2000",
+                  "speaker": "2299"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2113-phrase.wav",
+                  "label": "8000",
+                  "speaker": "2302"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2127-phrase.wav",
+                  "label": "9060",
+                  "speaker": "2316"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2130-phrase.wav",
+                  "label": "8000",
+                  "speaker": "2319"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2140-phrase.wav",
+                  "label": "2000",
+                  "speaker": "2329"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2147-phrase.wav",
+                  "label": "9060",
+                  "speaker": "2344"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2157-phrase.wav",
+                  "label": "1200",
+                  "speaker": "2354"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2160-phrase.wav",
+                  "label": "1200",
+                  "speaker": "2357"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2184-phrase.wav",
+                  "label": "8000",
+                  "speaker": "2361"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2191-phrase.wav",
+                  "label": "2000",
+                  "speaker": "2368"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2213-phrase.wav",
+                  "label": "9060",
+                  "speaker": "2261"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2217-phrase.wav",
+                  "label": "9060",
+                  "speaker": "2378"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2222-phrase.wav",
+                  "label": "8000",
+                  "speaker": "2382"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2232-phrase.wav",
+                  "label": "8000",
+                  "speaker": "2389"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2235-phrase.wav",
+                  "label": "1200",
+                  "speaker": "2396"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2239-phrase.wav",
+                  "label": "8000",
+                  "speaker": "2400"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2241-phrase.wav",
+                  "label": "8000",
+                  "speaker": "2402"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2246-phrase.wav",
+                  "label": "9060",
+                  "speaker": "1714"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2267-phrase.wav",
+                  "label": "9060",
+                  "speaker": "2411"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2273-phrase.wav",
+                  "label": "9183",
+                  "speaker": "2417"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2288-phrase.wav",
+                  "label": "8000",
+                  "speaker": "2422"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2301-phrase.wav",
+                  "label": "2000",
+                  "speaker": "2435"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2302-phrase.wav",
+                  "label": "9060",
+                  "speaker": "2436"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2307-phrase.wav",
+                  "label": "8000",
+                  "speaker": "2441"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2311-phrase.wav",
+                  "label": "9060",
+                  "speaker": "1505"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2316-phrase.wav",
+                  "label": "9060",
+                  "speaker": "2450"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2327-phrase.wav",
+                  "label": "8000",
+                  "speaker": "2461"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2336-phrase.wav",
+                  "label": "9060",
+                  "speaker": "2470"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2338-phrase.wav",
+                  "label": "8000",
+                  "speaker": "2472"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2342-phrase.wav",
+                  "label": "1200",
+                  "speaker": "2476"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2344-phrase.wav",
+                  "label": "2000",
+                  "speaker": "2478"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2349-phrase.wav",
+                  "label": "9060",
+                  "speaker": "2483"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2356-phrase.wav",
+                  "label": "9060",
+                  "speaker": "2490"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2363-phrase.wav",
+                  "label": "8000",
+                  "speaker": "1601"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2365-phrase.wav",
+                  "label": "9060",
+                  "speaker": "2500"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2375-phrase.wav",
+                  "label": "2000",
+                  "speaker": "2509"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2378-phrase.wav",
+                  "label": "8000",
+                  "speaker": "2512"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2385-phrase.wav",
+                  "label": "2000",
+                  "speaker": "2402"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2391-phrase.wav",
+                  "label": "9060",
+                  "speaker": "2525"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2392-phrase.wav",
+                  "label": "9060",
+                  "speaker": "2526"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2394-phrase.wav",
+                  "label": "1200",
+                  "speaker": "2528"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2395-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1448"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2411-phrase.wav",
+                  "label": "2000",
+                  "speaker": "2545"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2421-phrase.wav",
+                  "label": "9060",
+                  "speaker": "2555"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2423-phrase.wav",
+                  "label": "1200",
+                  "speaker": "2557"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2430-phrase.wav",
+                  "label": "1200",
+                  "speaker": "2357"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2432-phrase.wav",
+                  "label": "9060",
+                  "speaker": "2525"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2436-phrase.wav",
+                  "label": "9060",
+                  "speaker": "2570"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2438-phrase.wav",
+                  "label": "8000",
+                  "speaker": "2483"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2447-phrase.wav",
+                  "label": "8000",
+                  "speaker": "2581"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2449-phrase.wav",
+                  "label": "2000",
+                  "speaker": "2583"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2452-phrase.wav",
+                  "label": "9060",
+                  "speaker": "2586"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2455-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1448"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2466-phrase.wav",
+                  "label": "8000",
+                  "speaker": "2600"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2468-phrase.wav",
+                  "label": "1200",
+                  "speaker": "2602"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2480-phrase.wav",
+                  "label": "8000",
+                  "speaker": "2614"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2482-phrase.wav",
+                  "label": "8000",
+                  "speaker": "2088"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2483-phrase.wav",
+                  "label": "9060",
+                  "speaker": "2402"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2488-phrase.wav",
+                  "label": "9060",
+                  "speaker": "2622"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2491-phrase.wav",
+                  "label": "2000",
+                  "speaker": "2001"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2501-phrase.wav",
+                  "label": "1200",
+                  "speaker": "2635"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2505-phrase.wav",
+                  "label": "9060",
+                  "speaker": "2639"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2511-phrase.wav",
+                  "label": "2000",
+                  "speaker": "2645"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2522-phrase.wav",
+                  "label": "9060",
+                  "speaker": "2656"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2525-phrase.wav",
+                  "label": "2000",
+                  "speaker": "2659"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2526-phrase.wav",
+                  "label": "8000",
+                  "speaker": "2660"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2538-phrase.wav",
+                  "label": "1200",
+                  "speaker": "2672"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2544-phrase.wav",
+                  "label": "9060",
+                  "speaker": "2678"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2550-phrase.wav",
+                  "label": "2000",
+                  "speaker": "2684"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2553-phrase.wav",
+                  "label": "8000",
+                  "speaker": "2687"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2563-phrase.wav",
+                  "label": "1200",
+                  "speaker": "2697"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2573-phrase.wav",
+                  "label": "2000",
+                  "speaker": "2707"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2581-phrase.wav",
+                  "label": "1200",
+                  "speaker": "2715"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2583-phrase.wav",
+                  "label": "9060",
+                  "speaker": "2717"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2585-phrase.wav",
+                  "label": "2000",
+                  "speaker": "2719"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2590-phrase.wav",
+                  "label": "8000",
+                  "speaker": "2724"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2605-phrase.wav",
+                  "label": "2000",
+                  "speaker": "2731"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/2608-phrase.wav",
+                  "label": "9060",
+                  "speaker": "2734"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/351-phrase.wav",
+                  "label": "9060",
+                  "speaker": "1340"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/357-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1343"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/365-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1350"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/367-phrase.wav",
+                  "label": "8000",
+                  "speaker": "1352"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/494-phrase.wav",
+                  "label": "9060",
+                  "speaker": "1366"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/495-phrase.wav",
+                  "label": "2000",
+                  "speaker": "142"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/497-phrase.wav",
+                  "label": "2000",
+                  "speaker": "1368"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/501-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1374"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/564-phrase.wav",
+                  "label": "2000",
+                  "speaker": "1381"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/634-phrase.wav",
+                  "label": "9060",
+                  "speaker": "1391"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/715-phrase.wav",
+                  "label": "2000",
+                  "speaker": "1407"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/716-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1408"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/721-phrase.wav",
+                  "label": "2000",
+                  "speaker": "1413"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/722-phrase.wav",
+                  "label": "9060",
+                  "speaker": "1414"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/724-phrase.wav",
+                  "label": "8000",
+                  "speaker": "1417"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/725-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1419"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/727-phrase.wav",
+                  "label": "9060",
+                  "speaker": "1415"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/729-phrase.wav",
+                  "label": "9060",
+                  "speaker": "1421"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/826-phrase.wav",
+                  "label": "9060",
+                  "speaker": "1438"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/828-phrase.wav",
+                  "label": "2000",
+                  "speaker": "1440"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/849-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1448"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/850-phrase.wav",
+                  "label": "8000",
+                  "speaker": "1449"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/855-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1453"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/877-phrase.wav",
+                  "label": "9060",
+                  "speaker": "1414"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/880-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1473"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/881-phrase.wav",
+                  "label": "8000",
+                  "speaker": "1474"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/884-phrase.wav",
+                  "label": "2000",
+                  "speaker": "1478"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/889-phrase.wav",
+                  "label": "2000",
+                  "speaker": "1340"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/892-phrase.wav",
+                  "label": "9060",
+                  "speaker": "1486"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/896-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1448"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/913-phrase.wav",
+                  "label": "9060",
+                  "speaker": "1505"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/922-phrase.wav",
+                  "label": "8000",
+                  "speaker": "1514"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/924-phrase.wav",
+                  "label": "1200",
+                  "speaker": "1516"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/927-phrase.wav",
+                  "label": "2000",
+                  "speaker": "1519"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/933-phrase.wav",
+                  "label": "9060",
+                  "speaker": "1525"
+            },
+            {
+                  "path": "data/audio/AVFAD/MFMphrase.wav",
+                  "label": "2000",
+                  "speaker": "MFM"
+            },
+            {
+                  "path": "data/audio/AVFAD/JMXphrase.wav",
+                  "label": "2000",
+                  "speaker": "JMX"
+            },
+            {
+                  "path": "data/audio/AVFAD/ACOphrase.wav",
+                  "label": "9183",
+                  "speaker": "ACO"
+            },
+            {
+                  "path": "data/audio/AVFAD/RFSphrase.wav",
+                  "label": "9183",
+                  "speaker": "RFS"
+            },
+            {
+                  "path": "data/audio/AVFAD/LMFphrase.wav",
+                  "label": "1200",
+                  "speaker": "LMF"
+            },
+            {
+                  "path": "data/audio/AVFAD/DFCphrase.wav",
+                  "label": "2000",
+                  "speaker": "DFC"
+            },
+            {
+                  "path": "data/audio/AVFAD/ACCphrase.wav",
+                  "label": "2000",
+                  "speaker": "ACC"
+            },
+            {
+                  "path": "data/audio/AVFAD/AITphrase.wav",
+                  "label": "2000",
+                  "speaker": "AIT"
+            },
+            {
+                  "path": "data/audio/AVFAD/AMCphrase.wav",
+                  "label": "2000",
+                  "speaker": "AMC"
+            },
+            {
+                  "path": "data/audio/AVFAD/EMXphrase.wav",
+                  "label": "2000",
+                  "speaker": "EMX"
+            },
+            {
+                  "path": "data/audio/AVFAD/HMFphrase.wav",
+                  "label": "2000",
+                  "speaker": "HMF"
+            },
+            {
+                  "path": "data/audio/AVFAD/ISCphrase.wav",
+                  "label": "2000",
+                  "speaker": "ISC"
+            },
+            {
+                  "path": "data/audio/AVFAD/LCPphrase.wav",
+                  "label": "2000",
+                  "speaker": "LCP"
+            },
+            {
+                  "path": "data/audio/AVFAD/LMXphrase.wav",
+                  "label": "2000",
+                  "speaker": "LMX"
+            },
+            {
+                  "path": "data/audio/AVFAD/MAKphrase.wav",
+                  "label": "2000",
+                  "speaker": "MAK"
+            },
+            {
+                  "path": "data/audio/AVFAD/MEGphrase.wav",
+                  "label": "2000",
+                  "speaker": "MEG"
+            },
+            {
+                  "path": "data/audio/AVFAD/MGMphrase.wav",
+                  "label": "2000",
+                  "speaker": "MGM"
+            },
+            {
+                  "path": "data/audio/AVFAD/MIPphrase.wav",
+                  "label": "2000",
+                  "speaker": "MIP"
+            },
+            {
+                  "path": "data/audio/AVFAD/MNXphrase.wav",
+                  "label": "2000",
+                  "speaker": "MNX"
+            },
+            {
+                  "path": "data/audio/AVFAD/MTMphrase.wav",
+                  "label": "2000",
+                  "speaker": "MTM"
+            },
+            {
+                  "path": "data/audio/AVFAD/RMRphrase.wav",
+                  "label": "2000",
+                  "speaker": "RMR"
+            },
+            {
+                  "path": "data/audio/AVFAD/TIRphrase.wav",
+                  "label": "2000",
+                  "speaker": "TIR"
+            },
+            {
+                  "path": "data/audio/AVFAD/AQCphrase.wav",
+                  "label": "2000",
+                  "speaker": "AQC"
+            },
+            {
+                  "path": "data/audio/AVFAD/JAPphrase.wav",
+                  "label": "2000",
+                  "speaker": "JAP"
+            },
+            {
+                  "path": "data/audio/AVFAD/MJSphrase.wav",
+                  "label": "2000",
+                  "speaker": "MJS"
+            },
+            {
+                  "path": "data/audio/AVFAD/CASphrase.wav",
+                  "label": "9060",
+                  "speaker": "CAS"
+            },
+            {
+                  "path": "data/audio/AVFAD/FTMphrase.wav",
+                  "label": "1200",
+                  "speaker": "FTM"
+            },
+            {
+                  "path": "data/audio/AVFAD/RPAphrase.wav",
+                  "label": "1200",
+                  "speaker": "RPA"
+            },
+            {
+                  "path": "data/audio/AVFAD/BVMphrase.wav",
+                  "label": "2000",
+                  "speaker": "BVM"
+            },
+            {
+                  "path": "data/audio/AVFAD/ACNphrase.wav",
+                  "label": "0",
+                  "speaker": "ACN"
+            },
+            {
+                  "path": "data/audio/AVFAD/AFPphrase.wav",
+                  "label": "0",
+                  "speaker": "AFP"
+            },
+            {
+                  "path": "data/audio/AVFAD/AGQphrase.wav",
+                  "label": "0",
+                  "speaker": "AGQ"
+            },
+            {
+                  "path": "data/audio/AVFAD/AMFphrase.wav",
+                  "label": "0",
+                  "speaker": "AMF"
+            },
+            {
+                  "path": "data/audio/AVFAD/AMWphrase.wav",
+                  "label": "0",
+                  "speaker": "AMW"
+            },
+            {
+                  "path": "data/audio/AVFAD/APHphrase.wav",
+                  "label": "0",
+                  "speaker": "APH"
+            },
+            {
+                  "path": "data/audio/AVFAD/ARVphrase.wav",
+                  "label": "0",
+                  "speaker": "ARV"
+            },
+            {
+                  "path": "data/audio/AVFAD/AXMphrase.wav",
+                  "label": "0",
+                  "speaker": "AXM"
+            },
+            {
+                  "path": "data/audio/AVFAD/CAXphrase.wav",
+                  "label": "0",
+                  "speaker": "CAX"
+            },
+            {
+                  "path": "data/audio/AVFAD/CFWphrase.wav",
+                  "label": "0",
+                  "speaker": "CFW"
+            },
+            {
+                  "path": "data/audio/AVFAD/CSYphrase.wav",
+                  "label": "0",
+                  "speaker": "CSY"
+            },
+            {
+                  "path": "data/audio/AVFAD/FCSphrase.wav",
+                  "label": "0",
+                  "speaker": "FCS"
+            },
+            {
+                  "path": "data/audio/AVFAD/GHAphrase.wav",
+                  "label": "0",
+                  "speaker": "GHA"
+            },
+            {
+                  "path": "data/audio/AVFAD/HCBphrase.wav",
+                  "label": "0",
+                  "speaker": "HCB"
+            },
+            {
+                  "path": "data/audio/AVFAD/IDBphrase.wav",
+                  "label": "0",
+                  "speaker": "IDB"
+            },
+            {
+                  "path": "data/audio/AVFAD/IMNphrase.wav",
+                  "label": "0",
+                  "speaker": "IMN"
+            },
+            {
+                  "path": "data/audio/AVFAD/JLSphrase.wav",
+                  "label": "0",
+                  "speaker": "JLS"
+            },
+            {
+                  "path": "data/audio/AVFAD/LFBphrase.wav",
+                  "label": "0",
+                  "speaker": "LFB"
+            },
+            {
+                  "path": "data/audio/AVFAD/LMSphrase.wav",
+                  "label": "0",
+                  "speaker": "LMS"
+            },
+            {
+                  "path": "data/audio/AVFAD/MADphrase.wav",
+                  "label": "0",
+                  "speaker": "MAD"
+            },
+            {
+                  "path": "data/audio/AVFAD/MAQphrase.wav",
+                  "label": "0",
+                  "speaker": "MAQ"
+            },
+            {
+                  "path": "data/audio/AVFAD/MBYphrase.wav",
+                  "label": "0",
+                  "speaker": "MBY"
+            },
+            {
+                  "path": "data/audio/AVFAD/MDSphrase.wav",
+                  "label": "0",
+                  "speaker": "MDS"
+            },
+            {
+                  "path": "data/audio/AVFAD/MFDphrase.wav",
+                  "label": "0",
+                  "speaker": "MFD"
+            },
+            {
+                  "path": "data/audio/AVFAD/MGAphrase.wav",
+                  "label": "0",
+                  "speaker": "MGA"
+            },
+            {
+                  "path": "data/audio/AVFAD/MGXphrase.wav",
+                  "label": "0",
+                  "speaker": "MGX"
+            },
+            {
+                  "path": "data/audio/AVFAD/MIBphrase.wav",
+                  "label": "0",
+                  "speaker": "MIB"
+            },
+            {
+                  "path": "data/audio/AVFAD/MLWphrase.wav",
+                  "label": "0",
+                  "speaker": "MLW"
+            },
+            {
+                  "path": "data/audio/AVFAD/MMMphrase.wav",
+                  "label": "0",
+                  "speaker": "MMM"
+            },
+            {
+                  "path": "data/audio/AVFAD/MNCphrase.wav",
+                  "label": "0",
+                  "speaker": "MNC"
+            },
+            {
+                  "path": "data/audio/AVFAD/MPFphrase.wav",
+                  "label": "0",
+                  "speaker": "MPF"
+            },
+            {
+                  "path": "data/audio/AVFAD/MRLphrase.wav",
+                  "label": "0",
+                  "speaker": "MRL"
+            },
+            {
+                  "path": "data/audio/AVFAD/MSLphrase.wav",
+                  "label": "0",
+                  "speaker": "MSL"
+            },
+            {
+                  "path": "data/audio/AVFAD/MTBphrase.wav",
+                  "label": "0",
+                  "speaker": "MTB"
+            },
+            {
+                  "path": "data/audio/AVFAD/MURphrase.wav",
+                  "label": "0",
+                  "speaker": "MUR"
+            },
+            {
+                  "path": "data/audio/AVFAD/MWCphrase.wav",
+                  "label": "0",
+                  "speaker": "MWC"
+            },
+            {
+                  "path": "data/audio/AVFAD/MXLphrase.wav",
+                  "label": "0",
+                  "speaker": "MXL"
+            },
+            {
+                  "path": "data/audio/AVFAD/MYFphrase.wav",
+                  "label": "0",
+                  "speaker": "MYF"
+            },
+            {
+                  "path": "data/audio/AVFAD/MZSphrase.wav",
+                  "label": "0",
+                  "speaker": "MZS"
+            },
+            {
+                  "path": "data/audio/AVFAD/PBSphrase.wav",
+                  "label": "0",
+                  "speaker": "PBS"
+            },
+            {
+                  "path": "data/audio/AVFAD/PLSphrase.wav",
+                  "label": "0",
+                  "speaker": "PLS"
+            },
+            {
+                  "path": "data/audio/AVFAD/REPphrase.wav",
+                  "label": "0",
+                  "speaker": "REP"
+            },
+            {
+                  "path": "data/audio/AVFAD/ROMphrase.wav",
+                  "label": "0",
+                  "speaker": "ROM"
+            },
+            {
+                  "path": "data/audio/AVFAD/RVSphrase.wav",
+                  "label": "0",
+                  "speaker": "RVS"
+            },
+            {
+                  "path": "data/audio/AVFAD/TMBphrase.wav",
+                  "label": "0",
+                  "speaker": "TMB"
+            },
+            {
+                  "path": "data/audio/AVFAD/TSSphrase.wav",
+                  "label": "0",
+                  "speaker": "TSS"
+            },
+            {
+                  "path": "data/audio/AVFAD/VIRphrase.wav",
+                  "label": "0",
+                  "speaker": "VIR"
+            },
+            {
+                  "path": "data/audio/AVFAD/AAVphrase.wav",
+                  "label": "0",
+                  "speaker": "AAV"
+            },
+            {
+                  "path": "data/audio/AVFAD/AFAphrase.wav",
+                  "label": "0",
+                  "speaker": "AFA"
+            },
+            {
+                  "path": "data/audio/AVFAD/AJRphrase.wav",
+                  "label": "0",
+                  "speaker": "AJR"
+            },
+            {
+                  "path": "data/audio/AVFAD/ATMphrase.wav",
+                  "label": "0",
+                  "speaker": "ATM"
+            },
+            {
+                  "path": "data/audio/AVFAD/CMMphrase.wav",
+                  "label": "0",
+                  "speaker": "CMM"
+            },
+            {
+                  "path": "data/audio/AVFAD/COXphrase.wav",
+                  "label": "0",
+                  "speaker": "COX"
+            },
+            {
+                  "path": "data/audio/AVFAD/CSLphrase.wav",
+                  "label": "0",
+                  "speaker": "CSL"
+            },
+            {
+                  "path": "data/audio/AVFAD/DFLphrase.wav",
+                  "label": "0",
+                  "speaker": "DFL"
+            },
+            {
+                  "path": "data/audio/AVFAD/DPPphrase.wav",
+                  "label": "0",
+                  "speaker": "DPP"
+            },
+            {
+                  "path": "data/audio/AVFAD/ENSphrase.wav",
+                  "label": "0",
+                  "speaker": "ENS"
+            },
+            {
+                  "path": "data/audio/AVFAD/FJQphrase.wav",
+                  "label": "0",
+                  "speaker": "FJQ"
+            },
+            {
+                  "path": "data/audio/AVFAD/HMLphrase.wav",
+                  "label": "0",
+                  "speaker": "HML"
+            },
+            {
+                  "path": "data/audio/AVFAD/JAXphrase.wav",
+                  "label": "0",
+                  "speaker": "JAX"
+            },
+            {
+                  "path": "data/audio/AVFAD/JFRphrase.wav",
+                  "label": "0",
+                  "speaker": "JFR"
+            },
+            {
+                  "path": "data/audio/AVFAD/JMZphrase.wav",
+                  "label": "0",
+                  "speaker": "JMZ"
+            },
+            {
+                  "path": "data/audio/AVFAD/JSBphrase.wav",
+                  "label": "0",
+                  "speaker": "JSB"
+            },
+            {
+                  "path": "data/audio/AVFAD/JSXphrase.wav",
+                  "label": "0",
+                  "speaker": "JSX"
+            },
+            {
+                  "path": "data/audio/AVFAD/LBXphrase.wav",
+                  "label": "0",
+                  "speaker": "LBX"
+            },
+            {
+                  "path": "data/audio/AVFAD/MJTphrase.wav",
+                  "label": "0",
+                  "speaker": "MJT"
+            },
+            {
+                  "path": "data/audio/AVFAD/MLAphrase.wav",
+                  "label": "0",
+                  "speaker": "MLA"
+            },
+            {
+                  "path": "data/audio/AVFAD/PDGphrase.wav",
+                  "label": "0",
+                  "speaker": "PDG"
+            },
+            {
+                  "path": "data/audio/AVFAD/PSMphrase.wav",
+                  "label": "0",
+                  "speaker": "PSM"
+            },
+            {
+                  "path": "data/audio/AVFAD/SEFphrase.wav",
+                  "label": "0",
+                  "speaker": "SEF"
+            },
+            {
+                  "path": "data/audio/AVFAD/SMTphrase.wav",
+                  "label": "0",
+                  "speaker": "SMT"
+            },
+            {
+                  "path": "data/audio/AVFAD/TDSphrase.wav",
+                  "label": "0",
+                  "speaker": "TDS"
+            },
+            {
+                  "path": "data/audio/AVFAD/JRPphrase.wav",
+                  "label": "8000",
+                  "speaker": "JRP"
+            },
+            {
+                  "path": "data/audio/AVFAD/APXphrase.wav",
+                  "label": "1200",
+                  "speaker": "APX"
+            },
+            {
+                  "path": "data/audio/AVFAD/JBGphrase.wav",
+                  "label": "1200",
+                  "speaker": "JBG"
+            },
+            {
+                  "path": "data/audio/AVFAD/MCDphrase.wav",
+                  "label": "2000",
+                  "speaker": "MCD"
+            },
+            {
+                  "path": "data/audio/AVFAD/OAVphrase.wav",
+                  "label": "2000",
+                  "speaker": "OAV"
+            },
+            {
+                  "path": "data/audio/AVFAD/FRLphrase.wav",
+                  "label": "2000",
+                  "speaker": "FRL"
+            },
+            {
+                  "path": "data/audio/AVFAD/PLBphrase.wav",
+                  "label": "2000",
+                  "speaker": "PLB"
+            },
+            {
+                  "path": "data/audio/AVFAD/JMCphrase.wav",
+                  "label": "2000",
+                  "speaker": "JMC"
+            },
+            {
+                  "path": "data/audio/AVFAD/MMNphrase.wav",
+                  "label": "2000",
+                  "speaker": "MMN"
+            },
+            {
+                  "path": "data/audio/AVFAD/MRAphrase.wav",
+                  "label": "2000",
+                  "speaker": "MRA"
+            },
+            {
+                  "path": "data/audio/AVFAD/BJAphrase.wav",
+                  "label": "1200",
+                  "speaker": "BJA"
+            },
+            {
+                  "path": "data/audio/AVFAD/FARphrase.wav",
+                  "label": "1200",
+                  "speaker": "FAR"
+            },
+            {
+                  "path": "data/audio/AVFAD/MAYphrase.wav",
+                  "label": "1200",
+                  "speaker": "MAY"
+            },
+            {
+                  "path": "data/audio/AVFAD/MCFphrase.wav",
+                  "label": "1200",
+                  "speaker": "MCF"
+            },
+            {
+                  "path": "data/audio/AVFAD/MGPphrase.wav",
+                  "label": "1200",
+                  "speaker": "MGP"
+            },
+            {
+                  "path": "data/audio/AVFAD/MRCphrase.wav",
+                  "label": "1200",
+                  "speaker": "MRC"
+            },
+            {
+                  "path": "data/audio/AVFAD/HPMphrase.wav",
+                  "label": "1200",
+                  "speaker": "HPM"
+            },
+            {
+                  "path": "data/audio/AVFAD/MDGphrase.wav",
+                  "label": "1200",
+                  "speaker": "MDG"
+            },
+            {
+                  "path": "data/audio/AVFAD/MKFphrase.wav",
+                  "label": "1200",
+                  "speaker": "MKF"
+            },
+            {
+                  "path": "data/audio/AVFAD/ALBphrase.wav",
+                  "label": "1200",
+                  "speaker": "ALB"
+            },
+            {
+                  "path": "data/audio/AVFAD/JRSphrase.wav",
+                  "label": "1200",
+                  "speaker": "JRS"
+            },
+            {
+                  "path": "data/audio/AVFAD/MOCphrase.wav",
+                  "label": "1200",
+                  "speaker": "MOC"
+            },
+            {
+                  "path": "data/audio/AVFAD/AAYphrase.wav",
+                  "label": "1200",
+                  "speaker": "AAY"
+            },
+            {
+                  "path": "data/audio/AVFAD/AMBphrase.wav",
+                  "label": "1200",
+                  "speaker": "AMB"
+            },
+            {
+                  "path": "data/audio/AVFAD/DCVphrase.wav",
+                  "label": "1200",
+                  "speaker": "DCV"
+            },
+            {
+                  "path": "data/audio/AVFAD/EBFphrase.wav",
+                  "label": "1200",
+                  "speaker": "EBF"
+            },
+            {
+                  "path": "data/audio/AVFAD/EMCphrase.wav",
+                  "label": "1200",
+                  "speaker": "EMC"
+            },
+            {
+                  "path": "data/audio/AVFAD/MJDphrase.wav",
+                  "label": "1200",
+                  "speaker": "MJD"
+            },
+            {
+                  "path": "data/audio/AVFAD/MSSphrase.wav",
+                  "label": "1200",
+                  "speaker": "MSS"
+            },
+            {
+                  "path": "data/audio/AVFAD/MVGphrase.wav",
+                  "label": "1200",
+                  "speaker": "MVG"
+            },
+            {
+                  "path": "data/audio/AVFAD/PCPphrase.wav",
+                  "label": "1200",
+                  "speaker": "PCP"
+            },
+            {
+                  "path": "data/audio/AVFAD/SCAphrase.wav",
+                  "label": "1200",
+                  "speaker": "SCA"
+            },
+            {
+                  "path": "data/audio/AVFAD/SRGphrase.wav",
+                  "label": "1200",
+                  "speaker": "SRG"
+            },
+            {
+                  "path": "data/audio/AVFAD/AMVphrase.wav",
+                  "label": "1200",
+                  "speaker": "AMV"
+            },
+            {
+                  "path": "data/audio/AVFAD/MFJphrase.wav",
+                  "label": "1200",
+                  "speaker": "MFJ"
+            },
+            {
+                  "path": "data/audio/AVFAD/MRVphrase.wav",
+                  "label": "1200",
+                  "speaker": "MRV"
+            },
+            {
+                  "path": "data/audio/AVFAD/JMPphrase.wav",
+                  "label": "1200",
+                  "speaker": "JMP"
+            },
+            {
+                  "path": "data/audio/AVFAD/CMCphrase.wav",
+                  "label": "1200",
+                  "speaker": "CMC"
+            },
+            {
+                  "path": "data/audio/AVFAD/RAAphrase.wav",
+                  "label": "1200",
+                  "speaker": "RAA"
+            },
+            {
+                  "path": "data/audio/AVFAD/MCWphrase.wav",
+                  "label": "9060",
+                  "speaker": "MCW"
+            },
+            {
+                  "path": "data/audio/AVFAD/FMPphrase.wav",
+                  "label": "9060",
+                  "speaker": "FMP"
+            }
+      ]
+}
