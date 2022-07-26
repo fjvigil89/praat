@@ -2,7 +2,9 @@ data/*.wav
 data/**/*.wav
 data/**/**/*.wav
 data/**/**/**/*.wav
-!**/lst/*.json
+!data/lst/**/*.json
+!data/lst/**/*.xlsx
+!data/lst/**/*.csv
 *.json
 *.prt
 *.txt
