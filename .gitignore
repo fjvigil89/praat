@@ -1,10 +1,10 @@
 data/*.wav
-data/audio/*.wav
-data/audio/*.json
-data/audio/*.prt
-data/*.txt
-data/*.pkl
-data/*.xlsx
+!data/lst/*
+*.json
+*.prt
+*.txt
+*.pkl
+*.xlsx
 *.wav
 *.png
 *.jpg
