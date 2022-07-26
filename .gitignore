@@ -1,5 +1,8 @@
 data/*.wav
-!data/lst/*.json
+data/**/*.wav
+data/**/**/*.wav
+data/**/**/**/*.wav
+!**/lst/*.json
 *.json
 *.prt
 *.txt
@@ -11,4 +14,5 @@ data/*.wav
 *.jpeg
 *.tar
 *.zip
-
+*.pdf
+.idea
