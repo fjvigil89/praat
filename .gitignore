@@ -2,7 +2,7 @@ data/*.wav
 data/**/*.wav
 data/**/**/*.wav
 data/**/**/**/*.wav
-!data/lst/**
+!data/lst/*
 
 *.json
 *.prt
