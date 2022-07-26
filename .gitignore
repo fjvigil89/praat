@@ -1,4 +1,4 @@
-!data/lst/thalento
+!data/lst/**/*.json
 data/*.wav
 data/**/*.wav
 data/**/**/*.wav
