@@ -1,1 +1,14 @@
-data
+data/*.wav
+data/audio/*.wav
+data/audio/*.json
+data/audio/*.prt
+data/*.txt
+data/*.pkl
+data/*.xlsx
+*.wav
+*.png
+*.jpg
+*.jpeg
+*.tar
+*.zip
+

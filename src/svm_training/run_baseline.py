@@ -495,11 +495,7 @@ def feature_smile(list_path, kfold, audio_type, cambia='viejo', clases='binaria'
     if not os.path.exists(respath):
         #os.mkdir(respath)
         os.makedirs(respath, exist_ok=True)
-    # 1. Loading data from json list
-    smile = opensmile.Smile(
-        feature_set=opensmile.FeatureSet.ComParE_2016,
-        feature_level=opensmile.FeatureLevel.Functionals,
-    )
+    # 1. Loading data from json list    
     for k in range(0, kfold):
         tic = time.time()
         train_files = []
@@ -551,22 +547,33 @@ def feature_smile(list_path, kfold, audio_type, cambia='viejo', clases='binaria'
         else:
             i = 0
             train_features = []
+            data = []
             for wav in train_files:
                 print(str(i) + ': Fold ' + str(k + 1) + ': ' + wav)
-                name = os.path.basename(wav)[:-4]                
-                sistema = platform.system()
-                file_wav=wav
-                if sistema == "Windows":	   
-                    file_wav = os.path.abspath(file_wav )
-                    print(file_wav)                    
-                                        
-                smileparam = smile.process_file(file_wav)
-                # smileparam.to_excel(outpath + '/' + os.path.basename(wav)[:-4]+'_smile.xlsx')
-                #smileparam.to_csv(output)
+                name = os.path.basename(wav)[:-4]
+                path_wav =wav.split(name)[0]
+                path = path_wav + '/' + name +".wav"                
+                data.append(path)
+                        
                 
-                feat = pd.read_csv('data/features/' + label_csv + '/' + name + '_smile.csv').to_numpy()[0]
-                train_features.append(feat[3:])
-                i = i + 1
+            #     smileparam = smile.process_file(wav)
+            #     # smileparam.to_excel(outpath + '/' + os.path.basename(wav)[:-4]+'_smile.xlsx')
+            #     #smileparam.to_csv(output)
+                
+            #     feat = pd.read_csv('data/features/' + label_csv + '/' + name + '_smile.csv').to_numpy()[0]
+            #     train_features.append(feat[3:])
+            #     i = i + 1
+                        
+            smile = opensmile.Smile(
+            feature_set=opensmile.FeatureSet.ComParE_2016,
+            feature_level=opensmile.FeatureLevel.Functionals,
+            loglevel=2,
+            logfile='smile.log',
+            )
+            # read wav files and extract emobase features on that file
+            print('Processing: ... ')
+            train_features = smile.process_files(data)
+            
             print('Train: ' + str(i))
             train_features = np.array(train_features)
             with open(trainpath, 'wb') as fid:
