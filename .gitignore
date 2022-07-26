@@ -1,9 +1,7 @@
-!data/lst/**/*.json
 data/*.wav
 data/**/*.wav
 data/**/**/*.wav
 data/**/**/**/*.wav
-
 *.json
 *.prt
 *.txt
@@ -19,3 +17,6 @@ data/**/**/**/*.wav
 *.csv
 *.log
 .idea
+
+
+!*/lst/**/*
