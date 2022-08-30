@@ -14,5 +14,5 @@ def crea_kfold():
 
 
 if __name__ == '__main__':
-    feature_smile()
+    feature_smile() #ok
     

@@ -16,9 +16,9 @@ base_train = 'thalento'  # 'Saarbruecken'     ''  # 'AVFAD' #   #
 base_test = 'thalento'  # 'thalento'
 tipo_signal = "D8_LECTURA" #'LECTURA'  # 'D8_LECTURA'
 tipo_signal_test = 'LECTURA'  # 'phrase_both'
-path_database="data/audio/BD_thalento_exp/"
+path_database="data/audio/thalento/"
 path_features="data/features/thalento/"
-path_list_fold="lst/"
+path_list_fold="data/lst/"
 
 
 # def run_compute():   

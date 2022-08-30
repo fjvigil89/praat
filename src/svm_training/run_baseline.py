@@ -10,8 +10,6 @@ import opensmile
 from svm_training import utils
 #from utils import compute_score, zscore
 from collections import Counter
-import pathlib
-import platform
 
 
 def main_with_thalento(list_path, list_path_test, kfold, audio_type, audio_type_test, cambia='viejo', clases='binaria'):
@@ -495,6 +493,11 @@ def feature_smile(list_path, kfold, audio_type, cambia='viejo', clases='binaria'
     if not os.path.exists(respath):
         #os.mkdir(respath)
         os.makedirs(respath, exist_ok=True)
+        
+    respath = 'data/features/' + label
+    if not os.path.exists(respath):
+        #os.mkdir(respath)
+        os.makedirs(respath, exist_ok=True)
     # 1. Loading data from json list    
     for k in range(0, kfold):
         tic = time.time()
@@ -518,7 +521,9 @@ def feature_smile(list_path, kfold, audio_type, cambia='viejo', clases='binaria'
         with open(testlist, 'r') as f:
             data = json.load(f)
             for item in data['meta_data']:
-                test_files.append(item['path'])
+                file_name =item['path'].split("/")
+                test_files.append(item['path'].split("-"+audio_type)[0]+"/"+ file_name[len(file_name)-1])
+                
                 if item['label'] == '0':
                     test_labels.append(0)
                 else:
@@ -547,32 +552,29 @@ def feature_smile(list_path, kfold, audio_type, cambia='viejo', clases='binaria'
         else:
             i = 0
             train_features = []
-            data = []
+            data = []            
             for wav in train_files:
                 print(str(i) + ': Fold ' + str(k + 1) + ': ' + wav)
                 name = os.path.basename(wav)[:-4]
-                path_wav =wav.split(name)[0]
-                path = path_wav + '/' + name +".wav"                
-                data.append(path)
-                        
-                
-            #     smileparam = smile.process_file(wav)
-            #     # smileparam.to_excel(outpath + '/' + os.path.basename(wav)[:-4]+'_smile.xlsx')
-            #     #smileparam.to_csv(output)
-                
-            #     feat = pd.read_csv('data/features/' + label_csv + '/' + name + '_smile.csv').to_numpy()[0]
-            #     train_features.append(feat[3:])
-            #     i = i + 1
-                        
+                path_wav =wav.split(name)[0]                                
+                for r, d, f in os.walk(path_wav):                                    
+                  for file in f:
+                    if "_LECTURA" in file:
+                        path = r + '/' + file
+                        print(str(i+1) + '. append: ' + file)
+                        data.append(path)
+                i = i+1                          
+         
             smile = opensmile.Smile(
-            feature_set=opensmile.FeatureSet.ComParE_2016,
-            feature_level=opensmile.FeatureLevel.Functionals,
-            loglevel=2,
-            logfile='smile.log',
+                feature_set=opensmile.FeatureSet.ComParE_2016,
+                feature_level=opensmile.FeatureLevel.Functionals,
+                loglevel=2,
+                logfile='smile.log',
             )
             # read wav files and extract emobase features on that file
             print('Processing: ... ')
-            train_features = smile.process_files(data)
+            feat = smile.process_files(data)            
+            train_features.append(feat.to_numpy()[3:])
             
             print('Train: ' + str(i))
             train_features = np.array(train_features)
@@ -591,24 +593,35 @@ def feature_smile(list_path, kfold, audio_type, cambia='viejo', clases='binaria'
         else:
             i = 0
             test_features = []
+            data = []
             for wav in test_files:
                 print(str(i) + ': Fold ' + str(k + 1) + ': ' + wav)
                 name = os.path.basename(wav)[:-4]
-
-                # with open('data/features/' + label_csv + '/' + name + '_praat.csv', 'r') as file:
-                #     reader = csv.reader(file)
-                #     for row in reader:
-                #         row_float = [float(x) for x in row]
-                #         test_features.append(row_float)
-                #
-                feat = pd.read_csv('data/features/' + label_csv + '/' + name + '_smile.csv').to_numpy()[0]
-                test_features.append(feat[3:])
-                i = i + 1
+                path_wav =wav.split(name)[0]                                
+                for r, d, f in os.walk(path_wav):                                    
+                  for file in f:
+                    if "_LECTURA" in file:
+                        path = r + '/' + file
+                        print(str(i+1) + '. append: ' + file)
+                        data.append(path)
+                i = i+1                   
+            smile = opensmile.Smile(
+                feature_set=opensmile.FeatureSet.ComParE_2016,
+                feature_level=opensmile.FeatureLevel.Functionals,
+                loglevel=2,
+                logfile='smile.log',
+            )
+             # read wav files and extract emobase features on that file
+            print('Processing: ... ')
+            feat = smile.process_files(data)            
+            test_features.append(feat.to_numpy()[3:])
+            
             print('Test: ' + str(i))
             test_features = np.array(test_features)
             with open(testpath, 'wb') as fid:
                 pickle.dump(test_features, fid, protocol=pickle.HIGHEST_PROTOCOL)
             fid.close()
+            
 
 # -----------------------------------------------------------------------------------------------------
 if __name__ == '__main__':
