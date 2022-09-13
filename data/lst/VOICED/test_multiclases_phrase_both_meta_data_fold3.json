@@ -1,0 +1,216 @@
+{
+      "labels": {
+            "control": "0",
+            "Abnormalities of the Vocal Fold": "1200",
+            "INFLAMMATORY CONDITIONS OF THE LARYNX": "2000",
+            "Dysphonia": "9060",
+            "Spasmodic Dysphonia": "9183"
+      },
+      "meta_data": [
+            {
+                  "path": "data/audio/VOICED/voice045.wav",
+                  "label": "0",
+                  "speaker": "voice045"
+            },
+            {
+                  "path": "data/audio/VOICED/voice061.wav",
+                  "label": "0",
+                  "speaker": "voice061"
+            },
+            {
+                  "path": "data/audio/VOICED/voice090.wav",
+                  "label": "0",
+                  "speaker": "voice090"
+            },
+            {
+                  "path": "data/audio/VOICED/voice097.wav",
+                  "label": "0",
+                  "speaker": "voice097"
+            },
+            {
+                  "path": "data/audio/VOICED/voice102.wav",
+                  "label": "0",
+                  "speaker": "voice102"
+            },
+            {
+                  "path": "data/audio/VOICED/voice139.wav",
+                  "label": "0",
+                  "speaker": "voice139"
+            },
+            {
+                  "path": "data/audio/VOICED/voice177.wav",
+                  "label": "0",
+                  "speaker": "voice177"
+            },
+            {
+                  "path": "data/audio/VOICED/voice182.wav",
+                  "label": "0",
+                  "speaker": "voice182"
+            },
+            {
+                  "path": "data/audio/VOICED/voice195.wav",
+                  "label": "0",
+                  "speaker": "voice195"
+            },
+            {
+                  "path": "data/audio/VOICED/voice207.wav",
+                  "label": "0",
+                  "speaker": "voice207"
+            },
+            {
+                  "path": "data/audio/VOICED/voice199.wav",
+                  "label": "1200",
+                  "speaker": "voice199"
+            },
+            {
+                  "path": "data/audio/VOICED/voice170.wav",
+                  "label": "1200",
+                  "speaker": "voice170"
+            },
+            {
+                  "path": "data/audio/VOICED/voice117.wav",
+                  "label": "1200",
+                  "speaker": "voice117"
+            },
+            {
+                  "path": "data/audio/VOICED/voice122.wav",
+                  "label": "1200",
+                  "speaker": "voice122"
+            },
+            {
+                  "path": "data/audio/VOICED/voice105.wav",
+                  "label": "2000",
+                  "speaker": "voice105"
+            },
+            {
+                  "path": "data/audio/VOICED/voice157.wav",
+                  "label": "2000",
+                  "speaker": "voice157"
+            },
+            {
+                  "path": "data/audio/VOICED/voice013.wav",
+                  "label": "2000",
+                  "speaker": "voice013"
+            },
+            {
+                  "path": "data/audio/VOICED/voice063.wav",
+                  "label": "2000",
+                  "speaker": "voice063"
+            },
+            {
+                  "path": "data/audio/VOICED/voice071.wav",
+                  "label": "2000",
+                  "speaker": "voice071"
+            },
+            {
+                  "path": "data/audio/VOICED/voice133.wav",
+                  "label": "2000",
+                  "speaker": "voice133"
+            },
+            {
+                  "path": "data/audio/VOICED/voice016.wav",
+                  "label": "9060",
+                  "speaker": "voice016"
+            },
+            {
+                  "path": "data/audio/VOICED/voice023.wav",
+                  "label": "9060",
+                  "speaker": "voice023"
+            },
+            {
+                  "path": "data/audio/VOICED/voice039.wav",
+                  "label": "9060",
+                  "speaker": "voice039"
+            },
+            {
+                  "path": "data/audio/VOICED/voice130.wav",
+                  "label": "9060",
+                  "speaker": "voice130"
+            },
+            {
+                  "path": "data/audio/VOICED/voice155.wav",
+                  "label": "9060",
+                  "speaker": "voice155"
+            },
+            {
+                  "path": "data/audio/VOICED/voice163.wav",
+                  "label": "9060",
+                  "speaker": "voice163"
+            },
+            {
+                  "path": "data/audio/VOICED/voice169.wav",
+                  "label": "9060",
+                  "speaker": "voice169"
+            },
+            {
+                  "path": "data/audio/VOICED/voice188.wav",
+                  "label": "9060",
+                  "speaker": "voice188"
+            },
+            {
+                  "path": "data/audio/VOICED/voice194.wav",
+                  "label": "9060",
+                  "speaker": "voice194"
+            },
+            {
+                  "path": "data/audio/VOICED/voice058.wav",
+                  "label": "9060",
+                  "speaker": "voice058"
+            },
+            {
+                  "path": "data/audio/VOICED/voice075.wav",
+                  "label": "9060",
+                  "speaker": "voice075"
+            },
+            {
+                  "path": "data/audio/VOICED/voice142.wav",
+                  "label": "9060",
+                  "speaker": "voice142"
+            },
+            {
+                  "path": "data/audio/VOICED/voice024.wav",
+                  "label": "0",
+                  "speaker": "voice024"
+            },
+            {
+                  "path": "data/audio/VOICED/voice111.wav",
+                  "label": "0",
+                  "speaker": "voice111"
+            },
+            {
+                  "path": "data/audio/VOICED/voice007.wav",
+                  "label": "1200",
+                  "speaker": "voice007"
+            },
+            {
+                  "path": "data/audio/VOICED/voice137.wav",
+                  "label": "1200",
+                  "speaker": "voice137"
+            },
+            {
+                  "path": "data/audio/VOICED/voice029.wav",
+                  "label": "2000",
+                  "speaker": "voice029"
+            },
+            {
+                  "path": "data/audio/VOICED/voice037.wav",
+                  "label": "2000",
+                  "speaker": "voice037"
+            },
+            {
+                  "path": "data/audio/VOICED/voice048.wav",
+                  "label": "2000",
+                  "speaker": "voice048"
+            },
+            {
+                  "path": "data/audio/VOICED/voice081.wav",
+                  "label": "2000",
+                  "speaker": "voice081"
+            },
+            {
+                  "path": "data/audio/VOICED/voice089.wav",
+                  "label": "9060",
+                  "speaker": "voice089"
+            }
+      ]
+}

@@ -1,27 +1,61 @@
 import os
 import numpy as np
+import pandas as pd
 from scipy.interpolate import interp1d
 from scipy.optimize import brentq
 from sklearn.metrics import *
 import matplotlib.pyplot as plt
 from sklearn.utils.multiclass import unique_labels
+from sklearn.preprocessing import StandardScaler
 
-
-def zscore(x,u=False,s=False):
-    sx,feat = x.shape
-    xnorm = np.zeros((sx,feat))
+def zscore(x,u=False,s=False): 
+    sx,feat, = x.shape
+    xnorm = np.zeros((sx,feat))    
     try:
         test = u.shape #Just for invalidate the try if u==False
         xnorm = (x - u)/s
         return xnorm
     except: 
-        u = np.mean(x,axis=0)
+        u = np.mean(x,axis=1)                
         s = np.zeros(feat)
         for i in range(0,feat):
-            s[i] = np.std(x[:,i]) + 1e-20    
+            s[i] = np.std(x[:,i]) + 1e-20              
         xnorm = (x - u)/s
         return xnorm, u, s
 
+# apply the z-score method in Pandas using the .mean() and .std() methods
+def z_score(df):
+    # copy the dataframe
+    df_std = df.copy()
+    # apply the z-score method
+    for column in df_std.columns:
+        df_std[column] = (df_std[column] - df_std[column].mean()) / df_std[column].std()
+        
+    return df_std
+def z_standard(df):
+    # create a scaler object
+    std_scaler = StandardScaler()
+    std_scaler
+    # fit and transform the data
+    df_std = pd.DataFrame(std_scaler.fit_transform(df), columns=df.columns)
+    return df_std
+
+
+def split_data(path, labels):
+    path_csv = path
+    df = pd.read_csv(path_csv)
+    df = df.assign(label=labels)
+    
+    data = df.drop(columns=['file', 'start', 'end'])      
+    #"all PATH(1) or NORM(0)")
+    X = data.drop(columns=['label'], axis=1)
+    y = data['label']
+    X = X.astype(float).fillna(0.0)
+    # print(data['label'].value_counts())
+
+    #"========== normalization z_score =============")      
+    X = z_standard(X)
+    return X, y
 
 def compute_score(model, test_lbltrue, test_lblpredict, test_features, roc=False):
     # output: score (has 13 metrics values)  

@@ -40,5 +40,7 @@ def crea_list_kfold():
 def feature_smile():    
     run_baseline.feature_smile(path_list_fold + base_train, 5, tipo_signal, 'nuevo', 'binaria')
 
+def train_svm():    
+    run_baseline.svm_binario(path_list_fold + base_train, 5, tipo_signal, 'binaria')
     
 

@@ -1,3 +1,4 @@
+from asyncio.windows_events import NULL
 import sys, json, os, pickle, time
 
 # sys.path.append('src')
@@ -204,7 +205,7 @@ def main_with_thalento(list_path, list_path_test, kfold, audio_type, audio_type_
     f.close()
 
 
-def main(list_path, kfold, audio_type, cambia='viejo', clases='binaria'):
+def main(list_path=NULL, kfold=5, audio_type=NULL, cambia='viejo', clases='binaria'):
     ker = 'poly'
     d = 1
     c = 1
@@ -544,6 +545,7 @@ def feature_smile(list_path, kfold, audio_type, cambia='viejo', clases='binaria'
         train_labels = np.array(train_labels)
 
         trainpath = 'data/features/' + label + '/train_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1) + '.pkl'
+        trainpath_csv = 'data/features/' + label + '/train_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1)
         if os.path.exists(trainpath) and cambia == 'viejo':
             with open(trainpath, 'rb') as fid:
                 train_features = pickle.load(fid)
@@ -576,6 +578,9 @@ def feature_smile(list_path, kfold, audio_type, cambia='viejo', clases='binaria'
             feat = smile.process_files(data)            
             train_features.append(feat.to_numpy()[3:])
             
+            print('Saving: ... Train: ' + audio_type_pkl+'_smile.csv')
+            feat.to_csv(trainpath_csv+'_smile.csv')
+            
             print('Train: ' + str(i))
             train_features = np.array(train_features)
             with open(trainpath, 'wb') as fid:
@@ -585,6 +590,7 @@ def feature_smile(list_path, kfold, audio_type, cambia='viejo', clases='binaria'
         # Test
         test_labels = np.array(test_labels)
         testpath = 'data/features/' + label + '/test_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1) + '.pkl'
+        testpath_csv = 'data/features/' + label + '/test_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1)
         if os.path.exists(testpath) and cambia == 'viejo':
             with open(testpath, 'rb') as fid:
                 test_features = pickle.load(fid)
@@ -616,12 +622,110 @@ def feature_smile(list_path, kfold, audio_type, cambia='viejo', clases='binaria'
             feat = smile.process_files(data)            
             test_features.append(feat.to_numpy()[3:])
             
+            print('Saving: ... Test: ' + audio_type_pkl+'_smile.csv')
+            feat.to_csv(testpath_csv+'_smile.csv')
+            
             print('Test: ' + str(i))
             test_features = np.array(test_features)
             with open(testpath, 'wb') as fid:
                 pickle.dump(test_features, fid, protocol=pickle.HIGHEST_PROTOCOL)
             fid.close()
-            
+
+def svm_binario(list_path, kfold,audio_type, clases='binaria'):
+    ker = 'poly'
+    d = 1
+    c = 1
+    label = os.path.basename(list_path)
+
+    result_log = 'results_' + label + '_' + clases + '_' + audio_type + '_' + ker + str(d) + 'c' + str(c) + '.log'
+    f = open(result_log, 'w+')
+    f.write('Results Data:%s Features:Compare2016 %ifold, %s\n' % (label, kfold, audio_type))
+    f.write('SVM Config: Kernel=%s, Degree=%i, C(tol)=%.2f \n' % (ker, d, c))
+    f.close()
+
+    respath = 'data/result/' + label
+    if not os.path.exists(respath):
+        os.mkdir(respath)
+
+     # 2. Load features: Train
+    # Get the same features.pkl for binaryclass and for multiclass
+    try:
+        audio_type_pkl = audio_type.split('multi_')[1]
+    except:
+        audio_type_pkl = audio_type
+    try:
+        label_csv = label.split('_Nomiss')[1]
+    except:
+        label_csv = label        
+
+    
+    trainpath_csv = 'data/features/' + label + '/train_' + clases + '_' + audio_type_pkl + '_fold'
+    testpath_csv = 'data/features/' + label + '/test_' + clases + '_' + audio_type_pkl + '_fold'
+    
+    print(testpath_csv)
+    nfold = kfold
+    while nfold > 0: 
+        train_files = []
+        train_labels = []
+        trainlist = list_path + '/train_' + clases + '_' + audio_type + '_meta_data_fold' + str(nfold) + '.json'
+        with open(trainlist, 'r') as f:
+            data = json.load(f)
+            for item in data['meta_data']:
+                train_files.append(item['path'])
+                if item['label'] == '0':
+                    train_labels.append("NORM")
+                else:
+                    train_labels.append("PATH")
+        f.close()
+
+        test_files = []
+        test_labels = []
+        testlist = list_path + '/test_' + clases + '_' + audio_type + '_meta_data_fold' + str(nfold) + '.json'
+        with open(testlist, 'r') as f:
+            data = json.load(f)
+            for item in data['meta_data']:
+                test_files.append(item['path'])
+                if item['label'] == '0':
+                    test_labels.append("NORM")
+                else:
+                    test_labels.append("PATH")
+        f.close()
+             
+        X_train, y_train = utils.split_data(str(trainpath_csv)+str(nfold)+"_smile.csv", train_labels)
+        X_test, y_test = utils.split_data(str(testpath_csv)+str(nfold)+"_smile.csv", test_labels)
+        
+        # Creación del modelo SVM
+        # ==============================================================================      
+        model=[]
+        data_processing = {'list':[],'model':[],'type_list':[], 'Kerner':[] , 'value_C':[], 'value_degree':[], 'Score':[], 'UAR':[]}      
+        modelo = SVC(kernel='poly')
+        
+        #length=range(1,64, 4) 
+        length=range(1,2) 
+        for c in length:            
+                for deg in range(1,5):                  
+                    modelo.C = c
+                    modelo.degree = deg                
+                    modelo.fit(X_train, y_train)
+                    score= modelo.score(X_test, y_test) 
+                    y_pred = modelo.predict(X_test)
+                    #uar = balanced_accuracy_score(y_test, y_pred)             
+                    
+                    data_processing['list'].append("a_n_fold"+str(nfold)+"")
+                    data_processing['model'].append("SVC")
+                    data_processing['type_list'].append("Phrase")
+                    data_processing['Kerner'].append("poly")
+                    data_processing['value_C'].append(c)
+                    data_processing['value_degree'].append(deg)
+                    data_processing['Score'].append(score*100)
+                    #data_processing['UAR'].append(uar*100)                
+        
+        
+        #df = pd.DataFrame(data_processing, columns = ['list','model','type_list', 'Kerner' , 'value_C', 'value_degree', 'Score','UAR'])
+        df = pd.DataFrame(data_processing, columns = ['list','model','type_list', 'Kerner' , 'value_C', 'value_degree', 'Score'])
+        df.to_excel('data/xlsx/svm_binario_fold'+str(nfold)+'.xlsx', sheet_name='svm_binario', index=False)
+        nfold -= 1 
+           
 
 # -----------------------------------------------------------------------------------------------------
 if __name__ == '__main__':

@@ -1,6 +1,6 @@
 import pandas as pd
 from Praat import Praat as praat
-from svm_training import main 
+from svm_training import main, run_baseline 
 
 
 def feature_smile(): #ok
@@ -10,7 +10,11 @@ def feature_smile(): #ok
 def crea_kfold():
     main.crea_list_kfold()
 
+def make_model_svc():
+    main.train_svm()
 
 if __name__ == '__main__':
-    feature_smile() #ok
+    #feature_smile() #ok
+    make_model_svc()
+    
     
