@@ -16,12 +16,13 @@ def zscore(x,u=False,s=False):
         xnorm = (x - u)/s
         return xnorm
     except: 
-        u = np.mean(x,axis=1)                
+        u = np.mean(x,axis=0)                
         s = np.zeros(feat)
         for i in range(0,feat):
             s[i] = np.std(x[:,i]) + 1e-20              
         xnorm = (x - u)/s
         return xnorm, u, s
+
 
 # apply the z-score method in Pandas using the .mean() and .std() methods
 def z_score(df):

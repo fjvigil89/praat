@@ -13,6 +13,9 @@ def crea_kfold():
 def make_model_svc():
     main.train_svm()
 
+def make_model_flavio():
+    main.train_svm_flavio()
+    
 def tiempo_total():
     main.tiempo_total()
 
@@ -20,6 +23,9 @@ def tiempo_total():
 if __name__ == '__main__':
     #feature_smile() #ok
     #make_model_svc() #ok
-    tiempo_total()
+    # make_model_flavio() #ok
+    #tiempo_total() #ok
+    
+    
     
     

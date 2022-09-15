@@ -290,7 +290,7 @@ def main(list_path=NULL, kfold=5, audio_type=NULL, cambia='viejo', clases='binar
                 pickle.dump(train_features, fid, protocol=pickle.HIGHEST_PROTOCOL)
             fid.close()
 
-        train_features, trainmean, trainstd = zscore(train_features)
+        train_features, trainmean, trainstd = utils.zscore(train_features)
         # Test
         test_labels = np.array(test_labels)
         testpath = 'data/features/' + label + '/test_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1) + '.pkl'
@@ -313,7 +313,7 @@ def main(list_path=NULL, kfold=5, audio_type=NULL, cambia='viejo', clases='binar
             with open(testpath, 'wb') as fid:
                 pickle.dump(test_features, fid, protocol=pickle.HIGHEST_PROTOCOL)
             fid.close()
-        test_features = zscore(test_features, trainmean, trainstd)
+        test_features = utils.zscore(test_features, trainmean, trainstd)
 
         # 3. Train SVM classifier
         counter = Counter(train_labels)
@@ -547,7 +547,7 @@ def feature_smile(list_path, kfold, audio_type, cambia='viejo', clases='binaria'
         train_labels = np.array(train_labels)
 
         trainpath = 'data/features/' + label + '/train_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1) + '.pkl'
-        trainpath_csv = 'data/features/' + label + '/train_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1)
+        trainpath_csv = 'data/features/' + label + '/train_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1)        
         if os.path.exists(trainpath) and cambia == 'viejo':
             with open(trainpath, 'rb') as fid:
                 train_features = pickle.load(fid)
@@ -557,9 +557,15 @@ def feature_smile(list_path, kfold, audio_type, cambia='viejo', clases='binaria'
             i = 0
             train_features = []
             data = []            
+            smile = opensmile.Smile(
+                feature_set=opensmile.FeatureSet.ComParE_2016,
+                feature_level=opensmile.FeatureLevel.Functionals,
+                loglevel=2,
+                logfile='smile.log',
+            )
             for wav in train_files:
                 print(str(i) + ': Fold ' + str(k + 1) + ': ' + wav)
-                name = os.path.basename(wav)[:-4]
+                name = os.path.basename(wav)[:-4]                
                 path_wav =wav.split(name)[0]                                
                 for r, d, f in os.walk(path_wav):                                    
                   for file in f:
@@ -567,14 +573,12 @@ def feature_smile(list_path, kfold, audio_type, cambia='viejo', clases='binaria'
                         path = r + '/' + file
                         print(str(i+1) + '. append: ' + file)
                         data.append(path)
+                        print('Processing: ... ', name+'_smile.csv')
+                        feat_one = smile.process_file(path)                                    
+                        feat_one.to_csv('data/features/' + str(label)+"/" + str(name) +'_smile.csv')
                 i = i+1                          
          
-            smile = opensmile.Smile(
-                feature_set=opensmile.FeatureSet.ComParE_2016,
-                feature_level=opensmile.FeatureLevel.Functionals,
-                loglevel=2,
-                logfile='smile.log',
-            )
+            
             # read wav files and extract emobase features on that file
             print('Processing: ... ')
             feat = smile.process_files(data)            
@@ -592,7 +596,8 @@ def feature_smile(list_path, kfold, audio_type, cambia='viejo', clases='binaria'
         # Test
         test_labels = np.array(test_labels)
         testpath = 'data/features/' + label + '/test_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1) + '.pkl'
-        testpath_csv = 'data/features/' + label + '/test_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1)
+        #testpath_csv = 'data/features/' + label + '/test_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1)
+        testpath_csv = 'data/features/' + label + '/test_' + clases + '_' + audio_type_pkl
         if os.path.exists(testpath) and cambia == 'viejo':
             with open(testpath, 'rb') as fid:
                 test_features = pickle.load(fid)
@@ -602,6 +607,12 @@ def feature_smile(list_path, kfold, audio_type, cambia='viejo', clases='binaria'
             i = 0
             test_features = []
             data = []
+            smile = opensmile.Smile(
+                feature_set=opensmile.FeatureSet.ComParE_2016,
+                feature_level=opensmile.FeatureLevel.Functionals,
+                loglevel=2,
+                logfile='smile.log',
+            )
             for wav in test_files:
                 print(str(i) + ': Fold ' + str(k + 1) + ': ' + wav)
                 name = os.path.basename(wav)[:-4]
@@ -612,13 +623,11 @@ def feature_smile(list_path, kfold, audio_type, cambia='viejo', clases='binaria'
                         path = r + '/' + file
                         print(str(i+1) + '. append: ' + file)
                         data.append(path)
+                        print('Processing: ... ', name+'_smile.csv')
+                        feat_one = smile.process_file(path)                                    
+                        feat_one.to_csv('data/features/' + str(label)+"/" + str(name) +'_smile.csv')
                 i = i+1                   
-            smile = opensmile.Smile(
-                feature_set=opensmile.FeatureSet.ComParE_2016,
-                feature_level=opensmile.FeatureLevel.Functionals,
-                loglevel=2,
-                logfile='smile.log',
-            )
+            
              # read wav files and extract emobase features on that file
             print('Processing: ... ')
             feat = smile.process_files(data)            
@@ -650,6 +659,8 @@ def svm_binario(list_path, kfold,audio_type, clases='binaria'):
     if not os.path.exists(respath):
         os.mkdir(respath)
 
+    score = np.zeros((13, kfold))
+    score_oracle = np.zeros((13, kfold))
      # 2. Load features: Train
     # Get the same features.pkl for binaryclass and for multiclass
     try:
@@ -706,7 +717,7 @@ def svm_binario(list_path, kfold,audio_type, clases='binaria'):
         #length=range(1,64, 4) 
         length=range(1,2) 
         for c in length:            
-                for deg in range(1,5):                  
+                for deg in range(1,2):                  
                     modelo.C = c
                     modelo.degree = deg                
                     modelo.fit(X_train, y_train)
@@ -721,7 +732,11 @@ def svm_binario(list_path, kfold,audio_type, clases='binaria'):
                     data_processing['value_C'].append(c)
                     data_processing['value_degree'].append(deg)
                     data_processing['Score'].append(score*100)
-                    #data_processing['UAR'].append(uar*100)                
+                    #data_processing['UAR'].append(uar*100)  
+                      # 4. Testing
+                    out = modelo.predict(X_test)
+                    out_oracle = modelo.predict(X_train)
+                    score[:, nfold] = utils.compute_score(modelo, test_labels, out, X_test)            
         
         exppath = 'data/xlsx/' + label
         if not os.path.exists(exppath):
