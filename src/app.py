@@ -13,8 +13,13 @@ def crea_kfold():
 def make_model_svc():
     main.train_svm()
 
+def tiempo_total():
+    main.tiempo_total()
+
+
 if __name__ == '__main__':
     #feature_smile() #ok
-    make_model_svc()
+    #make_model_svc() #ok
+    tiempo_total()
     
     

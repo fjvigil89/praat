@@ -43,4 +43,5 @@ def feature_smile():
 def train_svm():    
     run_baseline.svm_binario(path_list_fold + base_train, 5, tipo_signal, 'binaria')
     
-
+def tiempo_total():
+    run_baseline.tiempo_total(path_list_fold + base_train, 5, tipo_signal)

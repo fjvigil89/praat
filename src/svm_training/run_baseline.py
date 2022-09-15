@@ -8,6 +8,8 @@ import numpy as np
 from sklearn.svm import SVC
 import csv
 import opensmile
+import mutagen
+from mutagen.wave import WAVE
 from svm_training import utils
 #from utils import compute_score, zscore
 from collections import Counter
@@ -631,6 +633,7 @@ def feature_smile(list_path, kfold, audio_type, cambia='viejo', clases='binaria'
                 pickle.dump(test_features, fid, protocol=pickle.HIGHEST_PROTOCOL)
             fid.close()
 
+### Describir metodo
 def svm_binario(list_path, kfold,audio_type, clases='binaria'):
     ker = 'poly'
     d = 1
@@ -711,7 +714,7 @@ def svm_binario(list_path, kfold,audio_type, clases='binaria'):
                     y_pred = modelo.predict(X_test)
                     #uar = balanced_accuracy_score(y_test, y_pred)             
                     
-                    data_processing['list'].append("a_n_fold"+str(nfold)+"")
+                    data_processing['list'].append("fold"+str(nfold)+"")
                     data_processing['model'].append("SVC")
                     data_processing['type_list'].append("Phrase")
                     data_processing['Kerner'].append("poly")
@@ -720,13 +723,119 @@ def svm_binario(list_path, kfold,audio_type, clases='binaria'):
                     data_processing['Score'].append(score*100)
                     #data_processing['UAR'].append(uar*100)                
         
-        
+        exppath = 'data/xlsx/' + label
+        if not os.path.exists(exppath):
+            os.mkdir(exppath)
         #df = pd.DataFrame(data_processing, columns = ['list','model','type_list', 'Kerner' , 'value_C', 'value_degree', 'Score','UAR'])
         df = pd.DataFrame(data_processing, columns = ['list','model','type_list', 'Kerner' , 'value_C', 'value_degree', 'Score'])
-        df.to_excel('data/xlsx/svm_binario_fold'+str(nfold)+'.xlsx', sheet_name='svm_binario', index=False)
+        df.to_excel(str(exppath)+'/svm_binario_fold'+str(nfold)+'.xlsx', sheet_name='svm_binario', index=False)
         nfold -= 1 
-           
 
+# function to convert the information into 
+# some readable format
+def audio_duration(length):
+    hours = length // 3600  # calculate in hours
+    length %= 3600
+    mins = length // 60  # calculate in minutes
+    length %= 60
+    seconds = length  # calculate in seconds
+  
+    return hours, mins, seconds  # returns the duration
+  
+       
+def tiempo_total(list_path, kfold,audio_type, clases='binaria'):
+    label = os.path.basename(list_path)
+    for k in range(0, kfold):
+        
+        data_processing = {'list':[],'label':[],'time':[]}      
+        
+        train_files = []
+        train_labels = []
+        trainlist = list_path + '/train_' + clases + '_' + audio_type + '_meta_data_fold' + str(k + 1) + '.json'
+        with open(trainlist, 'r') as f:
+            data = json.load(f)
+            i = 0
+            for item in data['meta_data']:
+                file_name =item['path'].split("/")
+                train_files.append(item['path'].split("-"+audio_type)[0]+"/"+ file_name[len(file_name)-1])
+                if item['label'] == '0':
+                    train_labels.append(0)
+                else:
+                    train_labels.append(1)
+                
+                name = os.path.basename(train_files[i])[:-4]
+                path_wav =train_files[i].split(name)[0]               
+                
+                for r, d, n in os.walk(path_wav):                                    
+                  for file in n:
+                    if "_LECTURA" in file:
+                        path = r + '/' + file                                             
+                        audio = WAVE(path)
+                        audio_info = audio.info
+                        length = int(audio_info.length)
+                        hours, mins, seconds = audio_duration(length)
+                        data_processing['list'].append(path)
+                        data_processing['label'].append(item['label'])
+                        data_processing['time'].append(str(hours)+":"+str(mins)+":"+str(seconds))
+                        
+                        
+                i=i+1
+        f.close()
+
+        test_files = []
+        test_labels = []
+        testlist = list_path + '/test_' + clases + '_' + audio_type + '_meta_data_fold' + str(k + 1) + '.json'
+        with open(testlist, 'r') as f:
+            data = json.load(f)
+            i = 0
+            for item in data['meta_data']:
+                file_name =item['path'].split("/")
+                test_files.append(item['path'].split("-"+audio_type)[0]+"/"+ file_name[len(file_name)-1])
+                
+                if item['label'] == '0':
+                    test_labels.append(0)
+                else:
+                    test_labels.append(1)
+                
+                name = os.path.basename(train_files[i])[:-4]
+                path_wav =train_files[i].split(name)[0]               
+                
+                for r, d, n in os.walk(path_wav):                                    
+                  for file in n:
+                    if "_LECTURA" in file:
+                        path = r + '/' + file
+                        print(str(i+1) + '. append: ' + file)                        
+                        audio = WAVE(path)
+                        audio_info = audio.info
+                        length = int(audio_info.length)
+                        hours, mins, seconds = audio_duration(length)
+                        data_processing['list'].append(path)
+                        data_processing['label'].append(item['label'])
+                        data_processing['time'].append(str(hours)+":"+str(mins)+":"+str(seconds))
+                i=i+1
+        f.close()
+
+        # 2. Load features: Train
+        # Get the same features.pkl for binaryclass and for multiclass
+        try:
+            audio_type_pkl = audio_type.split('multi_')[1]
+        except:
+            audio_type_pkl = audio_type
+        try:
+            label_csv = label.split('_Nomiss')[1]
+        except:
+            label_csv = label        
+
+        train_labels = np.array(train_labels)
+        
+        timepath = 'data/time/' + label
+        if not os.path.exists(timepath):
+            os.makedirs(timepath)
+        
+        df = pd.DataFrame(data_processing, columns = ['list','label','time'])
+        df.to_excel(str(timepath)+'/time_fold'+str(k)+'.xlsx', sheet_name='time_fold', index=False)
+        
+        
 # -----------------------------------------------------------------------------------------------------
 if __name__ == '__main__':
     args = sys.argv[1:]
