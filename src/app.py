@@ -21,11 +21,10 @@ def tiempo_total():
 
 
 if __name__ == '__main__':
-    #feature_smile() #ok
-    #make_model_svc() #ok
-    # make_model_flavio() #ok
-    #tiempo_total() #ok
+    feature_smile() #ok 1
+    make_model_flavio() #ok 2
+    #make_model_svc() #ok no es necesario
     
-    
+    #tiempo_total() #ok 3
     
     

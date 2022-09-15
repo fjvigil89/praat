@@ -212,17 +212,17 @@ def main(list_path=NULL, kfold=5, audio_type=NULL, cambia='viejo', clases='binar
     d = 1
     c = 1
     label = os.path.basename(list_path)
+    respath = 'data/result/' + label
+    if not os.path.exists(respath):
+        os.mkdir(respath)
 
-    result_log = 'results_' + label + '_' + clases + '_' + audio_type + '_' + ker + str(d) + 'c' + str(c) + '.log'
+    result_log = str(respath)+'/results_' + label + '_' + clases + '_' + audio_type + '_' + ker + str(d) + 'c' + str(c) + '.log'
     f = open(result_log, 'w+')
     f.write('Results Data:%s Features:Compare2016 %ifold, %s\n' % (label, kfold, audio_type))
     f.write('SVM Config: Kernel=%s, Degree=%i, C(tol)=%.2f \n' % (ker, d, c))
     f.close()
 
-    respath = 'data/result/' + label
-    if not os.path.exists(respath):
-        os.mkdir(respath)
-
+    
     score = np.zeros((13, kfold))
     score_oracle = np.zeros((13, kfold))
     # 1. Loading data from json list
@@ -565,11 +565,12 @@ def feature_smile(list_path, kfold, audio_type, cambia='viejo', clases='binaria'
             )
             for wav in train_files:
                 print(str(i) + ': Fold ' + str(k + 1) + ': ' + wav)
-                name = os.path.basename(wav)[:-4]                
+                name = os.path.basename(wav)[:-4]
+                fle= os.path.basename(wav)
                 path_wav =wav.split(name)[0]                                
                 for r, d, f in os.walk(path_wav):                                    
                   for file in f:
-                    if "_LECTURA" in file:
+                    if(str(file) == str(fle)):                        
                         path = r + '/' + file
                         print(str(i+1) + '. append: ' + file)
                         data.append(path)
@@ -596,8 +597,8 @@ def feature_smile(list_path, kfold, audio_type, cambia='viejo', clases='binaria'
         # Test
         test_labels = np.array(test_labels)
         testpath = 'data/features/' + label + '/test_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1) + '.pkl'
-        #testpath_csv = 'data/features/' + label + '/test_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1)
-        testpath_csv = 'data/features/' + label + '/test_' + clases + '_' + audio_type_pkl
+        testpath_csv = 'data/features/' + label + '/test_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1)
+        
         if os.path.exists(testpath) and cambia == 'viejo':
             with open(testpath, 'rb') as fid:
                 test_features = pickle.load(fid)
@@ -619,7 +620,7 @@ def feature_smile(list_path, kfold, audio_type, cambia='viejo', clases='binaria'
                 path_wav =wav.split(name)[0]                                
                 for r, d, f in os.walk(path_wav):                                    
                   for file in f:
-                    if "_LECTURA" in file:
+                    if(str(file) == str(fle)):                        
                         path = r + '/' + file
                         print(str(i+1) + '. append: ' + file)
                         data.append(path)

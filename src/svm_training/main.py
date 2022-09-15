@@ -12,12 +12,20 @@ from svm_training import Crea_list_kfold
 # os.chdir('../')
 
 
-base_train = 'thalento'  # 'Saarbruecken'     ''  # 'AVFAD' #   #
-base_test = 'thalento'  # 'thalento'
-tipo_signal = "D8_LECTURA" #'LECTURA'  # 'D8_LECTURA'
-tipo_signal_test = 'LECTURA'  # 'phrase_both'
-path_database="data/audio/thalento/"
-path_features="data/features/thalento/"
+# base_train = 'thalento'  # 'Saarbruecken'     ''  # 'AVFAD' #   #
+# base_test = 'thalento'  # 'thalento'
+# tipo_signal = "D8_LECTURA" #'LECTURA'  # 'D8_LECTURA'
+# tipo_signal_test = 'LECTURA'  # 'phrase_both'
+# path_database="data/audio/thalento/"
+# path_features="data/features/thalento/"
+# path_list_fold="data/lst/"
+
+base_train = "VOICED"   #'thalento'  # 'Saarbruecken'     ''  # 'AVFAD' #   #
+base_test = 'VOICED'  # 'thalento'
+tipo_signal = "phrase_both" #"D8_LECTURA" #'LECTURA'  # 'D8_LECTURA'
+tipo_signal_test = "phrase_both" #'LECTURA'  # 'phrase_both'
+path_database="data/audio/VOICED" #thalento/
+path_features="data/features/VOICED"  #thalento/
 path_list_fold="data/lst/"
 
 
