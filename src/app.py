@@ -19,12 +19,15 @@ def make_model_flavio():
 def tiempo_total():
     main.tiempo_total()
 
+def tiempo_total_pathology():
+    main.tiempo_total_pathology()
 
 if __name__ == '__main__':
-    feature_smile() #ok 1
-    make_model_flavio() #ok 2
-    #make_model_svc() #ok no es necesario
+    #feature_smile() #ok 1
+    #make_model_flavio() #ok 2
+    
     
     #tiempo_total() #ok 3
+    tiempo_total_pathology()
     
     

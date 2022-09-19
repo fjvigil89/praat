@@ -1,6 +1,9 @@
+from ast import And
 from asyncio.windows_events import NULL
+from functools import total_ordering
+from genericpath import isdir, isfile
 import sys, json, os, pickle, time
-
+import datetime
 # sys.path.append('src')
 
 import pandas as pd
@@ -755,7 +758,11 @@ def audio_duration(length):
     mins = length // 60  # calculate in minutes
     length %= 60
     seconds = length  # calculate in seconds
-  
+    
+    if mins < 10:
+        mins = '0'+str(mins)
+    if seconds < 10:
+        seconds = '0'+str(seconds)
     return hours, mins, seconds  # returns the duration
   
        
@@ -780,11 +787,11 @@ def tiempo_total(list_path, kfold,audio_type, clases='binaria'):
                     train_labels.append(1)
                 
                 name = os.path.basename(train_files[i])[:-4]
-                path_wav =train_files[i].split(name)[0]               
-                
+                fle= os.path.basename(train_files[i])
+                path_wav =train_files[i].split(name)[0]                
                 for r, d, n in os.walk(path_wav):                                    
-                  for file in n:
-                    if "_LECTURA" in file:
+                  for file in n:                      
+                    if(str(file) == str(fle)):  
                         path = r + '/' + file                                             
                         audio = WAVE(path)
                         audio_info = audio.info
@@ -813,12 +820,12 @@ def tiempo_total(list_path, kfold,audio_type, clases='binaria'):
                 else:
                     test_labels.append(1)
                 
-                name = os.path.basename(train_files[i])[:-4]
-                path_wav =train_files[i].split(name)[0]               
-                
+                name = os.path.basename(test_files[i])[:-4]
+                path_wav =test_files[i].split(name)[0]               
+                fle= os.path.basename(test_files[i])
                 for r, d, n in os.walk(path_wav):                                    
                   for file in n:
-                    if "_LECTURA" in file:
+                    if(str(file) == str(fle)):  
                         path = r + '/' + file
                         print(str(i+1) + '. append: ' + file)                        
                         audio = WAVE(path)
@@ -850,19 +857,59 @@ def tiempo_total(list_path, kfold,audio_type, clases='binaria'):
         
         df = pd.DataFrame(data_processing, columns = ['list','label','time'])
         df.to_excel(str(timepath)+'/time_fold'+str(k)+'.xlsx', sheet_name='time_fold', index=False)
-        
-        
-# -----------------------------------------------------------------------------------------------------
-if __name__ == '__main__':
-    args = sys.argv[1:]
-    if len(args) == 0:
-        print('audio_type (SVD): a_n, aiu, phrases, multi_a_n, multi_aiu, multi_phrases')
-        print(
-            'audio_type (AVFAD): aiu, phrases, read, spontaneous, multi_aiu, multi_phrases, multi_read, multi_spontaneous')
-        print('Usage: run_baseline.py list_path kfold audio_type')
-        print('Example: python run_baseline.py data/lst 5 phrase_both')
-    else:
-        list_path = args[0]
-        kfold = int(args[1])
-        audio_type = args[2]
-        main(list_path, kfold, audio_type)
+
+def tiempo_total_pathology(list_path, path_metadata):
+    label = os.path.basename(list_path)        
+    data_processing = {'list':[],'label':[],'time':[]}      
+    train_files = []
+    train_labels = []    
+    df = pd.read_excel (path_metadata , sheet_name= label)
+    df = df.assign(Time="0:00:00")   
+    df = df.assign(allTime="0:00:00") 
+    total_time= datetime.timedelta(hours=00,minutes=00,seconds=00)
+
+    i = 0
+    for item in df['File ID']:
+        if isdir(list_path+"/"+item):            
+            path= list_path+"/"+item
+            fle= item+"002.wav"        
+            for r, d, n in os.walk(path):    
+                for file in n:
+                    if(str(file) == str(fle)):  
+                        path = r + '/' + file                                             
+                        audio = WAVE(path)
+                        audio_info = audio.info
+                        length = int(audio_info.length)
+                        hours, mins, seconds = audio_duration(length)
+                        time = datetime.timedelta(hours=int(hours),minutes=int(mins),seconds=int(seconds))
+                        total_time=total_time+time
+                        print(file,' Total Duration: {}:{}:{}'.format(hours, mins, seconds))                                                        
+                        df['Time'][i]=str(hours)+":"+str(mins)+":"+str(seconds)
+        else:
+            fle= item+".wav"        
+            for r, d, n in os.walk(list_path):                                    
+                for file in n:
+                    if(str(file) == str(fle)):  
+                        path = r + '/' + file                                             
+                        audio = WAVE(path)
+                        audio_info = audio.info
+                        length = int(audio_info.length)
+                        hours, mins, seconds = audio_duration(length)
+                        time = datetime.timedelta(hours=int(hours),minutes=int(mins),seconds=int(seconds))
+                        total_time=total_time+time
+                        print(file,' Total Duration: {}:{}:{}'.format(hours, mins, seconds))                    
+                              
+                        df['Time'][i]=str(hours)+":"+str(mins)+":"+str(seconds)
+                    
+      
+                
+        i=i+1
+    
+    timepath = 'data/pathology/' + label
+    if not os.path.exists(timepath):
+        os.makedirs(timepath)
+    
+    
+    df['allTime']=str(total_time)
+    df.to_excel(str(timepath)+'/'+str(label)+'.xlsx', sheet_name=label, index=False)
+    print("tiempo total de las grabaciones de "+ label+":",total_time)   
