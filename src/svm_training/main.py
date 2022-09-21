@@ -16,18 +16,19 @@ from svm_training import Crea_list_kfold
 # base_test = 'thalento'  # 'thalento'
 # tipo_signal = "D8_LECTURA" #'LECTURA'  # 'D8_LECTURA'
 # tipo_signal_test = 'LECTURA'  # 'phrase_both'
-# path_database="data/audio/thalento/"
-# path_features="data/features/thalento/"
+# path_database="data/audio/thalento"
+# path_features="data/features/thalento"
 # path_list_fold="data/lst/"
+# path_metadata="data/pathology/thalento_metadata.xlsx"
 
-base_train = "VOICED"   #'thalento'  # 'Saarbruecken'     ''  # 'AVFAD' #   #
-base_test = 'VOICED'  # 'thalento'
-tipo_signal = "phrase_both" #"D8_LECTURA" #'LECTURA'  # 'D8_LECTURA'
-tipo_signal_test = "phrase_both" #'LECTURA'  # 'phrase_both'
-path_database="data/audio/VOICED" #thalento/
-path_features="data/features/VOICED"  #thalento/
-path_list_fold="data/lst/"
-path_metadata="data/pathology/VOICED_metadata.xlsx"
+# base_train = "VOICED"   #'thalento'  # 'Saarbruecken'     ''  # 'AVFAD' #   #
+# base_test = 'VOICED'  # 'thalento'
+# tipo_signal = "phrase_both" #"D8_LECTURA" #'LECTURA'  # 'D8_LECTURA'
+# tipo_signal_test = "phrase_both" #'LECTURA'  # 'phrase_both'
+# path_database="data/audio/VOICED" #thalento/
+# path_features="data/features/VOICED"  #thalento/
+# path_list_fold="data/lst/"
+# path_metadata="data/pathology/VOICED_metadata.xlsx"
 
 # base_train = "AVFAD"   #'thalento'  # 'Saarbruecken'     ''  # 'AVFAD' #   #
 # base_test = 'AVFAD'  # 'thalento'
@@ -37,6 +38,9 @@ path_metadata="data/pathology/VOICED_metadata.xlsx"
 # path_features="data/features/AVFAD"  #thalento/
 # path_list_fold="data/lst/"
 # path_metadata="data/pathology/AVFAD_metadata.xlsx"
+
+
+path_database="data/audio/Saarbruecken"
 
 # def run_compute():   
 #     #No funciona, preguntarle a Flavio 
@@ -69,3 +73,7 @@ def tiempo_total():
 
 def tiempo_total_pathology():
     run_baseline.tiempo_total_pathology(path_database, path_metadata)
+
+def tiempo_total_audio():
+    run_baseline.tiempo_total_audio(path_database)
+

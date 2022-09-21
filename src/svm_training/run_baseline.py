@@ -913,3 +913,24 @@ def tiempo_total_pathology(list_path, path_metadata):
     df['allTime']=str(total_time)
     df.to_excel(str(timepath)+'/'+str(label)+'.xlsx', sheet_name=label, index=False)
     print("tiempo total de las grabaciones de "+ label+":",total_time)   
+    
+def tiempo_total_audio(list_path):
+    label = os.path.basename(list_path)        
+    total_time= datetime.timedelta(hours=00,minutes=00,seconds=00)      
+    for r, d, n in os.walk(list_path):    
+        for file in n:
+            try:
+                if '.wav' in file:
+                    path = r + '/' + file
+                    audio = WAVE(path)
+                    audio_info = audio.info
+                    length = int(audio_info.length)
+                    hours, mins, seconds = audio_duration(length)
+                    time = datetime.timedelta(hours=int(hours),minutes=int(mins),seconds=int(seconds))
+                    total_time=total_time+time
+                    print(file,' Total Duration: {}:{}:{}'.format(hours, mins, seconds))    
+            except Exception as e:
+                print ("This is an error message!{}".format(e))
+                print("tiempo total de las grabaciones de "+ label+":",total_time)
+                pass
+    print("tiempo total de las grabaciones de "+ label+":",total_time)   
