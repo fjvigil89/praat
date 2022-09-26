@@ -1084,28 +1084,32 @@ def timeSaarbruecken(list_path, path_metadata, label):
     timeSystemic= datetime.timedelta(hours=00,minutes=00,seconds=00)
     listTime=[timeAbnomalie, timeControl,timeDysphonia, timeInflammatory,timeNeurology , timeOther,timeRecurrent , timeSpasmodic, timeSystemic ]
     i=0   
-    for item in df['File ID']:    
-        path= list_path
+    for item in df['File ID']:
+        print(df['PATHOLOGY'][i])
+        p= "PATH" if df['PATHOLOGY'][i]=='p' else "NORM"
+        g= "hombres" if df['GENDER'][i]=='m' else "mujeres"
+        path= list_path+"/"+p+"/"+g        
         timeperitem= datetime.timedelta(hours=00,minutes=00,seconds=00)
-        
+        index = df[df['File ID']==item].index.tolist()
         for r, d, n in os.walk(path):    
-            for file in n:
-                if '.wav' in file:            
-                    path = r + '/' + file                                             
-                    audio = WAVE(path)
-                    audio_info = audio.info
-                    length = int(audio_info.length)
-                    hours, mins, seconds = audio_duration(length)
-                    time = datetime.timedelta(hours=int(hours),minutes=int(mins),seconds=int(seconds))
-                    total_time=total_time+time
-                    timeperitem=timeperitem+time
-                    j=0
-                    for pathology in listPathology:
-                        if pathology == df["DETAIL_grupo"][i]:
-                            listTime[j]= listTime[j] + time                            
-                            break
-                        j=j+1
-                    #print(file,' Total Duration: {}:{}:{}'.format(hours, mins, seconds))
+            for file in n:                
+                if int(file.split("-")[0]) == item:
+                    if "-a_h.wav" in file  or "-a_l.wav" in file or "-a_lhl.wav" in file or "-a_n.wav" in file or "-i_h.wav" in file or "-i_l.wav" in file or "-i_lhl.wav" in file or "-i_n.wav" in file or "-phrase.wav" in file or "-u_h.wav" in file or "-u_l.wav" in file or "-u_lhl.wav" in file or "-u_n.wav" in file:
+                        path = r + '/' + file                                             
+                        audio = WAVE(path)
+                        audio_info = audio.info
+                        length = int(audio_info.length)
+                        hours, mins, seconds = audio_duration(length)
+                        time = datetime.timedelta(hours=int(hours),minutes=int(mins),seconds=int(seconds))
+                        total_time=total_time+time
+                        timeperitem=timeperitem+time
+                        j=0
+                        for pathology in listPathology:
+                            if pathology == df["DETAIL_grupo"][i]:
+                                listTime[j]= listTime[j] + time                            
+                                break
+                            j=j+1
+                        #print(file,' Total Duration: {}:{}:{}'.format(hours, mins, seconds))
                                                                            
         
         df['Time'][i]=str(timeperitem)
