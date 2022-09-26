@@ -39,8 +39,16 @@ from svm_training import Crea_list_kfold
 # path_list_fold="data/lst/"
 # path_metadata="data/pathology/AVFAD_metadata.xlsx"
 
-
+base_train = "Saarbruecken" 
+base_test = 'Saarbruecken'  
+tipo_signal = "phrase_both" 
+tipo_signal_test = "phrase_both"
 path_database="data/audio/Saarbruecken"
+path_features="data/features/Saarbruecken"
+path_list_fold="data/lst/"
+path_metadata="data/pathology/Saarbruecken_metadata.xlsx"
+
+
 
 # def run_compute():   
 #     #No funciona, preguntarle a Flavio 

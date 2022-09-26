@@ -2,6 +2,7 @@ from ast import And
 from asyncio.windows_events import NULL
 from functools import total_ordering
 from genericpath import isdir, isfile
+from multiprocessing.dummy import Array
 import sys, json, os, pickle, time
 import datetime
 # sys.path.append('src')
@@ -859,61 +860,286 @@ def tiempo_total(list_path, kfold,audio_type, clases='binaria'):
         df.to_excel(str(timepath)+'/time_fold'+str(k)+'.xlsx', sheet_name='time_fold', index=False)
 
 def tiempo_total_pathology(list_path, path_metadata):
-    label = os.path.basename(list_path)        
-    data_processing = {'list':[],'label':[],'time':[]}      
-    train_files = []
-    train_labels = []    
+    label = os.path.basename(list_path)            
+    if label == "AVFAD":
+        timeAVFAD(list_path , path_metadata, label)
+    if label == "VOICED":
+        timeVOICED(list_path , path_metadata, label)    
+    if label == "thalento":
+        timeTHALENTO(list_path , path_metadata, label)
+    if label == "Saarbruecken":
+        timeSaarbruecken(list_path , path_metadata, label)
+    
+        
+    
+def timeAVFAD(list_path, path_metadata, label):     
     df = pd.read_excel (path_metadata , sheet_name= label)
     df = df.assign(Time="0:00:00")   
     df = df.assign(allTime="0:00:00") 
     total_time= datetime.timedelta(hours=00,minutes=00,seconds=00)
-
-    i = 0
-    for item in df['File ID']:
-        if isdir(list_path+"/"+item):            
-            path= list_path+"/"+item
-            fle= item+"002.wav"        
-            for r, d, n in os.walk(path):    
-                for file in n:
-                    if(str(file) == str(fle)):  
-                        path = r + '/' + file                                             
-                        audio = WAVE(path)
-                        audio_info = audio.info
-                        length = int(audio_info.length)
-                        hours, mins, seconds = audio_duration(length)
-                        time = datetime.timedelta(hours=int(hours),minutes=int(mins),seconds=int(seconds))
-                        total_time=total_time+time
-                        print(file,' Total Duration: {}:{}:{}'.format(hours, mins, seconds))                                                        
-                        df['Time'][i]=str(hours)+":"+str(mins)+":"+str(seconds)
-        else:
-            fle= item+".wav"        
-            for r, d, n in os.walk(list_path):                                    
-                for file in n:
-                    if(str(file) == str(fle)):  
-                        path = r + '/' + file                                             
-                        audio = WAVE(path)
-                        audio_info = audio.info
-                        length = int(audio_info.length)
-                        hours, mins, seconds = audio_duration(length)
-                        time = datetime.timedelta(hours=int(hours),minutes=int(mins),seconds=int(seconds))
-                        total_time=total_time+time
-                        print(file,' Total Duration: {}:{}:{}'.format(hours, mins, seconds))                    
-                              
-                        df['Time'][i]=str(hours)+":"+str(mins)+":"+str(seconds)
-                    
-      
-                
-        i=i+1
     
     timepath = 'data/pathology/' + label
     if not os.path.exists(timepath):
         os.makedirs(timepath)
+    listPathology=["Abnormalities of the Vocal Fold", "control", "Dysphonia", "INFLAMMATORY CONDITIONS OF THE LARYNX", "OTHER DISORDERS AFFECTING VOICE", "Spasmodic Dysphonia"]
+    timeAbnomalie= datetime.timedelta(hours=00,minutes=00,seconds=00)
+    timeControl= datetime.timedelta(hours=00,minutes=00,seconds=00)
+    timeDysphonia= datetime.timedelta(hours=00,minutes=00,seconds=00)
+    timeInflammatory= datetime.timedelta(hours=00,minutes=00,seconds=00)
+    timeOther= datetime.timedelta(hours=00,minutes=00,seconds=00)
+    timeSpasmodic= datetime.timedelta(hours=00,minutes=00,seconds=00)
+    listTime=[timeAbnomalie, timeControl,timeDysphonia, timeInflammatory, timeOther, timeSpasmodic ]
+    i=0   
+    for item in df['File ID']:    
+        path= list_path+"/"+item       
+        timeperitem= datetime.timedelta(hours=00,minutes=00,seconds=00)
+        
+        for r, d, n in os.walk(path):    
+            for file in n:
+                if '.wav' in file:            
+                    path = r + '/' + file                                             
+                    audio = WAVE(path)
+                    audio_info = audio.info
+                    length = int(audio_info.length)
+                    hours, mins, seconds = audio_duration(length)
+                    time = datetime.timedelta(hours=int(hours),minutes=int(mins),seconds=int(seconds))
+                    total_time=total_time+time
+                    timeperitem=timeperitem+time
+                    j=0
+                    for pathology in listPathology:
+                        if pathology == df["CMVD-I word class"][i]:
+                            listTime[j]= listTime[j] + time                            
+                            break
+                        j=j+1
+                    #print(file,' Total Duration: {}:{}:{}'.format(hours, mins, seconds))
+                                                                           
+        
+        df['Time'][i]=str(timeperitem)
+        print(item, df['Time'][i])       
+        i=i+1
     
+    df['allTime']=" "
+    df["timeAbnomalie"]=" "
+    df["timeControl"]=" "
+    df["timeDysphonia"]=" "
+    df["timeInflammatory"]=" "
+    df["timeOther"]=" "
+    df["timeSpasmodic"]=" "
     
-    df['allTime']=str(total_time)
+    df['allTime'][0]=str(total_time)
+    df["timeAbnomalie"][0]=str(listTime[0])
+    df["timeControl"][0]=str(listTime[1])
+    df["timeDysphonia"][0]=str(listTime[2])
+    df["timeInflammatory"][0]=str(listTime[3])
+    df["timeOther"][0]=str(listTime[4])
+    df["timeSpasmodic"][0]=str(listTime[5])
+    
     df.to_excel(str(timepath)+'/'+str(label)+'.xlsx', sheet_name=label, index=False)
     print("tiempo total de las grabaciones de "+ label+":",total_time)   
+
+def timeVOICED(list_path, path_metadata, label):     
+    df = pd.read_excel (path_metadata , sheet_name= label)
+    df = df.assign(Time="0:00:00")   
+    df = df.assign(allTime="0:00:00") 
+    total_time= datetime.timedelta(hours=00,minutes=00,seconds=00)
     
+    timepath = 'data/pathology/' + label
+    if not os.path.exists(timepath):
+        os.makedirs(timepath)
+    listPathology=["Abnormalities of the Vocal Fold", "control", "Dysphonia", "INFLAMMATORY CONDITIONS OF THE LARYNX","Spasmodic Dysphonia"]
+    timeAbnomalie= datetime.timedelta(hours=00,minutes=00,seconds=00)
+    timeControl= datetime.timedelta(hours=00,minutes=00,seconds=00)
+    timeDysphonia= datetime.timedelta(hours=00,minutes=00,seconds=00)
+    timeInflammatory= datetime.timedelta(hours=00,minutes=00,seconds=00)    
+    timeSpasmodic= datetime.timedelta(hours=00,minutes=00,seconds=00)
+    listTime=[timeAbnomalie, timeControl,timeDysphonia, timeInflammatory, timeSpasmodic ]
+    i=0   
+    for item in df['File ID']:    
+        path= list_path   
+        timeperitem= datetime.timedelta(hours=00,minutes=00,seconds=00)
+        fle= item+".wav"                
+        for r, d, n in os.walk(path):    
+            for file in n:
+                if(str(file) == str(fle)):
+                    path = r + '/' + file                                             
+                    audio = WAVE(path)
+                    audio_info = audio.info
+                    length = int(audio_info.length)
+                    hours, mins, seconds = audio_duration(length)
+                    time = datetime.timedelta(hours=int(hours),minutes=int(mins),seconds=int(seconds))
+                    total_time=total_time+time
+                    timeperitem=timeperitem+time
+                    j=0
+                    for pathology in listPathology:
+                        if pathology == df["CMVD-I word class"][i]:
+                            listTime[j]= listTime[j] + time                            
+                            break
+                        j=j+1
+                    #print(file,' Total Duration: {}:{}:{}'.format(hours, mins, seconds))
+                                                                           
+        
+        df['Time'][i]=str(timeperitem)
+        print(item, df['Time'][i])       
+        i=i+1
+    
+    df['allTime']=" "
+    df["timeAbnomalie"]=" "
+    df["timeControl"]=" "
+    df["timeDysphonia"]=" "
+    df["timeInflammatory"]=" "    
+    df["timeSpasmodic"]=" "
+    
+    df['allTime'][0]=str(total_time)
+    df["timeAbnomalie"][0]=str(listTime[0])
+    df["timeControl"][0]=str(listTime[1])
+    df["timeDysphonia"][0]=str(listTime[2])
+    df["timeInflammatory"][0]=str(listTime[3])    
+    df["timeSpasmodic"][0]=str(listTime[4])
+    
+    df.to_excel(str(timepath)+'/'+str(label)+'.xlsx', sheet_name=label, index=False)
+    print("tiempo total de las grabaciones de "+ label+":",total_time)   
+
+def timeTHALENTO(list_path, path_metadata, label):     
+    df = pd.read_excel (path_metadata , sheet_name= label)
+    df = df.assign(Time="0:00:00")   
+    df = df.assign(allTime="0:00:00") 
+    total_time= datetime.timedelta(hours=00,minutes=00,seconds=00)
+    
+    timepath = 'data/pathology/' + label
+    if not os.path.exists(timepath):
+        os.makedirs(timepath)
+    listPathology=["Abnormalities of the Vocal Fold", "Control", "Disfonía", "INFLAMMATORY CONDITIONS OF THE LARYNX", "OTHER DISORDERS AFFECTING VOICE","Recurrent Paralysis"]
+    timeAbnomalie= datetime.timedelta(hours=00,minutes=00,seconds=00)
+    timeControl= datetime.timedelta(hours=00,minutes=00,seconds=00)
+    timeDysphonia= datetime.timedelta(hours=00,minutes=00,seconds=00)
+    timeInflammatory= datetime.timedelta(hours=00,minutes=00,seconds=00)    
+    timeOther= datetime.timedelta(hours=00,minutes=00,seconds=00)
+    timeRecurrente= datetime.timedelta(hours=00,minutes=00,seconds=00)
+    listTime=[timeAbnomalie, timeControl,timeDysphonia, timeInflammatory, timeOther, timeRecurrente ]
+    i=0   
+    for item in df['File ID']:    
+        path= list_path+"/"+item
+        timeperitem= datetime.timedelta(hours=00,minutes=00,seconds=00)                    
+        for r, d, n in os.walk(path):    
+            for file in n:
+                 if '.wav' in file:
+                    path = r + '/' + file                                             
+                    audio = WAVE(path)
+                    audio_info = audio.info
+                    length = int(audio_info.length)
+                    hours, mins, seconds = audio_duration(length)
+                    time = datetime.timedelta(hours=int(hours),minutes=int(mins),seconds=int(seconds))
+                    total_time=total_time+time
+                    timeperitem=timeperitem+time
+                    j=0
+                    for pathology in listPathology:
+                        if pathology == df["Group"][i]:
+                            listTime[j]= listTime[j] + time                            
+                            break
+                        j=j+1
+                    #print(file,' Total Duration: {}:{}:{}'.format(hours, mins, seconds))
+                                                                           
+        
+        df['Time'][i]=str(timeperitem)
+        print(item, df['Time'][i])       
+        i=i+1
+    
+    df['allTime']=" "
+    df["timeAbnomalie"]=" "
+    df["timeControl"]=" "
+    df["timeDysphonia"]=" "
+    df["timeInflammatory"]=" "    
+    df["timeOther"]=" " 
+    df["timeRecurrent"]=" "
+    
+    df['allTime'][0]=str(total_time)
+    df["timeAbnomalie"][0]=str(listTime[0])
+    df["timeControl"][0]=str(listTime[1])
+    df["timeDysphonia"][0]=str(listTime[2])
+    df["timeInflammatory"][0]=str(listTime[3]) 
+    df["timeOther"][0]=str(listTime[4])   
+    df["timeRecurrent"][0]=str(listTime[5])
+    
+    df.to_excel(str(timepath)+'/'+str(label)+'.xlsx', sheet_name=label, index=False)
+    print("tiempo total de las grabaciones de "+ label+":",total_time)                         
+
+def timeSaarbruecken(list_path, path_metadata, label):     
+    df = pd.read_excel (path_metadata , sheet_name= label)
+    df = df.assign(Time="0:00:00")   
+    df = df.assign(allTime="0:00:00") 
+    total_time= datetime.timedelta(hours=00,minutes=00,seconds=00)
+    
+    timepath = 'data/pathology/' + label
+    if not os.path.exists(timepath):
+        os.makedirs(timepath)
+    listPathology=["Abnormalities of the Vocal Fold", "control", "Dysphonia", "INFLAMMATORY CONDITIONS OF THE LARYNX", "NEUROLOGIC DISORDERS AFFECTING VOICE", "OTHER DISORDERS AFFECTING VOICE", "Recurrent Paralysis", "Spasmodic Dysphonia", "SYSTEMIC CONDITIONS AFFECTING VOICE"]
+    timeAbnomalie= datetime.timedelta(hours=00,minutes=00,seconds=00)
+    timeControl= datetime.timedelta(hours=00,minutes=00,seconds=00)
+    timeDysphonia= datetime.timedelta(hours=00,minutes=00,seconds=00)
+    timeInflammatory= datetime.timedelta(hours=00,minutes=00,seconds=00)
+    timeNeurology= datetime.timedelta(hours=00,minutes=00,seconds=00)
+    timeOther= datetime.timedelta(hours=00,minutes=00,seconds=00)
+    timeRecurrent= datetime.timedelta(hours=00,minutes=00,seconds=00)
+    timeSpasmodic= datetime.timedelta(hours=00,minutes=00,seconds=00)
+    timeSystemic= datetime.timedelta(hours=00,minutes=00,seconds=00)
+    listTime=[timeAbnomalie, timeControl,timeDysphonia, timeInflammatory,timeNeurology , timeOther,timeRecurrent , timeSpasmodic, timeSystemic ]
+    i=0   
+    for item in df['File ID']:    
+        path= list_path
+        timeperitem= datetime.timedelta(hours=00,minutes=00,seconds=00)
+        
+        for r, d, n in os.walk(path):    
+            for file in n:
+                if '.wav' in file:            
+                    path = r + '/' + file                                             
+                    audio = WAVE(path)
+                    audio_info = audio.info
+                    length = int(audio_info.length)
+                    hours, mins, seconds = audio_duration(length)
+                    time = datetime.timedelta(hours=int(hours),minutes=int(mins),seconds=int(seconds))
+                    total_time=total_time+time
+                    timeperitem=timeperitem+time
+                    j=0
+                    for pathology in listPathology:
+                        if pathology == df["DETAIL_grupo"][i]:
+                            listTime[j]= listTime[j] + time                            
+                            break
+                        j=j+1
+                    #print(file,' Total Duration: {}:{}:{}'.format(hours, mins, seconds))
+                                                                           
+        
+        df['Time'][i]=str(timeperitem)
+        print(item, df['Time'][i])       
+        i=i+1
+    
+    df['allTime']=" "
+    df["timeAbnomalie"]=" "
+    df["timeControl"]=" "
+    df["timeDysphonia"]=" "
+    df["timeInflammatory"]=" "
+    df["timeOther"]=" "
+    df["timeSpasmodic"]=" "
+    df["timeNeurology"]=" "
+    df["timeRecurrent"]=" "
+    df["timeSystemic"]=" "
+       
+    
+    df['allTime'][0]=str(total_time)
+    df["timeAbnomalie"][0]=str(listTime[0])
+    df["timeControl"][0]=str(listTime[1])
+    df["timeDysphonia"][0]=str(listTime[2])
+    df["timeInflammatory"][0]=str(listTime[3])
+    df["timeNeurology"][0]=str(listTime[4])
+    df["timeOther"][0]=str(listTime[5])
+    df["timeRecurrent"][0]=str(listTime[6])
+    df["timeSpasmodic"][0]=str(listTime[7])
+    df["timeSystemic"][0]=str(listTime[8])    
+   
+     
+    df.to_excel(str(timepath)+'/'+str(label)+'.xlsx', sheet_name=label, index=False)
+    print("tiempo total de las grabaciones de "+ label+":",total_time)   
+
+
 def tiempo_total_audio(list_path):
     label = os.path.basename(list_path)        
     total_time= datetime.timedelta(hours=00,minutes=00,seconds=00)      
@@ -934,3 +1160,6 @@ def tiempo_total_audio(list_path):
                 print("tiempo total de las grabaciones de "+ label+":",total_time)
                 pass
     print("tiempo total de las grabaciones de "+ label+":",total_time)   
+
+
+
