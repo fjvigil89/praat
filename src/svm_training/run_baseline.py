@@ -14,7 +14,7 @@ import csv
 import opensmile
 import mutagen
 from mutagen.wave import WAVE
-from svm_training import utils
+from svm_training import utils, db_avfad, db_voiced, db_thalento, db_saarbruecken
 #from utils import compute_score, zscore
 from collections import Counter
 
@@ -494,8 +494,8 @@ def crea_paquetes(list_path, kfold, audio_type, cambia='viejo', clases='binaria'
             fid.close()
 
 def feature_smile(list_path, kfold, audio_type, cambia='viejo', clases='binaria'):
-    label = os.path.basename(list_path)
-
+    label = os.path.basename(list_path)    
+            
     respath = 'data/result/' + label
     if not os.path.exists(respath):
         #os.mkdir(respath)
@@ -505,147 +505,157 @@ def feature_smile(list_path, kfold, audio_type, cambia='viejo', clases='binaria'
     if not os.path.exists(respath):
         #os.mkdir(respath)
         os.makedirs(respath, exist_ok=True)
+    
+    if label == "thalento":
+        db_thalento.featureTHALENTO(list_path,kfold, audio_type, label)
+    if label == "VOICED":
+        db_voiced.featureVOICED(list_path,kfold, audio_type, label)       
+    if label == "AVFAD":
+        db_avfad.featureAVFAD(list_path,kfold, audio_type, label)       
+    if label == "Saarbruecken":
+        db_saarbruecken.featureSaarbruecken(list_path,kfold, audio_type, label)   
+
     # 1. Loading data from json list    
-    for k in range(0, kfold):
-        tic = time.time()
-        train_files = []
-        train_labels = []
-        trainlist = list_path + '/train_' + clases + '_' + audio_type + '_meta_data_fold' + str(k + 1) + '.json'
-        with open(trainlist, 'r') as f:
-            data = json.load(f)
-            for item in data['meta_data']:
-                file_name =item['path'].split("/")
-                train_files.append(item['path'].split("-"+audio_type)[0]+"/"+ file_name[len(file_name)-1])
-                if item['label'] == '0':
-                    train_labels.append(0)
-                else:
-                    train_labels.append(1)
-        f.close()
+    # for k in range(0, kfold):
+    #     tic = time.time()
+    #     train_files = []
+    #     train_labels = []
+    #     trainlist = list_path + '/train_' + clases + '_' + audio_type + '_meta_data_fold' + str(k + 1) + '.json'
+    #     with open(trainlist, 'r') as f:
+    #         data = json.load(f)
+    #         for item in data['meta_data']:
+    #             file_name =item['path'].split("/")
+    #             train_files.append(item['path'].split("-"+audio_type)[0]+"/"+ file_name[len(file_name)-1])
+    #             if item['label'] == '0':
+    #                 train_labels.append(0)
+    #             else:
+    #                 train_labels.append(1)
+    #     f.close()
 
-        test_files = []
-        test_labels = []
-        testlist = list_path + '/test_' + clases + '_' + audio_type + '_meta_data_fold' + str(k + 1) + '.json'
-        with open(testlist, 'r') as f:
-            data = json.load(f)
-            for item in data['meta_data']:
-                file_name =item['path'].split("/")
-                test_files.append(item['path'].split("-"+audio_type)[0]+"/"+ file_name[len(file_name)-1])
+    #     test_files = []
+    #     test_labels = []
+    #     testlist = list_path + '/test_' + clases + '_' + audio_type + '_meta_data_fold' + str(k + 1) + '.json'
+    #     with open(testlist, 'r') as f:
+    #         data = json.load(f)
+    #         for item in data['meta_data']:
+    #             file_name =item['path'].split("/")
+    #             test_files.append(item['path'].split("-"+audio_type)[0]+"/"+ file_name[len(file_name)-1])
                 
-                if item['label'] == '0':
-                    test_labels.append(0)
-                else:
-                    test_labels.append(1)
-        f.close()
+    #             if item['label'] == '0':
+    #                 test_labels.append(0)
+    #             else:
+    #                 test_labels.append(1)
+    #     f.close()
 
-        # 2. Load features: Train
-        # Get the same features.pkl for binaryclass and for multiclass
-        try:
-            audio_type_pkl = audio_type.split('multi_')[1]
-        except:
-            audio_type_pkl = audio_type
-        try:
-            label_csv = label.split('_Nomiss')[1]
-        except:
-            label_csv = label        
+    #     # 2. Load features: Train
+    #     # Get the same features.pkl for binaryclass and for multiclass
+    #     try:
+    #         audio_type_pkl = audio_type.split('multi_')[1]
+    #     except:
+    #         audio_type_pkl = audio_type
+    #     try:
+    #         label_csv = label.split('_Nomiss')[1]
+    #     except:
+    #         label_csv = label        
 
-        train_labels = np.array(train_labels)
+    #     train_labels = np.array(train_labels)
 
-        trainpath = 'data/features/' + label + '/train_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1) + '.pkl'
-        trainpath_csv = 'data/features/' + label + '/train_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1)        
-        if os.path.exists(trainpath) and cambia == 'viejo':
-            with open(trainpath, 'rb') as fid:
-                train_features = pickle.load(fid)
-            fid.close()
-            print('Fold ' + str(k + 1) + ' Train: ' + str(train_features.shape))
-        else:
-            i = 0
-            train_features = []
-            data = []            
-            smile = opensmile.Smile(
-                feature_set=opensmile.FeatureSet.ComParE_2016,
-                feature_level=opensmile.FeatureLevel.Functionals,
-                loglevel=2,
-                logfile='smile.log',
-            )
-            for wav in train_files:
-                print(str(i) + ': Fold ' + str(k + 1) + ': ' + wav)
-                name = os.path.basename(wav)[:-4]
-                fle= os.path.basename(wav)
-                path_wav =wav.split(name)[0]                                
-                for r, d, f in os.walk(path_wav):                                    
-                  for file in f:
-                    if(str(file) == str(fle)):                        
-                        path = r + '/' + file
-                        print(str(i+1) + '. append: ' + file)
-                        data.append(path)
-                        print('Processing: ... ', name+'_smile.csv')
-                        feat_one = smile.process_file(path)                                    
-                        feat_one.to_csv('data/features/' + str(label)+"/" + str(name) +'_smile.csv')
-                i = i+1                          
+    #     trainpath = 'data/features/' + label + '/train_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1) + '.pkl'
+    #     trainpath_csv = 'data/features/' + label + '/train_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1)        
+    #     if os.path.exists(trainpath) and cambia == 'viejo':
+    #         with open(trainpath, 'rb') as fid:
+    #             train_features = pickle.load(fid)
+    #         fid.close()
+    #         print('Fold ' + str(k + 1) + ' Train: ' + str(train_features.shape))
+    #     else:
+    #         i = 0
+    #         train_features = []
+    #         data = []            
+    #         smile = opensmile.Smile(
+    #             feature_set=opensmile.FeatureSet.ComParE_2016,
+    #             feature_level=opensmile.FeatureLevel.Functionals,
+    #             loglevel=2,
+    #             logfile='smile.log',
+    #         )
+    #         for wav in train_files:
+    #             print(str(i) + ': Fold ' + str(k + 1) + ': ' + wav)
+    #             name = os.path.basename(wav)[:-4]
+    #             fle= os.path.basename(wav)
+    #             path_wav =wav.split(name)[0]                                
+    #             for r, d, f in os.walk(path_wav):                                    
+    #               for file in f:
+    #                 if(str(file) == str(fle)):                        
+    #                     path = r + '/' + file
+    #                     print(str(i+1) + '. append: ' + file)
+    #                     data.append(path)
+    #                     print('Processing: ... ', name+'_smile.csv')
+    #                     feat_one = smile.process_file(path)                                    
+    #                     feat_one.to_csv('data/features/' + str(label)+"/" + str(name) +'_smile.csv')
+    #             i = i+1                          
          
             
-            # read wav files and extract emobase features on that file
-            print('Processing: ... ')
-            feat = smile.process_files(data)            
-            train_features.append(feat.to_numpy()[3:])
+    #         # read wav files and extract emobase features on that file
+    #         print('Processing: ... ')
+    #         feat = smile.process_files(data)            
+    #         train_features.append(feat.to_numpy()[3:])
             
-            print('Saving: ... Train: ' + audio_type_pkl+'_smile.csv')
-            feat.to_csv(trainpath_csv+'_smile.csv')
+    #         print('Saving: ... Train: ' + audio_type_pkl+'_smile.csv')
+    #         feat.to_csv(trainpath_csv+'_smile.csv')
             
-            print('Train: ' + str(i))
-            train_features = np.array(train_features)
-            with open(trainpath, 'wb') as fid:
-                pickle.dump(train_features, fid, protocol=pickle.HIGHEST_PROTOCOL)
-            fid.close()
+    #         print('Train: ' + str(i))
+    #         train_features = np.array(train_features)
+    #         with open(trainpath, 'wb') as fid:
+    #             pickle.dump(train_features, fid, protocol=pickle.HIGHEST_PROTOCOL)
+    #         fid.close()
 
-        # Test
-        test_labels = np.array(test_labels)
-        testpath = 'data/features/' + label + '/test_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1) + '.pkl'
-        testpath_csv = 'data/features/' + label + '/test_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1)
+    #     # Test
+    #     test_labels = np.array(test_labels)
+    #     testpath = 'data/features/' + label + '/test_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1) + '.pkl'
+    #     testpath_csv = 'data/features/' + label + '/test_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1)
         
-        if os.path.exists(testpath) and cambia == 'viejo':
-            with open(testpath, 'rb') as fid:
-                test_features = pickle.load(fid)
-            print('Fold ' + str(k + 1) + ' Test: ' + str(test_features.shape))
-            fid.close()
-        else:
-            i = 0
-            test_features = []
-            data = []
-            smile = opensmile.Smile(
-                feature_set=opensmile.FeatureSet.ComParE_2016,
-                feature_level=opensmile.FeatureLevel.Functionals,
-                loglevel=2,
-                logfile='smile.log',
-            )
-            for wav in test_files:
-                print(str(i) + ': Fold ' + str(k + 1) + ': ' + wav)
-                name = os.path.basename(wav)[:-4]
-                path_wav =wav.split(name)[0]                                
-                for r, d, f in os.walk(path_wav):                                    
-                  for file in f:
-                    if(str(file) == str(fle)):                        
-                        path = r + '/' + file
-                        print(str(i+1) + '. append: ' + file)
-                        data.append(path)
-                        print('Processing: ... ', name+'_smile.csv')
-                        feat_one = smile.process_file(path)                                    
-                        feat_one.to_csv('data/features/' + str(label)+"/" + str(name) +'_smile.csv')
-                i = i+1                   
+    #     if os.path.exists(testpath) and cambia == 'viejo':
+    #         with open(testpath, 'rb') as fid:
+    #             test_features = pickle.load(fid)
+    #         print('Fold ' + str(k + 1) + ' Test: ' + str(test_features.shape))
+    #         fid.close()
+    #     else:
+    #         i = 0
+    #         test_features = []
+    #         data = []
+    #         smile = opensmile.Smile(
+    #             feature_set=opensmile.FeatureSet.ComParE_2016,
+    #             feature_level=opensmile.FeatureLevel.Functionals,
+    #             loglevel=2,
+    #             logfile='smile.log',
+    #         )
+    #         for wav in test_files:
+    #             print(str(i) + ': Fold ' + str(k + 1) + ': ' + wav)
+    #             name = os.path.basename(wav)[:-4]
+    #             path_wav =wav.split(name)[0]                                
+    #             for r, d, f in os.walk(path_wav):                                    
+    #               for file in f:
+    #                 if(str(file) == str(fle)):                        
+    #                     path = r + '/' + file
+    #                     print(str(i+1) + '. append: ' + file)
+    #                     data.append(path)
+    #                     print('Processing: ... ', name+'_smile.csv')
+    #                     feat_one = smile.process_file(path)                                    
+    #                     feat_one.to_csv('data/features/' + str(label)+"/" + str(name) +'_smile.csv')
+    #             i = i+1                   
             
-             # read wav files and extract emobase features on that file
-            print('Processing: ... ')
-            feat = smile.process_files(data)            
-            test_features.append(feat.to_numpy()[3:])
+    #          # read wav files and extract emobase features on that file
+    #         print('Processing: ... ')
+    #         feat = smile.process_files(data)            
+    #         test_features.append(feat.to_numpy()[3:])
             
-            print('Saving: ... Test: ' + audio_type_pkl+'_smile.csv')
-            feat.to_csv(testpath_csv+'_smile.csv')
+    #         print('Saving: ... Test: ' + audio_type_pkl+'_smile.csv')
+    #         feat.to_csv(testpath_csv+'_smile.csv')
             
-            print('Test: ' + str(i))
-            test_features = np.array(test_features)
-            with open(testpath, 'wb') as fid:
-                pickle.dump(test_features, fid, protocol=pickle.HIGHEST_PROTOCOL)
-            fid.close()
+    #         print('Test: ' + str(i))
+    #         test_features = np.array(test_features)
+    #         with open(testpath, 'wb') as fid:
+    #             pickle.dump(test_features, fid, protocol=pickle.HIGHEST_PROTOCOL)
+    #         fid.close()
 
 ### Describir metodo
 def svm_binario(list_path, kfold,audio_type, clases='binaria'):
@@ -751,21 +761,6 @@ def svm_binario(list_path, kfold,audio_type, clases='binaria'):
         df.to_excel(str(exppath)+'/svm_binario_fold'+str(nfold)+'.xlsx', sheet_name='svm_binario', index=False)
         nfold -= 1 
 
-# function to convert the information into 
-# some readable format
-def audio_duration(length):
-    hours = length // 3600  # calculate in hours
-    length %= 3600
-    mins = length // 60  # calculate in minutes
-    length %= 60
-    seconds = length  # calculate in seconds
-    
-    if mins < 10:
-        mins = '0'+str(mins)
-    if seconds < 10:
-        seconds = '0'+str(seconds)
-    return hours, mins, seconds  # returns the duration
-  
        
 def tiempo_total(list_path, kfold,audio_type, clases='binaria'):
     label = os.path.basename(list_path)
@@ -862,286 +857,14 @@ def tiempo_total(list_path, kfold,audio_type, clases='binaria'):
 def tiempo_total_pathology(list_path, path_metadata):
     label = os.path.basename(list_path)            
     if label == "AVFAD":
-        timeAVFAD(list_path , path_metadata, label)
+        db_avfad.timeAVFAD(list_path , path_metadata, label)
     if label == "VOICED":
-        timeVOICED(list_path , path_metadata, label)    
+        db_voiced.timeVOICED(list_path , path_metadata, label)    
     if label == "thalento":
-        timeTHALENTO(list_path , path_metadata, label)
+        db_thalento.timeTHALENTO(list_path , path_metadata, label)
     if label == "Saarbruecken":
-        timeSaarbruecken(list_path , path_metadata, label)
+        db_saarbruecken.timeSaarbruecken(list_path , path_metadata, label)
     
-        
-    
-def timeAVFAD(list_path, path_metadata, label):     
-    df = pd.read_excel (path_metadata , sheet_name= label)
-    df = df.assign(Time="0:00:00")   
-    df = df.assign(allTime="0:00:00") 
-    total_time= datetime.timedelta(hours=00,minutes=00,seconds=00)
-    
-    timepath = 'data/pathology/' + label
-    if not os.path.exists(timepath):
-        os.makedirs(timepath)
-    listPathology=["Abnormalities of the Vocal Fold", "control", "Dysphonia", "INFLAMMATORY CONDITIONS OF THE LARYNX", "OTHER DISORDERS AFFECTING VOICE", "Spasmodic Dysphonia"]
-    timeAbnomalie= datetime.timedelta(hours=00,minutes=00,seconds=00)
-    timeControl= datetime.timedelta(hours=00,minutes=00,seconds=00)
-    timeDysphonia= datetime.timedelta(hours=00,minutes=00,seconds=00)
-    timeInflammatory= datetime.timedelta(hours=00,minutes=00,seconds=00)
-    timeOther= datetime.timedelta(hours=00,minutes=00,seconds=00)
-    timeSpasmodic= datetime.timedelta(hours=00,minutes=00,seconds=00)
-    listTime=[timeAbnomalie, timeControl,timeDysphonia, timeInflammatory, timeOther, timeSpasmodic ]
-    i=0   
-    for item in df['File ID']:    
-        path= list_path+"/"+item       
-        timeperitem= datetime.timedelta(hours=00,minutes=00,seconds=00)
-        
-        for r, d, n in os.walk(path):    
-            for file in n:
-                if '.wav' in file:            
-                    path = r + '/' + file                                             
-                    audio = WAVE(path)
-                    audio_info = audio.info
-                    length = int(audio_info.length)
-                    hours, mins, seconds = audio_duration(length)
-                    time = datetime.timedelta(hours=int(hours),minutes=int(mins),seconds=int(seconds))
-                    total_time=total_time+time
-                    timeperitem=timeperitem+time
-                    j=0
-                    for pathology in listPathology:
-                        if pathology == df["CMVD-I word class"][i]:
-                            listTime[j]= listTime[j] + time                            
-                            break
-                        j=j+1
-                    #print(file,' Total Duration: {}:{}:{}'.format(hours, mins, seconds))
-                                                                           
-        
-        df['Time'][i]=str(timeperitem)
-        print(item, df['Time'][i])       
-        i=i+1
-    
-    df['allTime']=" "
-    df["timeAbnomalie"]=" "
-    df["timeControl"]=" "
-    df["timeDysphonia"]=" "
-    df["timeInflammatory"]=" "
-    df["timeOther"]=" "
-    df["timeSpasmodic"]=" "
-    
-    df['allTime'][0]=str(total_time)
-    df["timeAbnomalie"][0]=str(listTime[0])
-    df["timeControl"][0]=str(listTime[1])
-    df["timeDysphonia"][0]=str(listTime[2])
-    df["timeInflammatory"][0]=str(listTime[3])
-    df["timeOther"][0]=str(listTime[4])
-    df["timeSpasmodic"][0]=str(listTime[5])
-    
-    df.to_excel(str(timepath)+'/'+str(label)+'.xlsx', sheet_name=label, index=False)
-    print("tiempo total de las grabaciones de "+ label+":",total_time)   
-
-def timeVOICED(list_path, path_metadata, label):     
-    df = pd.read_excel (path_metadata , sheet_name= label)
-    df = df.assign(Time="0:00:00")   
-    df = df.assign(allTime="0:00:00") 
-    total_time= datetime.timedelta(hours=00,minutes=00,seconds=00)
-    
-    timepath = 'data/pathology/' + label
-    if not os.path.exists(timepath):
-        os.makedirs(timepath)
-    listPathology=["Abnormalities of the Vocal Fold", "control", "Dysphonia", "INFLAMMATORY CONDITIONS OF THE LARYNX","Spasmodic Dysphonia"]
-    timeAbnomalie= datetime.timedelta(hours=00,minutes=00,seconds=00)
-    timeControl= datetime.timedelta(hours=00,minutes=00,seconds=00)
-    timeDysphonia= datetime.timedelta(hours=00,minutes=00,seconds=00)
-    timeInflammatory= datetime.timedelta(hours=00,minutes=00,seconds=00)    
-    timeSpasmodic= datetime.timedelta(hours=00,minutes=00,seconds=00)
-    listTime=[timeAbnomalie, timeControl,timeDysphonia, timeInflammatory, timeSpasmodic ]
-    i=0   
-    for item in df['File ID']:    
-        path= list_path   
-        timeperitem= datetime.timedelta(hours=00,minutes=00,seconds=00)
-        fle= item+".wav"                
-        for r, d, n in os.walk(path):    
-            for file in n:
-                if(str(file) == str(fle)):
-                    path = r + '/' + file                                             
-                    audio = WAVE(path)
-                    audio_info = audio.info
-                    length = int(audio_info.length)
-                    hours, mins, seconds = audio_duration(length)
-                    time = datetime.timedelta(hours=int(hours),minutes=int(mins),seconds=int(seconds))
-                    total_time=total_time+time
-                    timeperitem=timeperitem+time
-                    j=0
-                    for pathology in listPathology:
-                        if pathology == df["CMVD-I word class"][i]:
-                            listTime[j]= listTime[j] + time                            
-                            break
-                        j=j+1
-                    #print(file,' Total Duration: {}:{}:{}'.format(hours, mins, seconds))
-                                                                           
-        
-        df['Time'][i]=str(timeperitem)
-        print(item, df['Time'][i])       
-        i=i+1
-    
-    df['allTime']=" "
-    df["timeAbnomalie"]=" "
-    df["timeControl"]=" "
-    df["timeDysphonia"]=" "
-    df["timeInflammatory"]=" "    
-    df["timeSpasmodic"]=" "
-    
-    df['allTime'][0]=str(total_time)
-    df["timeAbnomalie"][0]=str(listTime[0])
-    df["timeControl"][0]=str(listTime[1])
-    df["timeDysphonia"][0]=str(listTime[2])
-    df["timeInflammatory"][0]=str(listTime[3])    
-    df["timeSpasmodic"][0]=str(listTime[4])
-    
-    df.to_excel(str(timepath)+'/'+str(label)+'.xlsx', sheet_name=label, index=False)
-    print("tiempo total de las grabaciones de "+ label+":",total_time)   
-
-def timeTHALENTO(list_path, path_metadata, label):     
-    df = pd.read_excel (path_metadata , sheet_name= label)
-    df = df.assign(Time="0:00:00")   
-    df = df.assign(allTime="0:00:00") 
-    total_time= datetime.timedelta(hours=00,minutes=00,seconds=00)
-    
-    timepath = 'data/pathology/' + label
-    if not os.path.exists(timepath):
-        os.makedirs(timepath)
-    listPathology=["Abnormalities of the Vocal Fold", "Control", "Disfonía", "INFLAMMATORY CONDITIONS OF THE LARYNX", "OTHER DISORDERS AFFECTING VOICE","Recurrent Paralysis"]
-    timeAbnomalie= datetime.timedelta(hours=00,minutes=00,seconds=00)
-    timeControl= datetime.timedelta(hours=00,minutes=00,seconds=00)
-    timeDysphonia= datetime.timedelta(hours=00,minutes=00,seconds=00)
-    timeInflammatory= datetime.timedelta(hours=00,minutes=00,seconds=00)    
-    timeOther= datetime.timedelta(hours=00,minutes=00,seconds=00)
-    timeRecurrente= datetime.timedelta(hours=00,minutes=00,seconds=00)
-    listTime=[timeAbnomalie, timeControl,timeDysphonia, timeInflammatory, timeOther, timeRecurrente ]
-    i=0   
-    for item in df['File ID']:    
-        path= list_path+"/"+item
-        timeperitem= datetime.timedelta(hours=00,minutes=00,seconds=00)                    
-        for r, d, n in os.walk(path):    
-            for file in n:
-                 if '.wav' in file:
-                    path = r + '/' + file                                             
-                    audio = WAVE(path)
-                    audio_info = audio.info
-                    length = int(audio_info.length)
-                    hours, mins, seconds = audio_duration(length)
-                    time = datetime.timedelta(hours=int(hours),minutes=int(mins),seconds=int(seconds))
-                    total_time=total_time+time
-                    timeperitem=timeperitem+time
-                    j=0
-                    for pathology in listPathology:
-                        if pathology == df["Group"][i]:
-                            listTime[j]= listTime[j] + time                            
-                            break
-                        j=j+1
-                    #print(file,' Total Duration: {}:{}:{}'.format(hours, mins, seconds))
-                                                                           
-        
-        df['Time'][i]=str(timeperitem)
-        print(item, df['Time'][i])       
-        i=i+1
-    
-    df['allTime']=" "
-    df["timeAbnomalie"]=" "
-    df["timeControl"]=" "
-    df["timeDysphonia"]=" "
-    df["timeInflammatory"]=" "    
-    df["timeOther"]=" " 
-    df["timeRecurrent"]=" "
-    
-    df['allTime'][0]=str(total_time)
-    df["timeAbnomalie"][0]=str(listTime[0])
-    df["timeControl"][0]=str(listTime[1])
-    df["timeDysphonia"][0]=str(listTime[2])
-    df["timeInflammatory"][0]=str(listTime[3]) 
-    df["timeOther"][0]=str(listTime[4])   
-    df["timeRecurrent"][0]=str(listTime[5])
-    
-    df.to_excel(str(timepath)+'/'+str(label)+'.xlsx', sheet_name=label, index=False)
-    print("tiempo total de las grabaciones de "+ label+":",total_time)                         
-
-def timeSaarbruecken(list_path, path_metadata, label):     
-    df = pd.read_excel (path_metadata , sheet_name= label)
-    df = df.assign(Time="0:00:00")   
-    df = df.assign(allTime="0:00:00") 
-    total_time= datetime.timedelta(hours=00,minutes=00,seconds=00)
-    
-    timepath = 'data/pathology/' + label
-    if not os.path.exists(timepath):
-        os.makedirs(timepath)
-    listPathology=["Abnormalities of the Vocal Fold", "control", "Dysphonia", "INFLAMMATORY CONDITIONS OF THE LARYNX", "NEUROLOGIC DISORDERS AFFECTING VOICE", "OTHER DISORDERS AFFECTING VOICE", "Recurrent Paralysis", "Spasmodic Dysphonia", "SYSTEMIC CONDITIONS AFFECTING VOICE"]
-    timeAbnomalie= datetime.timedelta(hours=00,minutes=00,seconds=00)
-    timeControl= datetime.timedelta(hours=00,minutes=00,seconds=00)
-    timeDysphonia= datetime.timedelta(hours=00,minutes=00,seconds=00)
-    timeInflammatory= datetime.timedelta(hours=00,minutes=00,seconds=00)
-    timeNeurology= datetime.timedelta(hours=00,minutes=00,seconds=00)
-    timeOther= datetime.timedelta(hours=00,minutes=00,seconds=00)
-    timeRecurrent= datetime.timedelta(hours=00,minutes=00,seconds=00)
-    timeSpasmodic= datetime.timedelta(hours=00,minutes=00,seconds=00)
-    timeSystemic= datetime.timedelta(hours=00,minutes=00,seconds=00)
-    listTime=[timeAbnomalie, timeControl,timeDysphonia, timeInflammatory,timeNeurology , timeOther,timeRecurrent , timeSpasmodic, timeSystemic ]
-    i=0   
-    for item in df['File ID']:
-        print(df['PATHOLOGY'][i])
-        p= "PATH" if df['PATHOLOGY'][i]=='p' else "NORM"
-        g= "hombres" if df['GENDER'][i]=='m' else "mujeres"
-        path= list_path+"/"+p+"/"+g        
-        timeperitem= datetime.timedelta(hours=00,minutes=00,seconds=00)
-        index = df[df['File ID']==item].index.tolist()
-        for r, d, n in os.walk(path):    
-            for file in n:                
-                if int(file.split("-")[0]) == item:
-                    if "-a_h.wav" in file  or "-a_l.wav" in file or "-a_lhl.wav" in file or "-a_n.wav" in file or "-i_h.wav" in file or "-i_l.wav" in file or "-i_lhl.wav" in file or "-i_n.wav" in file or "-phrase.wav" in file or "-u_h.wav" in file or "-u_l.wav" in file or "-u_lhl.wav" in file or "-u_n.wav" in file:
-                        path = r + '/' + file                                             
-                        audio = WAVE(path)
-                        audio_info = audio.info
-                        length = int(audio_info.length)
-                        hours, mins, seconds = audio_duration(length)
-                        time = datetime.timedelta(hours=int(hours),minutes=int(mins),seconds=int(seconds))
-                        total_time=total_time+time
-                        timeperitem=timeperitem+time
-                        j=0
-                        for pathology in listPathology:
-                            if pathology == df["DETAIL_grupo"][i]:
-                                listTime[j]= listTime[j] + time                            
-                                break
-                            j=j+1
-                        #print(file,' Total Duration: {}:{}:{}'.format(hours, mins, seconds))
-                                                                           
-        
-        df['Time'][i]=str(timeperitem)
-        print(item, df['Time'][i])       
-        i=i+1
-    
-    df['allTime']=" "
-    df["timeAbnomalie"]=" "
-    df["timeControl"]=" "
-    df["timeDysphonia"]=" "
-    df["timeInflammatory"]=" "
-    df["timeOther"]=" "
-    df["timeSpasmodic"]=" "
-    df["timeNeurology"]=" "
-    df["timeRecurrent"]=" "
-    df["timeSystemic"]=" "
-       
-    
-    df['allTime'][0]=str(total_time)
-    df["timeAbnomalie"][0]=str(listTime[0])
-    df["timeControl"][0]=str(listTime[1])
-    df["timeDysphonia"][0]=str(listTime[2])
-    df["timeInflammatory"][0]=str(listTime[3])
-    df["timeNeurology"][0]=str(listTime[4])
-    df["timeOther"][0]=str(listTime[5])
-    df["timeRecurrent"][0]=str(listTime[6])
-    df["timeSpasmodic"][0]=str(listTime[7])
-    df["timeSystemic"][0]=str(listTime[8])    
-   
-     
-    df.to_excel(str(timepath)+'/'+str(label)+'.xlsx', sheet_name=label, index=False)
-    print("tiempo total de las grabaciones de "+ label+":",total_time)   
 
 
 def tiempo_total_audio(list_path):

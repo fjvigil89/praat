@@ -27,10 +27,11 @@ def tiempo_total_audio():
 
 
 if __name__ == '__main__':
+    crea_kfold()
     #feature_smile() #ok 1
     #make_model_flavio() #ok 2
     #tiempo_total() #ok 3
-    tiempo_total_pathology()# solo VOICE y AVFAD , Thalento
+    #tiempo_total_pathology()# solo VOICE y AVFAD , Thalento
     #tiempo_total_audio()
     
     #sumadetime()
