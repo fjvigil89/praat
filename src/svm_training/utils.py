@@ -93,11 +93,11 @@ def compute_score(model, test_lbltrue, test_lblpredict, test_features, roc=False
     
 def compute_score_multiclass(test_lbltrue, test_lblpredict, data, resumen):
     
-    labelsnames = data['labels'].keys()
-    lbl = {}
-    for i in labelsnames:
-        lbl[data['labels'][i]] = i
-
+    # labelsnames = data['labels'].keys()
+    # lbl = {}
+    # for i in labelsnames:
+    #     lbl[data['labels'][i]] = i
+    lbl = data
     aux1 = set(unique_labels(test_lbltrue, test_lblpredict))
     aux2 = set(np.unique(test_lbltrue))
     while aux1 != aux2:
@@ -111,9 +111,10 @@ def compute_score_multiclass(test_lbltrue, test_lblpredict, data, resumen):
 
 
     labels = np.unique(test_lbltrue)
-    target_names = []
-    for i in labels:
-        target_names.append(lbl[i])
+    #target_names = []
+    target_names = data
+    # for i in labels:
+    #     target_names.append(lbl[i])
 
     out = classification_report(test_lbltrue, test_lblpredict, labels=labels, target_names=target_names, output_dict = resumen, zero_division=0)
 

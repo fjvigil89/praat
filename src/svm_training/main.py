@@ -12,14 +12,14 @@ from svm_training import Crea_list_kfold
 # os.chdir('../')
 
 
-base_train = 'thalento'  # 'Saarbruecken'     ''  # 'AVFAD' #   #
-base_test = 'thalento'  # 'thalento'
-tipo_signal = "D8_LECTURA" #'LECTURA'  # 'D8_LECTURA'
-tipo_signal_test = 'LECTURA'  # 'phrase_both'
-path_database="data/audio/thalento"
-path_features="data/features/thalento"
-path_list_fold="data/lst/"
-path_metadata="data/pathology/thalento_metadata.xlsx"
+# base_train = 'thalento'  # 'Saarbruecken'     ''  # 'AVFAD' #   #
+# base_test = 'thalento'  # 'thalento'
+# tipo_signal = "D8_LECTURA" #'LECTURA'  # 'D8_LECTURA'
+# tipo_signal_test = 'LECTURA'  # 'phrase_both'
+# path_database="data/audio/thalento"
+# path_features="data/features/thalento"
+# path_list_fold="data/lst/"
+# path_metadata="data/pathology/thalento_metadata.xlsx"
 
 # base_train = "VOICED"   #'thalento'  # 'Saarbruecken'     ''  # 'AVFAD' #   #
 # base_test = 'VOICED'  # 'thalento'
@@ -30,6 +30,7 @@ path_metadata="data/pathology/thalento_metadata.xlsx"
 # path_list_fold="data/lst/"
 # path_metadata="data/pathology/VOICED_metadata.xlsx"
 
+####### No esta funcionando las listas para sacar los parametros
 # base_train = "AVFAD"   #'thalento'  # 'Saarbruecken'     ''  # 'AVFAD' #   #
 # base_test = 'AVFAD'  # 'thalento'
 # tipo_signal = "phrase_both" #"D8_LECTURA" #'LECTURA'  # 'D8_LECTURA'
@@ -39,14 +40,14 @@ path_metadata="data/pathology/thalento_metadata.xlsx"
 # path_list_fold="data/lst/"
 # path_metadata="data/pathology/AVFAD_metadata.xlsx"
 
-# base_train = "Saarbruecken" 
-# base_test = 'Saarbruecken'  
-# tipo_signal = "phrase_both" 
-# tipo_signal_test = "phrase_both"
-# path_database="data/audio/Saarbruecken"
-# path_features="data/features/Saarbruecken"
-# path_list_fold="data/lst/"
-# path_metadata="data/pathology/Saarbruecken_metadata.xlsx"
+base_train = "Saarbruecken" 
+base_test = 'Saarbruecken'  
+tipo_signal = "phrase_both" 
+tipo_signal_test = "phrase_both"
+path_database="data/audio/Saarbruecken"
+path_features="data/features/Saarbruecken"
+path_list_fold="data/lst/"
+path_metadata="data/pathology/Saarbruecken_metadata.xlsx"
 
 
 

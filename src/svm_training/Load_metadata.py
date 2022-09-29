@@ -70,9 +70,10 @@ def arregla_base(path_metadata):
     new_df.to_excel('D:\Gabriel\Bases\Saarbruecken\metadata_new_new.xlsx', sheet_name='sheet1', index=False)
 
 
-def main(path_metadata):
+def main(path_metadata, label="Sheet1"):    
+    #esto solo funciona para THALENTO y VOICED
     print(pathlib.Path(__file__).parent.absolute())
-    df = pd.read_excel(path_metadata, sheet_name='sheet1')
+    df = pd.read_excel(path_metadata, sheet_name=label)
     dict_info_signal = {}
     for ind, row in df.iterrows():
         dict_info_signal[row[0]] = {'spk': row[3], 'Path': row [1], 'age': row[5], 'gender': row[4], 'tipo': row[7]}
