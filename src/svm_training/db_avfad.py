@@ -5,7 +5,7 @@ from genericpath import isdir, isfile
 from multiprocessing.dummy import Array
 import sys, json, os, pickle, time
 import datetime
-# sys.path.append('src')
+from sklearn.model_selection import GroupKFold, StratifiedGroupKFold
 
 import pandas as pd
 import numpy as np
@@ -14,8 +14,7 @@ import csv
 import opensmile
 import mutagen
 from mutagen.wave import WAVE
-from svm_training import utils
-#from utils import compute_score, zscore
+from svm_training import utils, db_avfad, db_voiced, db_thalento, db_saarbruecken, Load_metadata as db
 from collections import Counter
 
 # function to convert the information into 
@@ -403,3 +402,201 @@ def svmAVFAD(list_path,kfold, audio_type, label):
          np.mean(score[11, :]), np.mean(score[12, :])))
     f.close()
 
+def binaria_Cross_validation(sesion):
+    list_muestras = []
+    list_clases = []
+    list_grupos = []
+    dict_clases = {"NORM": '0', "PATH": '1'}
+    for j in sesion:
+        list_muestras.append(j)
+        list_grupos.append(sesion[j]['group'])
+        if sesion[j]['group'] == 0:
+            list_clases.append('0')
+        else:
+            list_clases.append('1')        
+            
+    return list_muestras, list_clases, list_grupos, dict_clases
+
+def multi_Cross_validation(sesion):
+    list_muestras = []
+    list_clases = []
+    list_grupos = []
+    dict_clases = {}
+    for j in sesion:
+        list_muestras.append(j)
+        list_grupos.append(sesion[j]['group'])        
+        
+        dict_clases[sesion[j]['pathology']] = sesion[j]['group']
+        list_clases.append(sesion[j]['group'])
+        
+            
+    return list_muestras, list_clases, list_grupos, dict_clases
+
+def StratifiedGroupKFold_G(X, y, groups, kfold = 5):
+    sgkf = StratifiedGroupKFold(n_splits = kfold)
+    dict_fold = {};
+    i = 0
+    for train, test in sgkf.split(X, y, groups=groups):
+        dict_fold['fold' + str(i)] = {'train': train, 'test': test}
+        i = i + 1
+        #print("%s %s" % (train, test))
+    return dict_fold
+
+def salva_fold_binaria(muestras_train, list_clases_train, muestras_test, list_clases_test, dict_info_signal, dict_clases, name_base, grabacion, genero):
+    fold_train = {}; fold_test = {}; tipo_clases = {}
+    
+    tipo = "phrase"  if grabacion.replace('_both','') == "phrase" else  grabacion.replace('_both','')
+    fold_train = {"labels": dict_clases, "meta_data": []}
+    fold_test = {"labels": dict_clases, "meta_data": []}
+
+    train = fold_train['meta_data']
+    test = fold_test['meta_data']
+    vowels=[]
+    index = 0
+    for i in muestras_train:
+        spk = dict_info_signal[i]['spk']
+        label = list_clases_train[index]
+
+        index = index + 1
+        #gender = 'hombres'
+        #if dict_info_signal[i]['gender'] == 'w':
+        #   gender = 'mujeres'
+        if name_base == 'AVFAD':
+            if genero=="male":
+                if tipo == "phrase"and dict_info_signal[i]['gender'] == 'M':
+                    aa = {'path': 'data/audio/' + name_base + '/'+ str(i) +'/' + str(i) + tipo + '.wav', 'label': label, 'speaker': spk}
+                    train.append(aa)
+                if tipo == "a"and dict_info_signal[i]['gender'] == 'M':
+                    aa = {'path': 'data/audio/' + name_base + '/'+ str(i) +'/' + str(i) + "002" + '.wav', 'label': label, 'speaker': spk}
+                    train.append(aa)
+                if tipo == "u"and dict_info_signal[i]['gender'] == 'M':
+                    aa = {'path': 'data/audio/' + name_base + '/'+ str(i) +'/' + str(i) + "003" + '.wav', 'label': label, 'speaker': spk}
+                    train.append(aa)
+                if tipo == "i"and dict_info_signal[i]['gender'] == 'M':
+                    aa = {'path': 'data/audio/' + name_base + '/'+ str(i) +'/' + str(i) + "001" + '.wav', 'label': label, 'speaker': spk}
+                    train.append(aa)
+                if tipo == "vowels"and dict_info_signal[i]['gender'] == 'M':
+                    aa = {'path': 'data/audio/' + name_base + '/'+ str(i) +'/' + str(i) + "002" + '.wav', 'label': label, 'speaker': spk}
+                    ii = {'path': 'data/audio/' + name_base + '/'+ str(i) +'/' + str(i) + "001" + '.wav', 'label': label, 'speaker': spk}
+                    uu = {'path': 'data/audio/' + name_base + '/'+ str(i) +'/' + str(i) + "003" + '.wav', 'label': label, 'speaker': spk}
+                    train.append(aa)
+                    train.append(ii)
+                    train.append(uu)                
+            
+            elif genero=="female":
+                if tipo == "phrase" and dict_info_signal[i]['gender'] == 'F':
+                    aa = {'path': 'data/audio/' + name_base + '/'+ str(i) +'/' + str(i) + tipo + '.wav', 'label': label, 'speaker': spk}
+                    train.append(aa)
+                if tipo == "a" and dict_info_signal[i]['gender'] == 'F':
+                    aa = {'path': 'data/audio/' + name_base + '/'+ str(i) +'/' + str(i) + "002" + '.wav', 'label': label, 'speaker': spk}
+                    train.append(aa)
+                if tipo == "u"and dict_info_signal[i]['gender'] == 'F':
+                    aa = {'path': 'data/audio/' + name_base + '/'+ str(i) +'/' + str(i) + "003" + '.wav', 'label': label, 'speaker': spk}
+                    train.append(aa)
+                if tipo == "i"and dict_info_signal[i]['gender'] == 'F':
+                    aa = {'path': 'data/audio/' + name_base + '/'+ str(i) +'/' + str(i) + "001" + '.wav', 'label': label, 'speaker': spk}
+                    train.append(aa)
+                if tipo == "vowels" and dict_info_signal[i]['gender'] == 'F':
+                    aa = {'path': 'data/audio/' + name_base + '/'+ str(i) +'/' + str(i) + "002" + '.wav', 'label': label, 'speaker': spk}
+                    ii = {'path': 'data/audio/' + name_base + '/'+ str(i) +'/' + str(i) + "001" + '.wav', 'label': label, 'speaker': spk}
+                    uu = {'path': 'data/audio/' + name_base + '/'+ str(i) +'/' + str(i) + "003" + '.wav', 'label': label, 'speaker': spk}
+                    train.append(aa)
+                    train.append(ii)
+                    train.append(uu)                
+                        
+                else:
+                    if tipo == "phrase":
+                        aa = {'path': 'data/audio/' + name_base + '/'+ str(i) +'/' + str(i) + tipo + '.wav', 'label': label, 'speaker': spk}
+                    train.append(aa)
+                    if tipo == "a":
+                        aa = {'path': 'data/audio/' + name_base + '/'+ str(i) +'/' + str(i) + "002" + '.wav', 'label': label, 'speaker': spk}
+                        train.append(aa)
+                    if tipo == "u":
+                        aa = {'path': 'data/audio/' + name_base + '/'+ str(i) +'/' + str(i) + "003" + '.wav', 'label': label, 'speaker': spk}
+                        train.append(aa)
+                    if tipo == "i":
+                        aa = {'path': 'data/audio/' + name_base + '/'+ str(i) +'/' + str(i) + "001" + '.wav', 'label': label, 'speaker': spk}
+                        train.append(aa)
+                    if tipo == "vowels":
+                        aa = {'path': 'data/audio/' + name_base + '/'+ str(i) +'/' + str(i) + "002" + '.wav', 'label': label, 'speaker': spk}
+                        ii = {'path': 'data/audio/' + name_base + '/'+ str(i) +'/' + str(i) + "001" + '.wav', 'label': label, 'speaker': spk}
+                        uu = {'path': 'data/audio/' + name_base + '/'+ str(i) +'/' + str(i) + "003" + '.wav', 'label': label, 'speaker': spk}
+                        train.append(aa)
+                        train.append(ii)
+                        train.append(uu)
+                    if tipo == "male":
+                        if dict_info_signal[i]['Sex'] == 'F':           
+                            aa = {'path': 'data/audio/' + name_base + '/'+ str(i) +'/' + str(i) + "001" + '.wav', 'label': label, 'speaker': spk}
+                            train.append(aa)
+            
+    fold_train['meta_data'] = train
+
+    index = 0
+    for i in muestras_test:
+        spk = dict_info_signal[i]['spk']
+        label = list_clases_test[index]
+        index = index + 1
+        if name_base == 'AVFAD':
+            if tipo == "phrase":
+                aa = {'path': 'data/audio/' + name_base + '/'+ str(i) +'/' + str(i) + tipo + '.wav', 'label': label, 'speaker': spk}
+                test.append(aa)
+            if tipo == "a":
+                aa = {'path': 'data/audio/' + name_base + '/'+ str(i) +'/' + str(i) + "002" + '.wav', 'label': label, 'speaker': spk}
+                test.append(aa)
+            if tipo == "u":
+                aa = {'path': 'data/audio/' + name_base + '/'+ str(i) +'/' + str(i) + "003" + '.wav', 'label': label, 'speaker': spk}
+                test.append(aa)
+            if tipo == "i":
+                aa = {'path': 'data/audio/' + name_base + '/'+ str(i) +'/' + str(i) + "001" + '.wav', 'label': label, 'speaker': spk}
+                test.append(aa)
+            if tipo == "vowels":
+                aa = {'path': 'data/audio/' + name_base + '/'+ str(i) +'/' + str(i) + "002" + '.wav', 'label': label, 'speaker': spk}
+                ii = {'path': 'data/audio/' + name_base + '/'+ str(i) +'/' + str(i) + "001" + '.wav', 'label': label, 'speaker': spk}
+                uu = {'path': 'data/audio/' + name_base + '/'+ str(i) +'/' + str(i) + "001" + '.wav', 'label': label, 'speaker': spk}
+                test.append(aa)
+                test.append(ii)
+                test.append(uu)
+    fold_test['meta_data'] = test
+
+    return fold_train, fold_test
+
+def kford():
+    name_base="AVFAD"
+    dict_info_signal = db.main('data/lst/' + name_base + '/' + name_base + '_metadata.xlsx', name_base)
+    b_list_muestras, b_list_clases, b_list_grupos, b_dict_clases = binaria_Cross_validation(dict_info_signal);
+    m_list_muestras, m_list_clases, m_list_grupos, m_dict_clases = multi_Cross_validation(dict_info_signal);
+    
+    b_fold = StratifiedGroupKFold_G(b_list_muestras, b_list_clases, b_list_grupos, 5)
+    m_fold = StratifiedGroupKFold_G(m_list_muestras, m_list_clases, m_list_grupos, 5)
+    
+    clases=["binario", "Multiclass"]
+    general=["male","female"]
+    grabacion=["phrase_both","vowels_both", "a_both", "i_both", "u_both", "a", "i", "u"]
+    ind = 1; camino = 'data/lst/' + name_base
+    for i in b_fold:
+        for k in general:
+            j=len(grabacion)-1
+            while j >=0:
+                camino = 'data/lst/' + name_base+"/"+ clases[0]+"/"+k+"/"+k+"_"+grabacion[j]
+                ind_train = np.array(b_fold[i]['train'])
+                ind_test = np.array(b_fold[i]['test'])
+                muestras_train = np.array(b_list_muestras)[ind_train]
+                list_clases_train = np.array(b_list_clases)[ind_train]
+                muestras_test = np.array(b_list_muestras)[ind_test]
+                list_clases_test = np.array(b_list_clases)[ind_test]        
+                
+                
+                [fold_train, fold_test] = salva_fold_binaria(muestras_train, list_clases_train, muestras_test, list_clases_test, dict_info_signal, b_dict_clases, name_base, grabacion[j], k)
+                if not os.path.exists(camino):
+                    os.makedirs(camino + '/')
+
+                with open(camino + '/' + 'train_' + clases[0] + '_' + grabacion[j] + '_meta_data_fold' + str(ind) + '.json', 'w') as file:
+                    json.dump(fold_train, file, indent=6)
+                file.close()
+                with open(camino + '/' + 'test_' + clases[0] + '_' + grabacion[j] + '_meta_data_fold' + str(ind) + '.json', 'w') as file:
+                    json.dump(fold_test, file, indent=6)
+                file.close()
+                j = j - 1
+            
+        ind = ind + 1
+    print("lolo")

@@ -229,7 +229,7 @@ def svmVOICED(list_path,kfold, audio_type, label):
     ker = 'poly'
     d = 1
     c = 1
-    
+    resumen=True
     respath = 'data/result/' + label
     if not os.path.exists(respath):
         os.mkdir(respath)
@@ -242,17 +242,20 @@ def svmVOICED(list_path,kfold, audio_type, label):
     
     score = np.zeros((13, kfold))
     score_oracle = np.zeros((13, kfold))
+    dic_result_oracle = {}; dic_result = {}
     # 1. Loading data from json list
     for k in range(0, kfold):
         tic = time.time()
         label_files =[]
+        label_code ={}
         train_files = []
         train_labels = []
         trainlist = list_path + '/train_' + clases + '_' + audio_type + '_meta_data_fold' + str(k + 1) + '.json'
         with open(trainlist, 'r') as f:
             data = json.load(f)
             for item in data['labels']:                
-                label_files.append(item)   
+                label_files.append(item)
+                label_code[int(data['labels'][item])] = item   
                 
             for item in data['meta_data']:
                 train_files.append(item['path'])                
@@ -343,59 +346,135 @@ def svmVOICED(list_path,kfold, audio_type, label):
         out = clf.predict(test_features)
         out_oracle = clf.predict(train_features)
 
-        #score[:, k] = utils.compute_score(clf, test_labels, out, test_features)
-        score[:, k] = utils.compute_score_multiclass(test_labels, out, label_files, True)        
-        
-        with open(respath + '/output_' + audio_type + '_fold' + str(k + 1) + '_' + ker + 'd' + str(d) + 'c' + str(
-                c) + '.log', 'w') as f:
-            lbl = label_files #['NORM', 'PATH']
-            for j in range(0, len(test_files)):
-                f.write('%s %s %s\n' % (os.path.basename(test_files[j])[:-4], lbl[test_labels[j]], lbl[out[j]]))
-
+         #score[:, k] = utils.compute_score(clf, test_labels, out, test_features)
+        score = utils.compute_score_multiclass(test_labels, out, label_files, resumen)        
         #score_oracle[:, k] = utils.compute_score(clf, train_labels, out_oracle, train_features)
-        score_oracle[:, k] = utils.compute_score_multiclass(train_labels, out_oracle, label_files, True)
-        with open(
-                respath + '/output_oracle_' + audio_type + '_fold' + str(k + 1) + '_' + ker + 'd' + str(d) + 'c' + str(
-                    c) + '.log', 'w') as f:
-            lbl = label_files #['NORM', 'PATH']
-            for j in range(0, len(train_files)):
-                f.write(
-                    '%s %s %s\n' % (os.path.basename(train_files[j])[:-4], lbl[train_labels[j]], lbl[out_oracle[j]]))
+        score_oracle = utils.compute_score_multiclass(train_labels, out_oracle, label_files, resumen)
+        
+        
+        lbl = label_code           
+        with open(respath + '/output_' + audio_type + '_fold' + str(k + 1) + '_' + ker + 'd' + str(d) + 'c' + str(c) + '.log', 'w') as f:        
+            for j in range(0,len(test_files)):                                
+                f.write('%s %s %s\n' % (os.path.basename(test_files[j])[:-4], lbl[test_labels[j]], lbl[out[j]]))
+        
+        with open (respath+'/output_oracle_'+audio_type+'_fold'+str(k+1)+'_'+ker+'d'+str(d)+'c'+str(c)+'.log', 'w') as f:
+            for j in range(0,len(train_files)):
+                f.write('%s %s %s\n' % (os.path.basename(train_files[j])[:-4], lbl[train_labels[j]], lbl[out_oracle[j]]))
 
         toc = time.time()
         f = open(result_log, 'a')
-        f.write(
-            'Oracle Fold%i (%.2fsec): Acc=%0.4f, AccNorm=%0.2f, AccPath=%0.2f, UAR=%0.4f, F1Score=%0.2f, Recall=%0.2f, Precision=%0.2f, AUC=%0.4f, EER=%0.4f, TP=%0.2f, TN=%0.2f, FP=%0.2f, FN=%0.2f \n' %
-            (k + 1, toc - tic, score_oracle[0, k], score_oracle[1, k], score_oracle[2, k], score_oracle[3, k],
-             score_oracle[4, k], score_oracle[5, k], score_oracle[6, k], score_oracle[7, k], score_oracle[8, k],
-             score_oracle[9, k], score_oracle[10, k], score_oracle[11, k], score_oracle[12, k]))
+        if resumen:
+            f.write('\nOracle Fold%i (%.2fsec)          precision    recall  f1-score   support' % (k + 1, toc - tic))
+            
+            dic_result_oracle['accuracy' + str(k)] = score_oracle['accuracy']
+            dic_result_oracle['macro avg' + str(k)] = score_oracle['macro avg']
+            dic_result_oracle['weighted avg' + str(k)] = score_oracle['weighted avg']
+
+            aux1 = str(round(score_oracle['macro avg']['precision'], 2))
+            aux2 = str(round(score_oracle['macro avg']['recall'], 2))
+            aux3 = str(round(score_oracle['macro avg']['f1-score'], 2))
+            aux4 = str(score_oracle['macro avg']['support'])
+
+            f.write('\nmacro avg                          ' + aux1 + '        ' + aux2 + '     ' + aux3 + '      ' + aux4)
+
+            aux1 = str(round(score_oracle['weighted avg']['precision'], 2))
+            aux2 = str(round(score_oracle['weighted avg']['recall'], 2))
+            aux3 = str(round(score_oracle['weighted avg']['f1-score'], 2))
+            f.write('\nweighted avg                       ' + aux1 + '        ' + aux2 + '     ' + aux3 + '      ' + aux4)
+            f.write(
+                '\naccuracy                 ' + str(round(score_oracle['accuracy'], 2)))
+
+            f.write('\n');  f.write('\n');
+
+            f.write('\nTest Fold%i (%.2fsec)            precision    recall  f1-score   support' % (k + 1, toc - tic))
+
+            dic_result['accuracy' + str(k)] = 0
+            if 'accuracy' in score:
+                dic_result['accuracy' + str(k)] = score['accuracy']
+            dic_result['macro avg' + str(k)] = score['macro avg']
+            dic_result['weighted avg' + str(k)] = score['weighted avg']
+
+            aux1 = str(round(score['macro avg']['precision'], 2))
+            aux2 = str(round(score['macro avg']['recall'], 2))
+            aux3 = str(round(score['macro avg']['f1-score'], 2))
+            aux4 = str(score['macro avg']['support'])
+
+            f.write('\nmacro avg                          ' + aux1 + '        ' + aux2 + '     ' + aux3 + '      ' + aux4)
+
+            aux1 = str(round(score['weighted avg']['precision'], 2))
+            aux2 = str(round(score['weighted avg']['recall'], 2))
+            aux3 = str(round(score['weighted avg']['f1-score'], 2))
+            f.write('\nweighted avg                       ' + aux1 + '        ' + aux2 + '     ' + aux3 + '      ' + aux4)
+            f.write('\naccuracy                 ' + str(round(dic_result['accuracy' + str(k)], 2)))
+
+            f.write('\n'); f.write('\n');
+
+        else:
+            f.write('\nOracle Fold%i (%.2fsec)' % (k + 1, toc - tic))
+            f.write(score_oracle)
+            f.write('\nTest Fold%i (%.2fsec)' % (k + 1, toc-tic))
+            f.write(score)
         f.close()
-        toc = time.time()
+    if resumen:
+        accuracy_oracle = 0; macro_precision_oracle = 0; macro_recall_oracle = 0; macro_f1score_oracle = 0;
+        support_oracle = 0; weighted_precision_oracle = 0; weighted_recall_oracle = 0; weighted_f1score_oracle = 0;
+        accuracy = 0; macro_precision = 0; macro_recall = 0; macro_f1score = 0; support = 0
+        weighted_precision = 0; weighted_recall = 0; weighted_f1score = 0;
+        for k in range(0, kfold):
+            accuracy_oracle = accuracy_oracle + dic_result_oracle['accuracy' + str(k)]
+            aux = dic_result_oracle['macro avg' + str(k)]
+            macro_precision_oracle = macro_precision_oracle + aux['precision']
+            macro_recall_oracle = macro_recall_oracle + aux['recall']
+            macro_f1score_oracle = macro_f1score_oracle + aux['f1-score']
+            support_oracle = support_oracle + aux['support']
+            aux = dic_result_oracle['weighted avg' + str(k)]
+            weighted_precision_oracle = weighted_precision_oracle + aux['precision']
+            weighted_recall_oracle = weighted_recall_oracle + aux['recall']
+            weighted_f1score_oracle = weighted_f1score_oracle + aux['f1-score']
+
+            accuracy = accuracy + dic_result['accuracy' + str(k)]
+            aux = dic_result['macro avg' + str(k)]
+            macro_precision = macro_precision + aux['precision']
+            macro_recall = macro_recall + aux['recall']
+            macro_f1score = macro_f1score + aux['f1-score']
+            support = support + aux['support']
+            aux = dic_result['weighted avg' + str(k)]
+            weighted_precision = weighted_precision + aux['precision']
+            weighted_recall = weighted_recall + aux['recall']
+            weighted_f1score = weighted_f1score + aux['f1-score']
+
         f = open(result_log, 'a')
-        f.write(
-            'Test Fold%i (%.2fsec): Acc=%0.4f, AccNorm=%0.2f, AccPath=%0.2f, UAR=%0.4f, F1Score=%0.2f, Recall=%0.2f, Precision=%0.2f, AUC=%0.4f, EER=%0.4f, TP=%0.2f, TN=%0.2f, FP=%0.2f, FN=%0.2f \n\n' %
-            (
-                k + 1, toc - tic, score[0, k], score[1, k], score[2, k], score[3, k], score[4, k], score[5, k],
-                score[6, k],
-                score[7, k], score[8, k], score[9, k], score[10, k], score[11, k], score[12, k]))
+        f.write('\n');  f.write('\n');  f.write('\n'); f.write('\n'); f.write('\n')
+        f.write('\nOracle 5 Fold average            precision    recall  f1-score   support')
+        aux1 = str(round(macro_precision_oracle / kfold,2))
+        aux2 = str(round(macro_recall_oracle / kfold,2))
+        aux3 = str(round(macro_f1score_oracle / kfold,2))
+        aux4 = str(round(support_oracle / kfold,2))
+        aux = aux1 + '        ' + aux2 + '    ' + aux3 + '       ' + aux4
+        f.write('\nmacro avg                          ' + aux)
+        aux1 = str(round(weighted_precision_oracle / kfold, 2))
+        aux2 = str(round(weighted_recall_oracle / kfold, 2))
+        aux3 = str(round(weighted_f1score_oracle / kfold, 2))
+        aux4 = str(round(support_oracle / kfold, 2))
+        aux = aux1 + '        ' + aux2 + '    ' + aux3 + '       ' + aux4
+        f.write('\nweighted avg                       ' + aux)
+        f.write('\naccuracy                 ' + str(round(accuracy_oracle / kfold, 2)))
+
+        f.write('\n'); f.write('\n'); f.write('\n');
+
+        f.write('\nTest 5 Fold average              precision    recall  f1-score   support')
+        aux1 = str(round(macro_precision / kfold, 2))
+        aux2 = str(round(macro_recall / kfold, 2))
+        aux3 = str(round(macro_f1score / kfold, 2))
+        aux4 = str(round(support / kfold, 2))
+        aux = aux1 + '        ' + aux2 + '     ' + aux3 + '       ' + aux4
+        f.write('\nmacro avg                          ' + aux)
+        aux1 = str(round(weighted_precision / kfold, 2))
+        aux2 = str(round(weighted_recall / kfold, 2))
+        aux3 = str(round(weighted_f1score / kfold, 2))
+        aux4 = str(round(support / kfold, 2))
+        aux = aux1 + '        ' + aux2 + '      ' + aux3 + '        ' + aux4
+        f.write('\nweighted avg                       ' + aux)
+        f.write('\naccuracy                 ' + str(round(accuracy / kfold, 2)))
         f.close()
-
-    f = open(result_log, 'a')
-    f.write(
-        'TOTAL Oracle: Acc=%0.4f, AccNorm=%0.2f, AccPath=%0.2f, UAR=%0.4f, F1Score=%0.2f, Recall=%0.2f, Precision=%0.2f, AUC=%0.2f, EER=%0.4f, TP=%0.2f, TN=%0.2f, FP=%0.2f, FN=%0.2f \n' %
-        (np.mean(score_oracle[0, :]), np.mean(score_oracle[1, :]), np.mean(score_oracle[2, :]),
-         np.mean(score_oracle[3, :]), np.mean(score_oracle[4, :]), np.mean(score_oracle[5, :]),
-         np.mean(score_oracle[6, :]), np.mean(score_oracle[7, :]), np.mean(score_oracle[8, :]),
-         np.mean(score_oracle[9, :]), np.mean(score_oracle[10, :]), np.mean(score_oracle[11, :]),
-         np.mean(score_oracle[12, :])))
-    f.close()
-
-    f = open(result_log, 'a')
-    f.write(
-        'TOTAL Test: Acc=%0.4f, AccNorm=%0.2f, AccPath=%0.2f, UAR=%0.4f, F1Score=%0.2f, Recall=%0.2f, Precision=%0.2f, AUC=%0.4f, EER=%0.4f, TP=%0.2f, TN=%0.2f, FP=%0.2f, FN=%0.2f \n\n' %
-        (np.mean(score[0, :]), np.mean(score[1, :]), np.mean(score[2, :]), np.mean(score[3, :]), np.mean(score[4, :]),
-         np.mean(score[5, :]),
-         np.mean(score[6, :]), np.mean(score[7, :]), np.mean(score[8, :]), np.mean(score[9, :]), np.mean(score[10, :]),
-         np.mean(score[11, :]), np.mean(score[12, :])))
-    f.close()
 

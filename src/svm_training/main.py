@@ -31,23 +31,24 @@ from svm_training import Crea_list_kfold
 # path_metadata="data/pathology/VOICED_metadata.xlsx"
 
 ####### No esta funcionando las listas para sacar los parametros
-# base_train = "AVFAD"   #'thalento'  # 'Saarbruecken'     ''  # 'AVFAD' #   #
-# base_test = 'AVFAD'  # 'thalento'
-# tipo_signal = "phrase_both" #"D8_LECTURA" #'LECTURA'  # 'D8_LECTURA'
-# tipo_signal_test = "phrase_both" #'LECTURA'  # 'phrase_both'
-# path_database="data/audio/AVFAD" #thalento/
-# path_features="data/features/AVFAD"  #thalento/
-# path_list_fold="data/lst/"
-# path_metadata="data/pathology/AVFAD_metadata.xlsx"
-
-base_train = "Saarbruecken" 
-base_test = 'Saarbruecken'  
-tipo_signal = "phrase_both" 
-tipo_signal_test = "phrase_both"
-path_database="data/audio/Saarbruecken"
-path_features="data/features/Saarbruecken"
+base_train = "AVFAD"   #'thalento'  # 'Saarbruecken'     ''  # 'AVFAD' #   #
+base_test = 'AVFAD'  # 'thalento'
+tipo_signal = "phrase_both" #"D8_LECTURA" #'LECTURA'  # 'D8_LECTURA'
+tipo_signal_test = "phrase_both" #'LECTURA'  # 'phrase_both'
+path_database="data/audio/AVFAD" #thalento/
+path_features="data/features/AVFAD"  #thalento/
 path_list_fold="data/lst/"
-path_metadata="data/pathology/Saarbruecken_metadata.xlsx"
+path_metadata="data/pathology/AVFAD_metadata.xlsx"
+
+### listo
+# base_train = "Saarbruecken" 
+# base_test = 'Saarbruecken'  
+# tipo_signal = "phrase_both" 
+# tipo_signal_test = "phrase_both"
+# path_database="data/audio/Saarbruecken"
+# path_features="data/features/Saarbruecken"
+# path_list_fold="data/lst/"
+# path_metadata="data/pathology/Saarbruecken_metadata.xlsx"
 
 
 
@@ -57,7 +58,11 @@ path_metadata="data/pathology/Saarbruecken_metadata.xlsx"
 
 ### Esta función es para crear los kfold en base a un metadata.xlsx de la base de datos ###
 def crea_list_kfold():
-    Crea_list_kfold.selecciona_conjuntos_Cross_validation('binaria', 'StratifiedGroupKFold', 5, base_train, tipo_signal)
+    Crea_list_kfold.kford()
+    #Crea_list_kfold.selecciona_conjuntos_Cross_validation('multiclases', 'StratifiedGroupKFold', 5, base_train, tipo_signal)
+    #Crea_list_kfold.selecciona_conjuntos_Cross_validation('binaria', 'GroupKFold', 5, 'Saarbruecken','phrase_both')
+    #Crea_list_kfold.selecciona_conjuntos_Cross_validation('multiclases2binarias', 'StratifiedGroupKFold', 5, 'Saarbruecken', 'phrase_both')
+    #Crea_list_kfold.selecciona_conjuntos_Cross_validation('multiclases', 'StratifiedGroupKFold', 5, 'Saarbruecken', 'phrase_both')
 
 # def main_with_thalento():
 #     print("tested")

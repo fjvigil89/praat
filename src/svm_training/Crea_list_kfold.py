@@ -6,8 +6,8 @@ import numpy as np
 
 from svm_training import Cross_validation
 # import Cross_validation
-from svm_training import Load_metadata as db
-
+#from svm_training import Load_metadata as db
+from svm_training import utils, db_avfad, db_voiced, db_thalento, db_saarbruecken, Load_metadata as db
 # sys.path.append('bin')
 # sys.path.append('../data')
 
@@ -89,7 +89,7 @@ def salva_fold_binaria(muestras_train, list_clases_train, muestras_test, list_cl
 
 ### Esta función es para crear los kfold en base a un metadata.xlsx de la base de datos ###
 def selecciona_conjuntos_Cross_validation(clases = 'binaria', metodo = 'GroupKFold', particiones = 5, name_base = 'Saarbruecken', grabacion = 'phrase_both'):
-    dict_info_signal = db.main('data/lst/' + name_base + '/' + name_base + '_metadata.xlsx', name_base)
+    dict_info_signal = db.main('./lst/' + name_base + '/' + name_base + '_metadata.xlsx', name_base)
     list_muestras, list_clases, list_grupos, dict_clases = prepara_listas_Cross_validation(dict_info_signal, clases);
     #elif clases == 'multiclases2binarias' or clases == 'multiclases':
 
@@ -123,6 +123,8 @@ def selecciona_conjuntos_Cross_validation(clases = 'binaria', metodo = 'GroupKFo
         file.close()
         ind = ind + 1
 
+def kford():    
+    db_avfad.kford()
 
 if __name__ == '__main__':
 

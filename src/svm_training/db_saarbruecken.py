@@ -356,8 +356,8 @@ def svmSaarbruecken(list_path,kfold, audio_type, label):
         test_features = utils.zscore(test_features, trainmean, trainstd)
 
         # 3. Train SVM classifier
-        counter = Counter(train_labels)
-        print('Norm: %i, Path: %i\n' % (counter[0], counter[1]))
+        # counter = Counter(train_labels)
+        # print('Norm: %i, Path: %i\n' % (counter[0], counter[1]))
 
         clf = SVC(C=c, kernel=ker, degree=d, probability=True)
         clf.fit(train_features, train_labels)
@@ -541,6 +541,7 @@ def svmSaarbruecken(list_path,kfold, audio_type, label):
         f.write('\nweighted avg                       ' + aux)
         f.write('\naccuracy                 ' + str(round(accuracy / kfold, 2)))
         f.close()
+
 
 
 

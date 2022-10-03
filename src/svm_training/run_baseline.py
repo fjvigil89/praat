@@ -222,7 +222,7 @@ def main(list_path=NULL, kfold=5, audio_type=NULL, cambia='viejo', clases='binar
     if label == "thalento":
         db_thalento.svmTHALENTO(list_path,kfold, audio_type, label)
     if label == "VOICED":
-        db_thalento.svmVOICED(list_path,kfold, audio_type, label)
+        db_voiced.svmVOICED(list_path,kfold, audio_type, label)
     if label == "AVFAD":
         db_avfad.svmAVFAD(list_path,kfold, audio_type, label)       
         
