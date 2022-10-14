@@ -1,3 +1,4 @@
+from importlib.resources import path
 import pandas as pd
 from xlrd import open_workbook
 import os
@@ -70,12 +71,14 @@ def arregla_base(path_metadata):
     new_df.to_excel('D:\Gabriel\Bases\Saarbruecken\metadata_new_new.xlsx', sheet_name='sheet1', index=False)
 
 
-def main(path_metadata):
+def main(path_metadata, label="Sheet1"):    
+    #esto solo funciona para THALENTO y VOICED
     print(pathlib.Path(__file__).parent.absolute())
-    df = pd.read_excel(path_metadata, sheet_name='sheet1')
+    df = pd.read_excel(path_metadata, sheet_name=label)
     dict_info_signal = {}
     for ind, row in df.iterrows():
-        dict_info_signal[row[0]] = {'spk': row[3], 'Path': row [1], 'age': row[5], 'gender': row[4], 'tipo': row[7]}
+        if label=="AVFAD":   ### AAAA sostenida         
+            dict_info_signal[row[0]] = {'spk': row[0], 'Path': "data/audio/"+str(label)+"/"+row[0]+"/"+row[0]+"002.wav", 'age': row[3], 'gender': row[4], 'tipo': row[15], 'pathology': row[16], 'group': row[17]}
 
     return dict_info_signal
 

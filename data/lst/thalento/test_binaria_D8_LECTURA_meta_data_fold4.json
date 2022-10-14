@@ -5,77 +5,77 @@
       },
       "meta_data": [
             {
-                  "path": "data/audio/thalento/TVD-D-0004-D8_LECTURA.wav",
+                  "path": "data/audio/thalento/TVD-D-0004_D8_LECTURA.wav",
                   "label": "1",
                   "speaker": "TVD-D-0004"
             },
             {
-                  "path": "data/audio/thalento/TVD-D-0010-D8_LECTURA.wav",
+                  "path": "data/audio/thalento/TVD-D-0010_D8_LECTURA.wav",
                   "label": "1",
                   "speaker": "TVD-D-0010"
             },
             {
-                  "path": "data/audio/thalento/TVD-D-0015-D8_LECTURA.wav",
+                  "path": "data/audio/thalento/TVD-D-0015_D8_LECTURA.wav",
                   "label": "1",
                   "speaker": "TVD-D-0015"
             },
             {
-                  "path": "data/audio/thalento/TVD-D-0020-D8_LECTURA.wav",
+                  "path": "data/audio/thalento/TVD-D-0020_D8_LECTURA.wav",
                   "label": "1",
                   "speaker": "TVD-D-0020"
             },
             {
-                  "path": "data/audio/thalento/TVD-D-0021-D8_LECTURA.wav",
+                  "path": "data/audio/thalento/TVD-D-0021_D8_LECTURA.wav",
                   "label": "1",
                   "speaker": "TVD-D-0021"
             },
             {
-                  "path": "data/audio/thalento/TVD-D-0026-D8_LECTURA.wav",
+                  "path": "data/audio/thalento/TVD-D-0026_D8_LECTURA.wav",
                   "label": "1",
                   "speaker": "TVD-D-0026"
             },
             {
-                  "path": "data/audio/thalento/TVD-D-0031-D8_LECTURA.wav",
+                  "path": "data/audio/thalento/TVD-D-0031_D8_LECTURA.wav",
                   "label": "1",
                   "speaker": "TVD-D-0031"
             },
             {
-                  "path": "data/audio/thalento/TVD-D-0039-D8_LECTURA.wav",
+                  "path": "data/audio/thalento/TVD-D-0039_D8_LECTURA.wav",
                   "label": "1",
                   "speaker": "TVD-D-0039"
             },
             {
-                  "path": "data/audio/thalento/TVD-D-0041-D8_LECTURA.wav",
+                  "path": "data/audio/thalento/TVD-D-0041_D8_LECTURA.wav",
                   "label": "1",
                   "speaker": "TVD-D-0041"
             },
             {
-                  "path": "data/audio/thalento/TVD-D-0049-D8_LECTURA.wav",
+                  "path": "data/audio/thalento/TVD-D-0049_D8_LECTURA.wav",
                   "label": "1",
                   "speaker": "TVD-D-0049"
             },
             {
-                  "path": "data/audio/thalento/TVD-D-0054-D8_LECTURA.wav",
+                  "path": "data/audio/thalento/TVD-D-0054_D8_LECTURA.wav",
                   "label": "1",
                   "speaker": "TVD-D-0054"
             },
             {
-                  "path": "data/audio/thalento/TVD-P-0005-D8_LECTURA.wav",
+                  "path": "data/audio/thalento/TVD-P-0005_D8_LECTURA.wav",
                   "label": "0",
                   "speaker": "TVD-P-0005"
             },
             {
-                  "path": "data/audio/thalento/TVD-P-0010-D8_LECTURA.wav",
+                  "path": "data/audio/thalento/TVD-P-0010_D8_LECTURA.wav",
                   "label": "0",
                   "speaker": "TVD-P-0010"
             },
             {
-                  "path": "data/audio/thalento/TVD-P-0015-D8_LECTURA.wav",
+                  "path": "data/audio/thalento/TVD-P-0015_D8_LECTURA.wav",
                   "label": "0",
                   "speaker": "TVD-P-0015"
             },
             {
-                  "path": "data/audio/thalento/TVD-N-0007-D8_LECTURA.wav",
+                  "path": "data/audio/thalento/TVD-N-0007_D8_LECTURA.wav",
                   "label": "0",
                   "speaker": "TVD-N-0007"
             }

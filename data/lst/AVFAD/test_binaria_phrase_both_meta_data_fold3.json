@@ -1,0 +1,718 @@
+{
+      "labels": {
+            "NORM": "0",
+            "PATH": "1"
+      },
+      "meta_data": [
+            {
+                  "path": "data/audio/AVFAD/MJRphrase.wav",
+                  "label": "1",
+                  "speaker": "MJR"
+            },
+            {
+                  "path": "data/audio/AVFAD/AMCphrase.wav",
+                  "label": "1",
+                  "speaker": "AMC"
+            },
+            {
+                  "path": "data/audio/AVFAD/AMTphrase.wav",
+                  "label": "1",
+                  "speaker": "AMT"
+            },
+            {
+                  "path": "data/audio/AVFAD/ASNphrase.wav",
+                  "label": "1",
+                  "speaker": "ASN"
+            },
+            {
+                  "path": "data/audio/AVFAD/CANphrase.wav",
+                  "label": "1",
+                  "speaker": "CAN"
+            },
+            {
+                  "path": "data/audio/AVFAD/DJSphrase.wav",
+                  "label": "1",
+                  "speaker": "DJS"
+            },
+            {
+                  "path": "data/audio/AVFAD/EMXphrase.wav",
+                  "label": "1",
+                  "speaker": "EMX"
+            },
+            {
+                  "path": "data/audio/AVFAD/FSTphrase.wav",
+                  "label": "1",
+                  "speaker": "FST"
+            },
+            {
+                  "path": "data/audio/AVFAD/HMBphrase.wav",
+                  "label": "1",
+                  "speaker": "HMB"
+            },
+            {
+                  "path": "data/audio/AVFAD/HRMphrase.wav",
+                  "label": "1",
+                  "speaker": "HRM"
+            },
+            {
+                  "path": "data/audio/AVFAD/LCRphrase.wav",
+                  "label": "1",
+                  "speaker": "LCR"
+            },
+            {
+                  "path": "data/audio/AVFAD/LRSphrase.wav",
+                  "label": "1",
+                  "speaker": "LRS"
+            },
+            {
+                  "path": "data/audio/AVFAD/MCJphrase.wav",
+                  "label": "1",
+                  "speaker": "MCJ"
+            },
+            {
+                  "path": "data/audio/AVFAD/MCUphrase.wav",
+                  "label": "1",
+                  "speaker": "MCU"
+            },
+            {
+                  "path": "data/audio/AVFAD/MIMphrase.wav",
+                  "label": "1",
+                  "speaker": "MIM"
+            },
+            {
+                  "path": "data/audio/AVFAD/MJBphrase.wav",
+                  "label": "1",
+                  "speaker": "MJB"
+            },
+            {
+                  "path": "data/audio/AVFAD/MMBphrase.wav",
+                  "label": "1",
+                  "speaker": "MMB"
+            },
+            {
+                  "path": "data/audio/AVFAD/MNSphrase.wav",
+                  "label": "1",
+                  "speaker": "MNS"
+            },
+            {
+                  "path": "data/audio/AVFAD/MTFphrase.wav",
+                  "label": "1",
+                  "speaker": "MTF"
+            },
+            {
+                  "path": "data/audio/AVFAD/TFSphrase.wav",
+                  "label": "1",
+                  "speaker": "TFS"
+            },
+            {
+                  "path": "data/audio/AVFAD/ICXphrase.wav",
+                  "label": "1",
+                  "speaker": "ICX"
+            },
+            {
+                  "path": "data/audio/AVFAD/JAMphrase.wav",
+                  "label": "1",
+                  "speaker": "JAM"
+            },
+            {
+                  "path": "data/audio/AVFAD/JDMphrase.wav",
+                  "label": "1",
+                  "speaker": "JDM"
+            },
+            {
+                  "path": "data/audio/AVFAD/LLRphrase.wav",
+                  "label": "1",
+                  "speaker": "LLR"
+            },
+            {
+                  "path": "data/audio/AVFAD/MCZphrase.wav",
+                  "label": "1",
+                  "speaker": "MCZ"
+            },
+            {
+                  "path": "data/audio/AVFAD/AAFphrase.wav",
+                  "label": "0",
+                  "speaker": "AAF"
+            },
+            {
+                  "path": "data/audio/AVFAD/ACNphrase.wav",
+                  "label": "0",
+                  "speaker": "ACN"
+            },
+            {
+                  "path": "data/audio/AVFAD/AFBphrase.wav",
+                  "label": "0",
+                  "speaker": "AFB"
+            },
+            {
+                  "path": "data/audio/AVFAD/AFPphrase.wav",
+                  "label": "0",
+                  "speaker": "AFP"
+            },
+            {
+                  "path": "data/audio/AVFAD/AIAphrase.wav",
+                  "label": "0",
+                  "speaker": "AIA"
+            },
+            {
+                  "path": "data/audio/AVFAD/AJPphrase.wav",
+                  "label": "0",
+                  "speaker": "AJP"
+            },
+            {
+                  "path": "data/audio/AVFAD/ARSphrase.wav",
+                  "label": "0",
+                  "speaker": "ARS"
+            },
+            {
+                  "path": "data/audio/AVFAD/AVGphrase.wav",
+                  "label": "0",
+                  "speaker": "AVG"
+            },
+            {
+                  "path": "data/audio/AVFAD/AXMphrase.wav",
+                  "label": "0",
+                  "speaker": "AXM"
+            },
+            {
+                  "path": "data/audio/AVFAD/COFphrase.wav",
+                  "label": "0",
+                  "speaker": "COF"
+            },
+            {
+                  "path": "data/audio/AVFAD/DCSphrase.wav",
+                  "label": "0",
+                  "speaker": "DCS"
+            },
+            {
+                  "path": "data/audio/AVFAD/EASphrase.wav",
+                  "label": "0",
+                  "speaker": "EAS"
+            },
+            {
+                  "path": "data/audio/AVFAD/FCSphrase.wav",
+                  "label": "0",
+                  "speaker": "FCS"
+            },
+            {
+                  "path": "data/audio/AVFAD/GCRphrase.wav",
+                  "label": "0",
+                  "speaker": "GCR"
+            },
+            {
+                  "path": "data/audio/AVFAD/GRSphrase.wav",
+                  "label": "0",
+                  "speaker": "GRS"
+            },
+            {
+                  "path": "data/audio/AVFAD/IMBphrase.wav",
+                  "label": "0",
+                  "speaker": "IMB"
+            },
+            {
+                  "path": "data/audio/AVFAD/ISPphrase.wav",
+                  "label": "0",
+                  "speaker": "ISP"
+            },
+            {
+                  "path": "data/audio/AVFAD/JTMphrase.wav",
+                  "label": "0",
+                  "speaker": "JTM"
+            },
+            {
+                  "path": "data/audio/AVFAD/MACphrase.wav",
+                  "label": "0",
+                  "speaker": "MAC"
+            },
+            {
+                  "path": "data/audio/AVFAD/MAMphrase.wav",
+                  "label": "0",
+                  "speaker": "MAM"
+            },
+            {
+                  "path": "data/audio/AVFAD/MAQphrase.wav",
+                  "label": "0",
+                  "speaker": "MAQ"
+            },
+            {
+                  "path": "data/audio/AVFAD/MEMphrase.wav",
+                  "label": "0",
+                  "speaker": "MEM"
+            },
+            {
+                  "path": "data/audio/AVFAD/MFZphrase.wav",
+                  "label": "0",
+                  "speaker": "MFZ"
+            },
+            {
+                  "path": "data/audio/AVFAD/MGLphrase.wav",
+                  "label": "0",
+                  "speaker": "MGL"
+            },
+            {
+                  "path": "data/audio/AVFAD/MHFphrase.wav",
+                  "label": "0",
+                  "speaker": "MHF"
+            },
+            {
+                  "path": "data/audio/AVFAD/MHXphrase.wav",
+                  "label": "0",
+                  "speaker": "MHX"
+            },
+            {
+                  "path": "data/audio/AVFAD/MLFphrase.wav",
+                  "label": "0",
+                  "speaker": "MLF"
+            },
+            {
+                  "path": "data/audio/AVFAD/MLRphrase.wav",
+                  "label": "0",
+                  "speaker": "MLR"
+            },
+            {
+                  "path": "data/audio/AVFAD/MMWphrase.wav",
+                  "label": "0",
+                  "speaker": "MMW"
+            },
+            {
+                  "path": "data/audio/AVFAD/MNMphrase.wav",
+                  "label": "0",
+                  "speaker": "MNM"
+            },
+            {
+                  "path": "data/audio/AVFAD/MNYphrase.wav",
+                  "label": "0",
+                  "speaker": "MNY"
+            },
+            {
+                  "path": "data/audio/AVFAD/MPFphrase.wav",
+                  "label": "0",
+                  "speaker": "MPF"
+            },
+            {
+                  "path": "data/audio/AVFAD/MRZphrase.wav",
+                  "label": "0",
+                  "speaker": "MRZ"
+            },
+            {
+                  "path": "data/audio/AVFAD/MSGphrase.wav",
+                  "label": "0",
+                  "speaker": "MSG"
+            },
+            {
+                  "path": "data/audio/AVFAD/MSUphrase.wav",
+                  "label": "0",
+                  "speaker": "MSU"
+            },
+            {
+                  "path": "data/audio/AVFAD/MTRphrase.wav",
+                  "label": "0",
+                  "speaker": "MTR"
+            },
+            {
+                  "path": "data/audio/AVFAD/MWCphrase.wav",
+                  "label": "0",
+                  "speaker": "MWC"
+            },
+            {
+                  "path": "data/audio/AVFAD/MXMphrase.wav",
+                  "label": "0",
+                  "speaker": "MXM"
+            },
+            {
+                  "path": "data/audio/AVFAD/MYFphrase.wav",
+                  "label": "0",
+                  "speaker": "MYF"
+            },
+            {
+                  "path": "data/audio/AVFAD/MZSphrase.wav",
+                  "label": "0",
+                  "speaker": "MZS"
+            },
+            {
+                  "path": "data/audio/AVFAD/OMAphrase.wav",
+                  "label": "0",
+                  "speaker": "OMA"
+            },
+            {
+                  "path": "data/audio/AVFAD/PACphrase.wav",
+                  "label": "0",
+                  "speaker": "PAC"
+            },
+            {
+                  "path": "data/audio/AVFAD/PCGphrase.wav",
+                  "label": "0",
+                  "speaker": "PCG"
+            },
+            {
+                  "path": "data/audio/AVFAD/RBSphrase.wav",
+                  "label": "0",
+                  "speaker": "RBS"
+            },
+            {
+                  "path": "data/audio/AVFAD/ROMphrase.wav",
+                  "label": "0",
+                  "speaker": "ROM"
+            },
+            {
+                  "path": "data/audio/AVFAD/SCNphrase.wav",
+                  "label": "0",
+                  "speaker": "SCN"
+            },
+            {
+                  "path": "data/audio/AVFAD/SICphrase.wav",
+                  "label": "0",
+                  "speaker": "SIC"
+            },
+            {
+                  "path": "data/audio/AVFAD/TLLphrase.wav",
+                  "label": "0",
+                  "speaker": "TLL"
+            },
+            {
+                  "path": "data/audio/AVFAD/TRTphrase.wav",
+                  "label": "0",
+                  "speaker": "TRT"
+            },
+            {
+                  "path": "data/audio/AVFAD/VFMphrase.wav",
+                  "label": "0",
+                  "speaker": "VFM"
+            },
+            {
+                  "path": "data/audio/AVFAD/AAVphrase.wav",
+                  "label": "0",
+                  "speaker": "AAV"
+            },
+            {
+                  "path": "data/audio/AVFAD/AFYphrase.wav",
+                  "label": "0",
+                  "speaker": "AFY"
+            },
+            {
+                  "path": "data/audio/AVFAD/ALSphrase.wav",
+                  "label": "0",
+                  "speaker": "ALS"
+            },
+            {
+                  "path": "data/audio/AVFAD/APCphrase.wav",
+                  "label": "0",
+                  "speaker": "APC"
+            },
+            {
+                  "path": "data/audio/AVFAD/AWCphrase.wav",
+                  "label": "0",
+                  "speaker": "AWC"
+            },
+            {
+                  "path": "data/audio/AVFAD/CMMphrase.wav",
+                  "label": "0",
+                  "speaker": "CMM"
+            },
+            {
+                  "path": "data/audio/AVFAD/CRXphrase.wav",
+                  "label": "0",
+                  "speaker": "CRX"
+            },
+            {
+                  "path": "data/audio/AVFAD/DFLphrase.wav",
+                  "label": "0",
+                  "speaker": "DFL"
+            },
+            {
+                  "path": "data/audio/AVFAD/DPPphrase.wav",
+                  "label": "0",
+                  "speaker": "DPP"
+            },
+            {
+                  "path": "data/audio/AVFAD/FJQphrase.wav",
+                  "label": "0",
+                  "speaker": "FJQ"
+            },
+            {
+                  "path": "data/audio/AVFAD/HMGphrase.wav",
+                  "label": "0",
+                  "speaker": "HMG"
+            },
+            {
+                  "path": "data/audio/AVFAD/JJMphrase.wav",
+                  "label": "0",
+                  "speaker": "JJM"
+            },
+            {
+                  "path": "data/audio/AVFAD/JMDphrase.wav",
+                  "label": "0",
+                  "speaker": "JMD"
+            },
+            {
+                  "path": "data/audio/AVFAD/JMKphrase.wav",
+                  "label": "0",
+                  "speaker": "JMK"
+            },
+            {
+                  "path": "data/audio/AVFAD/JMZphrase.wav",
+                  "label": "0",
+                  "speaker": "JMZ"
+            },
+            {
+                  "path": "data/audio/AVFAD/JPCphrase.wav",
+                  "label": "0",
+                  "speaker": "JPC"
+            },
+            {
+                  "path": "data/audio/AVFAD/JPYphrase.wav",
+                  "label": "0",
+                  "speaker": "JPY"
+            },
+            {
+                  "path": "data/audio/AVFAD/JSVphrase.wav",
+                  "label": "0",
+                  "speaker": "JSV"
+            },
+            {
+                  "path": "data/audio/AVFAD/MFLphrase.wav",
+                  "label": "0",
+                  "speaker": "MFL"
+            },
+            {
+                  "path": "data/audio/AVFAD/MJXphrase.wav",
+                  "label": "0",
+                  "speaker": "MJX"
+            },
+            {
+                  "path": "data/audio/AVFAD/MPVphrase.wav",
+                  "label": "0",
+                  "speaker": "MPV"
+            },
+            {
+                  "path": "data/audio/AVFAD/PDGphrase.wav",
+                  "label": "0",
+                  "speaker": "PDG"
+            },
+            {
+                  "path": "data/audio/AVFAD/PMSphrase.wav",
+                  "label": "0",
+                  "speaker": "PMS"
+            },
+            {
+                  "path": "data/audio/AVFAD/RFFphrase.wav",
+                  "label": "0",
+                  "speaker": "RFF"
+            },
+            {
+                  "path": "data/audio/AVFAD/RSSphrase.wav",
+                  "label": "0",
+                  "speaker": "RSS"
+            },
+            {
+                  "path": "data/audio/AVFAD/SMGphrase.wav",
+                  "label": "0",
+                  "speaker": "SMG"
+            },
+            {
+                  "path": "data/audio/AVFAD/VMCphrase.wav",
+                  "label": "0",
+                  "speaker": "VMC"
+            },
+            {
+                  "path": "data/audio/AVFAD/ASXphrase.wav",
+                  "label": "1",
+                  "speaker": "ASX"
+            },
+            {
+                  "path": "data/audio/AVFAD/EDSphrase.wav",
+                  "label": "1",
+                  "speaker": "EDS"
+            },
+            {
+                  "path": "data/audio/AVFAD/APXphrase.wav",
+                  "label": "1",
+                  "speaker": "APX"
+            },
+            {
+                  "path": "data/audio/AVFAD/JBGphrase.wav",
+                  "label": "1",
+                  "speaker": "JBG"
+            },
+            {
+                  "path": "data/audio/AVFAD/OAVphrase.wav",
+                  "label": "1",
+                  "speaker": "OAV"
+            },
+            {
+                  "path": "data/audio/AVFAD/PLBphrase.wav",
+                  "label": "1",
+                  "speaker": "PLB"
+            },
+            {
+                  "path": "data/audio/AVFAD/ABSphrase.wav",
+                  "label": "1",
+                  "speaker": "ABS"
+            },
+            {
+                  "path": "data/audio/AVFAD/LMVphrase.wav",
+                  "label": "1",
+                  "speaker": "LMV"
+            },
+            {
+                  "path": "data/audio/AVFAD/MEXphrase.wav",
+                  "label": "1",
+                  "speaker": "MEX"
+            },
+            {
+                  "path": "data/audio/AVFAD/MMNphrase.wav",
+                  "label": "1",
+                  "speaker": "MMN"
+            },
+            {
+                  "path": "data/audio/AVFAD/AACphrase.wav",
+                  "label": "1",
+                  "speaker": "AAC"
+            },
+            {
+                  "path": "data/audio/AVFAD/JGCphrase.wav",
+                  "label": "1",
+                  "speaker": "JGC"
+            },
+            {
+                  "path": "data/audio/AVFAD/MAYphrase.wav",
+                  "label": "1",
+                  "speaker": "MAY"
+            },
+            {
+                  "path": "data/audio/AVFAD/MFSphrase.wav",
+                  "label": "1",
+                  "speaker": "MFS"
+            },
+            {
+                  "path": "data/audio/AVFAD/SRRphrase.wav",
+                  "label": "1",
+                  "speaker": "SRR"
+            },
+            {
+                  "path": "data/audio/AVFAD/JSCphrase.wav",
+                  "label": "1",
+                  "speaker": "JSC"
+            },
+            {
+                  "path": "data/audio/AVFAD/IMSphrase.wav",
+                  "label": "1",
+                  "speaker": "IMS"
+            },
+            {
+                  "path": "data/audio/AVFAD/MBNphrase.wav",
+                  "label": "1",
+                  "speaker": "MBN"
+            },
+            {
+                  "path": "data/audio/AVFAD/MCAphrase.wav",
+                  "label": "1",
+                  "speaker": "MCA"
+            },
+            {
+                  "path": "data/audio/AVFAD/MOPphrase.wav",
+                  "label": "1",
+                  "speaker": "MOP"
+            },
+            {
+                  "path": "data/audio/AVFAD/AJCphrase.wav",
+                  "label": "1",
+                  "speaker": "AJC"
+            },
+            {
+                  "path": "data/audio/AVFAD/FASphrase.wav",
+                  "label": "1",
+                  "speaker": "FAS"
+            },
+            {
+                  "path": "data/audio/AVFAD/HFVphrase.wav",
+                  "label": "1",
+                  "speaker": "HFV"
+            },
+            {
+                  "path": "data/audio/AVFAD/AMOphrase.wav",
+                  "label": "1",
+                  "speaker": "AMO"
+            },
+            {
+                  "path": "data/audio/AVFAD/BPSphrase.wav",
+                  "label": "1",
+                  "speaker": "BPS"
+            },
+            {
+                  "path": "data/audio/AVFAD/CSSphrase.wav",
+                  "label": "1",
+                  "speaker": "CSS"
+            },
+            {
+                  "path": "data/audio/AVFAD/MCRphrase.wav",
+                  "label": "1",
+                  "speaker": "MCR"
+            },
+            {
+                  "path": "data/audio/AVFAD/ALBphrase.wav",
+                  "label": "1",
+                  "speaker": "ALB"
+            },
+            {
+                  "path": "data/audio/AVFAD/CBTphrase.wav",
+                  "label": "1",
+                  "speaker": "CBT"
+            },
+            {
+                  "path": "data/audio/AVFAD/EMCphrase.wav",
+                  "label": "1",
+                  "speaker": "EMC"
+            },
+            {
+                  "path": "data/audio/AVFAD/LCCphrase.wav",
+                  "label": "1",
+                  "speaker": "LCC"
+            },
+            {
+                  "path": "data/audio/AVFAD/MVGphrase.wav",
+                  "label": "1",
+                  "speaker": "MVG"
+            },
+            {
+                  "path": "data/audio/AVFAD/SAPphrase.wav",
+                  "label": "1",
+                  "speaker": "SAP"
+            },
+            {
+                  "path": "data/audio/AVFAD/SMWphrase.wav",
+                  "label": "1",
+                  "speaker": "SMW"
+            },
+            {
+                  "path": "data/audio/AVFAD/AMZphrase.wav",
+                  "label": "1",
+                  "speaker": "AMZ"
+            },
+            {
+                  "path": "data/audio/AVFAD/PJGphrase.wav",
+                  "label": "1",
+                  "speaker": "PJG"
+            },
+            {
+                  "path": "data/audio/AVFAD/CMCphrase.wav",
+                  "label": "1",
+                  "speaker": "CMC"
+            },
+            {
+                  "path": "data/audio/AVFAD/MRSphrase.wav",
+                  "label": "1",
+                  "speaker": "MRS"
+            },
+            {
+                  "path": "data/audio/AVFAD/RAAphrase.wav",
+                  "label": "1",
+                  "speaker": "RAA"
+            },
+            {
+                  "path": "data/audio/AVFAD/FMPphrase.wav",
+                  "label": "1",
+                  "speaker": "FMP"
+            }
+      ]
+}

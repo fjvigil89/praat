@@ -1,0 +1,1998 @@
+{
+      "labels": {
+            "NORM": 0,
+            "PATH": 1
+      },
+      "meta_data": [
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/2-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/7-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/17-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/719-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1084-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1991-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/721-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/727-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1394-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/742-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/815-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/920-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1165-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1446-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1635-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2268-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/819-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/826-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/830-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/845-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2029-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/849-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/896-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1548-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2088-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2395-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2455-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/853-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/868-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/880-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/885-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/897-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/901-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/904-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1554-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/910-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/925-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/931-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/939-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1037-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1046-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1053-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1055-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1118-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1119-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1192-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1157-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1186-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/104-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/355-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/890-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/115-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1200-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1205-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1225-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1235-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1246-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1240-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1251-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1264-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1266-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/123-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1284-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1293-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1390-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1296-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1300-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1315-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1323-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1326-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/1336-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1388-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1397-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1448-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1399-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1415-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/137-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/145-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1425-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1436-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1444-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1455-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1457-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2384-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1463-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1479-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1489-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1525-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1549-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1562-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/1577-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1589-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1595-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1600-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1610-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1658-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1529-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1612-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1613-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1621-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1628-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1632-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2351-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1636-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1650-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1660-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1671-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2078-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2243-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1674-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1681-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1688-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1895-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1690-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1719-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1753-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1757-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1763-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1770-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1782-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1790-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1797-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1804-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1807-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1817-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1821-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1834-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1869-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1902-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1908-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1909-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1938-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1960-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1972-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1998-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2030-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2227-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2234-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2304-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2320-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1768-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1779-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1788-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1793-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1800-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1929-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1803-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1812-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1822-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1832-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1888-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1897-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2186-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1898-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1910-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1934-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1936-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1957-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1964-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2293-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1965-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1973-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/1982-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1987-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2001-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2012-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2020-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2025-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2057-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2341-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2058-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2067-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2075-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2086-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2092-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2094-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2103-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2106-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2114-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2122-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2128-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2135-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2595-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2533-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2596-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2146-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2157-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2161-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2188-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2211-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2187-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2215-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2218-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2225-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2231-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2236-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2242-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2267-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2288-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2295-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2299-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2309-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2314-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2318-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2322-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2371-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2327-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2335-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2340-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2346-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2349-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2438-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2357-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2368-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2374-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2378-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2390-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2394-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2404-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/2407-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2433-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2414-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2424-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2427-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2441-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2450-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2452-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/2462-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2466-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2467-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2575-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2474-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2480-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2489-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2498-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2502-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2509-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2515-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2524-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2528-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2539-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2542-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2546-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2553-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2559-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2569-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2574-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2581-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2588-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2600-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2606-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/2610-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/675-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/681-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/682-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/687-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/20-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/25-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/699-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/709-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/735-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/739-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/745-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/806-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/811-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/835-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/839-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/32-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/35-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/860-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/865-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/957-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/942-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/947-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/953-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/961-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/981-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/982-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/973-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/978-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/989-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/993-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/1000-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/1005-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/1009-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/1013-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/1020-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/1028-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/1035-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/40-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/44-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1059-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1066-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/1070-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/1073-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/1077-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1094-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1097-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1101-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1105-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/1108-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/1136-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1128-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1135-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/1142-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1146-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1151-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1172-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1176-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1179-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/1181-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/52-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1210-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1320-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1346-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/1358-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1352-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1363-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1367-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1362-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1374-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/1522-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1511-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1516-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1523-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/1517-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/1520-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1528-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1535-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/1539-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1543-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/1587-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1695-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/56-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/62-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/63-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/1702-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1707-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1710-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/1724-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1728-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1734-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1839-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/1842-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1848-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/1854-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1856-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1860-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1874-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/1877-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1881-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1885-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/1921-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/1924-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/71-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/929-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/2204-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/2208-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/2249-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/2252-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/2257-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/2263-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/2280-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/2285-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/105-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/107-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/110-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2120-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/120-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/128-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/364-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/914-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/129-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/159-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/503-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1780-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2413-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/139-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/mujeres/77-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/NORM/hombres/81-phrase.wav",
+                  "label": "NORM",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/144-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/152-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/155-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/352-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/360-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/450-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/491-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/504-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1450-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1503-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/497-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/561-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/563-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/627-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/666-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/671-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/mujeres/879-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/714-phrase.wav",
+                  "label": "PATH",
+                  "speaker": "1404"
+            }
+      ]
+}
