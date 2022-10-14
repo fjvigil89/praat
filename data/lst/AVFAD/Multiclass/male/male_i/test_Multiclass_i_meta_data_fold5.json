@@ -1,0 +1,72 @@
+{
+      "labels": {
+            "INFLAMMATORY CONDITIONS OF THE LARYNX": "2000",
+            "Spasmodic Dysphonia": "9183",
+            "Abnormalities of the Vocal Fold": "1200",
+            "Dysphonia": "9060",
+            "control": "0",
+            "OTHER DISORDERS AFFECTING VOICE": "8000"
+      },
+      "meta_data": [
+            {
+                  "path": "data/audio/AVFAD/JMF/JMF001.wav",
+                  "label": "9060",
+                  "speaker": "JMF"
+            },
+            {
+                  "path": "data/audio/AVFAD/AJS/AJS001.wav",
+                  "label": "9060",
+                  "speaker": "AJS"
+            },
+            {
+                  "path": "data/audio/AVFAD/DMG/DMG001.wav",
+                  "label": "9060",
+                  "speaker": "DMG"
+            },
+            {
+                  "path": "data/audio/AVFAD/FMA/FMA001.wav",
+                  "label": "9060",
+                  "speaker": "FMA"
+            },
+            {
+                  "path": "data/audio/AVFAD/MCZ/MCZ001.wav",
+                  "label": "9060",
+                  "speaker": "MCZ"
+            },
+            {
+                  "path": "data/audio/AVFAD/ASR/ASR001.wav",
+                  "label": "8000",
+                  "speaker": "ASR"
+            },
+            {
+                  "path": "data/audio/AVFAD/ASX/ASX001.wav",
+                  "label": "8000",
+                  "speaker": "ASX"
+            },
+            {
+                  "path": "data/audio/AVFAD/JRP/JRP001.wav",
+                  "label": "8000",
+                  "speaker": "JRP"
+            },
+            {
+                  "path": "data/audio/AVFAD/AJC/AJC001.wav",
+                  "label": "9060",
+                  "speaker": "AJC"
+            },
+            {
+                  "path": "data/audio/AVFAD/FAS/FAS001.wav",
+                  "label": "9060",
+                  "speaker": "FAS"
+            },
+            {
+                  "path": "data/audio/AVFAD/HFV/HFV001.wav",
+                  "label": "9060",
+                  "speaker": "HFV"
+            },
+            {
+                  "path": "data/audio/AVFAD/FMP/FMP001.wav",
+                  "label": "9060",
+                  "speaker": "FMP"
+            }
+      ]
+}

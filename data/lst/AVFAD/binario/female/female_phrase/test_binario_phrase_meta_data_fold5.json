@@ -1,0 +1,23 @@
+{
+      "labels": {
+            "NORM": "0",
+            "PATH": "1"
+      },
+      "meta_data": [
+            {
+                  "path": "data/audio/AVFAD/ACO/ACOphrase.wav",
+                  "label": "1",
+                  "speaker": "ACO"
+            },
+            {
+                  "path": "data/audio/AVFAD/EML/EMLphrase.wav",
+                  "label": "1",
+                  "speaker": "EML"
+            },
+            {
+                  "path": "data/audio/AVFAD/RFS/RFSphrase.wav",
+                  "label": "1",
+                  "speaker": "RFS"
+            }
+      ]
+}

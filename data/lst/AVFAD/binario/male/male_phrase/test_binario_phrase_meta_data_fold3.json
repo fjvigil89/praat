@@ -1,0 +1,53 @@
+{
+      "labels": {
+            "NORM": "0",
+            "PATH": "1"
+      },
+      "meta_data": [
+            {
+                  "path": "data/audio/AVFAD/JMF/JMFphrase.wav",
+                  "label": "1",
+                  "speaker": "JMF"
+            },
+            {
+                  "path": "data/audio/AVFAD/AJS/AJSphrase.wav",
+                  "label": "1",
+                  "speaker": "AJS"
+            },
+            {
+                  "path": "data/audio/AVFAD/DMG/DMGphrase.wav",
+                  "label": "1",
+                  "speaker": "DMG"
+            },
+            {
+                  "path": "data/audio/AVFAD/FMA/FMAphrase.wav",
+                  "label": "1",
+                  "speaker": "FMA"
+            },
+            {
+                  "path": "data/audio/AVFAD/MCZ/MCZphrase.wav",
+                  "label": "1",
+                  "speaker": "MCZ"
+            },
+            {
+                  "path": "data/audio/AVFAD/AJC/AJCphrase.wav",
+                  "label": "1",
+                  "speaker": "AJC"
+            },
+            {
+                  "path": "data/audio/AVFAD/FAS/FASphrase.wav",
+                  "label": "1",
+                  "speaker": "FAS"
+            },
+            {
+                  "path": "data/audio/AVFAD/HFV/HFVphrase.wav",
+                  "label": "1",
+                  "speaker": "HFV"
+            },
+            {
+                  "path": "data/audio/AVFAD/FMP/FMPphrase.wav",
+                  "label": "1",
+                  "speaker": "FMP"
+            }
+      ]
+}

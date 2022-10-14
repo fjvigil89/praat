@@ -1,0 +1,13 @@
+{
+      "labels": {
+            "NORM": "0",
+            "PATH": "1"
+      },
+      "meta_data": [
+            {
+                  "path": "data/audio/AVFAD/ZPM/ZPMphrase.wav",
+                  "label": "1",
+                  "speaker": "ZPM"
+            }
+      ]
+}

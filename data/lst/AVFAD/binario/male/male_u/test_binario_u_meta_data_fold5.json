@@ -5,21 +5,6 @@
       },
       "meta_data": [
             {
-                  "path": "data/audio/AVFAD/ACO/ACO003.wav",
-                  "label": "1",
-                  "speaker": "ACO"
-            },
-            {
-                  "path": "data/audio/AVFAD/EML/EML003.wav",
-                  "label": "1",
-                  "speaker": "EML"
-            },
-            {
-                  "path": "data/audio/AVFAD/RFS/RFS003.wav",
-                  "label": "1",
-                  "speaker": "RFS"
-            },
-            {
                   "path": "data/audio/AVFAD/ZPM/ZPM003.wav",
                   "label": "1",
                   "speaker": "ZPM"

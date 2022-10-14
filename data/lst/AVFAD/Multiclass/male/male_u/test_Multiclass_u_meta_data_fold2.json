@@ -1,0 +1,232 @@
+{
+      "labels": {
+            "INFLAMMATORY CONDITIONS OF THE LARYNX": "2000",
+            "Spasmodic Dysphonia": "9183",
+            "Abnormalities of the Vocal Fold": "1200",
+            "Dysphonia": "9060",
+            "control": "0",
+            "OTHER DISORDERS AFFECTING VOICE": "8000"
+      },
+      "meta_data": [
+            {
+                  "path": "data/audio/AVFAD/JMX/JMX003.wav",
+                  "label": "2000",
+                  "speaker": "JMX"
+            },
+            {
+                  "path": "data/audio/AVFAD/NHS/NHS003.wav",
+                  "label": "2000",
+                  "speaker": "NHS"
+            },
+            {
+                  "path": "data/audio/AVFAD/AVC/AVC003.wav",
+                  "label": "2000",
+                  "speaker": "AVC"
+            },
+            {
+                  "path": "data/audio/AVFAD/DFC/DFC003.wav",
+                  "label": "2000",
+                  "speaker": "DFC"
+            },
+            {
+                  "path": "data/audio/AVFAD/JSS/JSS003.wav",
+                  "label": "2000",
+                  "speaker": "JSS"
+            },
+            {
+                  "path": "data/audio/AVFAD/ACM/ACM003.wav",
+                  "label": "2000",
+                  "speaker": "ACM"
+            },
+            {
+                  "path": "data/audio/AVFAD/AJB/AJB003.wav",
+                  "label": "2000",
+                  "speaker": "AJB"
+            },
+            {
+                  "path": "data/audio/AVFAD/ALF/ALF003.wav",
+                  "label": "2000",
+                  "speaker": "ALF"
+            },
+            {
+                  "path": "data/audio/AVFAD/APZ/APZ003.wav",
+                  "label": "2000",
+                  "speaker": "APZ"
+            },
+            {
+                  "path": "data/audio/AVFAD/AQC/AQC003.wav",
+                  "label": "2000",
+                  "speaker": "AQC"
+            },
+            {
+                  "path": "data/audio/AVFAD/CMF/CMF003.wav",
+                  "label": "2000",
+                  "speaker": "CMF"
+            },
+            {
+                  "path": "data/audio/AVFAD/ECF/ECF003.wav",
+                  "label": "2000",
+                  "speaker": "ECF"
+            },
+            {
+                  "path": "data/audio/AVFAD/FFS/FFS003.wav",
+                  "label": "2000",
+                  "speaker": "FFS"
+            },
+            {
+                  "path": "data/audio/AVFAD/FRM/FRM003.wav",
+                  "label": "2000",
+                  "speaker": "FRM"
+            },
+            {
+                  "path": "data/audio/AVFAD/ICX/ICX003.wav",
+                  "label": "2000",
+                  "speaker": "ICX"
+            },
+            {
+                  "path": "data/audio/AVFAD/JAB/JAB003.wav",
+                  "label": "2000",
+                  "speaker": "JAB"
+            },
+            {
+                  "path": "data/audio/AVFAD/JAM/JAM003.wav",
+                  "label": "2000",
+                  "speaker": "JAM"
+            },
+            {
+                  "path": "data/audio/AVFAD/JAO/JAO003.wav",
+                  "label": "2000",
+                  "speaker": "JAO"
+            },
+            {
+                  "path": "data/audio/AVFAD/JAP/JAP003.wav",
+                  "label": "2000",
+                  "speaker": "JAP"
+            },
+            {
+                  "path": "data/audio/AVFAD/JAS/JAS003.wav",
+                  "label": "2000",
+                  "speaker": "JAS"
+            },
+            {
+                  "path": "data/audio/AVFAD/JCS/JCS003.wav",
+                  "label": "2000",
+                  "speaker": "JCS"
+            },
+            {
+                  "path": "data/audio/AVFAD/JDM/JDM003.wav",
+                  "label": "2000",
+                  "speaker": "JDM"
+            },
+            {
+                  "path": "data/audio/AVFAD/JMJ/JMJ003.wav",
+                  "label": "2000",
+                  "speaker": "JMJ"
+            },
+            {
+                  "path": "data/audio/AVFAD/JML/JML003.wav",
+                  "label": "2000",
+                  "speaker": "JML"
+            },
+            {
+                  "path": "data/audio/AVFAD/JPS/JPS003.wav",
+                  "label": "2000",
+                  "speaker": "JPS"
+            },
+            {
+                  "path": "data/audio/AVFAD/JSW/JSW003.wav",
+                  "label": "2000",
+                  "speaker": "JSW"
+            },
+            {
+                  "path": "data/audio/AVFAD/LAS/LAS003.wav",
+                  "label": "2000",
+                  "speaker": "LAS"
+            },
+            {
+                  "path": "data/audio/AVFAD/LFS/LFS003.wav",
+                  "label": "2000",
+                  "speaker": "LFS"
+            },
+            {
+                  "path": "data/audio/AVFAD/LLR/LLR003.wav",
+                  "label": "2000",
+                  "speaker": "LLR"
+            },
+            {
+                  "path": "data/audio/AVFAD/MAS/MAS003.wav",
+                  "label": "2000",
+                  "speaker": "MAS"
+            },
+            {
+                  "path": "data/audio/AVFAD/MJS/MJS003.wav",
+                  "label": "2000",
+                  "speaker": "MJS"
+            },
+            {
+                  "path": "data/audio/AVFAD/PAF/PAF003.wav",
+                  "label": "2000",
+                  "speaker": "PAF"
+            },
+            {
+                  "path": "data/audio/AVFAD/VMR/VMR003.wav",
+                  "label": "2000",
+                  "speaker": "VMR"
+            },
+            {
+                  "path": "data/audio/AVFAD/VQC/VQC003.wav",
+                  "label": "2000",
+                  "speaker": "VQC"
+            },
+            {
+                  "path": "data/audio/AVFAD/MMF/MMF003.wav",
+                  "label": "2000",
+                  "speaker": "MMF"
+            },
+            {
+                  "path": "data/audio/AVFAD/SMR/SMR003.wav",
+                  "label": "2000",
+                  "speaker": "SMR"
+            },
+            {
+                  "path": "data/audio/AVFAD/FRL/FRL003.wav",
+                  "label": "2000",
+                  "speaker": "FRL"
+            },
+            {
+                  "path": "data/audio/AVFAD/MVT/MVT003.wav",
+                  "label": "2000",
+                  "speaker": "MVT"
+            },
+            {
+                  "path": "data/audio/AVFAD/PLB/PLB003.wav",
+                  "label": "2000",
+                  "speaker": "PLB"
+            },
+            {
+                  "path": "data/audio/AVFAD/AAC/AAC003.wav",
+                  "label": "2000",
+                  "speaker": "AAC"
+            },
+            {
+                  "path": "data/audio/AVFAD/AJX/AJX003.wav",
+                  "label": "2000",
+                  "speaker": "AJX"
+            },
+            {
+                  "path": "data/audio/AVFAD/FAX/FAX003.wav",
+                  "label": "2000",
+                  "speaker": "FAX"
+            },
+            {
+                  "path": "data/audio/AVFAD/JGC/JGC003.wav",
+                  "label": "2000",
+                  "speaker": "JGC"
+            },
+            {
+                  "path": "data/audio/AVFAD/JMM/JMM003.wav",
+                  "label": "2000",
+                  "speaker": "JMM"
+            }
+      ]
+}

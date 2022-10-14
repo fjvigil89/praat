@@ -15,31 +15,6 @@
                   "speaker": "MEP"
             },
             {
-                  "path": "data/audio/AVFAD/JMF/JMF002.wav",
-                  "label": "1",
-                  "speaker": "JMF"
-            },
-            {
-                  "path": "data/audio/AVFAD/AJS/AJS002.wav",
-                  "label": "1",
-                  "speaker": "AJS"
-            },
-            {
-                  "path": "data/audio/AVFAD/DMG/DMG002.wav",
-                  "label": "1",
-                  "speaker": "DMG"
-            },
-            {
-                  "path": "data/audio/AVFAD/FMA/FMA002.wav",
-                  "label": "1",
-                  "speaker": "FMA"
-            },
-            {
-                  "path": "data/audio/AVFAD/MCZ/MCZ002.wav",
-                  "label": "1",
-                  "speaker": "MCZ"
-            },
-            {
                   "path": "data/audio/AVFAD/CMA/CMA002.wav",
                   "label": "1",
                   "speaker": "CMA"
@@ -55,21 +30,6 @@
                   "speaker": "MOP"
             },
             {
-                  "path": "data/audio/AVFAD/AJC/AJC002.wav",
-                  "label": "1",
-                  "speaker": "AJC"
-            },
-            {
-                  "path": "data/audio/AVFAD/FAS/FAS002.wav",
-                  "label": "1",
-                  "speaker": "FAS"
-            },
-            {
-                  "path": "data/audio/AVFAD/HFV/HFV002.wav",
-                  "label": "1",
-                  "speaker": "HFV"
-            },
-            {
                   "path": "data/audio/AVFAD/MCT/MCT002.wav",
                   "label": "1",
                   "speaker": "MCT"
@@ -78,11 +38,6 @@
                   "path": "data/audio/AVFAD/MCW/MCW002.wav",
                   "label": "1",
                   "speaker": "MCW"
-            },
-            {
-                  "path": "data/audio/AVFAD/FMP/FMP002.wav",
-                  "label": "1",
-                  "speaker": "FMP"
             }
       ]
 }

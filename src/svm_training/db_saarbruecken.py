@@ -5,8 +5,7 @@ from genericpath import isdir, isfile
 from multiprocessing.dummy import Array
 import sys, json, os, pickle, time
 import datetime
-from tkinter import TRUE
-# sys.path.append('src')
+from sklearn.model_selection import GroupKFold, StratifiedGroupKFold
 
 import pandas as pd
 import numpy as np
@@ -15,8 +14,8 @@ import csv
 import opensmile
 import mutagen
 from mutagen.wave import WAVE
-from svm_training import utils
 #from utils import compute_score, zscore
+from svm_training import utils, db_avfad, db_voiced, db_thalento, db_saarbruecken, Load_metadata as db
 from collections import Counter
 
 # function to convert the information into 
@@ -116,134 +115,292 @@ def timeSaarbruecken(list_path, path_metadata, label):
     print("tiempo total de las grabaciones de "+ label+":",total_time)   
 
 def featureSaarbruecken(list_path, kfold, audio_type, label):
-    clases ="multiclases"#"binaria"
+    clases ="binario"       
+    general=["male","female", 'both']    
+    grabacion=["phrase","vowels", "a", "i", "u"]
      # 1. Loading data from json list    
     for k in range(0, kfold):
-        tic = time.time()
-        train_files = []
-        train_labels = []
-        trainlist = list_path + '/train_' + clases + '_' + audio_type + '_meta_data_fold' + str(k + 1) + '.json'
-        print(trainlist)
-        with open(trainlist, 'r') as f:
-            data = json.load(f)
-            for item in data['meta_data']:
-                file_name =item['path'].split("/")
-                train_files.append(item['path'].split("-"+audio_type)[0]+"/"+ file_name[len(file_name)-1])                
-                train_labels.append(int(item['label']))
+        for w in general:
+            j=len(grabacion)-1
+            while j >=0:
+                tic = time.time()
+                train_files = []
+                train_labels = []
+                #trainlist = list_path + '/train_' + clases + '_' + audio_type + '_meta_data_fold' + str(k + 1) + '.json'
+                trainlist = list_path +"/"+ clases +"/"+ w+"/"+ w+'_'+grabacion[j] + '/train_' + clases + '_' + grabacion[j] + '_meta_data_fold' + str(k + 1) + '.json'
+                print(trainlist)
+                with open(trainlist, 'r') as f:
+                    data = json.load(f)
+                    for item in data['meta_data']:
+                        file_name =item['path'].split("/")
+                        train_files.append(item['path'].split("-"+audio_type)[0]+"/"+ file_name[len(file_name)-1])                
+                        train_labels.append(int(item['label']))
+                        
+                f.close()
+
+                test_files = []
+                test_labels = []
+                #testlist = list_path + '/test_' + clases + '_' + audio_type + '_meta_data_fold' + str(k + 1) + '.json'
+                testlist = list_path +"/"+ clases +"/"+ w+"/"+ w+'_'+grabacion[j] + '/train_' + clases + '_' + grabacion[j] + '_meta_data_fold' + str(k + 1) + '.json'
+                with open(testlist, 'r') as f:
+                    data = json.load(f)
+                    for item in data['meta_data']:
+                        file_name =item['path'].split("/")
+                        test_files.append(item['path'].split("-"+audio_type)[0]+"/"+ file_name[len(file_name)-1])
+                        test_labels.append(int(item['label']))                
+                f.close()
+
+                # 2. Load features: Train
+                # Get the same features.pkl for binaryclass and for multiclass
+                try:
+                    audio_type_pkl = audio_type.split('multi_')[1]
+                except:
+                    audio_type_pkl = audio_type
+                try:
+                    label_csv = label.split('_Nomiss')[1]
+                except:
+                    label_csv = label        
+
+                train_labels = np.array(train_labels)
+                camino= 'data/features/' + label +"/"+  clases +"/"+ w+"/"+ w+'_'+grabacion[j]
+                if not os.path.exists(camino):
+                    os.makedirs(camino + '/')
+
+
+                #trainpath = 'data/features/' + label + '/train_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1) + '.pkl'
+                #trainpath_csv = 'data/features/' + label + '/train_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1)        
+                trainpath = camino  + '/train_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1) + '.pkl'
+                trainpath_csv = camino  + '/train_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1)        
                 
-        f.close()
+                i = 0
+                train_features = []
+                data = []            
+                smile = opensmile.Smile(
+                    feature_set=opensmile.FeatureSet.ComParE_2016,
+                    feature_level=opensmile.FeatureLevel.Functionals,
+                    loglevel=2,
+                    logfile='smile.log',
+                )
+                for wav in train_files:
+                    print(str(i) + ': Fold ' + str(k + 1) + ': ' + wav)
+                    name = os.path.basename(wav)[:-4]
+                    fle= os.path.basename(wav)
+                    path_wav =wav.split(name)[0]                                
+                    for r, d, f in os.walk(path_wav):                                    
+                        for file in f:
+                            if(str(file) == str(fle)):                        
+                                path = r + '/' + file
+                                print(str(i+1) + '. append: ' + file)
+                                data.append(path)
+                                print('Processing: ... ', name+'_smile.csv')
+                                feat_one = smile.process_file(path)                                    
+                                feat_one.to_csv(camino +"/" + str(name) +'_smile.csv')
+                                print('Saving: ... ', camino)
+                    i = i+1                          
+                
+                
+                # read wav files and extract emobase features on that file
+                print('Processing: ... ')
+                feat = smile.process_files(data)            
+                train_features.append(feat.to_numpy()[3:])
+                
+                print('Saving: ... Train: ' + audio_type_pkl+'_smile.csv')
+                feat.to_csv(trainpath_csv+'_smile.csv')
+                
+                print('Train: ' + str(i))
+                train_features = np.array(train_features)
+                with open(trainpath, 'wb') as fid:
+                    pickle.dump(train_features, fid, protocol=pickle.HIGHEST_PROTOCOL)
+                fid.close()
 
-        test_files = []
-        test_labels = []
-        testlist = list_path + '/test_' + clases + '_' + audio_type + '_meta_data_fold' + str(k + 1) + '.json'
-        with open(testlist, 'r') as f:
-            data = json.load(f)
-            for item in data['meta_data']:
-                file_name =item['path'].split("/")
-                test_files.append(item['path'].split("-"+audio_type)[0]+"/"+ file_name[len(file_name)-1])
-                test_labels.append(int(item['label']))                
-        f.close()
+                # Test
+                test_labels = np.array(test_labels)
+                testpath = 'data/features/' + label + '/test_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1) + '.pkl'
+                testpath_csv = 'data/features/' + label + '/test_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1)
+                
+                i = 0
+                test_features = []
+                data = []
+                smile = opensmile.Smile(
+                    feature_set=opensmile.FeatureSet.ComParE_2016,
+                    feature_level=opensmile.FeatureLevel.Functionals,
+                    loglevel=2,
+                    logfile='smile.log',
+                )
+                for wav in test_files:
+                    print(str(i) + ': Fold ' + str(k + 1) + ': ' + wav)
+                    name = os.path.basename(wav)[:-4]
+                    path_wav =wav.split(name)[0]                                
+                    for r, d, f in os.walk(path_wav):                                    
+                        for file in f:
+                            if(str(file) == str(fle)):                        
+                                path = r + '/' + file
+                                print(str(i+1) + '. append: ' + file)
+                                data.append(path)
+                                print('Processing: ... ', name+'_smile.csv')
+                                feat_one = smile.process_file(path)                                    
+                                feat_one.to_csv(camino+"/" + str(name) +'_smile.csv')
+                                print('Saving: ... ', camino)
+                    i = i+1                   
+                
+                    # read wav files and extract emobase features on that file
+                print('Processing: ... ')
+                feat = smile.process_files(data)            
+                test_features.append(feat.to_numpy()[3:])
+                
+                print('Saving: ... Test: ' + audio_type_pkl+'_smile.csv')
+                feat.to_csv(testpath_csv+'_smile.csv')
+                
+                print('Test: ' + str(i))
+                test_features = np.array(test_features)
+                with open(testpath, 'wb') as fid:
+                    pickle.dump(test_features, fid, protocol=pickle.HIGHEST_PROTOCOL)
+                fid.close()
+                j=j-1
 
-        # 2. Load features: Train
-        # Get the same features.pkl for binaryclass and for multiclass
-        try:
-            audio_type_pkl = audio_type.split('multi_')[1]
-        except:
-            audio_type_pkl = audio_type
-        try:
-            label_csv = label.split('_Nomiss')[1]
-        except:
-            label_csv = label        
+def feature_m_Saarbruecken(list_path, kfold, audio_type, label): #reviar
+    clases ="Multiclass"    
+    general=["male","female", 'both']    
+    grabacion=["phrase","vowels", "a", "i", "u"]
+     # 1. Loading data from json list    
+    for k in range(0, kfold):
+        for w in general:
+            j=len(grabacion)-1
+            while j >=0:
+                tic = time.time()
+                train_files = []
+                train_labels = []
+                #trainlist = list_path + '/train_' + clases + '_' + audio_type + '_meta_data_fold' + str(k + 1) + '.json'
+                trainlist = list_path +"/"+ clases +"/"+ w+"/"+ w+'_'+grabacion[j] + '/train_' + clases + '_' + grabacion[j] + '_meta_data_fold' + str(k + 1) + '.json'
+                print(trainlist)
+                with open(trainlist, 'r') as f:
+                    data = json.load(f)
+                    for item in data['meta_data']:
+                        file_name =item['path'].split("/")
+                        train_files.append(item['path'].split("-"+audio_type)[0]+"/"+ file_name[len(file_name)-1])                
+                        train_labels.append(int(item['label']))
+                        
+                f.close()
 
-        train_labels = np.array(train_labels)
+                test_files = []
+                test_labels = []
+                #testlist = list_path + '/test_' + clases + '_' + audio_type + '_meta_data_fold' + str(k + 1) + '.json'
+                testlist = list_path +"/"+ clases +"/"+ w+"/"+ w+'_'+grabacion[j] + '/train_' + clases + '_' + grabacion[j] + '_meta_data_fold' + str(k + 1) + '.json'
+                with open(testlist, 'r') as f:
+                    data = json.load(f)
+                    for item in data['meta_data']:
+                        file_name =item['path'].split("/")
+                        test_files.append(item['path'].split("-"+audio_type)[0]+"/"+ file_name[len(file_name)-1])
+                        test_labels.append(int(item['label']))                
+                f.close()
 
-        trainpath = 'data/features/' + label + '/train_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1) + '.pkl'
-        trainpath_csv = 'data/features/' + label + '/train_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1)        
-        
-        i = 0
-        train_features = []
-        data = []            
-        smile = opensmile.Smile(
-            feature_set=opensmile.FeatureSet.ComParE_2016,
-            feature_level=opensmile.FeatureLevel.Functionals,
-            loglevel=2,
-            logfile='smile.log',
-        )
-        for wav in train_files:
-            print(str(i) + ': Fold ' + str(k + 1) + ': ' + wav)
-            name = os.path.basename(wav)[:-4]
-            fle= os.path.basename(wav)
-            path_wav =wav.split(name)[0]                                
-            for r, d, f in os.walk(path_wav):                                    
-                for file in f:
-                    if(str(file) == str(fle)):                        
-                        path = r + '/' + file
-                        print(str(i+1) + '. append: ' + file)
-                        data.append(path)
-                        print('Processing: ... ', name+'_smile.csv')
-                        feat_one = smile.process_file(path)                                    
-                        feat_one.to_csv('data/features/' + str(label)+"/" + str(name) +'_smile.csv')
-            i = i+1                          
-        
-        
-        # read wav files and extract emobase features on that file
-        print('Processing: ... ')
-        feat = smile.process_files(data)            
-        train_features.append(feat.to_numpy()[3:])
-        
-        print('Saving: ... Train: ' + audio_type_pkl+'_smile.csv')
-        feat.to_csv(trainpath_csv+'_smile.csv')
-        
-        print('Train: ' + str(i))
-        train_features = np.array(train_features)
-        with open(trainpath, 'wb') as fid:
-            pickle.dump(train_features, fid, protocol=pickle.HIGHEST_PROTOCOL)
-        fid.close()
+                # 2. Load features: Train
+                # Get the same features.pkl for binaryclass and for multiclass
+                try:
+                    audio_type_pkl = audio_type.split('multi_')[1]
+                except:
+                    audio_type_pkl = audio_type
+                try:
+                    label_csv = label.split('_Nomiss')[1]
+                except:
+                    label_csv = label        
 
-        # Test
-        test_labels = np.array(test_labels)
-        testpath = 'data/features/' + label + '/test_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1) + '.pkl'
-        testpath_csv = 'data/features/' + label + '/test_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1)
-        
-        i = 0
-        test_features = []
-        data = []
-        smile = opensmile.Smile(
-            feature_set=opensmile.FeatureSet.ComParE_2016,
-            feature_level=opensmile.FeatureLevel.Functionals,
-            loglevel=2,
-            logfile='smile.log',
-        )
-        for wav in test_files:
-            print(str(i) + ': Fold ' + str(k + 1) + ': ' + wav)
-            name = os.path.basename(wav)[:-4]
-            path_wav =wav.split(name)[0]                                
-            for r, d, f in os.walk(path_wav):                                    
-                for file in f:
-                    if(str(file) == str(fle)):                        
-                        path = r + '/' + file
-                        print(str(i+1) + '. append: ' + file)
-                        data.append(path)
-                        print('Processing: ... ', name+'_smile.csv')
-                        feat_one = smile.process_file(path)                                    
-                        feat_one.to_csv('data/features/' + str(label)+"/" + str(name) +'_smile.csv')
-            i = i+1                   
-        
-            # read wav files and extract emobase features on that file
-        print('Processing: ... ')
-        feat = smile.process_files(data)            
-        test_features.append(feat.to_numpy()[3:])
-        
-        print('Saving: ... Test: ' + audio_type_pkl+'_smile.csv')
-        feat.to_csv(testpath_csv+'_smile.csv')
-        
-        print('Test: ' + str(i))
-        test_features = np.array(test_features)
-        with open(testpath, 'wb') as fid:
-            pickle.dump(test_features, fid, protocol=pickle.HIGHEST_PROTOCOL)
-        fid.close()
-        
-        
+                train_labels = np.array(train_labels)
+                camino= 'data/features/' + label +"/"+  clases +"/"+ w+"/"+ w+'_'+grabacion[j]
+                if not os.path.exists(camino):
+                    os.makedirs(camino + '/')
+
+
+                #trainpath = 'data/features/' + label + '/train_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1) + '.pkl'
+                #trainpath_csv = 'data/features/' + label + '/train_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1)        
+                trainpath = camino  + '/train_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1) + '.pkl'
+                trainpath_csv = camino  + '/train_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1)        
+                
+                i = 0
+                train_features = []
+                data = []            
+                smile = opensmile.Smile(
+                    feature_set=opensmile.FeatureSet.ComParE_2016,
+                    feature_level=opensmile.FeatureLevel.Functionals,
+                    loglevel=2,
+                    logfile='smile.log',
+                )
+                for wav in train_files:
+                    print(str(i) + ': Fold ' + str(k + 1) + ': ' + wav)
+                    name = os.path.basename(wav)[:-4]
+                    fle= os.path.basename(wav)
+                    path_wav =wav.split(name)[0]                                
+                    for r, d, f in os.walk(path_wav):                                    
+                        for file in f:
+                            if(str(file) == str(fle)):                        
+                                path = r + '/' + file
+                                print(str(i+1) + '. append: ' + file)
+                                data.append(path)
+                                print('Processing: ... ', name+'_smile.csv')
+                                feat_one = smile.process_file(path)                                    
+                                feat_one.to_csv(camino +"/" + str(name) +'_smile.csv')
+                    i = i+1                          
+                
+                
+                # read wav files and extract emobase features on that file
+                print('Processing: ... ')
+                feat = smile.process_files(data)            
+                train_features.append(feat.to_numpy()[3:])
+                
+                print('Saving: ... Train: ' + audio_type_pkl+'_smile.csv')
+                feat.to_csv(trainpath_csv+'_smile.csv')
+                
+                print('Train: ' + str(i))
+                train_features = np.array(train_features)
+                with open(trainpath, 'wb') as fid:
+                    pickle.dump(train_features, fid, protocol=pickle.HIGHEST_PROTOCOL)
+                fid.close()
+
+                # Test
+                test_labels = np.array(test_labels)
+                testpath = 'data/features/' + label + '/test_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1) + '.pkl'
+                testpath_csv = 'data/features/' + label + '/test_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1)
+                
+                i = 0
+                test_features = []
+                data = []
+                smile = opensmile.Smile(
+                    feature_set=opensmile.FeatureSet.ComParE_2016,
+                    feature_level=opensmile.FeatureLevel.Functionals,
+                    loglevel=2,
+                    logfile='smile.log',
+                )
+                for wav in test_files:
+                    print(str(i) + ': Fold ' + str(k + 1) + ': ' + wav)
+                    name = os.path.basename(wav)[:-4]
+                    path_wav =wav.split(name)[0]                                
+                    for r, d, f in os.walk(path_wav):                                    
+                        for file in f:
+                            if(str(file) == str(fle)):                        
+                                path = r + '/' + file
+                                print(str(i+1) + '. append: ' + file)
+                                data.append(path)
+                                print('Processing: ... ', name+'_smile.csv')
+                                feat_one = smile.process_file(path)                                    
+                                feat_one.to_csv(camino+"/" + str(name) +'_smile.csv')
+                    i = i+1                   
+                
+                    # read wav files and extract emobase features on that file
+                print('Processing: ... ')
+                feat = smile.process_files(data)            
+                test_features.append(feat.to_numpy()[3:])
+                
+                print('Saving: ... Test: ' + audio_type_pkl+'_smile.csv')
+                feat.to_csv(testpath_csv+'_smile.csv')
+                
+                print('Test: ' + str(i))
+                test_features = np.array(test_features)
+                with open(testpath, 'wb') as fid:
+                    pickle.dump(test_features, fid, protocol=pickle.HIGHEST_PROTOCOL)
+                fid.close()
+                j=j-1
+         
+    
 def svmSaarbruecken(list_path,kfold, audio_type, label):
     clases ="multiclases"#"binaria"
     ker = 'poly'
@@ -543,6 +700,481 @@ def svmSaarbruecken(list_path,kfold, audio_type, label):
         f.close()
 
 
+
+def binaria_Cross_validation(sesion):
+    list_muestras = []
+    list_clases = []
+    list_grupos = []
+    dict_clases = {"NORM": '0', "PATH": '1'}
+    for j in sesion:
+        list_muestras.append(j)
+        list_grupos.append(sesion[j]['group'])
+        if sesion[j]['group'] == 0:
+            list_clases.append('0')
+        else:
+            list_clases.append('1')        
+            
+    return list_muestras, list_clases, list_grupos, dict_clases
+
+def multi_Cross_validation(sesion):
+    list_muestras = []
+    list_clases = []
+    list_grupos = []
+    dict_clases = {}
+    for j in sesion:
+        list_muestras.append(j)
+        list_grupos.append(str(sesion[j]['group']))        
+        
+        dict_clases[sesion[j]['pathology']] = str(sesion[j]['group'])
+        list_clases.append(str(sesion[j]['group']))
+        
+            
+    return list_muestras, list_clases, list_grupos, dict_clases
+
+def StratifiedGroupKFold_G(X, y, groups, kfold = 5):
+    sgkf = StratifiedGroupKFold(n_splits = kfold)
+    dict_fold = {};
+    i = 0
+    for train, test in sgkf.split(X, y, groups=groups):
+        dict_fold['fold' + str(i)] = {'train': train, 'test': test}
+        i = i + 1
+        #print("%s %s" % (train, test))
+    return dict_fold
+
+def salva_fold_binaria(muestras_train, list_clases_train, muestras_test, list_clases_test, dict_info_signal, dict_clases, name_base, grabacion, genero):
+    fold_train = {}; fold_test = {}; tipo_clases = {}
+    
+    #tipo = "phrase"  if grabacion.replace('_both','') == "phrase" else  grabacion.replace('_both','')
+    tipo = grabacion
+    fold_train = {"labels": dict_clases, "meta_data": []}
+    fold_test = {"labels": dict_clases, "meta_data": []}
+
+    train = fold_train['meta_data']
+    test = fold_test['meta_data']
+    vowels=[]
+    index = 0
+    for i in muestras_train:
+        spk = dict_info_signal[i]['spk']
+        label = list_clases_train[index]
+        index = index + 1        
+        path=  dict_info_signal[i]['Path'] 
+        if genero=="male":
+            if tipo == "phrase"and dict_info_signal[i]['gender'] == 'm':
+                aa = {'path': path+ '-phrase.wav', 'label': label, 'speaker': spk}
+                train.append(aa)
+            if tipo == "a"and dict_info_signal[i]['gender'] == 'm':
+                aa0 = {'path': path+ '-a_h.wav', 'label': label, 'speaker': spk}
+                aa1 = {'path': path+ '-a_l.wav', 'label': label, 'speaker': spk}
+                aa2 = {'path': path+ '-a_lhl.wav', 'label': label, 'speaker': spk}
+                aa3 = {'path': path+ '-a_n.wav', 'label': label, 'speaker': spk}
+                train.append(aa0)
+                train.append(aa1)
+                train.append(aa2)
+                train.append(aa3)
+            if tipo == "u"and dict_info_signal[i]['gender'] == 'm':                
+                aa0 = {'path': path+ '-u_h.wav', 'label': label, 'speaker': spk}
+                aa1 = {'path': path+ '-u_l.wav', 'label': label, 'speaker': spk}
+                aa2 = {'path': path+ '-u_lhl.wav', 'label': label, 'speaker': spk}
+                aa3 = {'path': path+ '-u_n.wav', 'label': label, 'speaker': spk}
+                train.append(aa0)
+                train.append(aa1)
+                train.append(aa2)
+                train.append(aa3)                
+            if tipo == "i"and dict_info_signal[i]['gender'] == 'm':                
+                aa0 = {'path': path+ '-i_h.wav', 'label': label, 'speaker': spk}
+                aa1 = {'path': path+ '-i_l.wav', 'label': label, 'speaker': spk}
+                aa2 = {'path': path+ '-i_lhl.wav', 'label': label, 'speaker': spk}
+                aa3 = {'path': path+ '-i_n.wav', 'label': label, 'speaker': spk}
+                train.append(aa0)
+                train.append(aa1)
+                train.append(aa2)
+                train.append(aa3)
+                
+            if tipo == "vowels"and dict_info_signal[i]['gender'] == 'm':                
+                aa0 = {'path': path+ '-a_h.wav', 'label': label, 'speaker': spk}
+                aa1 = {'path': path+ '-a_l.wav', 'label': label, 'speaker': spk}
+                aa2 = {'path': path+ '-a_lhl.wav', 'label': label, 'speaker': spk}
+                aa3 = {'path': path+ '-a_n.wav', 'label': label, 'speaker': spk}
+                train.append(aa0)
+                train.append(aa1)
+                train.append(aa2)
+                train.append(aa3)                
+                uu0 = {'path': path+ '-u_h.wav', 'label': label, 'speaker': spk}
+                uu1 = {'path': path+ '-u_l.wav', 'label': label, 'speaker': spk}
+                uu2 = {'path': path+ '-u_lhl.wav', 'label': label, 'speaker': spk}
+                uu3 = {'path': path+ '-u_n.wav', 'label': label, 'speaker': spk}
+                train.append(uu0)
+                train.append(uu1)
+                train.append(uu2)
+                train.append(uu3)
+                ii0 = {'path': path+ '-i_h.wav', 'label': label, 'speaker': spk}
+                ii1 = {'path': path+ '-i_l.wav', 'label': label, 'speaker': spk}
+                ii2 = {'path': path+ '-i_lhl.wav', 'label': label, 'speaker': spk}
+                ii3 = {'path': path+ '-i_n.wav', 'label': label, 'speaker': spk}
+                train.append(ii0)
+                train.append(ii1)
+                train.append(ii2)
+                train.append(ii3)
+        
+        if genero=="female":
+            if tipo == "phrase" and dict_info_signal[i]['gender'] == 'f':
+                aa = {'path': path+ '-phrase.wav', 'label': label, 'speaker': spk}
+                train.append(aa)
+            if tipo == "a" and dict_info_signal[i]['gender'] == 'f':
+                aa0 = {'path': path+ '-a_h.wav', 'label': label, 'speaker': spk}
+                aa1 = {'path': path+ '-a_l.wav', 'label': label, 'speaker': spk}
+                aa2 = {'path': path+ '-a_lhl.wav', 'label': label, 'speaker': spk}
+                aa3 = {'path': path+ '-a_n.wav', 'label': label, 'speaker': spk}
+                train.append(aa0)
+                train.append(aa1)
+                train.append(aa2)
+                train.append(aa3)
+            if tipo == "u"and dict_info_signal[i]['gender'] == 'f':
+                aa0 = {'path': path+ '-u_h.wav', 'label': label, 'speaker': spk}
+                aa1 = {'path': path+ '-u_l.wav', 'label': label, 'speaker': spk}
+                aa2 = {'path': path+ '-u_lhl.wav', 'label': label, 'speaker': spk}
+                aa3 = {'path': path+ '-u_n.wav', 'label': label, 'speaker': spk}
+                train.append(aa0)
+                train.append(aa1)
+                train.append(aa2)
+                train.append(aa3) 
+            if tipo == "i"and dict_info_signal[i]['gender'] == 'f':
+                aa0 = {'path': path+ '-i_h.wav', 'label': label, 'speaker': spk}
+                aa1 = {'path': path+ '-i_l.wav', 'label': label, 'speaker': spk}
+                aa2 = {'path': path+ '-i_lhl.wav', 'label': label, 'speaker': spk}
+                aa3 = {'path': path+ '-i_n.wav', 'label': label, 'speaker': spk}
+                train.append(aa0)
+                train.append(aa1)
+                train.append(aa2)
+                train.append(aa3)
+            if tipo == "vowels" and dict_info_signal[i]['gender'] == 'f':
+                aa0 = {'path': path+ '-a_h.wav', 'label': label, 'speaker': spk}
+                aa1 = {'path': path+ '-a_l.wav', 'label': label, 'speaker': spk}
+                aa2 = {'path': path+ '-a_lhl.wav', 'label': label, 'speaker': spk}
+                aa3 = {'path': path+ '-a_n.wav', 'label': label, 'speaker': spk}
+                train.append(aa0)
+                train.append(aa1)
+                train.append(aa2)
+                train.append(aa3)                
+                uu0 = {'path': path+ '-u_h.wav', 'label': label, 'speaker': spk}
+                uu1 = {'path': path+ '-u_l.wav', 'label': label, 'speaker': spk}
+                uu2 = {'path': path+ '-u_lhl.wav', 'label': label, 'speaker': spk}
+                uu3 = {'path': path+ '-u_n.wav', 'label': label, 'speaker': spk}
+                train.append(uu0)
+                train.append(uu1)
+                train.append(uu2)
+                train.append(uu3)
+                ii0 = {'path': path+ '-i_h.wav', 'label': label, 'speaker': spk}
+                ii1 = {'path': path+ '-i_l.wav', 'label': label, 'speaker': spk}
+                ii2 = {'path': path+ '-i_lhl.wav', 'label': label, 'speaker': spk}
+                ii3 = {'path': path+ '-i_n.wav', 'label': label, 'speaker': spk}
+                train.append(ii0)
+                train.append(ii1)
+                train.append(ii2)
+                train.append(ii3)                
+                    
+        if genero=="both":
+            if tipo == "phrase":
+                aa = {'path': path+ '-phrase.wav', 'label': label, 'speaker': spk}
+                train.append(aa)
+            if tipo == "a":
+                aa0 = {'path': path+ '-a_h.wav', 'label': label, 'speaker': spk}
+                aa1 = {'path': path+ '-a_l.wav', 'label': label, 'speaker': spk}
+                aa2 = {'path': path+ '-a_lhl.wav', 'label': label, 'speaker': spk}
+                aa3 = {'path': path+ '-a_n.wav', 'label': label, 'speaker': spk}
+                train.append(aa0)
+                train.append(aa1)
+                train.append(aa2)
+                train.append(aa3)
+            if tipo == "u":
+                aa0 = {'path': path+ '-u_h.wav', 'label': label, 'speaker': spk}
+                aa1 = {'path': path+ '-u_l.wav', 'label': label, 'speaker': spk}
+                aa2 = {'path': path+ '-u_lhl.wav', 'label': label, 'speaker': spk}
+                aa3 = {'path': path+ '-u_n.wav', 'label': label, 'speaker': spk}
+                train.append(aa0)
+                train.append(aa1)
+                train.append(aa2)
+                train.append(aa3)
+            if tipo == "i":
+                aa0 = {'path': path+ '-i_h.wav', 'label': label, 'speaker': spk}
+                aa1 = {'path': path+ '-i_l.wav', 'label': label, 'speaker': spk}
+                aa2 = {'path': path+ '-i_lhl.wav', 'label': label, 'speaker': spk}
+                aa3 = {'path': path+ '-i_n.wav', 'label': label, 'speaker': spk}
+                train.append(aa0)
+                train.append(aa1)
+                train.append(aa2)
+                train.append(aa3)
+            if tipo == "vowels":
+                aa0 = {'path': path+ '-a_h.wav', 'label': label, 'speaker': spk}
+                aa1 = {'path': path+ '-a_l.wav', 'label': label, 'speaker': spk}
+                aa2 = {'path': path+ '-a_lhl.wav', 'label': label, 'speaker': spk}
+                aa3 = {'path': path+ '-a_n.wav', 'label': label, 'speaker': spk}
+                train.append(aa0)
+                train.append(aa1)
+                train.append(aa2)
+                train.append(aa3)                
+                uu0 = {'path': path+ '-u_h.wav', 'label': label, 'speaker': spk}
+                uu1 = {'path': path+ '-u_l.wav', 'label': label, 'speaker': spk}
+                uu2 = {'path': path+ '-u_lhl.wav', 'label': label, 'speaker': spk}
+                uu3 = {'path': path+ '-u_n.wav', 'label': label, 'speaker': spk}
+                train.append(uu0)
+                train.append(uu1)
+                train.append(uu2)
+                train.append(uu3)
+                ii0 = {'path': path+ '-i_h.wav', 'label': label, 'speaker': spk}
+                ii1 = {'path': path+ '-i_l.wav', 'label': label, 'speaker': spk}
+                ii2 = {'path': path+ '-i_lhl.wav', 'label': label, 'speaker': spk}
+                ii3 = {'path': path+ '-i_n.wav', 'label': label, 'speaker': spk}
+                train.append(ii0)
+                train.append(ii1)
+                train.append(ii2)
+                train.append(ii3)                    
+            
+    fold_train['meta_data'] = train
+
+    index = 0
+    for i in muestras_test:
+        spk = dict_info_signal[i]['spk']
+        label = list_clases_test[index]
+        index = index + 1
+        
+        if genero=="male":
+            if tipo == "phrase"and dict_info_signal[i]['gender'] == 'm':
+                aa = {'path': path+ '-phrase.wav', 'label': label, 'speaker': spk}
+                train.append(aa)
+            if tipo == "a"and dict_info_signal[i]['gender'] == 'm':
+                aa0 = {'path': path+ '-a_h.wav', 'label': label, 'speaker': spk}
+                aa1 = {'path': path+ '-a_l.wav', 'label': label, 'speaker': spk}
+                aa2 = {'path': path+ '-a_lhl.wav', 'label': label, 'speaker': spk}
+                aa3 = {'path': path+ '-a_n.wav', 'label': label, 'speaker': spk}
+                train.append(aa0)
+                train.append(aa1)
+                train.append(aa2)
+                train.append(aa3)
+            if tipo == "u"and dict_info_signal[i]['gender'] == 'm':
+                aa0 = {'path': path+ '-u_h.wav', 'label': label, 'speaker': spk}
+                aa1 = {'path': path+ '-u_l.wav', 'label': label, 'speaker': spk}
+                aa2 = {'path': path+ '-u_lhl.wav', 'label': label, 'speaker': spk}
+                aa3 = {'path': path+ '-u_n.wav', 'label': label, 'speaker': spk}
+                train.append(aa0)
+                train.append(aa1)
+                train.append(aa2)
+                train.append(aa3)
+            if tipo == "i"and dict_info_signal[i]['gender'] == 'm':
+                aa0 = {'path': path+ '-i_h.wav', 'label': label, 'speaker': spk}
+                aa1 = {'path': path+ '-i_l.wav', 'label': label, 'speaker': spk}
+                aa2 = {'path': path+ '-i_lhl.wav', 'label': label, 'speaker': spk}
+                aa3 = {'path': path+ '-i_n.wav', 'label': label, 'speaker': spk}
+                train.append(aa0)
+                train.append(aa1)
+                train.append(aa2)
+                train.append(aa3)
+            if tipo == "vowels"and dict_info_signal[i]['gender'] == 'm':
+                aa0 = {'path': path+ '-a_h.wav', 'label': label, 'speaker': spk}
+                aa1 = {'path': path+ '-a_l.wav', 'label': label, 'speaker': spk}
+                aa2 = {'path': path+ '-a_lhl.wav', 'label': label, 'speaker': spk}
+                aa3 = {'path': path+ '-a_n.wav', 'label': label, 'speaker': spk}
+                train.append(aa0)
+                train.append(aa1)
+                train.append(aa2)
+                train.append(aa3)                
+                uu0 = {'path': path+ '-u_h.wav', 'label': label, 'speaker': spk}
+                uu1 = {'path': path+ '-u_l.wav', 'label': label, 'speaker': spk}
+                uu2 = {'path': path+ '-u_lhl.wav', 'label': label, 'speaker': spk}
+                uu3 = {'path': path+ '-u_n.wav', 'label': label, 'speaker': spk}
+                train.append(uu0)
+                train.append(uu1)
+                train.append(uu2)
+                train.append(uu3)
+                ii0 = {'path': path+ '-i_h.wav', 'label': label, 'speaker': spk}
+                ii1 = {'path': path+ '-i_l.wav', 'label': label, 'speaker': spk}
+                ii2 = {'path': path+ '-i_lhl.wav', 'label': label, 'speaker': spk}
+                ii3 = {'path': path+ '-i_n.wav', 'label': label, 'speaker': spk}
+                train.append(ii0)
+                train.append(ii1)
+                train.append(ii2)
+                train.append(ii3)                
+        
+        if genero=="female":
+            if tipo == "phrase" and dict_info_signal[i]['gender'] == 'f':
+                aa = {'path': path+ '-phrase.wav', 'label': label, 'speaker': spk}
+                train.append(aa)
+            if tipo == "a" and dict_info_signal[i]['gender'] == 'f':
+                aa0 = {'path': path+ '-a_h.wav', 'label': label, 'speaker': spk}
+                aa1 = {'path': path+ '-a_l.wav', 'label': label, 'speaker': spk}
+                aa2 = {'path': path+ '-a_lhl.wav', 'label': label, 'speaker': spk}
+                aa3 = {'path': path+ '-a_n.wav', 'label': label, 'speaker': spk}
+                train.append(aa0)
+                train.append(aa1)
+                train.append(aa2)
+                train.append(aa3)
+            if tipo == "u"and dict_info_signal[i]['gender'] == 'f':
+                aa0 = {'path': path+ '-u_h.wav', 'label': label, 'speaker': spk}
+                aa1 = {'path': path+ '-u_l.wav', 'label': label, 'speaker': spk}
+                aa2 = {'path': path+ '-u_lhl.wav', 'label': label, 'speaker': spk}
+                aa3 = {'path': path+ '-u_n.wav', 'label': label, 'speaker': spk}
+                train.append(aa0)
+                train.append(aa1)
+                train.append(aa2)
+                train.append(aa3)
+            if tipo == "i"and dict_info_signal[i]['gender'] == 'f':
+                aa0 = {'path': path+ '-i_h.wav', 'label': label, 'speaker': spk}
+                aa1 = {'path': path+ '-i_l.wav', 'label': label, 'speaker': spk}
+                aa2 = {'path': path+ '-i_lhl.wav', 'label': label, 'speaker': spk}
+                aa3 = {'path': path+ '-i_n.wav', 'label': label, 'speaker': spk}
+                train.append(aa0)
+                train.append(aa1)
+                train.append(aa2)
+                train.append(aa3)
+            if tipo == "vowels" and dict_info_signal[i]['gender'] == 'f':
+                aa0 = {'path': path+ '-a_h.wav', 'label': label, 'speaker': spk}
+                aa1 = {'path': path+ '-a_l.wav', 'label': label, 'speaker': spk}
+                aa2 = {'path': path+ '-a_lhl.wav', 'label': label, 'speaker': spk}
+                aa3 = {'path': path+ '-a_n.wav', 'label': label, 'speaker': spk}
+                train.append(aa0)
+                train.append(aa1)
+                train.append(aa2)
+                train.append(aa3)                
+                uu0 = {'path': path+ '-u_h.wav', 'label': label, 'speaker': spk}
+                uu1 = {'path': path+ '-u_l.wav', 'label': label, 'speaker': spk}
+                uu2 = {'path': path+ '-u_lhl.wav', 'label': label, 'speaker': spk}
+                uu3 = {'path': path+ '-u_n.wav', 'label': label, 'speaker': spk}
+                train.append(uu0)
+                train.append(uu1)
+                train.append(uu2)
+                train.append(uu3)
+                ii0 = {'path': path+ '-i_h.wav', 'label': label, 'speaker': spk}
+                ii1 = {'path': path+ '-i_l.wav', 'label': label, 'speaker': spk}
+                ii2 = {'path': path+ '-i_lhl.wav', 'label': label, 'speaker': spk}
+                ii3 = {'path': path+ '-i_n.wav', 'label': label, 'speaker': spk}
+                train.append(ii0)
+                train.append(ii1)
+                train.append(ii2)
+                train.append(ii3)               
+                    
+        if genero=="both":
+            if tipo == "phrase":
+                aa = {'path': path+ '-phrase.wav', 'label': label, 'speaker': spk}
+                train.append(aa)
+            if tipo == "a":
+                aa0 = {'path': path+ '-a_h.wav', 'label': label, 'speaker': spk}
+                aa1 = {'path': path+ '-a_l.wav', 'label': label, 'speaker': spk}
+                aa2 = {'path': path+ '-a_lhl.wav', 'label': label, 'speaker': spk}
+                aa3 = {'path': path+ '-a_n.wav', 'label': label, 'speaker': spk}
+                train.append(aa0)
+                train.append(aa1)
+                train.append(aa2)
+                train.append(aa3)
+            if tipo == "u":
+                aa0 = {'path': path+ '-u_h.wav', 'label': label, 'speaker': spk}
+                aa1 = {'path': path+ '-u_l.wav', 'label': label, 'speaker': spk}
+                aa2 = {'path': path+ '-u_lhl.wav', 'label': label, 'speaker': spk}
+                aa3 = {'path': path+ '-u_n.wav', 'label': label, 'speaker': spk}
+                train.append(aa0)
+                train.append(aa1)
+                train.append(aa2)
+                train.append(aa3)
+            if tipo == "i":
+                aa0 = {'path': path+ '-i_h.wav', 'label': label, 'speaker': spk}
+                aa1 = {'path': path+ '-i_l.wav', 'label': label, 'speaker': spk}
+                aa2 = {'path': path+ '-i_lhl.wav', 'label': label, 'speaker': spk}
+                aa3 = {'path': path+ '-i_n.wav', 'label': label, 'speaker': spk}
+                train.append(aa0)
+                train.append(aa1)
+                train.append(aa2)
+                train.append(aa3)
+            if tipo == "vowels":
+                aa0 = {'path': path+ '-a_h.wav', 'label': label, 'speaker': spk}
+                aa1 = {'path': path+ '-a_l.wav', 'label': label, 'speaker': spk}
+                aa2 = {'path': path+ '-a_lhl.wav', 'label': label, 'speaker': spk}
+                aa3 = {'path': path+ '-a_n.wav', 'label': label, 'speaker': spk}
+                train.append(aa0)
+                train.append(aa1)
+                train.append(aa2)
+                train.append(aa3)                
+                uu0 = {'path': path+ '-u_h.wav', 'label': label, 'speaker': spk}
+                uu1 = {'path': path+ '-u_l.wav', 'label': label, 'speaker': spk}
+                uu2 = {'path': path+ '-u_lhl.wav', 'label': label, 'speaker': spk}
+                uu3 = {'path': path+ '-u_n.wav', 'label': label, 'speaker': spk}
+                train.append(uu0)
+                train.append(uu1)
+                train.append(uu2)
+                train.append(uu3)
+                ii0 = {'path': path+ '-i_h.wav', 'label': label, 'speaker': spk}
+                ii1 = {'path': path+ '-i_l.wav', 'label': label, 'speaker': spk}
+                ii2 = {'path': path+ '-i_lhl.wav', 'label': label, 'speaker': spk}
+                ii3 = {'path': path+ '-i_n.wav', 'label': label, 'speaker': spk}
+                train.append(ii0)
+                train.append(ii1)
+                train.append(ii2)
+                train.append(ii3) 
+    fold_test['meta_data'] = test
+
+    return fold_train, fold_test
+
+
+def kford():
+    name_base="Saarbruecken"
+    ### Aqui se hace la lista en dependencia del typo audio (phrase, vowels, a, i, u)
+    dict_info_signal = db.main('data/lst/' + name_base + '/' + name_base + '_metadata.xlsx', name_base)
+    b_list_muestras, b_list_clases, b_list_grupos, b_dict_clases = binaria_Cross_validation(dict_info_signal);
+    m_list_muestras, m_list_clases, m_list_grupos, m_dict_clases = multi_Cross_validation(dict_info_signal);
+    
+    b_fold = StratifiedGroupKFold_G(b_list_muestras, b_list_clases, b_list_grupos, 5)
+    m_fold = StratifiedGroupKFold_G(m_list_muestras, m_list_clases, m_list_grupos, 5)
+    
+    clases=["binario", "Multiclass"]    
+    general=["male","female", 'both']
+    grabacion=["phrase","vowels", "a", "i", "u"]
+    ind = 1; camino = 'data/lst/' + name_base
+    for i in b_fold:
+        for k in general:
+            j=len(grabacion)-1
+            while j >=0:
+                ## Binario                
+                camino = 'data/lst/' + name_base+"/"+ clases[0]+"/"+k+"/"+k+"_"+grabacion[j]
+                ind_train = np.array(b_fold[i]['train'])
+                ind_test = np.array(b_fold[i]['test'])
+                muestras_train = np.array(b_list_muestras)[ind_train]
+                list_clases_train = np.array(b_list_clases)[ind_train]
+                muestras_test = np.array(b_list_muestras)[ind_test]
+                list_clases_test = np.array(b_list_clases)[ind_test]        
+                
+                
+                [fold_train, fold_test] = salva_fold_binaria(muestras_train, list_clases_train, muestras_test, list_clases_test, dict_info_signal, b_dict_clases, name_base, grabacion[j], k)
+                if not os.path.exists(camino):
+                    os.makedirs(camino + '/')
+
+                with open(camino + '/' + 'train_' + clases[0] + '_' + grabacion[j] + '_meta_data_fold' + str(ind) + '.json', 'w') as file:
+                    json.dump(fold_train, file, indent=6)
+                file.close()
+                with open(camino + '/' + 'test_' + clases[0] + '_' + grabacion[j] + '_meta_data_fold' + str(ind) + '.json', 'w') as file:
+                    json.dump(fold_test, file, indent=6)
+                file.close() 
+                
+                ## Multiclass
+                camino = 'data/lst/' + name_base+"/"+ clases[1]+"/"+k+"/"+k+"_"+grabacion[j]
+                ind_train = np.array(m_fold[i]['train'])
+                ind_test = np.array(m_fold[i]['test'])
+                muestras_train = np.array(m_list_muestras)[ind_train]
+                list_clases_train = np.array(m_list_clases)[ind_train]
+                muestras_test = np.array(m_list_muestras)[ind_test]
+                list_clases_test = np.array(m_list_clases)[ind_test]        
+                
+                
+                [fold_train, fold_test] = salva_fold_binaria(muestras_train, list_clases_train, muestras_test, list_clases_test, dict_info_signal, m_dict_clases, name_base, grabacion[j], k)
+                if not os.path.exists(camino):
+                    os.makedirs(camino + '/')
+
+                with open(camino + '/' + 'train_' + clases[1] + '_' + grabacion[j] + '_meta_data_fold' + str(ind) + '.json', 'w') as file:
+                    json.dump(fold_train, file, indent=6)
+                file.close()
+                with open(camino + '/' + 'test_' + clases[1] + '_' + grabacion[j] + '_meta_data_fold' + str(ind) + '.json', 'w') as file:
+                    json.dump(fold_test, file, indent=6)
+                file.close()                
+                j = j - 1            
+        ind = ind + 1
+    print("lolo")
 
 
 

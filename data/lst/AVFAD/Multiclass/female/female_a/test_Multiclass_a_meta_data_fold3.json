@@ -1,0 +1,27 @@
+{
+      "labels": {
+            "INFLAMMATORY CONDITIONS OF THE LARYNX": "2000",
+            "Spasmodic Dysphonia": "9183",
+            "Abnormalities of the Vocal Fold": "1200",
+            "Dysphonia": "9060",
+            "control": "0",
+            "OTHER DISORDERS AFFECTING VOICE": "8000"
+      },
+      "meta_data": [
+            {
+                  "path": "data/audio/AVFAD/ACO/ACO002.wav",
+                  "label": "9183",
+                  "speaker": "ACO"
+            },
+            {
+                  "path": "data/audio/AVFAD/EML/EML002.wav",
+                  "label": "9183",
+                  "speaker": "EML"
+            },
+            {
+                  "path": "data/audio/AVFAD/RFS/RFS002.wav",
+                  "label": "9183",
+                  "speaker": "RFS"
+            }
+      ]
+}
