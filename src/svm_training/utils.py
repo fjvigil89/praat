@@ -8,10 +8,10 @@ from sklearn.utils.multiclass import unique_labels
 
 
 def zscore(x,u=False,s=False):
-    sx, feat = x.shape
-    xnorm = np.zeros((sx, feat))
+    sx,feat = x.shape
+    xnorm = np.zeros((sx,feat))
     try:
-        test = u.shape  # Just for invalidate the try if u==False
+        test = u.shape #Just for invalidate the try if u==False
         xnorm = (x - u)/s
         return xnorm
     except: 
