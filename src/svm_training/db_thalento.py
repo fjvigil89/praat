@@ -227,7 +227,7 @@ def featureTHALENTO(list_path, kfold, audio_type, label):
         fid.close()
 
 def svmTHALENTO(list_path,kfold, audio_type, label):
-    clases = "binaria" #"multiclases"
+    clases = "multiclases"
     ker = 'poly'
     d = 1
     c = 1

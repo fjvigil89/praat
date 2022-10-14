@@ -1,0 +1,68 @@
+{
+      "labels": {
+            "NORM": "0",
+            "PATH": "1"
+      },
+      "meta_data": [
+            {
+                  "path": "data/audio/AVFAD/ACO/ACO002.wav",
+                  "label": "1",
+                  "speaker": "ACO"
+            },
+            {
+                  "path": "data/audio/AVFAD/ACO/ACO001.wav",
+                  "label": "1",
+                  "speaker": "ACO"
+            },
+            {
+                  "path": "data/audio/AVFAD/ACO/ACO003.wav",
+                  "label": "1",
+                  "speaker": "ACO"
+            },
+            {
+                  "path": "data/audio/AVFAD/EML/EML002.wav",
+                  "label": "1",
+                  "speaker": "EML"
+            },
+            {
+                  "path": "data/audio/AVFAD/EML/EML001.wav",
+                  "label": "1",
+                  "speaker": "EML"
+            },
+            {
+                  "path": "data/audio/AVFAD/EML/EML003.wav",
+                  "label": "1",
+                  "speaker": "EML"
+            },
+            {
+                  "path": "data/audio/AVFAD/RFS/RFS002.wav",
+                  "label": "1",
+                  "speaker": "RFS"
+            },
+            {
+                  "path": "data/audio/AVFAD/RFS/RFS001.wav",
+                  "label": "1",
+                  "speaker": "RFS"
+            },
+            {
+                  "path": "data/audio/AVFAD/RFS/RFS003.wav",
+                  "label": "1",
+                  "speaker": "RFS"
+            },
+            {
+                  "path": "data/audio/AVFAD/ZPM/ZPM002.wav",
+                  "label": "1",
+                  "speaker": "ZPM"
+            },
+            {
+                  "path": "data/audio/AVFAD/ZPM/ZPM001.wav",
+                  "label": "1",
+                  "speaker": "ZPM"
+            },
+            {
+                  "path": "data/audio/AVFAD/ZPM/ZPM003.wav",
+                  "label": "1",
+                  "speaker": "ZPM"
+            }
+      ]
+}

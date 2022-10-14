@@ -18,11 +18,6 @@
                   "path": "data/audio/AVFAD/RFS/RFS001.wav",
                   "label": "1",
                   "speaker": "RFS"
-            },
-            {
-                  "path": "data/audio/AVFAD/ZPM/ZPM001.wav",
-                  "label": "1",
-                  "speaker": "ZPM"
             }
       ]
 }

@@ -1,0 +1,47 @@
+{
+      "labels": {
+            "INFLAMMATORY CONDITIONS OF THE LARYNX": "2000",
+            "Spasmodic Dysphonia": "9183",
+            "Abnormalities of the Vocal Fold": "1200",
+            "Dysphonia": "9060",
+            "control": "0",
+            "OTHER DISORDERS AFFECTING VOICE": "8000"
+      },
+      "meta_data": [
+            {
+                  "path": "data/audio/AVFAD/CAS/CASphrase.wav",
+                  "label": "9060",
+                  "speaker": "CAS"
+            },
+            {
+                  "path": "data/audio/AVFAD/MEP/MEPphrase.wav",
+                  "label": "9060",
+                  "speaker": "MEP"
+            },
+            {
+                  "path": "data/audio/AVFAD/CMA/CMAphrase.wav",
+                  "label": "9060",
+                  "speaker": "CMA"
+            },
+            {
+                  "path": "data/audio/AVFAD/MCA/MCAphrase.wav",
+                  "label": "9060",
+                  "speaker": "MCA"
+            },
+            {
+                  "path": "data/audio/AVFAD/MOP/MOPphrase.wav",
+                  "label": "9060",
+                  "speaker": "MOP"
+            },
+            {
+                  "path": "data/audio/AVFAD/MCT/MCTphrase.wav",
+                  "label": "9060",
+                  "speaker": "MCT"
+            },
+            {
+                  "path": "data/audio/AVFAD/MCW/MCWphrase.wav",
+                  "label": "9060",
+                  "speaker": "MCW"
+            }
+      ]
+}

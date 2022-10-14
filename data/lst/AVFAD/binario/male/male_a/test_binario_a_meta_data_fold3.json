@@ -5,16 +5,6 @@
       },
       "meta_data": [
             {
-                  "path": "data/audio/AVFAD/CAS/CAS002.wav",
-                  "label": "1",
-                  "speaker": "CAS"
-            },
-            {
-                  "path": "data/audio/AVFAD/MEP/MEP002.wav",
-                  "label": "1",
-                  "speaker": "MEP"
-            },
-            {
                   "path": "data/audio/AVFAD/JMF/JMF002.wav",
                   "label": "1",
                   "speaker": "JMF"
@@ -40,21 +30,6 @@
                   "speaker": "MCZ"
             },
             {
-                  "path": "data/audio/AVFAD/CMA/CMA002.wav",
-                  "label": "1",
-                  "speaker": "CMA"
-            },
-            {
-                  "path": "data/audio/AVFAD/MCA/MCA002.wav",
-                  "label": "1",
-                  "speaker": "MCA"
-            },
-            {
-                  "path": "data/audio/AVFAD/MOP/MOP002.wav",
-                  "label": "1",
-                  "speaker": "MOP"
-            },
-            {
                   "path": "data/audio/AVFAD/AJC/AJC002.wav",
                   "label": "1",
                   "speaker": "AJC"
@@ -68,16 +43,6 @@
                   "path": "data/audio/AVFAD/HFV/HFV002.wav",
                   "label": "1",
                   "speaker": "HFV"
-            },
-            {
-                  "path": "data/audio/AVFAD/MCT/MCT002.wav",
-                  "label": "1",
-                  "speaker": "MCT"
-            },
-            {
-                  "path": "data/audio/AVFAD/MCW/MCW002.wav",
-                  "label": "1",
-                  "speaker": "MCW"
             },
             {
                   "path": "data/audio/AVFAD/FMP/FMP002.wav",

@@ -224,7 +224,7 @@ def main(list_path=NULL, kfold=5, audio_type=NULL, cambia='viejo', clases='binar
     if label == "VOICED":
         db_voiced.svmVOICED(list_path,kfold, audio_type, label)
     if label == "AVFAD":
-        db_avfad.svmAVFAD(list_path,kfold, audio_type, label)       
+        db_avfad.B_svmAVFAD(list_path,kfold, audio_type, label)       
         
     # result_log = str(respath)+'/results_' + label + '_' + clases + '_' + audio_type + '_' + ker + str(d) + 'c' + str(c) + '.log'
     # f = open(result_log, 'w+')
@@ -518,9 +518,12 @@ def feature_smile(list_path, kfold, audio_type, cambia='viejo', clases='binaria'
     if label == "VOICED":
         db_voiced.featureVOICED(list_path,kfold, audio_type, label)       
     if label == "AVFAD":
-        db_avfad.featureAVFAD(list_path,kfold, audio_type, label)       
+        #db_avfad.featureAVFAD(list_path,kfold, audio_type, label)
+        db_avfad.feature_m_AVFAD(list_path,kfold, audio_type, label)
+               
     if label == "Saarbruecken":
-        db_saarbruecken.featureSaarbruecken(list_path,kfold, audio_type, label)   
+        db_saarbruecken.featureSaarbruecken(list_path,kfold, audio_type, label)
+        db_saarbruecken.feature_m_Saarbruecken(list_path,kfold, audio_type, label)   
 
 ### Describir metodo
 def svm_binario(list_path, kfold,audio_type, clases='binaria'):
