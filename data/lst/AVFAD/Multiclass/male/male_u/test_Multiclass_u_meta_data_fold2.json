@@ -1,11 +1,16 @@
 {
       "labels": {
-            "INFLAMMATORY CONDITIONS OF THE LARYNX": "2000",
+            "Dysphonia": "2000",
+            "Neurological Diseases": "7315",
+            "Bilateral chordal Paralysis ": "4856",
+            "Other": "666",
             "Spasmodic Dysphonia": "9183",
-            "Abnormalities of the Vocal Fold": "1200",
-            "Dysphonia": "9060",
-            "control": "0",
-            "OTHER DISORDERS AFFECTING VOICE": "8000"
+            "Dysphonia x Muscle tension": "3574",
+            "Healthy": "0",
+            "Children's voice": "6842",
+            "Reinke's Edema": "1220",
+            "Unilateral chordal Paralysis": "4857",
+            "Bilateral Nodules": "5666"
       },
       "meta_data": [
             {
@@ -179,54 +184,24 @@
                   "speaker": "VQC"
             },
             {
-                  "path": "data/audio/AVFAD/MMF/MMF003.wav",
+                  "path": "data/audio/AVFAD/AJC/AJC003.wav",
                   "label": "2000",
-                  "speaker": "MMF"
+                  "speaker": "AJC"
             },
             {
-                  "path": "data/audio/AVFAD/SMR/SMR003.wav",
+                  "path": "data/audio/AVFAD/FAS/FAS003.wav",
                   "label": "2000",
-                  "speaker": "SMR"
+                  "speaker": "FAS"
             },
             {
-                  "path": "data/audio/AVFAD/FRL/FRL003.wav",
+                  "path": "data/audio/AVFAD/HFV/HFV003.wav",
                   "label": "2000",
-                  "speaker": "FRL"
+                  "speaker": "HFV"
             },
             {
-                  "path": "data/audio/AVFAD/MVT/MVT003.wav",
+                  "path": "data/audio/AVFAD/FMP/FMP003.wav",
                   "label": "2000",
-                  "speaker": "MVT"
-            },
-            {
-                  "path": "data/audio/AVFAD/PLB/PLB003.wav",
-                  "label": "2000",
-                  "speaker": "PLB"
-            },
-            {
-                  "path": "data/audio/AVFAD/AAC/AAC003.wav",
-                  "label": "2000",
-                  "speaker": "AAC"
-            },
-            {
-                  "path": "data/audio/AVFAD/AJX/AJX003.wav",
-                  "label": "2000",
-                  "speaker": "AJX"
-            },
-            {
-                  "path": "data/audio/AVFAD/FAX/FAX003.wav",
-                  "label": "2000",
-                  "speaker": "FAX"
-            },
-            {
-                  "path": "data/audio/AVFAD/JGC/JGC003.wav",
-                  "label": "2000",
-                  "speaker": "JGC"
-            },
-            {
-                  "path": "data/audio/AVFAD/JMM/JMM003.wav",
-                  "label": "2000",
-                  "speaker": "JMM"
+                  "speaker": "FMP"
             }
       ]
 }

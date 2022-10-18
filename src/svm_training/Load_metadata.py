@@ -79,12 +79,12 @@ def main(path_metadata, label="Sheet1"):
     list = {}
     for ind, row in df.iterrows():
         if label=="AVFAD":   ### AAAA sostenida         
-            dict_info_signal[row[0]] = {'spk': row[0], 'Path': "data/audio/"+str(label)+"/"+row[0], 'age': row[3], 'gender': row[4], 'tipo': row[15], 'pathology': row[16], 'group': row[17]}
+            dict_info_signal[row[0]] = {'spk': row[0], 'Path': "data/audio/"+str(label)+"/"+row[0], 'age': row[3], 'gender': row[4], 'tipo': row[15], 'pathology': row[17], 'group': row[18]}
         if label=="Saarbruecken":
             p= "PATH" if df['PATHOLOGY'][ind]=='p' else "NORM"
             g= "hombres" if df['GENDER'][ind]=='m' else "mujeres"
             path=  "data/audio/"+str(label)+"/"+p+"/"+g+"/"+str(row[0])            
-            dict_info_signal[row[0]] = {'spk': row[0], 'Path': path, 'age': row[5], 'gender': row[4], 'tipo': row[7], 'pathology': row[9], 'group': row[10]}
+            dict_info_signal[row[0]] = {'spk': row[0], 'Path': path, 'age': row[5], 'gender': row[4], 'tipo': row[7], 'pathology': row[13], 'group': row[14]}
             
     return dict_info_signal
 

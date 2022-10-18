@@ -1,32 +1,407 @@
 {
       "labels": {
-            "INFLAMMATORY CONDITIONS OF THE LARYNX": "2000",
+            "Dysphonia": "2000",
+            "Neurological Diseases": "7315",
+            "Bilateral chordal Paralysis ": "4856",
+            "Other": "666",
             "Spasmodic Dysphonia": "9183",
-            "Abnormalities of the Vocal Fold": "1200",
-            "Dysphonia": "9060",
-            "control": "0",
-            "OTHER DISORDERS AFFECTING VOICE": "8000"
+            "Dysphonia x Muscle tension": "3574",
+            "Healthy": "0",
+            "Children's voice": "6842",
+            "Reinke's Edema": "1220",
+            "Unilateral chordal Paralysis": "4857",
+            "Bilateral Nodules": "5666"
       },
       "meta_data": [
             {
-                  "path": "data/audio/AVFAD/ACO/ACOphrase.wav",
-                  "label": "9183",
-                  "speaker": "ACO"
+                  "path": "data/audio/AVFAD/AFL/AFLphrase.wav",
+                  "label": "5666",
+                  "speaker": "AFL"
             },
             {
-                  "path": "data/audio/AVFAD/EML/EMLphrase.wav",
-                  "label": "9183",
-                  "speaker": "EML"
+                  "path": "data/audio/AVFAD/AMO/AMOphrase.wav",
+                  "label": "5666",
+                  "speaker": "AMO"
             },
             {
-                  "path": "data/audio/AVFAD/RFS/RFSphrase.wav",
-                  "label": "9183",
-                  "speaker": "RFS"
+                  "path": "data/audio/AVFAD/AMP/AMPphrase.wav",
+                  "label": "5666",
+                  "speaker": "AMP"
             },
             {
-                  "path": "data/audio/AVFAD/ZPM/ZPMphrase.wav",
-                  "label": "9183",
-                  "speaker": "ZPM"
+                  "path": "data/audio/AVFAD/ASS/ASSphrase.wav",
+                  "label": "5666",
+                  "speaker": "ASS"
+            },
+            {
+                  "path": "data/audio/AVFAD/BPS/BPSphrase.wav",
+                  "label": "5666",
+                  "speaker": "BPS"
+            },
+            {
+                  "path": "data/audio/AVFAD/CMX/CMXphrase.wav",
+                  "label": "5666",
+                  "speaker": "CMX"
+            },
+            {
+                  "path": "data/audio/AVFAD/CSS/CSSphrase.wav",
+                  "label": "5666",
+                  "speaker": "CSS"
+            },
+            {
+                  "path": "data/audio/AVFAD/IRP/IRPphrase.wav",
+                  "label": "5666",
+                  "speaker": "IRP"
+            },
+            {
+                  "path": "data/audio/AVFAD/MAA/MAAphrase.wav",
+                  "label": "5666",
+                  "speaker": "MAA"
+            },
+            {
+                  "path": "data/audio/AVFAD/MCR/MCRphrase.wav",
+                  "label": "5666",
+                  "speaker": "MCR"
+            },
+            {
+                  "path": "data/audio/AVFAD/MDG/MDGphrase.wav",
+                  "label": "5666",
+                  "speaker": "MDG"
+            },
+            {
+                  "path": "data/audio/AVFAD/MFF/MFFphrase.wav",
+                  "label": "5666",
+                  "speaker": "MFF"
+            },
+            {
+                  "path": "data/audio/AVFAD/MKF/MKFphrase.wav",
+                  "label": "5666",
+                  "speaker": "MKF"
+            },
+            {
+                  "path": "data/audio/AVFAD/MLM/MLMphrase.wav",
+                  "label": "5666",
+                  "speaker": "MLM"
+            },
+            {
+                  "path": "data/audio/AVFAD/MLS/MLSphrase.wav",
+                  "label": "5666",
+                  "speaker": "MLS"
+            },
+            {
+                  "path": "data/audio/AVFAD/MOF/MOFphrase.wav",
+                  "label": "5666",
+                  "speaker": "MOF"
+            },
+            {
+                  "path": "data/audio/AVFAD/MSZ/MSZphrase.wav",
+                  "label": "5666",
+                  "speaker": "MSZ"
+            },
+            {
+                  "path": "data/audio/AVFAD/MTA/MTAphrase.wav",
+                  "label": "5666",
+                  "speaker": "MTA"
+            },
+            {
+                  "path": "data/audio/AVFAD/PJP/PJPphrase.wav",
+                  "label": "5666",
+                  "speaker": "PJP"
+            },
+            {
+                  "path": "data/audio/AVFAD/SPB/SPBphrase.wav",
+                  "label": "5666",
+                  "speaker": "SPB"
+            },
+            {
+                  "path": "data/audio/AVFAD/JPM/JPMphrase.wav",
+                  "label": "5666",
+                  "speaker": "JPM"
+            },
+            {
+                  "path": "data/audio/AVFAD/RNA/RNAphrase.wav",
+                  "label": "5666",
+                  "speaker": "RNA"
+            },
+            {
+                  "path": "data/audio/AVFAD/SMF/SMFphrase.wav",
+                  "label": "5666",
+                  "speaker": "SMF"
+            },
+            {
+                  "path": "data/audio/AVFAD/ACS/ACSphrase.wav",
+                  "label": "5666",
+                  "speaker": "ACS"
+            },
+            {
+                  "path": "data/audio/AVFAD/AMB/AMBphrase.wav",
+                  "label": "5666",
+                  "speaker": "AMB"
+            },
+            {
+                  "path": "data/audio/AVFAD/AMM/AMMphrase.wav",
+                  "label": "5666",
+                  "speaker": "AMM"
+            },
+            {
+                  "path": "data/audio/AVFAD/APA/APAphrase.wav",
+                  "label": "5666",
+                  "speaker": "APA"
+            },
+            {
+                  "path": "data/audio/AVFAD/CAC/CACphrase.wav",
+                  "label": "5666",
+                  "speaker": "CAC"
+            },
+            {
+                  "path": "data/audio/AVFAD/CMV/CMVphrase.wav",
+                  "label": "5666",
+                  "speaker": "CMV"
+            },
+            {
+                  "path": "data/audio/AVFAD/DCV/DCVphrase.wav",
+                  "label": "5666",
+                  "speaker": "DCV"
+            },
+            {
+                  "path": "data/audio/AVFAD/EBF/EBFphrase.wav",
+                  "label": "5666",
+                  "speaker": "EBF"
+            },
+            {
+                  "path": "data/audio/AVFAD/EMC/EMCphrase.wav",
+                  "label": "5666",
+                  "speaker": "EMC"
+            },
+            {
+                  "path": "data/audio/AVFAD/ERG/ERGphrase.wav",
+                  "label": "5666",
+                  "speaker": "ERG"
+            },
+            {
+                  "path": "data/audio/AVFAD/FTX/FTXphrase.wav",
+                  "label": "5666",
+                  "speaker": "FTX"
+            },
+            {
+                  "path": "data/audio/AVFAD/LCC/LCCphrase.wav",
+                  "label": "5666",
+                  "speaker": "LCC"
+            },
+            {
+                  "path": "data/audio/AVFAD/LMR/LMRphrase.wav",
+                  "label": "5666",
+                  "speaker": "LMR"
+            },
+            {
+                  "path": "data/audio/AVFAD/MBD/MBDphrase.wav",
+                  "label": "5666",
+                  "speaker": "MBD"
+            },
+            {
+                  "path": "data/audio/AVFAD/MFP/MFPphrase.wav",
+                  "label": "5666",
+                  "speaker": "MFP"
+            },
+            {
+                  "path": "data/audio/AVFAD/MJD/MJDphrase.wav",
+                  "label": "5666",
+                  "speaker": "MJD"
+            },
+            {
+                  "path": "data/audio/AVFAD/MJL/MJLphrase.wav",
+                  "label": "5666",
+                  "speaker": "MJL"
+            },
+            {
+                  "path": "data/audio/AVFAD/MSS/MSSphrase.wav",
+                  "label": "5666",
+                  "speaker": "MSS"
+            },
+            {
+                  "path": "data/audio/AVFAD/MVG/MVGphrase.wav",
+                  "label": "5666",
+                  "speaker": "MVG"
+            },
+            {
+                  "path": "data/audio/AVFAD/PCP/PCPphrase.wav",
+                  "label": "5666",
+                  "speaker": "PCP"
+            },
+            {
+                  "path": "data/audio/AVFAD/RDS/RDSphrase.wav",
+                  "label": "5666",
+                  "speaker": "RDS"
+            },
+            {
+                  "path": "data/audio/AVFAD/RFX/RFXphrase.wav",
+                  "label": "5666",
+                  "speaker": "RFX"
+            },
+            {
+                  "path": "data/audio/AVFAD/SAP/SAPphrase.wav",
+                  "label": "5666",
+                  "speaker": "SAP"
+            },
+            {
+                  "path": "data/audio/AVFAD/SCA/SCAphrase.wav",
+                  "label": "5666",
+                  "speaker": "SCA"
+            },
+            {
+                  "path": "data/audio/AVFAD/SRG/SRGphrase.wav",
+                  "label": "5666",
+                  "speaker": "SRG"
+            },
+            {
+                  "path": "data/audio/AVFAD/VLC/VLCphrase.wav",
+                  "label": "5666",
+                  "speaker": "VLC"
+            },
+            {
+                  "path": "data/audio/AVFAD/FMC/FMCphrase.wav",
+                  "label": "5666",
+                  "speaker": "FMC"
+            },
+            {
+                  "path": "data/audio/AVFAD/JMB/JMBphrase.wav",
+                  "label": "5666",
+                  "speaker": "JMB"
+            },
+            {
+                  "path": "data/audio/AVFAD/AAS/AASphrase.wav",
+                  "label": "5666",
+                  "speaker": "AAS"
+            },
+            {
+                  "path": "data/audio/AVFAD/AMA/AMAphrase.wav",
+                  "label": "5666",
+                  "speaker": "AMA"
+            },
+            {
+                  "path": "data/audio/AVFAD/AML/AMLphrase.wav",
+                  "label": "5666",
+                  "speaker": "AML"
+            },
+            {
+                  "path": "data/audio/AVFAD/AMV/AMVphrase.wav",
+                  "label": "5666",
+                  "speaker": "AMV"
+            },
+            {
+                  "path": "data/audio/AVFAD/CAG/CAGphrase.wav",
+                  "label": "5666",
+                  "speaker": "CAG"
+            },
+            {
+                  "path": "data/audio/AVFAD/CMG/CMGphrase.wav",
+                  "label": "5666",
+                  "speaker": "CMG"
+            },
+            {
+                  "path": "data/audio/AVFAD/EMF/EMFphrase.wav",
+                  "label": "5666",
+                  "speaker": "EMF"
+            },
+            {
+                  "path": "data/audio/AVFAD/EMS/EMSphrase.wav",
+                  "label": "5666",
+                  "speaker": "EMS"
+            },
+            {
+                  "path": "data/audio/AVFAD/FMM/FMMphrase.wav",
+                  "label": "5666",
+                  "speaker": "FMM"
+            },
+            {
+                  "path": "data/audio/AVFAD/HMT/HMTphrase.wav",
+                  "label": "5666",
+                  "speaker": "HMT"
+            },
+            {
+                  "path": "data/audio/AVFAD/MAL/MALphrase.wav",
+                  "label": "5666",
+                  "speaker": "MAL"
+            },
+            {
+                  "path": "data/audio/AVFAD/MEZ/MEZphrase.wav",
+                  "label": "5666",
+                  "speaker": "MEZ"
+            },
+            {
+                  "path": "data/audio/AVFAD/MFJ/MFJphrase.wav",
+                  "label": "5666",
+                  "speaker": "MFJ"
+            },
+            {
+                  "path": "data/audio/AVFAD/MFO/MFOphrase.wav",
+                  "label": "5666",
+                  "speaker": "MFO"
+            },
+            {
+                  "path": "data/audio/AVFAD/MIF/MIFphrase.wav",
+                  "label": "5666",
+                  "speaker": "MIF"
+            },
+            {
+                  "path": "data/audio/AVFAD/MIR/MIRphrase.wav",
+                  "label": "5666",
+                  "speaker": "MIR"
+            },
+            {
+                  "path": "data/audio/AVFAD/MJM/MJMphrase.wav",
+                  "label": "5666",
+                  "speaker": "MJM"
+            },
+            {
+                  "path": "data/audio/AVFAD/MRV/MRVphrase.wav",
+                  "label": "5666",
+                  "speaker": "MRV"
+            },
+            {
+                  "path": "data/audio/AVFAD/SAD/SADphrase.wav",
+                  "label": "5666",
+                  "speaker": "SAD"
+            },
+            {
+                  "path": "data/audio/AVFAD/SMW/SMWphrase.wav",
+                  "label": "5666",
+                  "speaker": "SMW"
+            },
+            {
+                  "path": "data/audio/AVFAD/AMZ/AMZphrase.wav",
+                  "label": "5666",
+                  "speaker": "AMZ"
+            },
+            {
+                  "path": "data/audio/AVFAD/ATA/ATAphrase.wav",
+                  "label": "5666",
+                  "speaker": "ATA"
+            },
+            {
+                  "path": "data/audio/AVFAD/EJA/EJAphrase.wav",
+                  "label": "5666",
+                  "speaker": "EJA"
+            },
+            {
+                  "path": "data/audio/AVFAD/JJF/JJFphrase.wav",
+                  "label": "5666",
+                  "speaker": "JJF"
+            },
+            {
+                  "path": "data/audio/AVFAD/JLF/JLFphrase.wav",
+                  "label": "5666",
+                  "speaker": "JLF"
+            },
+            {
+                  "path": "data/audio/AVFAD/JMP/JMPphrase.wav",
+                  "label": "5666",
+                  "speaker": "JMP"
+            },
+            {
+                  "path": "data/audio/AVFAD/PJG/PJGphrase.wav",
+                  "label": "5666",
+                  "speaker": "PJG"
             }
       ]
 }

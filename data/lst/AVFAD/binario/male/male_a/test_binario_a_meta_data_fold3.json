@@ -5,49 +5,84 @@
       },
       "meta_data": [
             {
-                  "path": "data/audio/AVFAD/JMF/JMF002.wav",
+                  "path": "data/audio/AVFAD/DGM/DGM002.wav",
                   "label": "1",
-                  "speaker": "JMF"
+                  "speaker": "DGM"
             },
             {
-                  "path": "data/audio/AVFAD/AJS/AJS002.wav",
+                  "path": "data/audio/AVFAD/GFN/GFN002.wav",
                   "label": "1",
-                  "speaker": "AJS"
+                  "speaker": "GFN"
             },
             {
-                  "path": "data/audio/AVFAD/DMG/DMG002.wav",
+                  "path": "data/audio/AVFAD/NVA/NVA002.wav",
                   "label": "1",
-                  "speaker": "DMG"
+                  "speaker": "NVA"
             },
             {
-                  "path": "data/audio/AVFAD/FMA/FMA002.wav",
+                  "path": "data/audio/AVFAD/MMF/MMF002.wav",
                   "label": "1",
-                  "speaker": "FMA"
+                  "speaker": "MMF"
             },
             {
-                  "path": "data/audio/AVFAD/MCZ/MCZ002.wav",
+                  "path": "data/audio/AVFAD/SMR/SMR002.wav",
                   "label": "1",
-                  "speaker": "MCZ"
+                  "speaker": "SMR"
             },
             {
-                  "path": "data/audio/AVFAD/AJC/AJC002.wav",
+                  "path": "data/audio/AVFAD/PJR/PJR002.wav",
                   "label": "1",
-                  "speaker": "AJC"
+                  "speaker": "PJR"
             },
             {
-                  "path": "data/audio/AVFAD/FAS/FAS002.wav",
+                  "path": "data/audio/AVFAD/AAX/AAX002.wav",
                   "label": "1",
-                  "speaker": "FAS"
+                  "speaker": "AAX"
             },
             {
-                  "path": "data/audio/AVFAD/HFV/HFV002.wav",
+                  "path": "data/audio/AVFAD/ARX/ARX002.wav",
                   "label": "1",
-                  "speaker": "HFV"
+                  "speaker": "ARX"
             },
             {
-                  "path": "data/audio/AVFAD/FMP/FMP002.wav",
+                  "path": "data/audio/AVFAD/JPF/JPF002.wav",
                   "label": "1",
-                  "speaker": "FMP"
+                  "speaker": "JPF"
+            },
+            {
+                  "path": "data/audio/AVFAD/MCL/MCL002.wav",
+                  "label": "1",
+                  "speaker": "MCL"
+            },
+            {
+                  "path": "data/audio/AVFAD/RPM/RPM002.wav",
+                  "label": "1",
+                  "speaker": "RPM"
+            },
+            {
+                  "path": "data/audio/AVFAD/AAY/AAY002.wav",
+                  "label": "1",
+                  "speaker": "AAY"
+            },
+            {
+                  "path": "data/audio/AVFAD/MMX/MMX002.wav",
+                  "label": "1",
+                  "speaker": "MMX"
+            },
+            {
+                  "path": "data/audio/AVFAD/ARP/ARP002.wav",
+                  "label": "1",
+                  "speaker": "ARP"
+            },
+            {
+                  "path": "data/audio/AVFAD/FMX/FMX002.wav",
+                  "label": "1",
+                  "speaker": "FMX"
+            },
+            {
+                  "path": "data/audio/AVFAD/OMN/OMN002.wav",
+                  "label": "1",
+                  "speaker": "OMN"
             }
       ]
 }

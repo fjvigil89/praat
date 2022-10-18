@@ -1,72 +1,107 @@
 {
       "labels": {
-            "INFLAMMATORY CONDITIONS OF THE LARYNX": "2000",
+            "Dysphonia": "2000",
+            "Neurological Diseases": "7315",
+            "Bilateral chordal Paralysis ": "4856",
+            "Other": "666",
             "Spasmodic Dysphonia": "9183",
-            "Abnormalities of the Vocal Fold": "1200",
-            "Dysphonia": "9060",
-            "control": "0",
-            "OTHER DISORDERS AFFECTING VOICE": "8000"
+            "Dysphonia x Muscle tension": "3574",
+            "Healthy": "0",
+            "Children's voice": "6842",
+            "Reinke's Edema": "1220",
+            "Unilateral chordal Paralysis": "4857",
+            "Bilateral Nodules": "5666"
       },
       "meta_data": [
             {
-                  "path": "data/audio/AVFAD/JMF/JMF001.wav",
-                  "label": "9060",
-                  "speaker": "JMF"
+                  "path": "data/audio/AVFAD/FOL/FOL001.wav",
+                  "label": "3574",
+                  "speaker": "FOL"
+            },
+            {
+                  "path": "data/audio/AVFAD/RPA/RPA001.wav",
+                  "label": "3574",
+                  "speaker": "RPA"
             },
             {
                   "path": "data/audio/AVFAD/AJS/AJS001.wav",
-                  "label": "9060",
+                  "label": "3574",
                   "speaker": "AJS"
             },
             {
                   "path": "data/audio/AVFAD/DMG/DMG001.wav",
-                  "label": "9060",
+                  "label": "3574",
                   "speaker": "DMG"
             },
             {
                   "path": "data/audio/AVFAD/FMA/FMA001.wav",
-                  "label": "9060",
+                  "label": "3574",
                   "speaker": "FMA"
             },
             {
                   "path": "data/audio/AVFAD/MCZ/MCZ001.wav",
-                  "label": "9060",
+                  "label": "3574",
                   "speaker": "MCZ"
             },
             {
-                  "path": "data/audio/AVFAD/ASR/ASR001.wav",
-                  "label": "8000",
-                  "speaker": "ASR"
+                  "path": "data/audio/AVFAD/PJR/PJR001.wav",
+                  "label": "6842",
+                  "speaker": "PJR"
             },
             {
-                  "path": "data/audio/AVFAD/ASX/ASX001.wav",
-                  "label": "8000",
-                  "speaker": "ASX"
+                  "path": "data/audio/AVFAD/FRL/FRL001.wav",
+                  "label": "1220",
+                  "speaker": "FRL"
             },
             {
-                  "path": "data/audio/AVFAD/JRP/JRP001.wav",
-                  "label": "8000",
-                  "speaker": "JRP"
+                  "path": "data/audio/AVFAD/MVT/MVT001.wav",
+                  "label": "1220",
+                  "speaker": "MVT"
             },
             {
-                  "path": "data/audio/AVFAD/AJC/AJC001.wav",
-                  "label": "9060",
-                  "speaker": "AJC"
+                  "path": "data/audio/AVFAD/PLB/PLB001.wav",
+                  "label": "1220",
+                  "speaker": "PLB"
             },
             {
-                  "path": "data/audio/AVFAD/FAS/FAS001.wav",
-                  "label": "9060",
-                  "speaker": "FAS"
+                  "path": "data/audio/AVFAD/AAC/AAC001.wav",
+                  "label": "1220",
+                  "speaker": "AAC"
             },
             {
-                  "path": "data/audio/AVFAD/HFV/HFV001.wav",
-                  "label": "9060",
-                  "speaker": "HFV"
+                  "path": "data/audio/AVFAD/AJX/AJX001.wav",
+                  "label": "1220",
+                  "speaker": "AJX"
             },
             {
-                  "path": "data/audio/AVFAD/FMP/FMP001.wav",
-                  "label": "9060",
-                  "speaker": "FMP"
+                  "path": "data/audio/AVFAD/FAX/FAX001.wav",
+                  "label": "1220",
+                  "speaker": "FAX"
+            },
+            {
+                  "path": "data/audio/AVFAD/JGC/JGC001.wav",
+                  "label": "1220",
+                  "speaker": "JGC"
+            },
+            {
+                  "path": "data/audio/AVFAD/JMM/JMM001.wav",
+                  "label": "1220",
+                  "speaker": "JMM"
+            },
+            {
+                  "path": "data/audio/AVFAD/DOX/DOX001.wav",
+                  "label": "4857",
+                  "speaker": "DOX"
+            },
+            {
+                  "path": "data/audio/AVFAD/JOL/JOL001.wav",
+                  "label": "4857",
+                  "speaker": "JOL"
+            },
+            {
+                  "path": "data/audio/AVFAD/JSC/JSC001.wav",
+                  "label": "4857",
+                  "speaker": "JSC"
             }
       ]
 }

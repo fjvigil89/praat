@@ -5,6 +5,11 @@
       },
       "meta_data": [
             {
+                  "path": "data/audio/AVFAD/ZPM/ZPM001.wav",
+                  "label": "1",
+                  "speaker": "ZPM"
+            },
+            {
                   "path": "data/audio/AVFAD/AAV/AAV001.wav",
                   "label": "0",
                   "speaker": "AAV"
@@ -583,6 +588,56 @@
                   "path": "data/audio/AVFAD/JRP/JRP001.wav",
                   "label": "1",
                   "speaker": "JRP"
+            },
+            {
+                  "path": "data/audio/AVFAD/ADM/ADM001.wav",
+                  "label": "1",
+                  "speaker": "ADM"
+            },
+            {
+                  "path": "data/audio/AVFAD/ALX/ALX001.wav",
+                  "label": "1",
+                  "speaker": "ALX"
+            },
+            {
+                  "path": "data/audio/AVFAD/APM/APM001.wav",
+                  "label": "1",
+                  "speaker": "APM"
+            },
+            {
+                  "path": "data/audio/AVFAD/APX/APX001.wav",
+                  "label": "1",
+                  "speaker": "APX"
+            },
+            {
+                  "path": "data/audio/AVFAD/JBG/JBG001.wav",
+                  "label": "1",
+                  "speaker": "JBG"
+            },
+            {
+                  "path": "data/audio/AVFAD/JCA/JCA001.wav",
+                  "label": "1",
+                  "speaker": "JCA"
+            },
+            {
+                  "path": "data/audio/AVFAD/JRT/JRT001.wav",
+                  "label": "1",
+                  "speaker": "JRT"
+            },
+            {
+                  "path": "data/audio/AVFAD/DOX/DOX001.wav",
+                  "label": "1",
+                  "speaker": "DOX"
+            },
+            {
+                  "path": "data/audio/AVFAD/JOL/JOL001.wav",
+                  "label": "1",
+                  "speaker": "JOL"
+            },
+            {
+                  "path": "data/audio/AVFAD/JSC/JSC001.wav",
+                  "label": "1",
+                  "speaker": "JSC"
             }
       ]
 }

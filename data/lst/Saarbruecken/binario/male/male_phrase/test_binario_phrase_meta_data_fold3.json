@@ -1,7 +1,338 @@
 {
       "labels": {
-            "NORM": "0",
+            "HEALTHY": "0",
             "PATH": "1"
       },
-      "meta_data": []
+      "meta_data": [
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1043-phrase.wav",
+                  "label": "1",
+                  "speaker": 1043
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1083-phrase.wav",
+                  "label": "1",
+                  "speaker": 1083
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1282-phrase.wav",
+                  "label": "1",
+                  "speaker": 1282
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1310-phrase.wav",
+                  "label": "1",
+                  "speaker": 1310
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1492-phrase.wav",
+                  "label": "1",
+                  "speaker": 1492
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1569-phrase.wav",
+                  "label": "1",
+                  "speaker": 1569
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/159-phrase.wav",
+                  "label": "1",
+                  "speaker": 159
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/160-phrase.wav",
+                  "label": "1",
+                  "speaker": 160
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1602-phrase.wav",
+                  "label": "1",
+                  "speaker": 1602
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1637-phrase.wav",
+                  "label": "1",
+                  "speaker": 1637
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1653-phrase.wav",
+                  "label": "1",
+                  "speaker": 1653
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1812-phrase.wav",
+                  "label": "1",
+                  "speaker": 1812
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1861-phrase.wav",
+                  "label": "1",
+                  "speaker": 1861
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1903-phrase.wav",
+                  "label": "1",
+                  "speaker": 1903
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1934-phrase.wav",
+                  "label": "1",
+                  "speaker": 1934
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2081-phrase.wav",
+                  "label": "1",
+                  "speaker": 2081
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2185-phrase.wav",
+                  "label": "1",
+                  "speaker": 2185
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2186-phrase.wav",
+                  "label": "1",
+                  "speaker": 2186
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2230-phrase.wav",
+                  "label": "1",
+                  "speaker": 2230
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2232-phrase.wav",
+                  "label": "1",
+                  "speaker": 2232
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2233-phrase.wav",
+                  "label": "1",
+                  "speaker": 2233
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2239-phrase.wav",
+                  "label": "1",
+                  "speaker": 2239
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2240-phrase.wav",
+                  "label": "1",
+                  "speaker": 2240
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2241-phrase.wav",
+                  "label": "1",
+                  "speaker": 2241
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2270-phrase.wav",
+                  "label": "1",
+                  "speaker": 2270
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2438-phrase.wav",
+                  "label": "1",
+                  "speaker": 2438
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2454-phrase.wav",
+                  "label": "1",
+                  "speaker": 2454
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2463-phrase.wav",
+                  "label": "1",
+                  "speaker": 2463
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/348-phrase.wav",
+                  "label": "1",
+                  "speaker": 348
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/854-phrase.wav",
+                  "label": "1",
+                  "speaker": 854
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/894-phrase.wav",
+                  "label": "1",
+                  "speaker": 894
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/922-phrase.wav",
+                  "label": "1",
+                  "speaker": 922
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1741-phrase.wav",
+                  "label": "1",
+                  "speaker": 1741
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2034-phrase.wav",
+                  "label": "1",
+                  "speaker": 2034
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2135-phrase.wav",
+                  "label": "1",
+                  "speaker": 2135
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2420-phrase.wav",
+                  "label": "1",
+                  "speaker": 2420
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2492-phrase.wav",
+                  "label": "1",
+                  "speaker": 2492
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1978-phrase.wav",
+                  "label": "1",
+                  "speaker": 1978
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2487-phrase.wav",
+                  "label": "1",
+                  "speaker": 2487
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2521-phrase.wav",
+                  "label": "1",
+                  "speaker": 2521
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/850-phrase.wav",
+                  "label": "1",
+                  "speaker": 850
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1438-phrase.wav",
+                  "label": "1",
+                  "speaker": 1438
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1565-phrase.wav",
+                  "label": "1",
+                  "speaker": 1565
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1652-phrase.wav",
+                  "label": "1",
+                  "speaker": 1652
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1666-phrase.wav",
+                  "label": "1",
+                  "speaker": 1666
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1672-phrase.wav",
+                  "label": "1",
+                  "speaker": 1672
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1677-phrase.wav",
+                  "label": "1",
+                  "speaker": 1677
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1689-phrase.wav",
+                  "label": "1",
+                  "speaker": 1689
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1723-phrase.wav",
+                  "label": "1",
+                  "speaker": 1723
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1752-phrase.wav",
+                  "label": "1",
+                  "speaker": 1752
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1762-phrase.wav",
+                  "label": "1",
+                  "speaker": 1762
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1769-phrase.wav",
+                  "label": "1",
+                  "speaker": 1769
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1914-phrase.wav",
+                  "label": "1",
+                  "speaker": 1914
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1945-phrase.wav",
+                  "label": "1",
+                  "speaker": 1945
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1961-phrase.wav",
+                  "label": "1",
+                  "speaker": 1961
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1994-phrase.wav",
+                  "label": "1",
+                  "speaker": 1994
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2022-phrase.wav",
+                  "label": "1",
+                  "speaker": 2022
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2159-phrase.wav",
+                  "label": "1",
+                  "speaker": 2159
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2273-phrase.wav",
+                  "label": "1",
+                  "speaker": 2273
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2352-phrase.wav",
+                  "label": "1",
+                  "speaker": 2352
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2361-phrase.wav",
+                  "label": "1",
+                  "speaker": 2361
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2397-phrase.wav",
+                  "label": "1",
+                  "speaker": 2397
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/2485-phrase.wav",
+                  "label": "1",
+                  "speaker": 2485
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1085-phrase.wav",
+                  "label": "1",
+                  "speaker": 1085
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1285-phrase.wav",
+                  "label": "1",
+                  "speaker": 1285
+            },
+            {
+                  "path": "data/audio/Saarbruecken/PATH/hombres/1643-phrase.wav",
+                  "label": "1",
+                  "speaker": 1643
+            }
+      ]
 }
