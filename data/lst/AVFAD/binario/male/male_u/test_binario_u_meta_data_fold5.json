@@ -5,9 +5,89 @@
       },
       "meta_data": [
             {
-                  "path": "data/audio/AVFAD/ZPM/ZPM003.wav",
+                  "path": "data/audio/AVFAD/AAM/AAM003.wav",
                   "label": "1",
-                  "speaker": "ZPM"
+                  "speaker": "AAM"
+            },
+            {
+                  "path": "data/audio/AVFAD/ALR/ALR003.wav",
+                  "label": "1",
+                  "speaker": "ALR"
+            },
+            {
+                  "path": "data/audio/AVFAD/JMF/JMF003.wav",
+                  "label": "1",
+                  "speaker": "JMF"
+            },
+            {
+                  "path": "data/audio/AVFAD/FOL/FOL003.wav",
+                  "label": "1",
+                  "speaker": "FOL"
+            },
+            {
+                  "path": "data/audio/AVFAD/RPA/RPA003.wav",
+                  "label": "1",
+                  "speaker": "RPA"
+            },
+            {
+                  "path": "data/audio/AVFAD/AJS/AJS003.wav",
+                  "label": "1",
+                  "speaker": "AJS"
+            },
+            {
+                  "path": "data/audio/AVFAD/DMG/DMG003.wav",
+                  "label": "1",
+                  "speaker": "DMG"
+            },
+            {
+                  "path": "data/audio/AVFAD/FMA/FMA003.wav",
+                  "label": "1",
+                  "speaker": "FMA"
+            },
+            {
+                  "path": "data/audio/AVFAD/MCZ/MCZ003.wav",
+                  "label": "1",
+                  "speaker": "MCZ"
+            },
+            {
+                  "path": "data/audio/AVFAD/FRL/FRL003.wav",
+                  "label": "1",
+                  "speaker": "FRL"
+            },
+            {
+                  "path": "data/audio/AVFAD/MVT/MVT003.wav",
+                  "label": "1",
+                  "speaker": "MVT"
+            },
+            {
+                  "path": "data/audio/AVFAD/PLB/PLB003.wav",
+                  "label": "1",
+                  "speaker": "PLB"
+            },
+            {
+                  "path": "data/audio/AVFAD/AAC/AAC003.wav",
+                  "label": "1",
+                  "speaker": "AAC"
+            },
+            {
+                  "path": "data/audio/AVFAD/AJX/AJX003.wav",
+                  "label": "1",
+                  "speaker": "AJX"
+            },
+            {
+                  "path": "data/audio/AVFAD/FAX/FAX003.wav",
+                  "label": "1",
+                  "speaker": "FAX"
+            },
+            {
+                  "path": "data/audio/AVFAD/JGC/JGC003.wav",
+                  "label": "1",
+                  "speaker": "JGC"
+            },
+            {
+                  "path": "data/audio/AVFAD/JMM/JMM003.wav",
+                  "label": "1",
+                  "speaker": "JMM"
             }
       ]
 }

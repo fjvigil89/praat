@@ -1,17 +1,77 @@
 {
       "labels": {
-            "INFLAMMATORY CONDITIONS OF THE LARYNX": "2000",
+            "Dysphonia": "2000",
+            "Neurological Diseases": "7315",
+            "Bilateral chordal Paralysis ": "4856",
+            "Other": "666",
             "Spasmodic Dysphonia": "9183",
-            "Abnormalities of the Vocal Fold": "1200",
-            "Dysphonia": "9060",
-            "control": "0",
-            "OTHER DISORDERS AFFECTING VOICE": "8000"
+            "Dysphonia x Muscle tension": "3574",
+            "Healthy": "0",
+            "Children's voice": "6842",
+            "Reinke's Edema": "1220",
+            "Unilateral chordal Paralysis": "4857",
+            "Bilateral Nodules": "5666"
       },
       "meta_data": [
             {
-                  "path": "data/audio/AVFAD/ZPM/ZPM003.wav",
-                  "label": "9183",
-                  "speaker": "ZPM"
+                  "path": "data/audio/AVFAD/JPM/JPM003.wav",
+                  "label": "5666",
+                  "speaker": "JPM"
+            },
+            {
+                  "path": "data/audio/AVFAD/RNA/RNA003.wav",
+                  "label": "5666",
+                  "speaker": "RNA"
+            },
+            {
+                  "path": "data/audio/AVFAD/SMF/SMF003.wav",
+                  "label": "5666",
+                  "speaker": "SMF"
+            },
+            {
+                  "path": "data/audio/AVFAD/FMC/FMC003.wav",
+                  "label": "5666",
+                  "speaker": "FMC"
+            },
+            {
+                  "path": "data/audio/AVFAD/JMB/JMB003.wav",
+                  "label": "5666",
+                  "speaker": "JMB"
+            },
+            {
+                  "path": "data/audio/AVFAD/AMZ/AMZ003.wav",
+                  "label": "5666",
+                  "speaker": "AMZ"
+            },
+            {
+                  "path": "data/audio/AVFAD/ATA/ATA003.wav",
+                  "label": "5666",
+                  "speaker": "ATA"
+            },
+            {
+                  "path": "data/audio/AVFAD/EJA/EJA003.wav",
+                  "label": "5666",
+                  "speaker": "EJA"
+            },
+            {
+                  "path": "data/audio/AVFAD/JJF/JJF003.wav",
+                  "label": "5666",
+                  "speaker": "JJF"
+            },
+            {
+                  "path": "data/audio/AVFAD/JLF/JLF003.wav",
+                  "label": "5666",
+                  "speaker": "JLF"
+            },
+            {
+                  "path": "data/audio/AVFAD/JMP/JMP003.wav",
+                  "label": "5666",
+                  "speaker": "JMP"
+            },
+            {
+                  "path": "data/audio/AVFAD/PJG/PJG003.wav",
+                  "label": "5666",
+                  "speaker": "PJG"
             }
       ]
 }

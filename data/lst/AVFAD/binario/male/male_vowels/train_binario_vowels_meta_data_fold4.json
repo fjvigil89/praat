@@ -35,21 +35,6 @@
                   "speaker": "NHS"
             },
             {
-                  "path": "data/audio/AVFAD/ZPM/ZPM002.wav",
-                  "label": "1",
-                  "speaker": "ZPM"
-            },
-            {
-                  "path": "data/audio/AVFAD/ZPM/ZPM001.wav",
-                  "label": "1",
-                  "speaker": "ZPM"
-            },
-            {
-                  "path": "data/audio/AVFAD/ZPM/ZPM003.wav",
-                  "label": "1",
-                  "speaker": "ZPM"
-            },
-            {
                   "path": "data/audio/AVFAD/AAM/AAM002.wav",
                   "label": "1",
                   "speaker": "AAM"
@@ -740,111 +725,6 @@
                   "speaker": "SMR"
             },
             {
-                  "path": "data/audio/AVFAD/ADM/ADM002.wav",
-                  "label": "1",
-                  "speaker": "ADM"
-            },
-            {
-                  "path": "data/audio/AVFAD/ADM/ADM001.wav",
-                  "label": "1",
-                  "speaker": "ADM"
-            },
-            {
-                  "path": "data/audio/AVFAD/ADM/ADM003.wav",
-                  "label": "1",
-                  "speaker": "ADM"
-            },
-            {
-                  "path": "data/audio/AVFAD/ALX/ALX002.wav",
-                  "label": "1",
-                  "speaker": "ALX"
-            },
-            {
-                  "path": "data/audio/AVFAD/ALX/ALX001.wav",
-                  "label": "1",
-                  "speaker": "ALX"
-            },
-            {
-                  "path": "data/audio/AVFAD/ALX/ALX003.wav",
-                  "label": "1",
-                  "speaker": "ALX"
-            },
-            {
-                  "path": "data/audio/AVFAD/APM/APM002.wav",
-                  "label": "1",
-                  "speaker": "APM"
-            },
-            {
-                  "path": "data/audio/AVFAD/APM/APM001.wav",
-                  "label": "1",
-                  "speaker": "APM"
-            },
-            {
-                  "path": "data/audio/AVFAD/APM/APM003.wav",
-                  "label": "1",
-                  "speaker": "APM"
-            },
-            {
-                  "path": "data/audio/AVFAD/APX/APX002.wav",
-                  "label": "1",
-                  "speaker": "APX"
-            },
-            {
-                  "path": "data/audio/AVFAD/APX/APX001.wav",
-                  "label": "1",
-                  "speaker": "APX"
-            },
-            {
-                  "path": "data/audio/AVFAD/APX/APX003.wav",
-                  "label": "1",
-                  "speaker": "APX"
-            },
-            {
-                  "path": "data/audio/AVFAD/JBG/JBG002.wav",
-                  "label": "1",
-                  "speaker": "JBG"
-            },
-            {
-                  "path": "data/audio/AVFAD/JBG/JBG001.wav",
-                  "label": "1",
-                  "speaker": "JBG"
-            },
-            {
-                  "path": "data/audio/AVFAD/JBG/JBG003.wav",
-                  "label": "1",
-                  "speaker": "JBG"
-            },
-            {
-                  "path": "data/audio/AVFAD/JCA/JCA002.wav",
-                  "label": "1",
-                  "speaker": "JCA"
-            },
-            {
-                  "path": "data/audio/AVFAD/JCA/JCA001.wav",
-                  "label": "1",
-                  "speaker": "JCA"
-            },
-            {
-                  "path": "data/audio/AVFAD/JCA/JCA003.wav",
-                  "label": "1",
-                  "speaker": "JCA"
-            },
-            {
-                  "path": "data/audio/AVFAD/JRT/JRT002.wav",
-                  "label": "1",
-                  "speaker": "JRT"
-            },
-            {
-                  "path": "data/audio/AVFAD/JRT/JRT001.wav",
-                  "label": "1",
-                  "speaker": "JRT"
-            },
-            {
-                  "path": "data/audio/AVFAD/JRT/JRT003.wav",
-                  "label": "1",
-                  "speaker": "JRT"
-            },
-            {
                   "path": "data/audio/AVFAD/PJR/PJR002.wav",
                   "label": "1",
                   "speaker": "PJR"
@@ -978,51 +858,6 @@
                   "path": "data/audio/AVFAD/JMM/JMM003.wav",
                   "label": "1",
                   "speaker": "JMM"
-            },
-            {
-                  "path": "data/audio/AVFAD/DOX/DOX002.wav",
-                  "label": "1",
-                  "speaker": "DOX"
-            },
-            {
-                  "path": "data/audio/AVFAD/DOX/DOX001.wav",
-                  "label": "1",
-                  "speaker": "DOX"
-            },
-            {
-                  "path": "data/audio/AVFAD/DOX/DOX003.wav",
-                  "label": "1",
-                  "speaker": "DOX"
-            },
-            {
-                  "path": "data/audio/AVFAD/JOL/JOL002.wav",
-                  "label": "1",
-                  "speaker": "JOL"
-            },
-            {
-                  "path": "data/audio/AVFAD/JOL/JOL001.wav",
-                  "label": "1",
-                  "speaker": "JOL"
-            },
-            {
-                  "path": "data/audio/AVFAD/JOL/JOL003.wav",
-                  "label": "1",
-                  "speaker": "JOL"
-            },
-            {
-                  "path": "data/audio/AVFAD/JSC/JSC002.wav",
-                  "label": "1",
-                  "speaker": "JSC"
-            },
-            {
-                  "path": "data/audio/AVFAD/JSC/JSC001.wav",
-                  "label": "1",
-                  "speaker": "JSC"
-            },
-            {
-                  "path": "data/audio/AVFAD/JSC/JSC003.wav",
-                  "label": "1",
-                  "speaker": "JSC"
             },
             {
                   "path": "data/audio/AVFAD/AAX/AAX002.wav",

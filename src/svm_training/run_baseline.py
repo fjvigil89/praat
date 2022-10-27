@@ -518,7 +518,7 @@ def feature_smile(list_path, kfold, audio_type, cambia='viejo', clases='binaria'
     if label == "VOICED":
         db_voiced.featureVOICED(list_path,kfold, audio_type, label)       
     if label == "AVFAD":
-        #db_avfad.featureAVFAD(list_path,kfold, audio_type, label)
+        db_avfad.featureAVFAD(list_path,kfold, audio_type, label)
         db_avfad.feature_m_AVFAD(list_path,kfold, audio_type, label)
                
     if label == "Saarbruecken":

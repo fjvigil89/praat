@@ -30,21 +30,6 @@
                   "speaker": "ALR"
             },
             {
-                  "path": "data/audio/AVFAD/DGM/DGM003.wav",
-                  "label": "1",
-                  "speaker": "DGM"
-            },
-            {
-                  "path": "data/audio/AVFAD/GFN/GFN003.wav",
-                  "label": "1",
-                  "speaker": "GFN"
-            },
-            {
-                  "path": "data/audio/AVFAD/NVA/NVA003.wav",
-                  "label": "1",
-                  "speaker": "NVA"
-            },
-            {
                   "path": "data/audio/AVFAD/AVC/AVC003.wav",
                   "label": "1",
                   "speaker": "AVC"
@@ -205,6 +190,11 @@
                   "speaker": "VQC"
             },
             {
+                  "path": "data/audio/AVFAD/JMF/JMF003.wav",
+                  "label": "1",
+                  "speaker": "JMF"
+            },
+            {
                   "path": "data/audio/AVFAD/FOL/FOL003.wav",
                   "label": "1",
                   "speaker": "FOL"
@@ -215,14 +205,24 @@
                   "speaker": "RPA"
             },
             {
-                  "path": "data/audio/AVFAD/MMF/MMF003.wav",
+                  "path": "data/audio/AVFAD/AJS/AJS003.wav",
                   "label": "1",
-                  "speaker": "MMF"
+                  "speaker": "AJS"
             },
             {
-                  "path": "data/audio/AVFAD/SMR/SMR003.wav",
+                  "path": "data/audio/AVFAD/DMG/DMG003.wav",
                   "label": "1",
-                  "speaker": "SMR"
+                  "speaker": "DMG"
+            },
+            {
+                  "path": "data/audio/AVFAD/FMA/FMA003.wav",
+                  "label": "1",
+                  "speaker": "FMA"
+            },
+            {
+                  "path": "data/audio/AVFAD/MCZ/MCZ003.wav",
+                  "label": "1",
+                  "speaker": "MCZ"
             },
             {
                   "path": "data/audio/AVFAD/AAV/AAV003.wav",
@@ -840,11 +840,6 @@
                   "speaker": "JRT"
             },
             {
-                  "path": "data/audio/AVFAD/PJR/PJR003.wav",
-                  "label": "1",
-                  "speaker": "PJR"
-            },
-            {
                   "path": "data/audio/AVFAD/FRL/FRL003.wav",
                   "label": "1",
                   "speaker": "FRL"
@@ -900,29 +895,19 @@
                   "speaker": "JSC"
             },
             {
-                  "path": "data/audio/AVFAD/AAX/AAX003.wav",
+                  "path": "data/audio/AVFAD/AJC/AJC003.wav",
                   "label": "1",
-                  "speaker": "AAX"
+                  "speaker": "AJC"
             },
             {
-                  "path": "data/audio/AVFAD/ARX/ARX003.wav",
+                  "path": "data/audio/AVFAD/FAS/FAS003.wav",
                   "label": "1",
-                  "speaker": "ARX"
+                  "speaker": "FAS"
             },
             {
-                  "path": "data/audio/AVFAD/JPF/JPF003.wav",
+                  "path": "data/audio/AVFAD/HFV/HFV003.wav",
                   "label": "1",
-                  "speaker": "JPF"
-            },
-            {
-                  "path": "data/audio/AVFAD/MCL/MCL003.wav",
-                  "label": "1",
-                  "speaker": "MCL"
-            },
-            {
-                  "path": "data/audio/AVFAD/RPM/RPM003.wav",
-                  "label": "1",
-                  "speaker": "RPM"
+                  "speaker": "HFV"
             },
             {
                   "path": "data/audio/AVFAD/JPM/JPM003.wav",
@@ -938,16 +923,6 @@
                   "path": "data/audio/AVFAD/SMF/SMF003.wav",
                   "label": "1",
                   "speaker": "SMF"
-            },
-            {
-                  "path": "data/audio/AVFAD/AAY/AAY003.wav",
-                  "label": "1",
-                  "speaker": "AAY"
-            },
-            {
-                  "path": "data/audio/AVFAD/MMX/MMX003.wav",
-                  "label": "1",
-                  "speaker": "MMX"
             },
             {
                   "path": "data/audio/AVFAD/FMC/FMC003.wav",
@@ -995,19 +970,9 @@
                   "speaker": "PJG"
             },
             {
-                  "path": "data/audio/AVFAD/ARP/ARP003.wav",
+                  "path": "data/audio/AVFAD/FMP/FMP003.wav",
                   "label": "1",
-                  "speaker": "ARP"
-            },
-            {
-                  "path": "data/audio/AVFAD/FMX/FMX003.wav",
-                  "label": "1",
-                  "speaker": "FMX"
-            },
-            {
-                  "path": "data/audio/AVFAD/OMN/OMN003.wav",
-                  "label": "1",
-                  "speaker": "OMN"
+                  "speaker": "FMP"
             }
       ]
 }

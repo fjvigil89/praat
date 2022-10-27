@@ -116,8 +116,9 @@ def timeSaarbruecken(list_path, path_metadata, label):
 
 def featureSaarbruecken(list_path, kfold, audio_type, label):
     clases ="binario"       
-    general=["male","female", 'both']    
-    grabacion=["phrase","vowels", "a", "i", "u"]
+    general=["male","female", 'both']          
+    #grabacion=["phrase","vowels", "a", "i", "u"]
+    grabacion=["phrase"]
      # 1. Loading data from json list    
     for k in range(0, kfold):
         for w in general:
@@ -141,7 +142,7 @@ def featureSaarbruecken(list_path, kfold, audio_type, label):
                 test_files = []
                 test_labels = []
                 #testlist = list_path + '/test_' + clases + '_' + audio_type + '_meta_data_fold' + str(k + 1) + '.json'
-                testlist = list_path +"/"+ clases +"/"+ w+"/"+ w+'_'+grabacion[j] + '/train_' + clases + '_' + grabacion[j] + '_meta_data_fold' + str(k + 1) + '.json'
+                testlist = list_path +"/"+ clases +"/"+ w+"/"+ w+'_'+grabacion[j] + '/test_' + clases + '_' + grabacion[j] + '_meta_data_fold' + str(k + 1) + '.json'
                 with open(testlist, 'r') as f:
                     data = json.load(f)
                     for item in data['meta_data']:
@@ -198,20 +199,20 @@ def featureSaarbruecken(list_path, kfold, audio_type, label):
                                 print('Saving: ... ', camino)
                     i = i+1                          
                 
-                
+                ##Esto es para crear csv y pkl generico por fold 
                 # read wav files and extract emobase features on that file
-                print('Processing: ... ')
-                feat = smile.process_files(data)            
-                train_features.append(feat.to_numpy()[3:])
+                # print('Processing: ... ')
+                # feat = smile.process_files(data)            
+                # train_features.append(feat.to_numpy()[3:])
                 
-                print('Saving: ... Train: ' + audio_type_pkl+'_smile.csv')
-                feat.to_csv(trainpath_csv+'_smile.csv')
+                # print('Saving: ... Train: ' + audio_type_pkl+'_smile.csv')
+                # feat.to_csv(trainpath_csv+'_smile.csv')
                 
-                print('Train: ' + str(i))
-                train_features = np.array(train_features)
-                with open(trainpath, 'wb') as fid:
-                    pickle.dump(train_features, fid, protocol=pickle.HIGHEST_PROTOCOL)
-                fid.close()
+                # print('Train: ' + str(i))
+                # train_features = np.array(train_features)
+                # with open(trainpath, 'wb') as fid:
+                #     pickle.dump(train_features, fid, protocol=pickle.HIGHEST_PROTOCOL)
+                # fid.close()
 
                 # Test
                 test_labels = np.array(test_labels)
@@ -243,25 +244,30 @@ def featureSaarbruecken(list_path, kfold, audio_type, label):
                                 print('Saving: ... ', camino)
                     i = i+1                   
                 
-                    # read wav files and extract emobase features on that file
-                print('Processing: ... ')
-                feat = smile.process_files(data)            
-                test_features.append(feat.to_numpy()[3:])
+                ##Esto es para crear csv y pkl generico por fold 
+                # read wav files and extract emobase features on that file
+                # print('Processing: ... ')
+                # feat = smile.process_files(data)            
+                # test_features.append(feat.to_numpy()[3:])
                 
-                print('Saving: ... Test: ' + audio_type_pkl+'_smile.csv')
-                feat.to_csv(testpath_csv+'_smile.csv')
+                # print('Saving: ... Test: ' + audio_type_pkl+'_smile.csv')
+                # feat.to_csv(testpath_csv+'_smile.csv')
                 
-                print('Test: ' + str(i))
-                test_features = np.array(test_features)
-                with open(testpath, 'wb') as fid:
-                    pickle.dump(test_features, fid, protocol=pickle.HIGHEST_PROTOCOL)
-                fid.close()
+                # print('Test: ' + str(i))
+                # test_features = np.array(test_features)
+                # with open(testpath, 'wb') as fid:
+                #     pickle.dump(test_features, fid, protocol=pickle.HIGHEST_PROTOCOL)
+                # fid.close()
+                
+                
                 j=j-1
+    
 
 def feature_m_Saarbruecken(list_path, kfold, audio_type, label): #reviar
     clases ="Multiclass"    
-    general=["male","female", 'both']    
-    grabacion=["phrase","vowels", "a", "i", "u"]
+    general=["male","female", 'both']       
+    #grabacion=["phrase","vowels", "a", "i", "u"]
+    grabacion=["phrase"]
      # 1. Loading data from json list    
     for k in range(0, kfold):
         for w in general:
@@ -285,7 +291,7 @@ def feature_m_Saarbruecken(list_path, kfold, audio_type, label): #reviar
                 test_files = []
                 test_labels = []
                 #testlist = list_path + '/test_' + clases + '_' + audio_type + '_meta_data_fold' + str(k + 1) + '.json'
-                testlist = list_path +"/"+ clases +"/"+ w+"/"+ w+'_'+grabacion[j] + '/train_' + clases + '_' + grabacion[j] + '_meta_data_fold' + str(k + 1) + '.json'
+                testlist = list_path +"/"+ clases +"/"+ w+"/"+ w+'_'+grabacion[j] + '/test' + clases + '_' + grabacion[j] + '_meta_data_fold' + str(k + 1) + '.json'
                 with open(testlist, 'r') as f:
                     data = json.load(f)
                     for item in data['meta_data']:
@@ -341,20 +347,20 @@ def feature_m_Saarbruecken(list_path, kfold, audio_type, label): #reviar
                                 feat_one.to_csv(camino +"/" + str(name) +'_smile.csv')
                     i = i+1                          
                 
-                
+                ##Esto es para crear csv y pkl generico por fold 
                 # read wav files and extract emobase features on that file
-                print('Processing: ... ')
-                feat = smile.process_files(data)            
-                train_features.append(feat.to_numpy()[3:])
+                # print('Processing: ... ')
+                # feat = smile.process_files(data)            
+                # train_features.append(feat.to_numpy()[3:])
                 
-                print('Saving: ... Train: ' + audio_type_pkl+'_smile.csv')
-                feat.to_csv(trainpath_csv+'_smile.csv')
+                # print('Saving: ... Train: ' + audio_type_pkl+'_smile.csv')
+                # feat.to_csv(trainpath_csv+'_smile.csv')
                 
-                print('Train: ' + str(i))
-                train_features = np.array(train_features)
-                with open(trainpath, 'wb') as fid:
-                    pickle.dump(train_features, fid, protocol=pickle.HIGHEST_PROTOCOL)
-                fid.close()
+                # print('Train: ' + str(i))
+                # train_features = np.array(train_features)
+                # with open(trainpath, 'wb') as fid:
+                #     pickle.dump(train_features, fid, protocol=pickle.HIGHEST_PROTOCOL)
+                # fid.close()
 
                 # Test
                 test_labels = np.array(test_labels)
@@ -385,24 +391,180 @@ def feature_m_Saarbruecken(list_path, kfold, audio_type, label): #reviar
                                 feat_one.to_csv(camino+"/" + str(name) +'_smile.csv')
                     i = i+1                   
                 
-                    # read wav files and extract emobase features on that file
-                print('Processing: ... ')
-                feat = smile.process_files(data)            
-                test_features.append(feat.to_numpy()[3:])
+                ##Esto es para crear csv y pkl generico por fold 
+                # # read wav files and extract emobase features on that file
+                # print('Processing: ... ')
+                # feat = smile.process_files(data)            
+                # test_features.append(feat.to_numpy()[3:])
                 
-                print('Saving: ... Test: ' + audio_type_pkl+'_smile.csv')
-                feat.to_csv(testpath_csv+'_smile.csv')
+                # print('Saving: ... Test: ' + audio_type_pkl+'_smile.csv')
+                # feat.to_csv(testpath_csv+'_smile.csv')
                 
-                print('Test: ' + str(i))
-                test_features = np.array(test_features)
-                with open(testpath, 'wb') as fid:
-                    pickle.dump(test_features, fid, protocol=pickle.HIGHEST_PROTOCOL)
-                fid.close()
+                # print('Test: ' + str(i))
+                # test_features = np.array(test_features)
+                # with open(testpath, 'wb') as fid:
+                #     pickle.dump(test_features, fid, protocol=pickle.HIGHEST_PROTOCOL)
+                # fid.close()
+                
                 j=j-1
          
-    
 def svmSaarbruecken(list_path,kfold, audio_type, label):
-    clases ="multiclases"#"binaria"
+    clases ="binario"
+    ker = 'poly'
+    d = 1
+    c = 1
+    general=["male","female", 'both']       
+    #grabacion=["phrase","vowels", "a", "i", "u"]
+    grabacion=["phrase"]
+    for w in general:
+            j=len(grabacion)-1
+            while j >=0:
+                    respath = 'data/result/' + label+"/"+  clases +"/"+ w+"/"+ w+'_'+grabacion[j]                    
+                    if not os.path.exists(respath):
+                        os.makedirs(respath)
+                    
+                    result_log = str(respath) +'/results_' + label + '_' + clases + '_' + audio_type + '_' + ker + str(d) + 'c' + str(c) + '.log'
+                    f = open(result_log, 'w+')
+                    f.write('Results Data:%s Features:Compare2016 %ifold, %s\n' % (label, kfold, audio_type))
+                    f.write('SVM Config: Kernel=%s, Degree=%i, C(tol)=%.2f \n' % (ker, d, c))
+                    f.close()
+                    
+                    score = np.zeros((13, kfold))
+                    score_oracle = np.zeros((13, kfold))
+                    # 1. Loading data from json list
+                    dic_result_oracle = {}; dic_result = {}
+                    for k in range(0, kfold):
+                        tic = time.time()
+                        label_files =[]
+                        label_code ={}
+                        train_files = []
+                        train_labels = []
+                        trainlist = list_path +"/"+ clases +"/"+ w+"/"+ w+'_'+grabacion[j] + '/train_' + clases + '_' + grabacion[j] + '_meta_data_fold' + str(k + 1) + '.json'
+                        #trainlist = list_path + '/train_' + clases + '_' + audio_type + '_meta_data_fold' + str(k + 1) + '.json'
+                        with open(trainlist, 'r') as f:
+                            data = json.load(f)                        
+                            for item in data['labels']:                
+                                label_files.append(item)                                  
+                                label_code[int(data['labels'][item])] = item
+                                
+                            for item in data['meta_data']:
+                                train_files.append(item['path'])                
+                                train_labels.append(int(item['label']))   
+                                        
+                        f.close()
+
+                        test_files = []
+                        test_labels = []  
+                        testlist = list_path +"/"+ clases +"/"+ w+"/"+ w+'_'+grabacion[j] + '/test_' + clases + '_' + grabacion[j] + '_meta_data_fold' + str(k + 1) + '.json'      
+                        #testlist = list_path + '/test_' + clases + '_' + audio_type + '_meta_data_fold' + str(k + 1) + '.json'
+                        with open(testlist, 'r') as f:
+                            data = json.load(f)            
+                            for item in data['meta_data']:
+                                test_files.append(item['path'])                
+                                test_labels.append(int(item['label']))
+                                
+                        f.close()
+
+                        # 2. Load features: Train                   
+
+                        if not os.path.exists('data/features/' + label): os.mkdir('data/features/' + label)
+
+                        train_labels = np.array(train_labels)
+                        i = 0
+                        train_features = []
+                        for wav in train_files:
+                            print(str(i) + ': Fold ' + str(k + 1) + ': ' + wav)
+                            name = os.path.basename(wav)[:-4]
+                            camino= 'data/features/' + label +"/"+  clases +"/"+ w+"/"+ w+'_'+grabacion[j]
+                            feat = pd.read_csv(camino + '/' + name + '_smile.csv').to_numpy()[0]
+                            train_features.append(feat[3:])
+                            i = i + 1
+                        print('Train: ' + str(i))
+                        train_features = np.array(train_features)
+
+                        train_features, trainmean, trainstd = utils.zscore(train_features)
+                        # Test        
+                        test_labels = np.array(test_labels)        
+                        i = 0
+                        test_features = []
+                        for wav in test_files:
+                            print(str(i) + ': Fold ' + str(k + 1) + ': ' + wav)
+                            name = os.path.basename(wav)[:-4]
+                            camino= 'data/features/' + label +"/"+  clases +"/"+ w+"/"+ w+'_'+grabacion[j]
+                            feat = pd.read_csv(camino + '/' + name + '_smile.csv').to_numpy()[0]
+                            test_features.append(feat[3:])
+                            i = i + 1
+                        print('Test: ' + str(i))
+                        test_features = np.array(test_features)        
+                        test_features = utils.zscore(test_features, trainmean, trainstd)
+
+                        # 3. Train SVM classifier
+                        counter = Counter(train_labels)
+                        print('Norm: %i, Path: %i\n' % (counter[0], counter[1]))
+
+                        clf = SVC(C=c, kernel=ker, degree=d, probability=True)
+                        clf.fit(train_features, train_labels)
+
+                        # 4. Testing
+                        out = clf.predict(test_features)
+                        out_oracle = clf.predict(train_features)
+                        
+                        score[:, k] = utils.compute_score(clf, test_labels, out, test_features)
+                        with open(respath + '/output_' + audio_type + '_fold' + str(k + 1) + '_' + ker + 'd' + str(d) + 'c' + str(
+                                c) + '.log', 'w') as f:
+                            lbl = ['NORM', 'PATH']
+                            for j in range(0, len(test_files)):
+                                f.write('%s %s %s\n' % (os.path.basename(test_files[j])[:-4], lbl[test_labels[j]], lbl[out[j]]))
+
+                        score_oracle[:, k] = utils.compute_score(clf, train_labels, out_oracle, train_features)
+                        with open(
+                                respath + '/output_oracle_' + audio_type + '_fold' + str(k + 1) + '_' + ker + 'd' + str(d) + 'c' + str(
+                                        c) + '.log', 'w') as f:
+                            lbl = ['NORM', 'PATH']
+                            for j in range(0, len(train_files)):
+                                f.write(
+                                    '%s %s %s\n' % (os.path.basename(train_files[j])[:-4], lbl[train_labels[j]], lbl[out_oracle[j]]))
+
+                        toc = time.time()
+                        f = open(result_log, 'a')
+                        f.write(
+                            'Oracle Fold%i (%.2fsec): Acc=%0.4f, AccNorm=%0.2f, AccPath=%0.2f, UAR=%0.4f, F1Score=%0.2f, Recall=%0.2f, Precision=%0.2f, AUC=%0.4f, EER=%0.4f, TP=%0.2f, TN=%0.2f, FP=%0.2f, FN=%0.2f \n' %
+                            (k + 1, toc - tic, score_oracle[0, k], score_oracle[1, k], score_oracle[2, k], score_oracle[3, k],
+                            score_oracle[4, k], score_oracle[5, k], score_oracle[6, k], score_oracle[7, k], score_oracle[8, k],
+                            score_oracle[9, k], score_oracle[10, k], score_oracle[11, k], score_oracle[12, k]))
+                        f.close()
+                        toc = time.time()
+                        f = open(result_log, 'a')
+                        f.write(
+                            'Test Fold%i (%.2fsec): Acc=%0.4f, AccNorm=%0.2f, AccPath=%0.2f, UAR=%0.4f, F1Score=%0.2f, Recall=%0.2f, Precision=%0.2f, AUC=%0.4f, EER=%0.4f, TP=%0.2f, TN=%0.2f, FP=%0.2f, FN=%0.2f \n\n' %
+                            (
+                            k + 1, toc - tic, score[0, k], score[1, k], score[2, k], score[3, k], score[4, k], score[5, k], score[6, k],
+                            score[7, k], score[8, k], score[9, k], score[10, k], score[11, k], score[12, k]))
+                        f.close()
+
+                    f = open(result_log, 'a')
+                    f.write(
+                        'TOTAL Oracle: Acc=%0.4f, AccNorm=%0.2f, AccPath=%0.2f, UAR=%0.4f, F1Score=%0.2f, Recall=%0.2f, Precision=%0.2f, AUC=%0.2f, EER=%0.4f, TP=%0.2f, TN=%0.2f, FP=%0.2f, FN=%0.2f \n' %
+                        (np.mean(score_oracle[0, :]), np.mean(score_oracle[1, :]), np.mean(score_oracle[2, :]),
+                        np.mean(score_oracle[3, :]), np.mean(score_oracle[4, :]), np.mean(score_oracle[5, :]),
+                        np.mean(score_oracle[6, :]), np.mean(score_oracle[7, :]), np.mean(score_oracle[8, :]),
+                        np.mean(score_oracle[9, :]), np.mean(score_oracle[10, :]), np.mean(score_oracle[11, :]),
+                        np.mean(score_oracle[12, :])))
+                    f.close()
+
+                    f = open(result_log, 'a')
+                    f.write(
+                        'TOTAL Test: Acc=%0.4f, AccNorm=%0.2f, AccPath=%0.2f, UAR=%0.4f, F1Score=%0.2f, Recall=%0.2f, Precision=%0.2f, AUC=%0.4f, EER=%0.4f, TP=%0.2f, TN=%0.2f, FP=%0.2f, FN=%0.2f \n\n' %
+                        (np.mean(score[0, :]), np.mean(score[1, :]), np.mean(score[2, :]), np.mean(score[3, :]), np.mean(score[4, :]),
+                        np.mean(score[5, :]),
+                        np.mean(score[6, :]), np.mean(score[7, :]), np.mean(score[8, :]), np.mean(score[9, :]), np.mean(score[10, :]),
+                        np.mean(score[11, :]), np.mean(score[12, :])))
+                    f.close()
+                    
+                    j+=1
+
+def svm_m_Saarbruecken(list_path,kfold, audio_type, label):
+    clases ="Multiclass"
     ker = 'poly'
     d = 1
     c = 1
@@ -465,14 +627,6 @@ def svmSaarbruecken(list_path,kfold, audio_type, label):
         if not os.path.exists('data/features/' + label): os.mkdir('data/features/' + label)
 
         train_labels = np.array(train_labels)
-
-        trainpath = 'data/features/' + label + '/train_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1) + '.pkl'
-        # if os.path.exists(trainpath) and cambia == 'viejo':
-        #     with open(trainpath, 'rb') as fid:
-        #         train_features = pickle.load(fid)
-        #     fid.close()
-        #     print('Fold ' + str(k + 1) + ' Train: ' + str(train_features.shape))
-        # else:
         i = 0
         train_features = []
         for wav in train_files:
@@ -482,21 +636,11 @@ def svmSaarbruecken(list_path,kfold, audio_type, label):
             train_features.append(feat[3:])
             i = i + 1
         print('Train: ' + str(i))
-        train_features = np.array(train_features)
-        with open(trainpath, 'wb') as fid:
-            pickle.dump(train_features, fid, protocol=pickle.HIGHEST_PROTOCOL)
-        fid.close()
+        train_features = np.array(train_features)        
 
         train_features, trainmean, trainstd = utils.zscore(train_features)
         # Test        
-        test_labels = np.array(test_labels)
-        testpath = 'data/features/' + label + '/test_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1) + '.pkl'
-        # if os.path.exists(testpath) and cambia == 'viejo':
-        #     with open(testpath, 'rb') as fid:
-        #         test_features = pickle.load(fid)
-        #     print('Fold ' + str(k + 1) + ' Test: ' + str(test_features.shape))
-        #     fid.close()
-        # else:
+        test_labels = np.array(test_labels)        
         i = 0
         test_features = []
         for wav in test_files:
@@ -506,10 +650,7 @@ def svmSaarbruecken(list_path,kfold, audio_type, label):
             test_features.append(feat[3:])
             i = i + 1
         print('Test: ' + str(i))
-        test_features = np.array(test_features)
-        with open(testpath, 'wb') as fid:
-            pickle.dump(test_features, fid, protocol=pickle.HIGHEST_PROTOCOL)
-        fid.close()
+        test_features = np.array(test_features)        
         test_features = utils.zscore(test_features, trainmean, trainstd)
 
         # 3. Train SVM classifier
@@ -592,50 +733,7 @@ def svmSaarbruecken(list_path,kfold, audio_type, label):
             f.write('\nTest Fold%i (%.2fsec)' % (k + 1, toc-tic))
             f.write(score)
         f.close()
-        # with open(
-        #         respath + '/output_oracle_' + audio_type + '_fold' + str(k + 1) + '_' + ker + 'd' + str(d) + 'c' + str(
-        #             c) + '.log', 'w') as f:
-        #     lbl = label_files #['NORM', 'PATH']
-        #     for j in range(0, len(train_files)):
-        #         f.write(
-        #             '%s %s %s\n' % (os.path.basename(train_files[j])[:-4], lbl[train_labels[j]], lbl[out_oracle[j]]))
-
-        # toc = time.time()
-        # f = open(result_log, 'a')
-        # f.write(
-        #     'Oracle Fold%i (%.2fsec): Acc=%0.4f, AccNorm=%0.2f, AccPath=%0.2f, UAR=%0.4f, F1Score=%0.2f, Recall=%0.2f, Precision=%0.2f, AUC=%0.4f, EER=%0.4f, TP=%0.2f, TN=%0.2f, FP=%0.2f, FN=%0.2f \n' %
-        #     (k + 1, toc - tic, score_oracle[0, k], score_oracle[1, k], score_oracle[2, k], score_oracle[3, k],
-        #      score_oracle[4, k], score_oracle[5, k], score_oracle[6, k], score_oracle[7, k], score_oracle[8, k],
-        #      score_oracle[9, k], score_oracle[10, k], score_oracle[11, k], score_oracle[12, k]))
-        # f.close()
-        # toc = time.time()
-        # f = open(result_log, 'a')
-        # f.write(
-        #     'Test Fold%i (%.2fsec): Acc=%0.4f, AccNorm=%0.2f, AccPath=%0.2f, UAR=%0.4f, F1Score=%0.2f, Recall=%0.2f, Precision=%0.2f, AUC=%0.4f, EER=%0.4f, TP=%0.2f, TN=%0.2f, FP=%0.2f, FN=%0.2f \n\n' %
-        #     (
-        #         k + 1, toc - tic, score[0, k], score[1, k], score[2, k], score[3, k], score[4, k], score[5, k],
-        #         score[6, k],
-        #         score[7, k], score[8, k], score[9, k], score[10, k], score[11, k], score[12, k]))
-        # f.close()
-
-    # f = open(result_log, 'a')
-    # f.write(
-    #     'TOTAL Oracle: Acc=%0.4f, AccNorm=%0.2f, AccPath=%0.2f, UAR=%0.4f, F1Score=%0.2f, Recall=%0.2f, Precision=%0.2f, AUC=%0.2f, EER=%0.4f, TP=%0.2f, TN=%0.2f, FP=%0.2f, FN=%0.2f \n' %
-    #     (np.mean(score_oracle[0, :]), np.mean(score_oracle[1, :]), np.mean(score_oracle[2, :]),
-    #      np.mean(score_oracle[3, :]), np.mean(score_oracle[4, :]), np.mean(score_oracle[5, :]),
-    #      np.mean(score_oracle[6, :]), np.mean(score_oracle[7, :]), np.mean(score_oracle[8, :]),
-    #      np.mean(score_oracle[9, :]), np.mean(score_oracle[10, :]), np.mean(score_oracle[11, :]),
-    #      np.mean(score_oracle[12, :])))
-    # f.close()
-
-    # f = open(result_log, 'a')
-    # f.write(
-    #     'TOTAL Test: Acc=%0.4f, AccNorm=%0.2f, AccPath=%0.2f, UAR=%0.4f, F1Score=%0.2f, Recall=%0.2f, Precision=%0.2f, AUC=%0.4f, EER=%0.4f, TP=%0.2f, TN=%0.2f, FP=%0.2f, FN=%0.2f \n\n' %
-    #     (np.mean(score[0, :]), np.mean(score[1, :]), np.mean(score[2, :]), np.mean(score[3, :]), np.mean(score[4, :]),
-    #      np.mean(score[5, :]),
-    #      np.mean(score[6, :]), np.mean(score[7, :]), np.mean(score[8, :]), np.mean(score[9, :]), np.mean(score[10, :]),
-    #      np.mean(score[11, :]), np.mean(score[12, :])))
-    # f.close()
+        
     if resumen:
         accuracy_oracle = 0; macro_precision_oracle = 0; macro_recall_oracle = 0; macro_f1score_oracle = 0;
         support_oracle = 0; weighted_precision_oracle = 0; weighted_recall_oracle = 0; weighted_f1score_oracle = 0;
@@ -705,7 +803,7 @@ def binaria_Cross_validation(sesion):
     list_muestras = []
     list_clases = []
     list_grupos = []
-    dict_clases = {"NORM": '0', "PATH": '1'}
+    dict_clases = {"HEALTHY": '0', "PATH": '1'}
     for j in sesion:
         list_muestras.append(j)
         list_grupos.append(sesion[j]['group'])
@@ -757,7 +855,7 @@ def salva_fold_binaria(muestras_train, list_clases_train, muestras_test, list_cl
         spk = dict_info_signal[i]['spk']
         label = list_clases_train[index]
         index = index + 1        
-        path=  dict_info_signal[i]['Path'] 
+        path=  dict_info_signal[i]['Path']         
         if genero=="male":
             if tipo == "phrase"and dict_info_signal[i]['gender'] == 'm':
                 aa = {'path': path+ '-phrase.wav', 'label': label, 'speaker': spk}
@@ -817,10 +915,10 @@ def salva_fold_binaria(muestras_train, list_clases_train, muestras_test, list_cl
                 train.append(ii3)
         
         if genero=="female":
-            if tipo == "phrase" and dict_info_signal[i]['gender'] == 'f':
+            if tipo == "phrase" and dict_info_signal[i]['gender'] == 'w':
                 aa = {'path': path+ '-phrase.wav', 'label': label, 'speaker': spk}
                 train.append(aa)
-            if tipo == "a" and dict_info_signal[i]['gender'] == 'f':
+            if tipo == "a" and dict_info_signal[i]['gender'] == 'w':
                 aa0 = {'path': path+ '-a_h.wav', 'label': label, 'speaker': spk}
                 aa1 = {'path': path+ '-a_l.wav', 'label': label, 'speaker': spk}
                 aa2 = {'path': path+ '-a_lhl.wav', 'label': label, 'speaker': spk}
@@ -829,7 +927,7 @@ def salva_fold_binaria(muestras_train, list_clases_train, muestras_test, list_cl
                 train.append(aa1)
                 train.append(aa2)
                 train.append(aa3)
-            if tipo == "u"and dict_info_signal[i]['gender'] == 'f':
+            if tipo == "u"and dict_info_signal[i]['gender'] == 'w':
                 aa0 = {'path': path+ '-u_h.wav', 'label': label, 'speaker': spk}
                 aa1 = {'path': path+ '-u_l.wav', 'label': label, 'speaker': spk}
                 aa2 = {'path': path+ '-u_lhl.wav', 'label': label, 'speaker': spk}
@@ -838,7 +936,7 @@ def salva_fold_binaria(muestras_train, list_clases_train, muestras_test, list_cl
                 train.append(aa1)
                 train.append(aa2)
                 train.append(aa3) 
-            if tipo == "i"and dict_info_signal[i]['gender'] == 'f':
+            if tipo == "i"and dict_info_signal[i]['gender'] == 'w':
                 aa0 = {'path': path+ '-i_h.wav', 'label': label, 'speaker': spk}
                 aa1 = {'path': path+ '-i_l.wav', 'label': label, 'speaker': spk}
                 aa2 = {'path': path+ '-i_lhl.wav', 'label': label, 'speaker': spk}
@@ -847,7 +945,7 @@ def salva_fold_binaria(muestras_train, list_clases_train, muestras_test, list_cl
                 train.append(aa1)
                 train.append(aa2)
                 train.append(aa3)
-            if tipo == "vowels" and dict_info_signal[i]['gender'] == 'f':
+            if tipo == "vowels" and dict_info_signal[i]['gender'] == 'w':
                 aa0 = {'path': path+ '-a_h.wav', 'label': label, 'speaker': spk}
                 aa1 = {'path': path+ '-a_l.wav', 'label': label, 'speaker': spk}
                 aa2 = {'path': path+ '-a_lhl.wav', 'label': label, 'speaker': spk}
@@ -937,177 +1035,177 @@ def salva_fold_binaria(muestras_train, list_clases_train, muestras_test, list_cl
         spk = dict_info_signal[i]['spk']
         label = list_clases_test[index]
         index = index + 1
-        
+        path=  dict_info_signal[i]['Path']
         if genero=="male":
             if tipo == "phrase"and dict_info_signal[i]['gender'] == 'm':
                 aa = {'path': path+ '-phrase.wav', 'label': label, 'speaker': spk}
-                train.append(aa)
+                test.append(aa)
             if tipo == "a"and dict_info_signal[i]['gender'] == 'm':
                 aa0 = {'path': path+ '-a_h.wav', 'label': label, 'speaker': spk}
                 aa1 = {'path': path+ '-a_l.wav', 'label': label, 'speaker': spk}
                 aa2 = {'path': path+ '-a_lhl.wav', 'label': label, 'speaker': spk}
                 aa3 = {'path': path+ '-a_n.wav', 'label': label, 'speaker': spk}
-                train.append(aa0)
-                train.append(aa1)
-                train.append(aa2)
-                train.append(aa3)
+                test.append(aa0)
+                test.append(aa1)
+                test.append(aa2)
+                test.append(aa3)
             if tipo == "u"and dict_info_signal[i]['gender'] == 'm':
                 aa0 = {'path': path+ '-u_h.wav', 'label': label, 'speaker': spk}
                 aa1 = {'path': path+ '-u_l.wav', 'label': label, 'speaker': spk}
                 aa2 = {'path': path+ '-u_lhl.wav', 'label': label, 'speaker': spk}
                 aa3 = {'path': path+ '-u_n.wav', 'label': label, 'speaker': spk}
-                train.append(aa0)
-                train.append(aa1)
-                train.append(aa2)
-                train.append(aa3)
+                test.append(aa0)
+                test.append(aa1)
+                test.append(aa2)
+                test.append(aa3)
             if tipo == "i"and dict_info_signal[i]['gender'] == 'm':
                 aa0 = {'path': path+ '-i_h.wav', 'label': label, 'speaker': spk}
                 aa1 = {'path': path+ '-i_l.wav', 'label': label, 'speaker': spk}
                 aa2 = {'path': path+ '-i_lhl.wav', 'label': label, 'speaker': spk}
                 aa3 = {'path': path+ '-i_n.wav', 'label': label, 'speaker': spk}
-                train.append(aa0)
-                train.append(aa1)
-                train.append(aa2)
-                train.append(aa3)
+                test.append(aa0)
+                test.append(aa1)
+                test.append(aa2)
+                test.append(aa3)
             if tipo == "vowels"and dict_info_signal[i]['gender'] == 'm':
                 aa0 = {'path': path+ '-a_h.wav', 'label': label, 'speaker': spk}
                 aa1 = {'path': path+ '-a_l.wav', 'label': label, 'speaker': spk}
                 aa2 = {'path': path+ '-a_lhl.wav', 'label': label, 'speaker': spk}
                 aa3 = {'path': path+ '-a_n.wav', 'label': label, 'speaker': spk}
-                train.append(aa0)
-                train.append(aa1)
-                train.append(aa2)
-                train.append(aa3)                
+                test.append(aa0)
+                test.append(aa1)
+                test.append(aa2)
+                test.append(aa3)                
                 uu0 = {'path': path+ '-u_h.wav', 'label': label, 'speaker': spk}
                 uu1 = {'path': path+ '-u_l.wav', 'label': label, 'speaker': spk}
                 uu2 = {'path': path+ '-u_lhl.wav', 'label': label, 'speaker': spk}
                 uu3 = {'path': path+ '-u_n.wav', 'label': label, 'speaker': spk}
-                train.append(uu0)
-                train.append(uu1)
-                train.append(uu2)
-                train.append(uu3)
+                test.append(uu0)
+                test.append(uu1)
+                test.append(uu2)
+                test.append(uu3)
                 ii0 = {'path': path+ '-i_h.wav', 'label': label, 'speaker': spk}
                 ii1 = {'path': path+ '-i_l.wav', 'label': label, 'speaker': spk}
                 ii2 = {'path': path+ '-i_lhl.wav', 'label': label, 'speaker': spk}
                 ii3 = {'path': path+ '-i_n.wav', 'label': label, 'speaker': spk}
-                train.append(ii0)
-                train.append(ii1)
-                train.append(ii2)
-                train.append(ii3)                
+                test.append(ii0)
+                test.append(ii1)
+                test.append(ii2)
+                test.append(ii3)                
         
         if genero=="female":
-            if tipo == "phrase" and dict_info_signal[i]['gender'] == 'f':
+            if tipo == "phrase" and dict_info_signal[i]['gender'] == 'w':
                 aa = {'path': path+ '-phrase.wav', 'label': label, 'speaker': spk}
-                train.append(aa)
-            if tipo == "a" and dict_info_signal[i]['gender'] == 'f':
+                test.append(aa)
+            if tipo == "a" and dict_info_signal[i]['gender'] == 'w':
                 aa0 = {'path': path+ '-a_h.wav', 'label': label, 'speaker': spk}
                 aa1 = {'path': path+ '-a_l.wav', 'label': label, 'speaker': spk}
                 aa2 = {'path': path+ '-a_lhl.wav', 'label': label, 'speaker': spk}
                 aa3 = {'path': path+ '-a_n.wav', 'label': label, 'speaker': spk}
-                train.append(aa0)
-                train.append(aa1)
-                train.append(aa2)
-                train.append(aa3)
-            if tipo == "u"and dict_info_signal[i]['gender'] == 'f':
+                test.append(aa0)
+                test.append(aa1)
+                test.append(aa2)
+                test.append(aa3)
+            if tipo == "u"and dict_info_signal[i]['gender'] == 'w':
                 aa0 = {'path': path+ '-u_h.wav', 'label': label, 'speaker': spk}
                 aa1 = {'path': path+ '-u_l.wav', 'label': label, 'speaker': spk}
                 aa2 = {'path': path+ '-u_lhl.wav', 'label': label, 'speaker': spk}
                 aa3 = {'path': path+ '-u_n.wav', 'label': label, 'speaker': spk}
-                train.append(aa0)
-                train.append(aa1)
-                train.append(aa2)
-                train.append(aa3)
-            if tipo == "i"and dict_info_signal[i]['gender'] == 'f':
+                test.append(aa0)
+                test.append(aa1)
+                test.append(aa2)
+                test.append(aa3)
+            if tipo == "i"and dict_info_signal[i]['gender'] == 'w':
                 aa0 = {'path': path+ '-i_h.wav', 'label': label, 'speaker': spk}
                 aa1 = {'path': path+ '-i_l.wav', 'label': label, 'speaker': spk}
                 aa2 = {'path': path+ '-i_lhl.wav', 'label': label, 'speaker': spk}
                 aa3 = {'path': path+ '-i_n.wav', 'label': label, 'speaker': spk}
-                train.append(aa0)
-                train.append(aa1)
-                train.append(aa2)
-                train.append(aa3)
-            if tipo == "vowels" and dict_info_signal[i]['gender'] == 'f':
+                test.append(aa0)
+                test.append(aa1)
+                test.append(aa2)
+                test.append(aa3)
+            if tipo == "vowels" and dict_info_signal[i]['gender'] == 'w':
                 aa0 = {'path': path+ '-a_h.wav', 'label': label, 'speaker': spk}
                 aa1 = {'path': path+ '-a_l.wav', 'label': label, 'speaker': spk}
                 aa2 = {'path': path+ '-a_lhl.wav', 'label': label, 'speaker': spk}
                 aa3 = {'path': path+ '-a_n.wav', 'label': label, 'speaker': spk}
-                train.append(aa0)
-                train.append(aa1)
-                train.append(aa2)
-                train.append(aa3)                
+                test.append(aa0)
+                test.append(aa1)
+                test.append(aa2)
+                test.append(aa3)                
                 uu0 = {'path': path+ '-u_h.wav', 'label': label, 'speaker': spk}
                 uu1 = {'path': path+ '-u_l.wav', 'label': label, 'speaker': spk}
                 uu2 = {'path': path+ '-u_lhl.wav', 'label': label, 'speaker': spk}
                 uu3 = {'path': path+ '-u_n.wav', 'label': label, 'speaker': spk}
-                train.append(uu0)
-                train.append(uu1)
-                train.append(uu2)
-                train.append(uu3)
+                test.append(uu0)
+                test.append(uu1)
+                test.append(uu2)
+                test.append(uu3)
                 ii0 = {'path': path+ '-i_h.wav', 'label': label, 'speaker': spk}
                 ii1 = {'path': path+ '-i_l.wav', 'label': label, 'speaker': spk}
                 ii2 = {'path': path+ '-i_lhl.wav', 'label': label, 'speaker': spk}
                 ii3 = {'path': path+ '-i_n.wav', 'label': label, 'speaker': spk}
-                train.append(ii0)
-                train.append(ii1)
-                train.append(ii2)
-                train.append(ii3)               
+                test.append(ii0)
+                test.append(ii1)
+                test.append(ii2)
+                test.append(ii3)               
                     
         if genero=="both":
             if tipo == "phrase":
                 aa = {'path': path+ '-phrase.wav', 'label': label, 'speaker': spk}
-                train.append(aa)
+                test.append(aa)
             if tipo == "a":
                 aa0 = {'path': path+ '-a_h.wav', 'label': label, 'speaker': spk}
                 aa1 = {'path': path+ '-a_l.wav', 'label': label, 'speaker': spk}
                 aa2 = {'path': path+ '-a_lhl.wav', 'label': label, 'speaker': spk}
                 aa3 = {'path': path+ '-a_n.wav', 'label': label, 'speaker': spk}
-                train.append(aa0)
-                train.append(aa1)
-                train.append(aa2)
-                train.append(aa3)
+                test.append(aa0)
+                test.append(aa1)
+                test.append(aa2)
+                test.append(aa3)
             if tipo == "u":
                 aa0 = {'path': path+ '-u_h.wav', 'label': label, 'speaker': spk}
                 aa1 = {'path': path+ '-u_l.wav', 'label': label, 'speaker': spk}
                 aa2 = {'path': path+ '-u_lhl.wav', 'label': label, 'speaker': spk}
                 aa3 = {'path': path+ '-u_n.wav', 'label': label, 'speaker': spk}
-                train.append(aa0)
-                train.append(aa1)
-                train.append(aa2)
-                train.append(aa3)
+                test.append(aa0)
+                test.append(aa1)
+                test.append(aa2)
+                test.append(aa3)
             if tipo == "i":
                 aa0 = {'path': path+ '-i_h.wav', 'label': label, 'speaker': spk}
                 aa1 = {'path': path+ '-i_l.wav', 'label': label, 'speaker': spk}
                 aa2 = {'path': path+ '-i_lhl.wav', 'label': label, 'speaker': spk}
                 aa3 = {'path': path+ '-i_n.wav', 'label': label, 'speaker': spk}
-                train.append(aa0)
-                train.append(aa1)
-                train.append(aa2)
-                train.append(aa3)
+                test.append(aa0)
+                test.append(aa1)
+                test.append(aa2)
+                test.append(aa3)
             if tipo == "vowels":
                 aa0 = {'path': path+ '-a_h.wav', 'label': label, 'speaker': spk}
                 aa1 = {'path': path+ '-a_l.wav', 'label': label, 'speaker': spk}
                 aa2 = {'path': path+ '-a_lhl.wav', 'label': label, 'speaker': spk}
                 aa3 = {'path': path+ '-a_n.wav', 'label': label, 'speaker': spk}
-                train.append(aa0)
-                train.append(aa1)
-                train.append(aa2)
-                train.append(aa3)                
+                test.append(aa0)
+                test.append(aa1)
+                test.append(aa2)
+                test.append(aa3)                
                 uu0 = {'path': path+ '-u_h.wav', 'label': label, 'speaker': spk}
                 uu1 = {'path': path+ '-u_l.wav', 'label': label, 'speaker': spk}
                 uu2 = {'path': path+ '-u_lhl.wav', 'label': label, 'speaker': spk}
                 uu3 = {'path': path+ '-u_n.wav', 'label': label, 'speaker': spk}
-                train.append(uu0)
-                train.append(uu1)
-                train.append(uu2)
-                train.append(uu3)
+                test.append(uu0)
+                test.append(uu1)
+                test.append(uu2)
+                test.append(uu3)
                 ii0 = {'path': path+ '-i_h.wav', 'label': label, 'speaker': spk}
                 ii1 = {'path': path+ '-i_l.wav', 'label': label, 'speaker': spk}
                 ii2 = {'path': path+ '-i_lhl.wav', 'label': label, 'speaker': spk}
                 ii3 = {'path': path+ '-i_n.wav', 'label': label, 'speaker': spk}
-                train.append(ii0)
-                train.append(ii1)
-                train.append(ii2)
-                train.append(ii3) 
+                test.append(ii0)
+                test.append(ii1)
+                test.append(ii2)
+                test.append(ii3) 
     fold_test['meta_data'] = test
 
     return fold_train, fold_test
@@ -1124,8 +1222,9 @@ def kford():
     m_fold = StratifiedGroupKFold_G(m_list_muestras, m_list_clases, m_list_grupos, 5)
     
     clases=["binario", "Multiclass"]    
-    general=["male","female", 'both']
-    grabacion=["phrase","vowels", "a", "i", "u"]
+    general=["male","female", 'both']    
+    #grabacion=["phrase","vowels", "a", "i", "u"]
+    grabacion=["phrase"]
     ind = 1; camino = 'data/lst/' + name_base
     for i in b_fold:
         for k in general:

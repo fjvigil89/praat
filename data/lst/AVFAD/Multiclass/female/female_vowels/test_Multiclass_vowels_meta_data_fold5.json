@@ -1,117 +1,812 @@
 {
       "labels": {
-            "INFLAMMATORY CONDITIONS OF THE LARYNX": "2000",
+            "Dysphonia": "2000",
+            "Neurological Diseases": "7315",
+            "Bilateral chordal Paralysis ": "4856",
+            "Other": "666",
             "Spasmodic Dysphonia": "9183",
-            "Abnormalities of the Vocal Fold": "1200",
-            "Dysphonia": "9060",
-            "control": "0",
-            "OTHER DISORDERS AFFECTING VOICE": "8000"
+            "Dysphonia x Muscle tension": "3574",
+            "Healthy": "0",
+            "Children's voice": "6842",
+            "Reinke's Edema": "1220",
+            "Unilateral chordal Paralysis": "4857",
+            "Bilateral Nodules": "5666"
       },
       "meta_data": [
             {
-                  "path": "data/audio/AVFAD/CAS/CAS002.wav",
-                  "label": "9060",
-                  "speaker": "CAS"
+                  "path": "data/audio/AVFAD/AMY/AMY002.wav",
+                  "label": "3574",
+                  "speaker": "AMY"
             },
             {
-                  "path": "data/audio/AVFAD/CAS/CAS001.wav",
-                  "label": "9060",
-                  "speaker": "CAS"
+                  "path": "data/audio/AVFAD/AMY/AMY001.wav",
+                  "label": "3574",
+                  "speaker": "AMY"
             },
             {
-                  "path": "data/audio/AVFAD/CAS/CAS003.wav",
-                  "label": "9060",
-                  "speaker": "CAS"
+                  "path": "data/audio/AVFAD/AMY/AMY003.wav",
+                  "label": "3574",
+                  "speaker": "AMY"
             },
             {
-                  "path": "data/audio/AVFAD/MEP/MEP002.wav",
-                  "label": "9060",
-                  "speaker": "MEP"
+                  "path": "data/audio/AVFAD/DSM/DSM002.wav",
+                  "label": "3574",
+                  "speaker": "DSM"
             },
             {
-                  "path": "data/audio/AVFAD/MEP/MEP001.wav",
-                  "label": "9060",
-                  "speaker": "MEP"
+                  "path": "data/audio/AVFAD/DSM/DSM001.wav",
+                  "label": "3574",
+                  "speaker": "DSM"
             },
             {
-                  "path": "data/audio/AVFAD/MEP/MEP003.wav",
-                  "label": "9060",
-                  "speaker": "MEP"
+                  "path": "data/audio/AVFAD/DSM/DSM003.wav",
+                  "label": "3574",
+                  "speaker": "DSM"
             },
             {
-                  "path": "data/audio/AVFAD/CMA/CMA002.wav",
-                  "label": "9060",
-                  "speaker": "CMA"
+                  "path": "data/audio/AVFAD/FTM/FTM002.wav",
+                  "label": "3574",
+                  "speaker": "FTM"
             },
             {
-                  "path": "data/audio/AVFAD/CMA/CMA001.wav",
-                  "label": "9060",
-                  "speaker": "CMA"
+                  "path": "data/audio/AVFAD/FTM/FTM001.wav",
+                  "label": "3574",
+                  "speaker": "FTM"
             },
             {
-                  "path": "data/audio/AVFAD/CMA/CMA003.wav",
-                  "label": "9060",
-                  "speaker": "CMA"
+                  "path": "data/audio/AVFAD/FTM/FTM003.wav",
+                  "label": "3574",
+                  "speaker": "FTM"
             },
             {
-                  "path": "data/audio/AVFAD/MCA/MCA002.wav",
-                  "label": "9060",
-                  "speaker": "MCA"
+                  "path": "data/audio/AVFAD/ISG/ISG002.wav",
+                  "label": "3574",
+                  "speaker": "ISG"
             },
             {
-                  "path": "data/audio/AVFAD/MCA/MCA001.wav",
-                  "label": "9060",
-                  "speaker": "MCA"
+                  "path": "data/audio/AVFAD/ISG/ISG001.wav",
+                  "label": "3574",
+                  "speaker": "ISG"
             },
             {
-                  "path": "data/audio/AVFAD/MCA/MCA003.wav",
-                  "label": "9060",
-                  "speaker": "MCA"
+                  "path": "data/audio/AVFAD/ISG/ISG003.wav",
+                  "label": "3574",
+                  "speaker": "ISG"
             },
             {
-                  "path": "data/audio/AVFAD/MOP/MOP002.wav",
-                  "label": "9060",
-                  "speaker": "MOP"
+                  "path": "data/audio/AVFAD/OFG/OFG002.wav",
+                  "label": "3574",
+                  "speaker": "OFG"
             },
             {
-                  "path": "data/audio/AVFAD/MOP/MOP001.wav",
-                  "label": "9060",
-                  "speaker": "MOP"
+                  "path": "data/audio/AVFAD/OFG/OFG001.wav",
+                  "label": "3574",
+                  "speaker": "OFG"
             },
             {
-                  "path": "data/audio/AVFAD/MOP/MOP003.wav",
-                  "label": "9060",
-                  "speaker": "MOP"
+                  "path": "data/audio/AVFAD/OFG/OFG003.wav",
+                  "label": "3574",
+                  "speaker": "OFG"
             },
             {
-                  "path": "data/audio/AVFAD/MCT/MCT002.wav",
-                  "label": "9060",
-                  "speaker": "MCT"
+                  "path": "data/audio/AVFAD/APR/APR002.wav",
+                  "label": "1220",
+                  "speaker": "APR"
             },
             {
-                  "path": "data/audio/AVFAD/MCT/MCT001.wav",
-                  "label": "9060",
-                  "speaker": "MCT"
+                  "path": "data/audio/AVFAD/APR/APR001.wav",
+                  "label": "1220",
+                  "speaker": "APR"
             },
             {
-                  "path": "data/audio/AVFAD/MCT/MCT003.wav",
-                  "label": "9060",
-                  "speaker": "MCT"
+                  "path": "data/audio/AVFAD/APR/APR003.wav",
+                  "label": "1220",
+                  "speaker": "APR"
             },
             {
-                  "path": "data/audio/AVFAD/MCW/MCW002.wav",
-                  "label": "9060",
-                  "speaker": "MCW"
+                  "path": "data/audio/AVFAD/HMC/HMC002.wav",
+                  "label": "1220",
+                  "speaker": "HMC"
             },
             {
-                  "path": "data/audio/AVFAD/MCW/MCW001.wav",
-                  "label": "9060",
-                  "speaker": "MCW"
+                  "path": "data/audio/AVFAD/HMC/HMC001.wav",
+                  "label": "1220",
+                  "speaker": "HMC"
             },
             {
-                  "path": "data/audio/AVFAD/MCW/MCW003.wav",
-                  "label": "9060",
-                  "speaker": "MCW"
+                  "path": "data/audio/AVFAD/HMC/HMC003.wav",
+                  "label": "1220",
+                  "speaker": "HMC"
+            },
+            {
+                  "path": "data/audio/AVFAD/MCD/MCD002.wav",
+                  "label": "1220",
+                  "speaker": "MCD"
+            },
+            {
+                  "path": "data/audio/AVFAD/MCD/MCD001.wav",
+                  "label": "1220",
+                  "speaker": "MCD"
+            },
+            {
+                  "path": "data/audio/AVFAD/MCD/MCD003.wav",
+                  "label": "1220",
+                  "speaker": "MCD"
+            },
+            {
+                  "path": "data/audio/AVFAD/MHH/MHH002.wav",
+                  "label": "1220",
+                  "speaker": "MHH"
+            },
+            {
+                  "path": "data/audio/AVFAD/MHH/MHH001.wav",
+                  "label": "1220",
+                  "speaker": "MHH"
+            },
+            {
+                  "path": "data/audio/AVFAD/MHH/MHH003.wav",
+                  "label": "1220",
+                  "speaker": "MHH"
+            },
+            {
+                  "path": "data/audio/AVFAD/MSW/MSW002.wav",
+                  "label": "1220",
+                  "speaker": "MSW"
+            },
+            {
+                  "path": "data/audio/AVFAD/MSW/MSW001.wav",
+                  "label": "1220",
+                  "speaker": "MSW"
+            },
+            {
+                  "path": "data/audio/AVFAD/MSW/MSW003.wav",
+                  "label": "1220",
+                  "speaker": "MSW"
+            },
+            {
+                  "path": "data/audio/AVFAD/OAV/OAV002.wav",
+                  "label": "1220",
+                  "speaker": "OAV"
+            },
+            {
+                  "path": "data/audio/AVFAD/OAV/OAV001.wav",
+                  "label": "1220",
+                  "speaker": "OAV"
+            },
+            {
+                  "path": "data/audio/AVFAD/OAV/OAV003.wav",
+                  "label": "1220",
+                  "speaker": "OAV"
+            },
+            {
+                  "path": "data/audio/AVFAD/PCC/PCC002.wav",
+                  "label": "1220",
+                  "speaker": "PCC"
+            },
+            {
+                  "path": "data/audio/AVFAD/PCC/PCC001.wav",
+                  "label": "1220",
+                  "speaker": "PCC"
+            },
+            {
+                  "path": "data/audio/AVFAD/PCC/PCC003.wav",
+                  "label": "1220",
+                  "speaker": "PCC"
+            },
+            {
+                  "path": "data/audio/AVFAD/SMM/SMM002.wav",
+                  "label": "1220",
+                  "speaker": "SMM"
+            },
+            {
+                  "path": "data/audio/AVFAD/SMM/SMM001.wav",
+                  "label": "1220",
+                  "speaker": "SMM"
+            },
+            {
+                  "path": "data/audio/AVFAD/SMM/SMM003.wav",
+                  "label": "1220",
+                  "speaker": "SMM"
+            },
+            {
+                  "path": "data/audio/AVFAD/SRP/SRP002.wav",
+                  "label": "1220",
+                  "speaker": "SRP"
+            },
+            {
+                  "path": "data/audio/AVFAD/SRP/SRP001.wav",
+                  "label": "1220",
+                  "speaker": "SRP"
+            },
+            {
+                  "path": "data/audio/AVFAD/SRP/SRP003.wav",
+                  "label": "1220",
+                  "speaker": "SRP"
+            },
+            {
+                  "path": "data/audio/AVFAD/ABS/ABS002.wav",
+                  "label": "1220",
+                  "speaker": "ABS"
+            },
+            {
+                  "path": "data/audio/AVFAD/ABS/ABS001.wav",
+                  "label": "1220",
+                  "speaker": "ABS"
+            },
+            {
+                  "path": "data/audio/AVFAD/ABS/ABS003.wav",
+                  "label": "1220",
+                  "speaker": "ABS"
+            },
+            {
+                  "path": "data/audio/AVFAD/APD/APD002.wav",
+                  "label": "1220",
+                  "speaker": "APD"
+            },
+            {
+                  "path": "data/audio/AVFAD/APD/APD001.wav",
+                  "label": "1220",
+                  "speaker": "APD"
+            },
+            {
+                  "path": "data/audio/AVFAD/APD/APD003.wav",
+                  "label": "1220",
+                  "speaker": "APD"
+            },
+            {
+                  "path": "data/audio/AVFAD/CFS/CFS002.wav",
+                  "label": "1220",
+                  "speaker": "CFS"
+            },
+            {
+                  "path": "data/audio/AVFAD/CFS/CFS001.wav",
+                  "label": "1220",
+                  "speaker": "CFS"
+            },
+            {
+                  "path": "data/audio/AVFAD/CFS/CFS003.wav",
+                  "label": "1220",
+                  "speaker": "CFS"
+            },
+            {
+                  "path": "data/audio/AVFAD/JMC/JMC002.wav",
+                  "label": "1220",
+                  "speaker": "JMC"
+            },
+            {
+                  "path": "data/audio/AVFAD/JMC/JMC001.wav",
+                  "label": "1220",
+                  "speaker": "JMC"
+            },
+            {
+                  "path": "data/audio/AVFAD/JMC/JMC003.wav",
+                  "label": "1220",
+                  "speaker": "JMC"
+            },
+            {
+                  "path": "data/audio/AVFAD/LMV/LMV002.wav",
+                  "label": "1220",
+                  "speaker": "LMV"
+            },
+            {
+                  "path": "data/audio/AVFAD/LMV/LMV001.wav",
+                  "label": "1220",
+                  "speaker": "LMV"
+            },
+            {
+                  "path": "data/audio/AVFAD/LMV/LMV003.wav",
+                  "label": "1220",
+                  "speaker": "LMV"
+            },
+            {
+                  "path": "data/audio/AVFAD/LMY/LMY002.wav",
+                  "label": "1220",
+                  "speaker": "LMY"
+            },
+            {
+                  "path": "data/audio/AVFAD/LMY/LMY001.wav",
+                  "label": "1220",
+                  "speaker": "LMY"
+            },
+            {
+                  "path": "data/audio/AVFAD/LMY/LMY003.wav",
+                  "label": "1220",
+                  "speaker": "LMY"
+            },
+            {
+                  "path": "data/audio/AVFAD/MEX/MEX002.wav",
+                  "label": "1220",
+                  "speaker": "MEX"
+            },
+            {
+                  "path": "data/audio/AVFAD/MEX/MEX001.wav",
+                  "label": "1220",
+                  "speaker": "MEX"
+            },
+            {
+                  "path": "data/audio/AVFAD/MEX/MEX003.wav",
+                  "label": "1220",
+                  "speaker": "MEX"
+            },
+            {
+                  "path": "data/audio/AVFAD/MFA/MFA002.wav",
+                  "label": "1220",
+                  "speaker": "MFA"
+            },
+            {
+                  "path": "data/audio/AVFAD/MFA/MFA001.wav",
+                  "label": "1220",
+                  "speaker": "MFA"
+            },
+            {
+                  "path": "data/audio/AVFAD/MFA/MFA003.wav",
+                  "label": "1220",
+                  "speaker": "MFA"
+            },
+            {
+                  "path": "data/audio/AVFAD/MFC/MFC002.wav",
+                  "label": "1220",
+                  "speaker": "MFC"
+            },
+            {
+                  "path": "data/audio/AVFAD/MFC/MFC001.wav",
+                  "label": "1220",
+                  "speaker": "MFC"
+            },
+            {
+                  "path": "data/audio/AVFAD/MFC/MFC003.wav",
+                  "label": "1220",
+                  "speaker": "MFC"
+            },
+            {
+                  "path": "data/audio/AVFAD/MMN/MMN002.wav",
+                  "label": "1220",
+                  "speaker": "MMN"
+            },
+            {
+                  "path": "data/audio/AVFAD/MMN/MMN001.wav",
+                  "label": "1220",
+                  "speaker": "MMN"
+            },
+            {
+                  "path": "data/audio/AVFAD/MMN/MMN003.wav",
+                  "label": "1220",
+                  "speaker": "MMN"
+            },
+            {
+                  "path": "data/audio/AVFAD/MOS/MOS002.wav",
+                  "label": "1220",
+                  "speaker": "MOS"
+            },
+            {
+                  "path": "data/audio/AVFAD/MOS/MOS001.wav",
+                  "label": "1220",
+                  "speaker": "MOS"
+            },
+            {
+                  "path": "data/audio/AVFAD/MOS/MOS003.wav",
+                  "label": "1220",
+                  "speaker": "MOS"
+            },
+            {
+                  "path": "data/audio/AVFAD/MRA/MRA002.wav",
+                  "label": "1220",
+                  "speaker": "MRA"
+            },
+            {
+                  "path": "data/audio/AVFAD/MRA/MRA001.wav",
+                  "label": "1220",
+                  "speaker": "MRA"
+            },
+            {
+                  "path": "data/audio/AVFAD/MRA/MRA003.wav",
+                  "label": "1220",
+                  "speaker": "MRA"
+            },
+            {
+                  "path": "data/audio/AVFAD/MRB/MRB002.wav",
+                  "label": "1220",
+                  "speaker": "MRB"
+            },
+            {
+                  "path": "data/audio/AVFAD/MRB/MRB001.wav",
+                  "label": "1220",
+                  "speaker": "MRB"
+            },
+            {
+                  "path": "data/audio/AVFAD/MRB/MRB003.wav",
+                  "label": "1220",
+                  "speaker": "MRB"
+            },
+            {
+                  "path": "data/audio/AVFAD/MAR/MAR002.wav",
+                  "label": "4857",
+                  "speaker": "MAR"
+            },
+            {
+                  "path": "data/audio/AVFAD/MAR/MAR001.wav",
+                  "label": "4857",
+                  "speaker": "MAR"
+            },
+            {
+                  "path": "data/audio/AVFAD/MAR/MAR003.wav",
+                  "label": "4857",
+                  "speaker": "MAR"
+            },
+            {
+                  "path": "data/audio/AVFAD/MBS/MBS002.wav",
+                  "label": "4857",
+                  "speaker": "MBS"
+            },
+            {
+                  "path": "data/audio/AVFAD/MBS/MBS001.wav",
+                  "label": "4857",
+                  "speaker": "MBS"
+            },
+            {
+                  "path": "data/audio/AVFAD/MBS/MBS003.wav",
+                  "label": "4857",
+                  "speaker": "MBS"
+            },
+            {
+                  "path": "data/audio/AVFAD/BJA/BJA002.wav",
+                  "label": "4857",
+                  "speaker": "BJA"
+            },
+            {
+                  "path": "data/audio/AVFAD/BJA/BJA001.wav",
+                  "label": "4857",
+                  "speaker": "BJA"
+            },
+            {
+                  "path": "data/audio/AVFAD/BJA/BJA003.wav",
+                  "label": "4857",
+                  "speaker": "BJA"
+            },
+            {
+                  "path": "data/audio/AVFAD/EMA/EMA002.wav",
+                  "label": "4857",
+                  "speaker": "EMA"
+            },
+            {
+                  "path": "data/audio/AVFAD/EMA/EMA001.wav",
+                  "label": "4857",
+                  "speaker": "EMA"
+            },
+            {
+                  "path": "data/audio/AVFAD/EMA/EMA003.wav",
+                  "label": "4857",
+                  "speaker": "EMA"
+            },
+            {
+                  "path": "data/audio/AVFAD/FAR/FAR002.wav",
+                  "label": "4857",
+                  "speaker": "FAR"
+            },
+            {
+                  "path": "data/audio/AVFAD/FAR/FAR001.wav",
+                  "label": "4857",
+                  "speaker": "FAR"
+            },
+            {
+                  "path": "data/audio/AVFAD/FAR/FAR003.wav",
+                  "label": "4857",
+                  "speaker": "FAR"
+            },
+            {
+                  "path": "data/audio/AVFAD/LFC/LFC002.wav",
+                  "label": "4857",
+                  "speaker": "LFC"
+            },
+            {
+                  "path": "data/audio/AVFAD/LFC/LFC001.wav",
+                  "label": "4857",
+                  "speaker": "LFC"
+            },
+            {
+                  "path": "data/audio/AVFAD/LFC/LFC003.wav",
+                  "label": "4857",
+                  "speaker": "LFC"
+            },
+            {
+                  "path": "data/audio/AVFAD/MAY/MAY002.wav",
+                  "label": "4857",
+                  "speaker": "MAY"
+            },
+            {
+                  "path": "data/audio/AVFAD/MAY/MAY001.wav",
+                  "label": "4857",
+                  "speaker": "MAY"
+            },
+            {
+                  "path": "data/audio/AVFAD/MAY/MAY003.wav",
+                  "label": "4857",
+                  "speaker": "MAY"
+            },
+            {
+                  "path": "data/audio/AVFAD/MCF/MCF002.wav",
+                  "label": "4857",
+                  "speaker": "MCF"
+            },
+            {
+                  "path": "data/audio/AVFAD/MCF/MCF001.wav",
+                  "label": "4857",
+                  "speaker": "MCF"
+            },
+            {
+                  "path": "data/audio/AVFAD/MCF/MCF003.wav",
+                  "label": "4857",
+                  "speaker": "MCF"
+            },
+            {
+                  "path": "data/audio/AVFAD/MCY/MCY002.wav",
+                  "label": "4857",
+                  "speaker": "MCY"
+            },
+            {
+                  "path": "data/audio/AVFAD/MCY/MCY001.wav",
+                  "label": "4857",
+                  "speaker": "MCY"
+            },
+            {
+                  "path": "data/audio/AVFAD/MCY/MCY003.wav",
+                  "label": "4857",
+                  "speaker": "MCY"
+            },
+            {
+                  "path": "data/audio/AVFAD/MFG/MFG002.wav",
+                  "label": "4857",
+                  "speaker": "MFG"
+            },
+            {
+                  "path": "data/audio/AVFAD/MFG/MFG001.wav",
+                  "label": "4857",
+                  "speaker": "MFG"
+            },
+            {
+                  "path": "data/audio/AVFAD/MFG/MFG003.wav",
+                  "label": "4857",
+                  "speaker": "MFG"
+            },
+            {
+                  "path": "data/audio/AVFAD/MFS/MFS002.wav",
+                  "label": "4857",
+                  "speaker": "MFS"
+            },
+            {
+                  "path": "data/audio/AVFAD/MFS/MFS001.wav",
+                  "label": "4857",
+                  "speaker": "MFS"
+            },
+            {
+                  "path": "data/audio/AVFAD/MFS/MFS003.wav",
+                  "label": "4857",
+                  "speaker": "MFS"
+            },
+            {
+                  "path": "data/audio/AVFAD/MGP/MGP002.wav",
+                  "label": "4857",
+                  "speaker": "MGP"
+            },
+            {
+                  "path": "data/audio/AVFAD/MGP/MGP001.wav",
+                  "label": "4857",
+                  "speaker": "MGP"
+            },
+            {
+                  "path": "data/audio/AVFAD/MGP/MGP003.wav",
+                  "label": "4857",
+                  "speaker": "MGP"
+            },
+            {
+                  "path": "data/audio/AVFAD/MJC/MJC002.wav",
+                  "label": "4857",
+                  "speaker": "MJC"
+            },
+            {
+                  "path": "data/audio/AVFAD/MJC/MJC001.wav",
+                  "label": "4857",
+                  "speaker": "MJC"
+            },
+            {
+                  "path": "data/audio/AVFAD/MJC/MJC003.wav",
+                  "label": "4857",
+                  "speaker": "MJC"
+            },
+            {
+                  "path": "data/audio/AVFAD/MLY/MLY002.wav",
+                  "label": "4857",
+                  "speaker": "MLY"
+            },
+            {
+                  "path": "data/audio/AVFAD/MLY/MLY001.wav",
+                  "label": "4857",
+                  "speaker": "MLY"
+            },
+            {
+                  "path": "data/audio/AVFAD/MLY/MLY003.wav",
+                  "label": "4857",
+                  "speaker": "MLY"
+            },
+            {
+                  "path": "data/audio/AVFAD/MPA/MPA002.wav",
+                  "label": "4857",
+                  "speaker": "MPA"
+            },
+            {
+                  "path": "data/audio/AVFAD/MPA/MPA001.wav",
+                  "label": "4857",
+                  "speaker": "MPA"
+            },
+            {
+                  "path": "data/audio/AVFAD/MPA/MPA003.wav",
+                  "label": "4857",
+                  "speaker": "MPA"
+            },
+            {
+                  "path": "data/audio/AVFAD/MPB/MPB002.wav",
+                  "label": "4857",
+                  "speaker": "MPB"
+            },
+            {
+                  "path": "data/audio/AVFAD/MPB/MPB001.wav",
+                  "label": "4857",
+                  "speaker": "MPB"
+            },
+            {
+                  "path": "data/audio/AVFAD/MPB/MPB003.wav",
+                  "label": "4857",
+                  "speaker": "MPB"
+            },
+            {
+                  "path": "data/audio/AVFAD/MRC/MRC002.wav",
+                  "label": "4857",
+                  "speaker": "MRC"
+            },
+            {
+                  "path": "data/audio/AVFAD/MRC/MRC001.wav",
+                  "label": "4857",
+                  "speaker": "MRC"
+            },
+            {
+                  "path": "data/audio/AVFAD/MRC/MRC003.wav",
+                  "label": "4857",
+                  "speaker": "MRC"
+            },
+            {
+                  "path": "data/audio/AVFAD/MRM/MRM002.wav",
+                  "label": "4857",
+                  "speaker": "MRM"
+            },
+            {
+                  "path": "data/audio/AVFAD/MRM/MRM001.wav",
+                  "label": "4857",
+                  "speaker": "MRM"
+            },
+            {
+                  "path": "data/audio/AVFAD/MRM/MRM003.wav",
+                  "label": "4857",
+                  "speaker": "MRM"
+            },
+            {
+                  "path": "data/audio/AVFAD/MRP/MRP002.wav",
+                  "label": "4857",
+                  "speaker": "MRP"
+            },
+            {
+                  "path": "data/audio/AVFAD/MRP/MRP001.wav",
+                  "label": "4857",
+                  "speaker": "MRP"
+            },
+            {
+                  "path": "data/audio/AVFAD/MRP/MRP003.wav",
+                  "label": "4857",
+                  "speaker": "MRP"
+            },
+            {
+                  "path": "data/audio/AVFAD/MRT/MRT002.wav",
+                  "label": "4857",
+                  "speaker": "MRT"
+            },
+            {
+                  "path": "data/audio/AVFAD/MRT/MRT001.wav",
+                  "label": "4857",
+                  "speaker": "MRT"
+            },
+            {
+                  "path": "data/audio/AVFAD/MRT/MRT003.wav",
+                  "label": "4857",
+                  "speaker": "MRT"
+            },
+            {
+                  "path": "data/audio/AVFAD/MSA/MSA002.wav",
+                  "label": "4857",
+                  "speaker": "MSA"
+            },
+            {
+                  "path": "data/audio/AVFAD/MSA/MSA001.wav",
+                  "label": "4857",
+                  "speaker": "MSA"
+            },
+            {
+                  "path": "data/audio/AVFAD/MSA/MSA003.wav",
+                  "label": "4857",
+                  "speaker": "MSA"
+            },
+            {
+                  "path": "data/audio/AVFAD/MSY/MSY002.wav",
+                  "label": "4857",
+                  "speaker": "MSY"
+            },
+            {
+                  "path": "data/audio/AVFAD/MSY/MSY001.wav",
+                  "label": "4857",
+                  "speaker": "MSY"
+            },
+            {
+                  "path": "data/audio/AVFAD/MSY/MSY003.wav",
+                  "label": "4857",
+                  "speaker": "MSY"
+            },
+            {
+                  "path": "data/audio/AVFAD/PSC/PSC002.wav",
+                  "label": "4857",
+                  "speaker": "PSC"
+            },
+            {
+                  "path": "data/audio/AVFAD/PSC/PSC001.wav",
+                  "label": "4857",
+                  "speaker": "PSC"
+            },
+            {
+                  "path": "data/audio/AVFAD/PSC/PSC003.wav",
+                  "label": "4857",
+                  "speaker": "PSC"
+            },
+            {
+                  "path": "data/audio/AVFAD/SMS/SMS002.wav",
+                  "label": "4857",
+                  "speaker": "SMS"
+            },
+            {
+                  "path": "data/audio/AVFAD/SMS/SMS001.wav",
+                  "label": "4857",
+                  "speaker": "SMS"
+            },
+            {
+                  "path": "data/audio/AVFAD/SMS/SMS003.wav",
+                  "label": "4857",
+                  "speaker": "SMS"
+            },
+            {
+                  "path": "data/audio/AVFAD/SRR/SRR002.wav",
+                  "label": "4857",
+                  "speaker": "SRR"
+            },
+            {
+                  "path": "data/audio/AVFAD/SRR/SRR001.wav",
+                  "label": "4857",
+                  "speaker": "SRR"
+            },
+            {
+                  "path": "data/audio/AVFAD/SRR/SRR003.wav",
+                  "label": "4857",
+                  "speaker": "SRR"
+            },
+            {
+                  "path": "data/audio/AVFAD/ZSQ/ZSQ002.wav",
+                  "label": "4857",
+                  "speaker": "ZSQ"
+            },
+            {
+                  "path": "data/audio/AVFAD/ZSQ/ZSQ001.wav",
+                  "label": "4857",
+                  "speaker": "ZSQ"
+            },
+            {
+                  "path": "data/audio/AVFAD/ZSQ/ZSQ003.wav",
+                  "label": "4857",
+                  "speaker": "ZSQ"
             }
       ]
 }
