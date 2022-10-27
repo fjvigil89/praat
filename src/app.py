@@ -27,10 +27,12 @@ def tiempo_total_audio():
 
 
 if __name__ == '__main__':
-    #crea_kfold() #revisar en las 4 DB
+    crea_kfold() #revisar en las 4 DB
     
-    #feature_smile() #ok 1 
-    make_model_flavio() #ok 2
+    
+    #make_model_flavio() #ok 2
+    feature_smile() #ok 1 solo una vez
+    
     
     #tiempo_total() #ok 3
     # tiempo_total_pathology() #ok

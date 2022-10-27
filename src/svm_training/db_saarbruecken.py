@@ -117,10 +117,9 @@ def timeSaarbruecken(list_path, path_metadata, label):
 
 def featureSaarbruecken(list_path, kfold, audio_type, label):
     clases ="binario"       
-    #general=["male","female", 'both']          
-    general=['both']          
-    #grabacion=["phrase","vowels", "a", "i", "u"]
-    grabacion=["phrase"]
+    general=["male","female", 'both']              
+    grabacion=["phrase","vowels", "a", "i", "u"]
+    
      # 1. Loading data from json list    
     for k in range(0, kfold):
         for w in general:
@@ -260,10 +259,9 @@ def featureSaarbruecken(list_path, kfold, audio_type, label):
     
 def feature_m_Saarbruecken(list_path, kfold, audio_type, label): #reviar
     clases ="Multiclass"    
-    #general=["male","female", 'both'] 
-    general=['both']                
-    #grabacion=["phrase","vowels", "a", "i", "u"]
-    grabacion=["phrase"]
+    general=["male","female", 'both']     
+    grabacion=["phrase","vowels", "a", "i", "u"]
+    
      # 1. Loading data from json list    
     for k in range(0, kfold):
         for w in general:
@@ -1279,8 +1277,8 @@ def kford():
         pp+=1
     clases=["binario", "Multiclass"]    
     general=["male","female", 'both']    
-    #grabacion=["phrase","vowels", "a", "i", "u"]
-    grabacion=["phrase"]
+    grabacion=["phrase","vowels", "a", "i", "u"]
+    
     ind = 1; camino = 'data/lst/' + name_base
     for i in b_fold:
         for k in general:

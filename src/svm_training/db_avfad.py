@@ -108,10 +108,9 @@ def timeAVFAD(list_path, path_metadata, label):
 
 def featureAVFAD(list_path, kfold, audio_type, label): #reviar
     clases ="binario"
-    general=["male","female", 'both']
-    #general=['both']    
+    general=["male","female", 'both']    
     grabacion=["phrase","vowels", "a", "i", "u"]
-    #grabacion=["phrase"]
+        
      # 1. Loading data from json list    
     for k in range(0, kfold):
         for w in general:
@@ -252,10 +251,9 @@ def featureAVFAD(list_path, kfold, audio_type, label): #reviar
 
 def feature_m_AVFAD(list_path, kfold, audio_type, label): #reviar
     clases ="Multiclass"    
-    general=["male","female", 'both']
-    #general=['both']    
+    general=["male","female", 'both']    
     grabacion=["phrase","vowels", "a", "i", "u"]
-    #grabacion=["phrase"]
+    
      # 1. Loading data from json list    
     for k in range(0, kfold):
         for w in general:
