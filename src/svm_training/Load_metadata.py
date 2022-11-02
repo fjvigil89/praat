@@ -89,10 +89,10 @@ def main(path_metadata, label="Sheet1"):
             g= "hombres" if df['GENDER'][ind]=='m' else "mujeres"
             path=  "data/audio/"+str(label)+"/"+p+"/"+g+"/"+str(row[0])            
             ##nuevas pathology
-            # dict_info_signal[row[0]] = {'spk': row[0], 'Path': path, 'age': row[5], 'gender': row[4], 'tipo': row[7], 'pathology': row[13], 'group': row[14]}
+            #dict_info_signal[row[0]] = {'spk': row[0], 'Path': path, 'age': row[5], 'gender': row[4], 'tipo': row[7], 'pathology': row[13], 'group': row[14]}
             
             ##old pathology
-            dict_info_signal[row[0]] = {'spk': row[0], 'Path': path, 'age': row[5], 'gender': row[4], 'tipo': row[7], 'pathology': row[7], 'group': row[10]}
+            dict_info_signal[row[0]] = {'spk': row[0], 'Path': path, 'age': row[5], 'gender': row[4], 'tipo': row[7], 'pathology': row[7], 'group': row[15]}
             
     return dict_info_signal
 

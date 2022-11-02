@@ -124,7 +124,7 @@ def selecciona_conjuntos_Cross_validation(clases = 'binaria', metodo = 'GroupKFo
         ind = ind + 1
 
 def kford():    
-    db_avfad.kford()
+    # db_avfad.kford()
     db_saarbruecken.kford()
 
 if __name__ == '__main__':

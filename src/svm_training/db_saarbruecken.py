@@ -557,9 +557,9 @@ def svm_m_Saarbruecken(list_path,kfold, audio_type, label):
     ker = 'poly'
     d = 1
     c = 1
-        #general=["male","female", 'both']       
-    general=['both']          
-    #grabacion=["phrase","vowels", "a", "i", "u"]
+    # general=["male","female", 'both']       
+    general=['female']          
+    # grabacion=["phrase","vowels", "a", "i", "u"]
     grabacion=["phrase"]
     for w in general:
         qq=len(grabacion)-1
@@ -1276,9 +1276,9 @@ def kford():
         
         pp+=1
     clases=["binario", "Multiclass"]    
+    # general=['both']        
     general=["male","female", 'both']    
     grabacion=["phrase","vowels", "a", "i", "u"]
-    
     ind = 1; camino = 'data/lst/' + name_base
     for i in b_fold:
         for k in general:
