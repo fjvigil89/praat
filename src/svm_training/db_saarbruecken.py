@@ -5,8 +5,9 @@ from genericpath import isdir, isfile
 from multiprocessing.dummy import Array
 import sys, json, os, pickle, time
 import datetime
-from sklearn.model_selection import GroupKFold, StratifiedGroupKFold
-
+from tokenize import group
+from sklearn.model_selection import GroupKFold, KFold, StratifiedGroupKFold, train_test_split
+import random
 import pandas as pd
 import numpy as np
 from sklearn.svm import SVC
@@ -558,7 +559,7 @@ def svm_m_Saarbruecken(list_path,kfold, audio_type, label):
     d = 1
     c = 1
     # general=["male","female", 'both']       
-    general=['female']          
+    general=['both']          
     # grabacion=["phrase","vowels", "a", "i", "u"]
     grabacion=["phrase"]
     for w in general:
@@ -829,13 +830,112 @@ def multi_Cross_validation(sesion):
     return list_muestras, list_clases, list_grupos, dict_clases
 
 def StratifiedGroupKFold_G(X, y, groups, kfold = 5):
-    sgkf = StratifiedGroupKFold(n_splits = kfold)
+    sgkf = StratifiedGroupKFold(n_splits = kfold)    
     dict_fold = {};
     i = 0
     for train, test in sgkf.split(X, y, groups=groups):
         dict_fold['fold' + str(i)] = {'train': train, 'test': test}
         i = i + 1
+        # print("%s %s" % (train, test))
+    return dict_fold
+
+def GroupKFold_G(X, y, groups, kfold = 5):
+    gkf = GroupKFold(n_splits = kfold)
+    dict_fold = {}; 
+    i = 0
+    for train, test in gkf.split(X, y, groups=groups):
+        dict_fold['fold' + str(i)] = {'train': train, 'test': test}
+        i = i + 1
         #print("%s %s" % (train, test))
+    return dict_fold
+
+def spliter_custom(list_muestras, list_clases, nfold):        
+    split= int(len(list_muestras) / nfold)
+    X= np.array(random.sample(list_muestras, split))
+    y= np.full(len(X), list_clases[0])
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20)
+    return X_train, X_test, y_train, y_test
+
+def StratifiedGroupKFold_M(kfold = 5, sign= NULL):    
+    dict_fold = {};
+    label=[]
+    value=[]
+    for i in sign:
+        if not sign[i]['pathology'] in label:
+            label.append(sign[i]['pathology'])      
+            value.append(sign[i]['group'])
+     
+    trains0=[];trains1=[];trains2=[];trains3=[];trains4=[]
+    y_trains0=[];y_trains1=[];y_trains2=[];y_trains3=[];y_trains4=[]
+    tests0=[];tests1=[];tests2=[];tests3=[];tests4=[]   
+    y_tests0=[];tests1=[];tests2=[];tests3=[];tests4=[]   
+    index = 0     
+    for w in label:        
+        list_muestras = []
+        list_clases = []
+        list_grupos = []
+        dict_clases = {}    
+        for j in sign:            
+            if sign[j]['pathology'] == w:
+                list_muestras.append(j)
+                list_grupos.append(str(sign[j]['group']))        
+                
+                dict_clases[sign[j]['pathology']] = str(sign[j]['group'])
+                list_clases.append(str(sign[j]['group']))
+        
+                                
+        for i in range(0,kfold):
+            if index == 0:
+                if i == 0:
+                    trains0,tests0, y_trains0, y_tests0=spliter_custom(list_muestras, list_clases, kfold)                    
+                if i == 1:
+                    trains1,tests1, y_trains1, y_tests1 =spliter_custom(list_muestras, list_clases, kfold)                    
+                if i == 2:
+                    trains2,tests2, y_trains2, y_tests2 =spliter_custom(list_muestras, list_clases, kfold)                    
+                if i == 3:
+                    trains3,tests3, y_trains3, y_tests3 =spliter_custom(list_muestras, list_clases, kfold)
+                if i == 4:
+                    trains4,tests4, y_trains4, y_tests4 =spliter_custom(list_muestras, list_clases, kfold)
+            else:
+                if i == 0:
+                    train, test, y_train, y_test = spliter_custom(list_muestras, list_clases, kfold)
+                    trains0=np.concatenate((trains0,train)) 
+                    tests0= np.concatenate((tests0, test))
+                    y_trains0=np.concatenate((y_trains0,y_train)) 
+                    y_tests0= np.concatenate((y_tests0, y_test))
+                if i == 1:
+                    train, test, y_train, y_test = spliter_custom(list_muestras, list_clases, kfold)
+                    trains1= np.concatenate((trains1, train))
+                    tests1= np.concatenate((tests1, test))
+                    y_trains1=np.concatenate((y_trains1,y_train)) 
+                    y_tests1= np.concatenate((y_tests1, y_test))
+                if i == 2:
+                    train, test, y_train, y_test = spliter_custom(list_muestras, list_clases, kfold)
+                    trains2= np.concatenate((trains2, train))
+                    tests2= np.concatenate((tests2, test))
+                    y_trains2=np.concatenate((y_trains2,y_train)) 
+                    y_tests2= np.concatenate((y_tests2, y_test))
+                if i == 3:
+                    train, test, y_train, y_test = spliter_custom(list_muestras, list_clases, kfold)
+                    trains3= np.concatenate((trains3, train))
+                    tests3= np.concatenate((tests3, test))
+                    y_trains3=np.concatenate((y_trains3,y_train)) 
+                    y_tests3= np.concatenate((y_tests3, y_test))
+                if i == 4:
+                    train, test, y_train, y_test = spliter_custom(list_muestras, list_clases, kfold)
+                    trains4= np.concatenate((trains4, train))
+                    tests4= np.concatenate((tests4, test))
+                    y_trains4=np.concatenate((y_trains4,y_train)) 
+                    y_tests4= np.concatenate((y_tests4, y_test))
+            i = i + 1
+            # print("%s %s" % (train, test))
+    
+        index +=1
+    dict_fold['fold0' ] = {'train': trains0 , 'test': tests0, 'y_train': y_trains0 , 'y_test': y_tests0  }
+    dict_fold['fold1' ] = {'train': trains1 , 'test': tests1, 'y_train': y_trains1 , 'y_test': y_tests1  }
+    dict_fold['fold2' ] = {'train': trains2 , 'test': tests2, 'y_train': y_trains2 , 'y_test': y_tests2  }
+    dict_fold['fold3' ] = {'train': trains3 , 'test': tests3, 'y_train': y_trains3 , 'y_test': y_tests3  }
+    dict_fold['fold4' ] = {'train': trains4 , 'test': tests4, 'y_train': y_trains4 , 'y_test': y_tests4  }
     return dict_fold
 
 def salva_fold_binaria(muestras_train, list_clases_train, muestras_test, list_clases_test, dict_info_signal, dict_clases, name_base, grabacion, genero):
@@ -843,18 +943,21 @@ def salva_fold_binaria(muestras_train, list_clases_train, muestras_test, list_cl
     
     #tipo = "phrase"  if grabacion.replace('_both','') == "phrase" else  grabacion.replace('_both','')
     tipo = grabacion
-    fold_train = {"labels": dict_clases, "meta_data": []}
-    fold_test = {"labels": dict_clases, "meta_data": []}
+    fold_train = {"labels": {}, "meta_data": []}
+    fold_test = {"labels": {}, "meta_data": []}
 
     train = fold_train['meta_data']
     test = fold_test['meta_data']
-    vowels=[]
+    classes_train={}
+    classes_test={}      
     index = 0
     for i in muestras_train:
         spk = dict_info_signal[i]['spk']
         label = list_clases_train[index]
         index = index + 1        
-        path=  dict_info_signal[i]['Path']         
+        path=  dict_info_signal[i]['Path']  
+        classes_train[dict_info_signal[i]['pathology']]=str(dict_info_signal[i]['group'])
+        
         if genero=="male":
             if tipo == "phrase"and dict_info_signal[i]['gender'] == 'm':
                 aa = {'path': path+ '-phrase.wav', 'label': label, 'speaker': spk}
@@ -1027,6 +1130,7 @@ def salva_fold_binaria(muestras_train, list_clases_train, muestras_test, list_cl
                 train.append(ii2)
                 train.append(ii3)                    
             
+    fold_train['labels'] = classes_train
     fold_train['meta_data'] = train
 
     index = 0
@@ -1035,6 +1139,9 @@ def salva_fold_binaria(muestras_train, list_clases_train, muestras_test, list_cl
         label = list_clases_test[index]
         index = index + 1
         path=  dict_info_signal[i]['Path']
+        
+        classes_test[dict_info_signal[i]['pathology']]=str(dict_info_signal[i]['group'])
+        
         if genero=="male":
             if tipo == "phrase"and dict_info_signal[i]['gender'] == 'm':
                 aa = {'path': path+ '-phrase.wav', 'label': label, 'speaker': spk}
@@ -1205,10 +1312,32 @@ def salva_fold_binaria(muestras_train, list_clases_train, muestras_test, list_cl
                 test.append(ii1)
                 test.append(ii2)
                 test.append(ii3) 
+    
+    fold_test['labels'] = classes_test
     fold_test['meta_data'] = test
-
     return fold_train, fold_test
 
+def GroupPathology_G(sign, m_list_muestras, m_list_clases, m_list_grupos, nfold):    
+    label=[]
+    index={}
+    for i in sign:
+        if not sign[i]['pathology'] in label:
+            label.append(sign[i]['pathology'])                   
+        
+    count= np.zeros(len(label), dtype=int)
+    for i in sign:        
+        count[label.index(sign[i]['pathology'])]+=1
+
+    print("Label", '===>' ,"Cantidad")
+    for x in range(0, len(label)):
+        print(label[x], '===>' ,count[x])
+    
+    
+    
+    
+    dict_fold = {};
+    i = 0    
+    return dict_fold
 
 def kford():
     name_base="Saarbruecken"
@@ -1218,67 +1347,71 @@ def kford():
     m_list_muestras, m_list_clases, m_list_grupos, m_dict_clases = multi_Cross_validation(dict_info_signal);
     
     b_fold = StratifiedGroupKFold_G(b_list_muestras, b_list_clases, b_list_grupos, 5)
-    m_fold = StratifiedGroupKFold_G(m_list_muestras, m_list_clases, m_list_grupos, 5)
+    m_fold = StratifiedGroupKFold_M(5, dict_info_signal)
+    # m_fold = GroupKFold_G(m_list_muestras, m_list_clases, m_list_grupos, 5)
     
-    #intercambio
-    pp=0
-    while( pp<5):
-        fold = 'fold'+str(pp)
+    
+    
+    # #intercambio
+    # pp=0
+    # while( pp<5):
+    #     fold = 'fold'+str(pp)
         
-        test_end= int(len(np.array(b_fold[fold]['test'])) / 2)
-        for item in range(0, test_end, 3):
-            try:                   
-                aux= b_fold[fold]['test'][item]
-                b_fold[fold]['test'][item] = b_fold[fold]['train'][item]
-                b_fold[fold]['train'][item]=aux
-            except:
-                pass
+    #     test_end= int(len(np.array(b_fold[fold]['test'])) / 2)
+    #     for item in range(0, test_end, 3):
+    #         try:                   
+    #             aux= b_fold[fold]['test'][item]
+    #             b_fold[fold]['test'][item] = b_fold[fold]['train'][item]
+    #             b_fold[fold]['train'][item]=aux
+    #         except:
+    #             pass
         
-        for item in range(0, test_end,5):            
-            foldnext = 'fold'+str(pp+1)
-            try:               
-                if pp < 4:
-                    aux= b_fold[fold]['test'][item]
-                    b_fold[fold]['test'][item] = b_fold[fold]['train'][item]
-                    b_fold[fold]['train'][item]=aux
-                else:
-                    aux= b_fold[fold]['test'][item]
-                    b_fold[fold]['test'][item] = b_fold['fold0']['train'][item]
-                    b_fold['fold0']['train'][item]=aux
+    #     for item in range(0, test_end,5):            
+    #         foldnext = 'fold'+str(pp+1)
+    #         try:               
+    #             if pp < 4:
+    #                 aux= b_fold[fold]['test'][item]
+    #                 b_fold[fold]['test'][item] = b_fold[fold]['train'][item]
+    #                 b_fold[fold]['train'][item]=aux
+    #             else:
+    #                 aux= b_fold[fold]['test'][item]
+    #                 b_fold[fold]['test'][item] = b_fold['fold0']['train'][item]
+    #                 b_fold['fold0']['train'][item]=aux
                     
-            except:
-                pass 
+    #         except:
+    #             pass 
         
-        end= int(len(np.array(b_fold[fold]['train'])) / 2)
-        for item in range(0, end,2):                        
-            try:               
-                aux= b_fold[fold]['train'][item]
-                b_fold[fold]['train'][item] = b_fold[fold]['test'][item]
-                b_fold[fold]['test'][item]=aux                
-            except:
-                pass            
-        for item in range(0, end,5):            
-            foldnext = 'fold'+str(pp+1)
-            try:               
-                if pp < 4:
-                    aux= b_fold[fold]['train'][item]
-                    b_fold[fold]['train'][item] = b_fold[foldnext]['test'][item]
-                    b_fold[foldnext]['test'][item]=aux
-                else:
-                    aux= b_fold[fold]['train'][item]
-                    b_fold[fold]['train'][item] = b_fold['fold0']['test'][item]
-                    b_fold['fold0']['test'][item]=aux
+    #     end= int(len(np.array(b_fold[fold]['train'])) / 2)
+    #     for item in range(0, end,2):                        
+    #         try:               
+    #             aux= b_fold[fold]['train'][item]
+    #             b_fold[fold]['train'][item] = b_fold[fold]['test'][item]
+    #             b_fold[fold]['test'][item]=aux                
+    #         except:
+    #             pass            
+    #     for item in range(0, end,5):            
+    #         foldnext = 'fold'+str(pp+1)
+    #         try:               
+    #             if pp < 4:
+    #                 aux= b_fold[fold]['train'][item]
+    #                 b_fold[fold]['train'][item] = b_fold[foldnext]['test'][item]
+    #                 b_fold[foldnext]['test'][item]=aux
+    #             else:
+    #                 aux= b_fold[fold]['train'][item]
+    #                 b_fold[fold]['train'][item] = b_fold['fold0']['test'][item]
+    #                 b_fold['fold0']['test'][item]=aux
                     
-            except:
-                pass            
+    #         except:
+    #             pass            
         
                    
         
-        pp+=1
+    #     pp+=1
     clases=["binario", "Multiclass"]    
-    # general=['both']        
-    general=["male","female", 'both']    
-    grabacion=["phrase","vowels", "a", "i", "u"]
+    general=['both']        
+    # general=["male","female", 'both']    
+    # grabacion=["phrase","vowels", "a", "i", "u"]
+    grabacion=["phrase"]
     ind = 1; camino = 'data/lst/' + name_base
     for i in b_fold:
         for k in general:
@@ -1308,11 +1441,18 @@ def kford():
                 ## Multiclass
                 camino = 'data/lst/' + name_base+"/"+ clases[1]+"/"+k+"/"+k+"_"+grabacion[j]
                 ind_train = np.array(m_fold[i]['train'])
+                ind_ytrain = np.array(m_fold[i]['y_train'])
                 ind_test = np.array(m_fold[i]['test'])
-                muestras_train = np.array(m_list_muestras)[ind_train]
-                list_clases_train = np.array(m_list_clases)[ind_train]
-                muestras_test = np.array(m_list_muestras)[ind_test]
-                list_clases_test = np.array(m_list_clases)[ind_test]        
+                ind_ytest = np.array(m_fold[i]['y_test'])
+                
+                muestras_train = [a for a in m_list_muestras if a in ind_train]
+                list_clases_train = [a for a in m_list_clases if a in ind_ytrain]                
+                # muestras_train = np.array(m_list_muestras)[ind_train]
+                # list_clases_train = np.array(m_list_clases)[ind_train]
+                muestras_test = [a for a in m_list_muestras if a in ind_test]
+                list_clases_test = [a for a in m_list_clases if a in ind_ytest]                
+                # muestras_test = np.array(m_list_muestras)[ind_test]
+                # list_clases_test = np.array(m_list_clases)[ind_test]        
                 
                 
                 [fold_train, fold_test] = salva_fold_binaria(muestras_train, list_clases_train, muestras_test, list_clases_test, dict_info_signal, m_dict_clases, name_base, grabacion[j], k)
