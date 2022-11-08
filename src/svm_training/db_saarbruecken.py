@@ -825,8 +825,8 @@ def multi_Cross_validation(sesion):
         
         dict_clases[sesion[j]['pathology']] = str(sesion[j]['group'])
         list_clases.append(str(sesion[j]['group']))
-        
-            
+       
+    
     return list_muestras, list_clases, list_grupos, dict_clases
 
 def StratifiedGroupKFold_G(X, y, groups, kfold = 5):
@@ -854,6 +854,7 @@ def spliter_custom(list_muestras, list_clases, nfold):
     X= np.array(random.sample(list_muestras, split))
     y= np.full(len(X), list_clases[0])
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20)
+    # X_train, X_test, y_train, y_test = train_test_split(list_muestras, list_clases, test_size=0.20)
     return X_train, X_test, y_train, y_test
 
 def StratifiedGroupKFold_M(kfold = 5, sign= NULL):    
@@ -878,8 +879,7 @@ def StratifiedGroupKFold_M(kfold = 5, sign= NULL):
         for j in sign:            
             if sign[j]['pathology'] == w:
                 list_muestras.append(j)
-                list_grupos.append(str(sign[j]['group']))        
-                
+                list_grupos.append(str(sign[j]['group']))
                 dict_clases[sign[j]['pathology']] = str(sign[j]['group'])
                 list_clases.append(str(sign[j]['group']))
         
@@ -936,6 +936,7 @@ def StratifiedGroupKFold_M(kfold = 5, sign= NULL):
     dict_fold['fold2' ] = {'train': trains2 , 'test': tests2, 'y_train': y_trains2 , 'y_test': y_tests2  }
     dict_fold['fold3' ] = {'train': trains3 , 'test': tests3, 'y_train': y_trains3 , 'y_test': y_tests3  }
     dict_fold['fold4' ] = {'train': trains4 , 'test': tests4, 'y_train': y_trains4 , 'y_test': y_tests4  }
+  
     return dict_fold
 
 def salva_fold_binaria(muestras_train, list_clases_train, muestras_test, list_clases_test, dict_info_signal, dict_clases, name_base, grabacion, genero):
@@ -1331,14 +1332,32 @@ def GroupPathology_G(sign, m_list_muestras, m_list_clases, m_list_grupos, nfold)
     print("Label", '===>' ,"Cantidad")
     for x in range(0, len(label)):
         print(label[x], '===>' ,count[x])
-    
-    
-    
-    
+        
     dict_fold = {};
     i = 0    
     return dict_fold
 
+
+def CountPathology_Fold(sign, name):    
+    label=[]
+    num=[]   
+    met=sign['meta_data']     
+    for i in sign['labels']:
+        if not i in label:
+            label.append(i)
+            num.append(sign['labels'][i])                   
+     
+    count= np.zeros(len(label), dtype=int)
+    for idx, x in enumerate(num):
+        for i in range(0,len(met)):
+            if x == met[i]['label']:
+                count[idx]+=1
+
+    print(name)
+    for x in range(0, len(label)):
+        print(label[x], '===>' ,count[x])
+        
+    
 def kford():
     name_base="Saarbruecken"
     ### Aqui se hace la lista en dependencia del typo audio (phrase, vowels, a, i, u)
@@ -1446,11 +1465,11 @@ def kford():
                 ind_ytest = np.array(m_fold[i]['y_test'])
                 
                 muestras_train = [a for a in m_list_muestras if a in ind_train]
-                list_clases_train = [a for a in m_list_clases if a in ind_ytrain]                
+                list_clases_train = ind_ytrain
                 # muestras_train = np.array(m_list_muestras)[ind_train]
                 # list_clases_train = np.array(m_list_clases)[ind_train]
-                muestras_test = [a for a in m_list_muestras if a in ind_test]
-                list_clases_test = [a for a in m_list_clases if a in ind_ytest]                
+                muestras_test = [a for a in m_list_muestras if a in ind_test]                
+                list_clases_test = ind_ytest                
                 # muestras_test = np.array(m_list_muestras)[ind_test]
                 # list_clases_test = np.array(m_list_clases)[ind_test]        
                 
@@ -1458,12 +1477,14 @@ def kford():
                 [fold_train, fold_test] = salva_fold_binaria(muestras_train, list_clases_train, muestras_test, list_clases_test, dict_info_signal, m_dict_clases, name_base, grabacion[j], k)
                 if not os.path.exists(camino):
                     os.makedirs(camino + '/')
-
+                
                 with open(camino + '/' + 'train_' + clases[1] + '_' + grabacion[j] + '_meta_data_fold' + str(ind) + '.json', 'w') as file:
                     json.dump(fold_train, file, indent=6)
+                    # CountPathology_Fold(fold_train, 'train fold' + str(ind))
                 file.close()
                 with open(camino + '/' + 'test_' + clases[1] + '_' + grabacion[j] + '_meta_data_fold' + str(ind) + '.json', 'w') as file:
                     json.dump(fold_test, file, indent=6)
+                    # CountPathology_Fold(fold_test, 'test fold' + str(ind))
                 file.close()                
                 j = j - 1            
         ind = ind + 1
