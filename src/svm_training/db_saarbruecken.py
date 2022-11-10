@@ -646,11 +646,11 @@ def svm_m_Saarbruecken(list_path,kfold, audio_type, label):
                 for wav in test_files:                        
                     name = os.path.basename(wav)[:-4]
                     camino= 'data/features/' + label +"/"+  clases +"/"+ w+"/"+ w+'_'+grabacion[qq]
-                    feat = pd.read_csv(camino + '/' + name + '_smile.csv').to_numpy()[0]                        
+                    feat = pd.read_csv(camino + '/' + name + '_smile.csv').to_numpy()[0]
                     test_features.append(feat[3:])
                     i = i + 1
                 print('Fold ' + str(k + 1) + 'Test: ' + str(i))
-                test_features = np.array(test_features)        
+                test_features = np.array(test_features)
                 test_features = utils.zscore(test_features, trainmean, trainstd)
 
                 # 3. Train SVM classifier
@@ -1130,8 +1130,8 @@ def salva_fold_binaria(muestras_train, list_clases_train, muestras_test, list_cl
                 train.append(ii1)
                 train.append(ii2)
                 train.append(ii3)                    
-            
-    fold_train['labels'] = classes_train
+    classes_train = json.dumps(classes_train, sort_keys=True)        
+    fold_train['labels'] =  json.loads(classes_train)
     fold_train['meta_data'] = train
 
     index = 0
@@ -1314,7 +1314,8 @@ def salva_fold_binaria(muestras_train, list_clases_train, muestras_test, list_cl
                 test.append(ii2)
                 test.append(ii3) 
     
-    fold_test['labels'] = classes_test
+    classes_test = json.dumps(classes_test, sort_keys=True)        
+    fold_test['labels'] = json.loads(classes_test)
     fold_test['meta_data'] = test
     return fold_train, fold_test
 
