@@ -91,3 +91,5 @@ def tiempo_total_pathology():
 def tiempo_total_audio():
     run_baseline.tiempo_total_audio(path_database)
 
+def clustering():
+    run_baseline.clustering(path_list_fold + base_train, 5, tipo_signal, 'binaria')

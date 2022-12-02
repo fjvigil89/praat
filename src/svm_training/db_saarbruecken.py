@@ -11,12 +11,14 @@ import random
 import pandas as pd
 import numpy as np
 from sklearn.svm import SVC
+from sklearn.neural_network import MLPClassifier
+from sklearn.ensemble import RandomForestClassifier
 import csv
 import opensmile
 import mutagen
 from mutagen.wave import WAVE
 #from utils import compute_score, zscore
-from svm_training import utils, db_avfad, db_voiced, db_thalento, db_saarbruecken, Load_metadata as db
+from svm_training import utils, clustering, db_avfad, db_voiced, db_thalento, db_saarbruecken, Load_metadata as db
 from collections import Counter
 
 # function to convert the information into 
@@ -556,7 +558,7 @@ def svmSaarbruecken(list_path,kfold, audio_type, label):
 def svm_m_Saarbruecken(list_path,kfold, audio_type, label):
     clases ="Multiclass"
     ker = 'poly'
-    d = 1
+    d = 2
     c = 1
     # general=["male","female", 'both']       
     general=['both']          
@@ -575,6 +577,8 @@ def svm_m_Saarbruecken(list_path,kfold, audio_type, label):
             f = open(result_log, 'w+')
             f.write('Results Data:%s Features:Compare2016 %ifold, %s\n' % (label, kfold, audio_type))
             f.write('SVM Config: Kernel=%s, Degree=%i, C(tol)=%.2f \n' % (ker, d, c))
+            #f.write('MLPClassifier: random_state=1,max_iter=300 \n')            
+            #f.write('RandomForestClassifier:max_depth=2, random_state=0 \n')            
             f.close()
             
             score = np.zeros((13, kfold))
@@ -658,6 +662,8 @@ def svm_m_Saarbruecken(list_path,kfold, audio_type, label):
                 # print('Norm: %i, Path: %i\n' % (counter[0], counter[1]))
 
                 clf = SVC(C=c, kernel=ker, degree=d, probability=True)
+                #clf = MLPClassifier(random_state=1, max_iter=300)
+                #clf = RandomForestClassifier(max_depth=2, random_state=0)
                 clf.fit(train_features, train_labels)
 
                 # 4. Testing
@@ -797,7 +803,42 @@ def svm_m_Saarbruecken(list_path,kfold, audio_type, label):
                 f.close()
             qq -=1      
     
+def clustering_m_Saarbruecken(list_path,kfold, audio_type, label):
+    data_path="data/features/Saarbruecken/Multiclass/both/both_phrase"
+    df = pd.read_excel("data/lst/Saarbruecken/Saarbruecken_metadata.xlsx", sheet_name='Saarbruecken')
+    dict_info_signal = {}
+    i = 0
+    data = []
+    label=[]
+    y_label=[]
+    files=[]
+    for ind, row in df.iterrows():                
+        p= "PATH" if df['PATHOLOGY'][ind]=='p' else "NORM"
+        g= "hombres" if df['GENDER'][ind]=='m' else "mujeres"
+        path=  "data/audio/Saarbruecken"+"/"+p+"/"+g+"/"+str(row[0])            
+        ##nuevas pathology
+        dict_info_signal[row[0]] = {'spk': row[0],'Path': path,'pathology': str(row[13]).strip().upper(), 'group': row[16]}
+        file=str(row[0])+'-phrase_smile.csv'
+        feat = pd.read_csv(data_path+'/'+file).to_numpy()[0]
+        data.append(feat[3:])
+        label.append(row[16])
+        y_label.append(str(row[13]).strip().upper())
+        y_label.append(str(row[13]).strip().upper())
+        files.append(path)
+        # if i ==100:
+        #     break;
+        # i+=1
+            
+    
+    
+    
+    # 3. Clustering
+    clustering.cluster(data, label, y_label, files )
 
+                
+            
+           
+            
 
 def binaria_Cross_validation(sesion):
     list_muestras = []

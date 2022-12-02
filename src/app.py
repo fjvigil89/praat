@@ -25,12 +25,14 @@ def tiempo_total_pathology():
 def tiempo_total_audio():
     main.tiempo_total_audio()
 
+def clustering():
+    main.clustering()
 
 if __name__ == '__main__':
     #crea_kfold() #revisar en las 4 DB
     
     
-    make_model_flavio() #ok 2
+    #make_model_flavio() #ok 2
     # feature_smile() #ok 1 solo una vez
     
     
@@ -38,4 +40,4 @@ if __name__ == '__main__':
     # tiempo_total_pathology() #ok
     #tiempo_total_audio()
     
-    
+    clustering()

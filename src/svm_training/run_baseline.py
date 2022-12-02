@@ -210,7 +210,11 @@ def main_with_thalento(list_path, list_path_test, kfold, audio_type, audio_type_
          np.mean(score[11, :]), np.mean(score[12, :])))
     f.close()
 
-
+def clustering(list_path=NULL, kfold=5, audio_type=NULL, cambia='viejo', clases='binaria'):
+    label = os.path.basename(list_path) 
+    if label == "Saarbruecken":
+        db_saarbruecken.clustering_m_Saarbruecken(list_path,kfold, audio_type, label)  
+    
 def main(list_path=NULL, kfold=5, audio_type=NULL, cambia='viejo', clases='binaria'):
     # ker = 'poly'
     # d = 1
