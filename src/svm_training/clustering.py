@@ -13,7 +13,7 @@ def cluster(X, y, name_label, path):
     X = np.array(X)
     y = np.array(y)    
     
-    sc = KMeans(n_clusters=6, random_state=0).fit(X)
+    sc = KMeans(n_clusters=10, random_state=0).fit(X)
     
     
     X = StandardScaler().fit_transform(X)
@@ -69,7 +69,7 @@ def cluster(X, y, name_label, path):
             plot_count.append(j/k)
         
         
-        ax= plt.subplot(2,3,1+i)
+        ax= plt.subplot(3,5,1+i)
         
         plt.bar(labels_unique, plot_count)                
         plt.setp(ax.get_xticklabels(), rotation=45, ha='right')

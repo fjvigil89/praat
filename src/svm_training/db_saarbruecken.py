@@ -262,8 +262,10 @@ def featureSaarbruecken(list_path, kfold, audio_type, label):
     
 def feature_m_Saarbruecken(list_path, kfold, audio_type, label): #reviar
     clases ="Multiclass"    
-    general=["male","female", 'both']     
-    grabacion=["phrase","vowels", "a", "i", "u"]
+    #general=["male","female", 'both']     
+    #grabacion=["phrase","vowels", "a", "i", "u"]
+    general=['both']     
+    grabacion=["phrase"]
     
      # 1. Loading data from json list    
     for k in range(0, kfold):
@@ -343,23 +345,24 @@ def feature_m_Saarbruecken(list_path, kfold, audio_type, label): #reviar
                 
                 ##Esto es para crear csv y pkl generico por fold 
                 # read wav files and extract emobase features on that file
-                # print('Processing: ... ')
-                # feat = smile.process_files(data)            
-                # train_features.append(feat.to_numpy()[3:])
+                print('Processing: ... ')
+                feat = smile.process_files(data)            
+                train_features.append(feat.to_numpy()[3:])                
+                print('Saving: ... Train: ' + audio_type_pkl+'_smile.csv')
+                feat.to_csv(trainpath_csv+'_smile.csv')
                 
-                # print('Saving: ... Train: ' + audio_type_pkl+'_smile.csv')
-                # feat.to_csv(trainpath_csv+'_smile.csv')
-                
-                # print('Train: ' + str(i))
-                # train_features = np.array(train_features)
-                # with open(trainpath, 'wb') as fid:
-                #     pickle.dump(train_features, fid, protocol=pickle.HIGHEST_PROTOCOL)
-                # fid.close()
+                print('Train: ' + str(i))
+                train_features = np.array(train_features)
+                with open(trainpath, 'wb') as fid:
+                    pickle.dump(train_features, fid, protocol=pickle.HIGHEST_PROTOCOL)
+                fid.close()
 
                 # Test
                 test_labels = np.array(test_labels)
-                testpath = 'data/features/' + label + '/test_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1) + '.pkl'
-                testpath_csv = 'data/features/' + label + '/test_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1)
+                #testpath = 'data/features/' + label + '/test_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1) + '.pkl'
+                #testpath_csv = 'data/features/' + label + '/test_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1)
+                testpath = camino  + '/test_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1) + '.pkl'
+                testpath_csv = camino  + '/test_' + clases + '_' + audio_type_pkl + '_fold' + str(k + 1)        
                 
                 i = 0
                 test_features = []
@@ -384,18 +387,18 @@ def feature_m_Saarbruecken(list_path, kfold, audio_type, label): #reviar
                 
                 ##Esto es para crear csv y pkl generico por fold 
                 # # read wav files and extract emobase features on that file
-                # print('Processing: ... ')
-                # feat = smile.process_files(data)            
-                # test_features.append(feat.to_numpy()[3:])
+                print('Processing: ... ')
+                feat = smile.process_files(data)            
+                test_features.append(feat.to_numpy()[3:])
                 
-                # print('Saving: ... Test: ' + audio_type_pkl+'_smile.csv')
-                # feat.to_csv(testpath_csv+'_smile.csv')
+                print('Saving: ... Test: ' + audio_type_pkl+'_smile.csv')
+                feat.to_csv(testpath_csv+'_smile.csv')
                 
-                # print('Test: ' + str(i))
-                # test_features = np.array(test_features)
-                # with open(testpath, 'wb') as fid:
-                #     pickle.dump(test_features, fid, protocol=pickle.HIGHEST_PROTOCOL)
-                # fid.close()
+                print('Test: ' + str(i))
+                test_features = np.array(test_features)
+                with open(testpath, 'wb') as fid:
+                    pickle.dump(test_features, fid, protocol=pickle.HIGHEST_PROTOCOL)
+                fid.close()
                 
                 j=j-1
         print('Fold ' + str(k + 1) +'--Saving: ... ', camino)
@@ -825,7 +828,7 @@ def clustering_m_Saarbruecken(list_path,kfold, audio_type, label):
         y_label.append(str(row[13]).strip().upper())
         y_label.append(str(row[13]).strip().upper())
         files.append(path)
-        # if i ==100:
+        # if i ==10:
         #     break;
         # i+=1
             
